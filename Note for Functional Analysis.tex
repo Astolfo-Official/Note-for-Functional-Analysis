@@ -1,0 +1,54 @@
+\documentclass[lang=cn,10pt]{elegantbook}
+\usepackage{physics}
+\usepackage{unicode-math}
+\usepackage{float}
+\title{Note for Functional Analysis}
+
+\author{Astolfo}
+\version{1.0}
+
+\extrainfo{Too young too simple, sometimes naive.}
+
+\setcounter{tocdepth}{3}
+
+\cover{cover.jpg}
+
+% 本文档命令
+\usepackage{array}
+\newcommand{\ccr}[1]{\makecell{{\color{#1}\rule{1cm}{1cm}}}}
+
+% 修改标题页的橙色带
+% \definecolor{customcolor}{RGB}{32,178,170}
+% \colorlet{coverlinecolor}{customcolor}
+
+\begin{document}
+
+\maketitle
+\frontmatter
+
+
+\mainmatter
+
+\chapter*{来自\textit{Astolfo}}
+\setcounter{page}{1}
+\pagenumbering{roman}
+这份讲义是\textit{Astolfo}在大二下旁听泛函分析时顺手整理的笔记，\textit{Astolfo}试图通过这种方法让自己好好学习(逃
+
+这份讲义也将作为本人随笔的一部分加入《\textit{Astolfo}的量子化学》系列笔记中，后续其他内容也会陆续加入。
+\begin{flushright}
+    \textit{Astolfo} \\ 2022年2月
+\end{flushright}
+\tableofcontents
+\thispagestyle{empty}
+\newpage
+\setcounter{page}{1}
+\pagenumbering{arabic}
+\chapter{正式内容前的瞎扯}
+\input{body/正式内容前的瞎扯.tex}
+\chapter{距离空间与拓扑空间}
+\input{body/距离空间与拓扑空间.tex}
+\chapter{赋范线性空间}
+\input{body/赋范线性空间.tex}
+\chapter{习题}
+\input{body/习题.tex}
+\end{document}
