@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2021/W32TeX) (preloaded format=xelatex 2021.4.21)  31 OCT 2022 18:42
+This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2021/W32TeX) (preloaded format=xelatex 2021.4.21)  2 JUL 2023 19:34
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -1490,6 +1490,75 @@ LaTeX Warning: Label `def:-NoValue-' multiply defined.
 LaTeX Warning: Label `thm:-NoValue-' multiply defined.
 
 
+LaTeX Warning: Label `pro:-NoValue-' multiply defined.
+
+
+LaTeX Warning: Label `def:-NoValue-' multiply defined.
+
+
+LaTeX Warning: Label `thm:-NoValue-' multiply defined.
+
+
+LaTeX Warning: Label `def:-NoValue-' multiply defined.
+
+
+LaTeX Warning: Label `def:-NoValue-' multiply defined.
+
+
+LaTeX Warning: Label `thm:-NoValue-' multiply defined.
+
+
+LaTeX Warning: Label `def:-NoValue-' multiply defined.
+
+
+LaTeX Warning: Label `thm:-NoValue-' multiply defined.
+
+
+LaTeX Warning: Label `thm:-NoValue-' multiply defined.
+
+
+LaTeX Warning: Label `def:-NoValue-' multiply defined.
+
+
+LaTeX Warning: Label `thm:-NoValue-' multiply defined.
+
+
+LaTeX Warning: Label `thm:-NoValue-' multiply defined.
+
+
+LaTeX Warning: Label `thm:-NoValue-' multiply defined.
+
+
+LaTeX Warning: Label `def:-NoValue-' multiply defined.
+
+
+LaTeX Warning: Label `def:-NoValue-' multiply defined.
+
+
+LaTeX Warning: Label `thm:-NoValue-' multiply defined.
+
+
+LaTeX Warning: Label `thm:-NoValue-' multiply defined.
+
+
+LaTeX Warning: Label `thm:-NoValue-' multiply defined.
+
+
+LaTeX Warning: Label `thm:-NoValue-' multiply defined.
+
+
+LaTeX Warning: Label `thm:-NoValue-' multiply defined.
+
+
+LaTeX Warning: Label `pro:-NoValue-' multiply defined.
+
+
+LaTeX Warning: Label `def:-NoValue-' multiply defined.
+
+
+LaTeX Warning: Label `thm:-NoValue-' multiply defined.
+
+
 LaTeX Warning: Label `def:-NoValue-' multiply defined.
 
 )
@@ -1738,9 +1807,9 @@ LaTeX Font Info:    Font shape `TU/texgyretermes(0)/m/it' will be
 Chapter 1.
 (./body/正式内容前的瞎扯.tex
 LaTeX Font Info:    Font shape `TU/texgyretermes(0)/m/n' will be
-(Font)              scaled to size 7.0pt on input line 20.
+(Font)              scaled to size 7.0pt on input line 4.
 LaTeX Font Info:    Font shape `TU/texgyretermes(0)/m/n' will be
-(Font)              scaled to size 5.0pt on input line 20.
+(Font)              scaled to size 5.0pt on input line 4.
  [1
 
 ])
@@ -1842,31 +1911,31 @@ File: ./fig/2.2.3-2.png Graphic file (type bmp)
 Chapter 3.
 (./body/赋范线性空间.tex
 LaTeX Font Info:    Font shape `TU/texgyretermes(0)/m/n' will be
-(Font)              scaled to size 12.0pt on input line 10.
+(Font)              scaled to size 12.0pt on input line 11.
 LaTeX Font Info:    Font shape `TU/texgyretermes(0)/m/n' will be
-(Font)              scaled to size 8.0pt on input line 10.
+(Font)              scaled to size 8.0pt on input line 11.
 LaTeX Font Info:    Font shape `TU/texgyretermes(0)/m/n' will be
-(Font)              scaled to size 6.0pt on input line 10.
+(Font)              scaled to size 6.0pt on input line 11.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 12.00128pt on input line 10.
+(Font)              scaled to size 12.00128pt on input line 11.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 8.00085pt on input line 10.
+(Font)              scaled to size 8.00085pt on input line 11.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 6.00064pt on input line 10.
+(Font)              scaled to size 6.00064pt on input line 11.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 11.99872pt on input line 10.
+(Font)              scaled to size 11.99872pt on input line 11.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 7.99915pt on input line 10.
+(Font)              scaled to size 7.99915pt on input line 11.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 5.99936pt on input line 10.
+(Font)              scaled to size 5.99936pt on input line 11.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 10.
+(hyperref)                removing `math shift' on input line 11.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 10.
+(hyperref)                removing `math shift' on input line 11.
 
 File: ./fig/3.1.1-1.png Graphic file (type bmp)
 <./fig/3.1.1-1.png>
@@ -1882,64 +1951,91 @@ File: ./fig/3.1.2-1.png Graphic file (type bmp)
  [33]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 188.
+(hyperref)                removing `math shift' on input line 189.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `superscript' on input line 188.
+(hyperref)                removing `superscript' on input line 189.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 188.
+(hyperref)                removing `math shift' on input line 189.
 
 [34]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 253.
+(hyperref)                removing `math shift' on input line 254.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `superscript' on input line 253.
+(hyperref)                removing `superscript' on input line 254.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 253.
+(hyperref)                removing `math shift' on input line 254.
 
 LaTeX Font Info:    Font shape `TU/texgyretermes(0)/m/it' will be
-(Font)              scaled to size 7.0pt on input line 255.
+(Font)              scaled to size 7.0pt on input line 256.
 LaTeX Font Info:    Font shape `TU/texgyretermes(0)/m/it' will be
-(Font)              scaled to size 6.0pt on input line 255.
+(Font)              scaled to size 6.0pt on input line 256.
 [35] [36] [37] [38] [39] [40] [41]
 LaTeX Font Info:    Font shape `TU/texgyretermes(0)/b/n' will be
-(Font)              scaled to size 8.0pt on input line 468.
+(Font)              scaled to size 8.0pt on input line 469.
 LaTeX Font Info:    Font shape `TU/texgyretermes(0)/b/n' will be
-(Font)              scaled to size 6.0pt on input line 468.
+(Font)              scaled to size 6.0pt on input line 469.
  [42] [43]
-Underfull \hbox (badness 10000) in paragraph at lines 524--527
+Underfull \hbox (badness 10000) in paragraph at lines 525--528
 
  []
 
-) [44]
+[44]
+File: ./fig/3.5-1.png Graphic file (type bmp)
+<./fig/3.5-1.png>
+ [45] [46]) [47]
 Chapter 4.
+(./body/有界线性算子.tex [48
+
+] [49] [50]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 146.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 146.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 146.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 146.
+
+[51] [52] [53] [54]
+File: ./fig/4.4-1.png Graphic file (type bmp)
+<./fig/4.4-1.png>
+ [55] [56]) [57]
+Chapter 5.
 (./body/习题.tex
 File: ./fig/ex-1.png Graphic file (type bmp)
 <./fig/ex-1.png>
- [45
+ [58
 
-] [46]
+] [59]
 File: ./fig/ex-2.png Graphic file (type bmp)
 <./fig/ex-2.png>
 File: ./fig/ex-3.png Graphic file (type bmp)
 <./fig/ex-3.png>
- [47] [48]
+ [60] [61]
 File: ./fig/ex-4.png Graphic file (type bmp)
 <./fig/ex-4.png>
- [49]
+ [62]
 Underfull \hbox (badness 10000) in paragraph at lines 204--206
 
  []
 
-[50] [51]) [52] (./Note for Functional Analysis.aux)
+[63] [64]) [65] (./Note for Functional Analysis.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
@@ -1950,12 +2046,12 @@ Package logreq Info: Writing requests to '"Note for Functional Analysis".run.xml
 
  ) 
 Here is how much of TeX's memory you used:
- 47876 strings out of 476919
- 995522 string characters out of 5814224
- 1975095 words of memory out of 5000000
- 66992 multiletter control sequences out of 15000+600000
+ 47971 strings out of 476919
+ 998276 string characters out of 5814224
+ 1984059 words of memory out of 5000000
+ 67082 multiletter control sequences out of 15000+600000
  412263 words of font info for 134 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  102i,14n,120p,759b,1307s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on Note for Functional Analysis.pdf (55 pages).
+Output written on Note for Functional Analysis.pdf (68 pages).
