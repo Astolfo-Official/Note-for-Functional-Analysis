@@ -81,8 +81,12 @@
 \[|x(a)-x(t)|+|x(t)-x(b)| \leq \mathop \text{V}\limits_a^b(x(t))=0 \ \Rightarrow \ |x(a)-x(t)|=|x(t)-x(b)|=0 \ \Rightarrow \ x(t)=x(a)=0\]
 齐次性显然。\\
 三角不等式(注意:这里利用了不等式$\text{sup}(A+B) \leq \text{sup}A+\text{sup}B$)
-\[||x(t)+y(t)||=|x(a)+y(a)|+\mathop \text{V}\limits_a^b(x(t)+y(t))=|x(a)+y(a)|+\mathop \text{sup}\limits_p \sum|x_{i+1}(t)-x_i(t)+y_{i+1}(t)-y_i(t)|\]
-\[\leq |x(a)|+|y(a)|+\mathop \text{sup}\limits_p \sum|x_{i+1}(t)-x_i(t)|+\mathop \text{sup}\limits_p \sum|y_{i+1}(t)-y_i(t)|=||x(t)||+||y(t)||\]
+\begin{equation*}
+    \begin{aligned}
+        ||x(t)+y(t)|| & =|x(a)+y(a)|+\mathop \text{V}\limits_a^b(x(t)+y(t))=|x(a)+y(a)|+\mathop \text{sup}\limits_p \sum|x_{i+1}(t)-x_i(t)+y_{i+1}(t)-y_i(t)| \\
+        & \leq |x(a)|+|y(a)|+\mathop \text{sup}\limits_p \sum|x_{i+1}(t)-x_i(t)|+\mathop \text{sup}\limits_p \sum|y_{i+1}(t)-y_i(t)|=||x(t)||+||y(t)||
+    \end{aligned}
+\end{equation*}
 下面验证$V[a,b]$是$Banach$空间。\\
 \textbf{Proof:}\\
 设$\{x_n\}$是$V[a,b]$中的柯西列。
@@ -240,11 +244,12 @@ $\exists \, N>0$当$n>N$时:
     即
     \[||x(t)+y(t)||_{L^p(E)} \leq ||x(t)||_{L^p(E)}+||y(t)||_{L^p(E)}\]
 \end{theorem}
-\textbf{Proof:} $p=1$时，显然；$p>1$时，由$H\ddot{o}lder$不等式:
+\textbf{Proof:} $p=1$时，显然；$p>1$时，有
+\[\frac{1}{p}+\frac{1}{q}=1 \ \Leftrightarrow \ p=(p-1)q\]
+由$H\ddot{o}lder$不等式:
 \[\int_E|x(t)+y(t)|^p\dd t=\int_E|x(t)+y(t)||x(t)+y(t)|^{p-1}\dd t\]
 \[\leq \int_E|x(t)||x(t)+y(t)|^{p-1}\dd t+\int_E|y(t)||x(t)+y(t)|^{p-1}\dd t\]
 \[\leq \left(\int_E|x(t)|^p\dd t\right)^{\frac{1}{p}}\left(\int_E|x(t)+y(t)|^{q(p-1)}\dd t\right)^{\frac{1}{q}}+\left(\int_E|y(t)|^p\dd t\right)^{\frac{1}{p}}\left(\int_E|x(t)+y(t)|^{q(p-1)}\dd t\right)^{\frac{1}{q}}\]
-\[\frac{1}{p}+\frac{1}{q}=1 \ \Leftrightarrow \ p=(p-1)q\]
 \[\leq \left(\int_E|x(t)|^p\dd t\right)^{\frac{1}{p}}\left(\int_E|x(t)+y(t)|^{p}\dd t\right)^{1-\frac{1}{p}}+\left(\int_E|y(t)|^p\dd t\right)^{\frac{1}{p}}\left(\int_E|x(t)+y(t)|^{p}\dd t\right)^{1-\frac{1}{p}}\]
 \[\Rightarrow \ \left(\int_E|x(t)+y(t)|^p\dd t\right) \cdot \left(\int_E|x(t)+y(t)|^{p}\dd t\right)^{\frac{1}{p}-1} \leq \left(\int_E|x(t)|^p\dd t\right)^{\frac{1}{p}}+\left(\int_E|y(t)|^p\dd t\right)^{\frac{1}{p}}\]
 \[\Leftrightarrow \ \left(\int_E|x(t)+y(t)|^{p}\dd t\right)^{\frac{1}{p}} \leq \left(\int_E|x(t)|^p\dd t\right)^{\frac{1}{p}}+\left(\int_E|y(t)|^p\dd t\right)^{\frac{1}{p}}\]
@@ -262,8 +267,12 @@ $\exists \, N>0$当$n>N$时:
 \[\forall k,m>0 \ , \ \exists \, n_k>0 \quad \text{s.t.} \quad n_{k}>n_{k-1} \ , \ ||x_{n_k+m}-x_{n_k}||<\frac{1}{2^k} \ \Rightarrow \ \text{子列} \ \{x_{n_k}(t)\} \ \text{满足要求}\]
 )\\
 在下面的讨论中我们需要用到$m(E)<+\infty$这个条件，但是这并不是总能满足的，所有我们取可测集$E_1 \subset E \ , \ m(E_1)<+\infty$，由$H\ddot{o}lder$不等式:
-\[\int_{E_1}|x_{n_{k+1}}(t)-x_{n_k}(t)|\dd t \leq \left(\int_{E_1}1^q\dd t\right)^{\frac{1}{q}}\left(\int_{E_1}|x_{n_{k+1}}(t)-x_{n_k}(t)|^p\right)^{\frac{1}{p}}\]
-\[\leq \left[m(E_1)\right]^{\frac{1}{q}}||x_{n_{k+1}}(t)-x_{n_k}(t)||_{L^p(E_1)} \leq \left[m(E_1)\right]^{\frac{1}{q}}\frac{1}{2^k}\]
+\begin{equation*}
+    \begin{aligned}
+        \int_{E_1}|x_{n_{k+1}}(t)-x_{n_k}(t)|\dd t & \leq \left(\int_{E_1}1^q\dd t\right)^{\frac{1}{q}}\left(\int_{E_1}|x_{n_{k+1}}(t)-x_{n_k}(t)|^p\right)^{\frac{1}{p}} \\
+        & \leq \left[m(E_1)\right]^{\frac{1}{q}}||x_{n_{k+1}}(t)-x_{n_k}(t)||_{L^p(E_1)} \leq \left[m(E_1)\right]^{\frac{1}{q}}\frac{1}{2^k}
+    \end{aligned}
+\end{equation*}
 由$Fatou$引理:
 \[\Rightarrow \ \int_{E_1} \lim_{n \to \infty}\sum_{k=1}^n|x_{n_{k+1}}(t)-x_{n_k}(t)|\dd t \leq \lim_{n \to \infty} \int_{E_1} \sum_{k=1}^n|x_{n_{k+1}}(t)-x_{n_k}(t)|\dd t \leq \left[m(E_1)\right]^{\frac{1}{q}}\sum_{k=1}^{\infty}\frac{1}{2^k}<\infty\]
 \[\Rightarrow \ \sum_{k=1}^{\infty}|x_{n_{k+1}}(t)-x_{n_k}(t)| \ \text{在} \ E_1 \ \text{上} \ a.e. \ \text{收敛}\]
@@ -274,8 +283,12 @@ $\exists \, N>0$当$n>N$时:
 记$x_{n_l}(t)$极限为$x(t)$，柯西列得到的是逐点收敛，为了证明完备性，下面要证明的自然是$x(t) \in L^p(E)$且$x_{n_l}(t) \to x(t) \ (l \to \infty)$，由$Fatou$引理(也可以用控制收敛定理)及柯西列的有界性:
 \[\int_E|x(t)|^p\dd t=\int_E\lim_{l \to \infty}|x_{n_l}(t)|^p\dd t \leq \lim_{l \to \infty}\int_E|x_{n_l}(t)|^p\dd t=\lim_{l \to \infty}||X_{n_l}(t)||^p_{L^p(E)}<+\infty\]
 即$x(t) \in L^p(E)$。
-\[||x_{n_k}(t)-x(t)||^p_{L^p(E)}=\int_E|x_{n_k}(t)-x(t)|^p\dd t=\int_E\lim_{l \to \infty}|x_{n_k}(t)-x_{n_l}(t)|^p\dd t\]
-\[\leq \lim_{l \to \infty}\int_E|x_{n_k}(t)-x_{n_l}(t)|^p\dd t=\lim_{l \to \infty}||x_{n_k}(t)-x_{n_l}(t)||^p_{L^p(E)} \leq \left(\frac{1}{2^k}\right)^p \to 0 \ (k \to \infty)\]
+\begin{equation*}
+    \begin{aligned}
+        ||x_{n_k}(t)-x(t)||^p_{L^p(E)} & =\int_E|x_{n_k}(t)-x(t)|^p\dd t=\int_E\lim_{l \to \infty}|x_{n_k}(t)-x_{n_l}(t)|^p\dd t \\
+        & \leq \lim_{l \to \infty}\int_E|x_{n_k}(t)-x_{n_l}(t)|^p\dd t=\lim_{l \to \infty}||x_{n_k}(t)-x_{n_l}(t)||^p_{L^p(E)} \leq \left(\frac{1}{2^k}\right)^p \to 0 \ (k \to \infty)
+    \end{aligned}
+\end{equation*}
 即$x_{n_k}(t) \to x(t) \ (k \to \infty)$
 
 \textbf{Q.E.D.}
@@ -313,9 +326,8 @@ $\exists \, N>0$当$n>N$时:
 在这$Riesz-Fischer$定理的证明中，我们有提到过不同范数之间的强弱，我们下面对这件事进行以下严格地叙述。
 
 设$m(E)<\infty \ , \ p_1<p_2$，由$H\ddot{o}lder$不等式:
-\[\left(\int_E|x(t)|^{p_1}\dd t\right)^{\frac{1}{p_1}} \leq \left[\left(\int_E\left(|x(t)|^{p_1}\right)^{\frac{p_2}{p_1}}\dd t\right)^{\frac{p_1}{p_2}}\left(\int_E1^{\frac{p_2}{p_2-p_1}}\dd t\right)^{1-\frac{p_1}{q_2}}\right]^{\frac{1}{p_1}}\]
-\[\leq \left(\int_E|x(t)|^{p_2}\dd t\right)^{\frac{1}{p_2}} \cdot m(E)^{\frac{1}{p_1}-\frac{1}{p_2}}\]
-\[\text{即} \ x(t) \in L^{p_2}(E) \ \Rightarrow \ x(t) \in L^{p_1}(E) \ \text{即} \ L^{p_2}(E) \subset L^{p_1}(E) \ (p_2>p_1)\]
+\[\left(\int_E|x(t)|^{p_1}\dd t\right)^{\frac{1}{p_1}} \leq \left[\left(\int_E\left(|x(t)|^{p_1}\right)^{\frac{p_2}{p_1}}\dd t\right)^{\frac{p_1}{p_2}}\left(\int_E1^{\frac{p_2}{p_2-p_1}}\dd t\right)^{1-\frac{p_1}{q_2}}\right]^{\frac{1}{p_1}} \leq \left(\int_E|x(t)|^{p_2}\dd t\right)^{\frac{1}{p_2}} \cdot m(E)^{\frac{1}{p_1}-\frac{1}{p_2}}\]
+\[\text{即} \ x(t) \in L^{p_2}(E) \ \Rightarrow \ x(t) \in L^{p_1}(E) \ , \ \text{即} \ L^{p_2}(E) \subset L^{p_1}(E) \ (p_2>p_1)\]
 
 我们自然会好奇，当上面这个性质当$p \to \infty$时成立吗?下面我们来看看$L^{\infty}(E)$空间。我们先引入一些辅助概念来定义$L^{\infty}(E)$空间。
 \begin{definition}[本质有界]

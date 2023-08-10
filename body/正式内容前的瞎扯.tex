@@ -14,14 +14,18 @@
 \[\vdots\]
 \[x_{n+1}(t)=x_0+\int_{t_0}^tf(x_n(s),s)\dd s\]
 若证得函数列$\{x_n(t)\}$收敛，则其一定会收敛于$x(t)$，即证明初值问题(1)。证明如下：
-\[|x_{n+1}-x_n|=\left|\int_{t_0}^tf(x_n(s),s)\dd s-\int_{t_0}^tf(x_{n-1}(s),s)\dd s\right| \leq \int_{t_0}^t \left| f(x_n(s),s)-f(x_{n-1}(s),s) \right| \dd s\]
-\[\leq L\int_{t_0}^t \left| x_n(s)-x_{n-1}(s) \right| \dd s\]
+\begin{equation*}
+    \begin{aligned}
+        |x_{n+1}-x_n| & =\left|\int_{t_0}^tf(x_n(s),s)\dd s-\int_{t_0}^tf(x_{n-1}(s),s)\dd s\right| \leq \int_{t_0}^t \left| f(x_n(s),s)-f(x_{n-1}(s),s) \right| \dd s \\
+        & \leq L\int_{t_0}^t \left| x_n(s)-x_{n-1}(s) \right| \dd s
+    \end{aligned}
+\end{equation*}
 在$t_0$的邻域$(t_0-\varepsilon,t_0+\varepsilon)$上，我们容易得到(取上下确界不改变不等号)：
 \[|x_{n+1}-x_n| \leq {\mathop {\text{sup}}\limits_{t \in (t_0-\varepsilon,t_0+\varepsilon)}} (L\varepsilon)|x_{n}-x_{n-1}| \leq \cdots \leq {\mathop {\text{sup}}\limits_{t \in (t_0-\varepsilon,t_0+\varepsilon)}} (L\varepsilon)^n|x_1-x_0|\]
 由于在$(t_0-\varepsilon,t_0+\varepsilon)$上$f(x(t),t)$满足$Lipschitz$条件，容易得到$f(x(t),t)$在该区间一致连续，故下式有限：
 \[|x_1-x_0|=|\int_{t_0}^tf(x_0(s),s)\dd s|<+\infty\]
 则：
-\[|x_{n+1}-x_n| \leq (L\varepsilon)^nM \qquad M:={\mathop {\text{sup}}\limits_{t \in (t_0-\varepsilon,t_0+\varepsilon)}} |x_1-x_0| <+\infty\]
+\[|x_{n+1}-x_n| \leq (L\varepsilon)^nM \ , \ M:={\mathop {\text{sup}}\limits_{t \in (t_0-\varepsilon,t_0+\varepsilon)}} |x_1-x_0| <+\infty\]
 进而我们可以得到：
 \[|x_m(t)-x_n(t)| \leq M\sum_{i=n}^{m-1}(L\varepsilon)^i\]
 取$\varepsilon \leq 1/2L$:

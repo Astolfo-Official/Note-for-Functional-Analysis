@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2021/W32TeX) (preloaded format=xelatex 2021.4.21)  2 JUL 2023 19:34
+This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2021/W32TeX) (preloaded format=xelatex 2021.4.21)  31 JUL 2023 17:34
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -1561,6 +1561,51 @@ LaTeX Warning: Label `thm:-NoValue-' multiply defined.
 
 LaTeX Warning: Label `def:-NoValue-' multiply defined.
 
+
+LaTeX Warning: Label `def:-NoValue-' multiply defined.
+
+
+LaTeX Warning: Label `def:-NoValue-' multiply defined.
+
+
+LaTeX Warning: Label `def:-NoValue-' multiply defined.
+
+
+LaTeX Warning: Label `thm:-NoValue-' multiply defined.
+
+
+LaTeX Warning: Label `pro:-NoValue-' multiply defined.
+
+
+LaTeX Warning: Label `pro:-NoValue-' multiply defined.
+
+
+LaTeX Warning: Label `pro:-NoValue-' multiply defined.
+
+
+LaTeX Warning: Label `def:-NoValue-' multiply defined.
+
+
+LaTeX Warning: Label `def:-NoValue-' multiply defined.
+
+
+LaTeX Warning: Label `thm:-NoValue-' multiply defined.
+
+
+LaTeX Warning: Label `pro:-NoValue-' multiply defined.
+
+
+LaTeX Warning: Label `def:-NoValue-' multiply defined.
+
+
+LaTeX Warning: Label `def:-NoValue-' multiply defined.
+
+
+LaTeX Warning: Label `pro:-NoValue-' multiply defined.
+
+
+LaTeX Warning: Label `def:-NoValue-' multiply defined.
+
 )
 \openout1 = `"Note for Functional Analysis.aux"'.
 
@@ -1814,7 +1859,7 @@ LaTeX Font Info:    Font shape `TU/texgyretermes(0)/m/n' will be
 
 ])
 LaTeX Font Info:    Font shape `TU/texgyretermes(0)/m/n' will be
-(Font)              scaled to size 9.0pt on input line 48.
+(Font)              scaled to size 9.0pt on input line 50.
  [2]
 Chapter 2.
 (./body/距离空间与拓扑空间.tex
@@ -1851,40 +1896,40 @@ File: ./fig/2.1.4_1.png Graphic file (type bmp)
 File: ./fig/2.1.4_2.png Graphic file (type bmp)
 <./fig/2.1.4_2.png>
  [14]
-Underfull \hbox (badness 10000) in paragraph at lines 521--523
+Underfull \hbox (badness 10000) in paragraph at lines 538--540
 
  []
 
 [15]
-Overfull \hbox (11.16275pt too wide) in paragraph at lines 548--550
+Overfull \hbox (11.16275pt too wide) in paragraph at lines 565--567
 \TU/FandolSong-Regular(0)/m/n/10 因 为 $[]$\TU/texgyretermes(0)/m/n/10 ,$[]$ \TU/FandolSong-Regular(0)/m/n/10 是 完 备 的，|  故 任 意 给 定 两 个 $[]$ 中 的 柯 西 列 在 $[]$\TU/texgyretermes(0)/m/n/10 ,$[]$ \TU/FandolSong-Regular(0)/m/n/10 中 都 能 找 到 对 应 的 像，|  分 别 记 作 $[][][] [][]$ 和 $[][][][][][][][] [][][][][][][]$\TU/texgyretermes(0)/m/n/10 ,
  []
 
 [16] [17]
-Underfull \hbox (badness 10000) in paragraph at lines 595--597
+Underfull \hbox (badness 10000) in paragraph at lines 616--618
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 602--604
+Underfull \hbox (badness 10000) in paragraph at lines 627--629
 
  []
 
 File: ./fig/2.1.5-1.png Graphic file (type bmp)
 <./fig/2.1.5-1.png>
 
-Underfull \hbox (badness 10000) in paragraph at lines 612--618
+Underfull \hbox (badness 10000) in paragraph at lines 637--643
 
  []
 
 [18] [19]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 654.
+(hyperref)                removing `math shift' on input line 683.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 654.
+(hyperref)                removing `math shift' on input line 683.
 
 File: ./fig/2.2.1.png Graphic file (type bmp)
 <./fig/2.2.1.png>
@@ -1898,7 +1943,7 @@ File: ./fig/2.2.2-1.png Graphic file (type bmp)
 File: ./fig/2.2.3.png Graphic file (type bmp)
 <./fig/2.2.3.png>
  [24] [25]
-Underfull \hbox (badness 10000) in paragraph at lines 852--854
+Underfull \hbox (badness 10000) in paragraph at lines 881--883
 
  []
 
@@ -1951,40 +1996,40 @@ File: ./fig/3.1.2-1.png Graphic file (type bmp)
  [33]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 189.
+(hyperref)                removing `math shift' on input line 193.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `superscript' on input line 189.
+(hyperref)                removing `superscript' on input line 193.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 189.
+(hyperref)                removing `math shift' on input line 193.
 
 [34]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 254.
+(hyperref)                removing `math shift' on input line 259.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `superscript' on input line 254.
+(hyperref)                removing `superscript' on input line 259.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 254.
+(hyperref)                removing `math shift' on input line 259.
 
 LaTeX Font Info:    Font shape `TU/texgyretermes(0)/m/it' will be
-(Font)              scaled to size 7.0pt on input line 256.
+(Font)              scaled to size 7.0pt on input line 261.
 LaTeX Font Info:    Font shape `TU/texgyretermes(0)/m/it' will be
-(Font)              scaled to size 6.0pt on input line 256.
+(Font)              scaled to size 6.0pt on input line 261.
 [35] [36] [37] [38] [39] [40] [41]
 LaTeX Font Info:    Font shape `TU/texgyretermes(0)/b/n' will be
-(Font)              scaled to size 8.0pt on input line 469.
+(Font)              scaled to size 8.0pt on input line 481.
 LaTeX Font Info:    Font shape `TU/texgyretermes(0)/b/n' will be
-(Font)              scaled to size 6.0pt on input line 469.
+(Font)              scaled to size 6.0pt on input line 481.
  [42] [43]
-Underfull \hbox (badness 10000) in paragraph at lines 525--528
+Underfull \hbox (badness 10000) in paragraph at lines 537--540
 
  []
 
@@ -1998,44 +2043,61 @@ Chapter 4.
 ] [49] [50]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 146.
+(hyperref)                removing `math shift' on input line 148.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 146.
+(hyperref)                removing `math shift' on input line 148.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 146.
+(hyperref)                removing `math shift' on input line 148.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 146.
+(hyperref)                removing `math shift' on input line 148.
 
 [51] [52] [53] [54]
 File: ./fig/4.4-1.png Graphic file (type bmp)
 <./fig/4.4-1.png>
- [55] [56]) [57]
+ [55] [56]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 402.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 402.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 402.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 402.
+
+[57] [58] [59] [60] [61] [62]) [63]
 Chapter 5.
 (./body/习题.tex
 File: ./fig/ex-1.png Graphic file (type bmp)
 <./fig/ex-1.png>
- [58
+ [64
 
-] [59]
+] [65]
 File: ./fig/ex-2.png Graphic file (type bmp)
 <./fig/ex-2.png>
 File: ./fig/ex-3.png Graphic file (type bmp)
 <./fig/ex-3.png>
- [60] [61]
+ [66] [67]
 File: ./fig/ex-4.png Graphic file (type bmp)
 <./fig/ex-4.png>
- [62]
-Underfull \hbox (badness 10000) in paragraph at lines 204--206
+ [68]
+Underfull \hbox (badness 10000) in paragraph at lines 206--208
 
  []
 
-[63] [64]) [65] (./Note for Functional Analysis.aux)
+[69] [70]) [71] (./Note for Functional Analysis.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
@@ -2046,12 +2108,12 @@ Package logreq Info: Writing requests to '"Note for Functional Analysis".run.xml
 
  ) 
 Here is how much of TeX's memory you used:
- 47971 strings out of 476919
- 998276 string characters out of 5814224
- 1984059 words of memory out of 5000000
- 67082 multiletter control sequences out of 15000+600000
+ 48019 strings out of 476919
+ 999676 string characters out of 5814224
+ 1990092 words of memory out of 5000000
+ 67130 multiletter control sequences out of 15000+600000
  412263 words of font info for 134 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  102i,14n,120p,759b,1307s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on Note for Functional Analysis.pdf (68 pages).
+Output written on Note for Functional Analysis.pdf (74 pages).

@@ -46,11 +46,13 @@
 同样，前两条性质显然，下证第三条：
 
 同样由三角不等式：
-\[\left|\xi_i-\eta_i\right| \leq \left|\xi_i-\psi_i\right|+\left|\psi_i-\eta_i\right|\]
-\[\sum_{i=1}^{+\infty}\frac{1}{2^i}\frac{|\xi_i-\eta_i|}{1+|\xi_i-\eta_i|} \leq \sum_{i=1}^{+\infty}\frac{1}{2^i}\frac{\left|\xi_i-\psi_i\right|+\left|\psi_i-\eta_i\right|}{1+\left|\xi_i-\psi_i\right|+\left|\psi_i-\eta_i\right|}\]
-\[=\sum_{i=1}^{+\infty}\frac{1}{2^i}\frac{\left|\xi_i-\psi_i\right|}{1+\left|\xi_i-\psi_i\right|+\left|\psi_i-\eta_i\right|}+\sum_{i=1}^{+\infty}\frac{1}{2^i}\frac{\left|\psi_i-\eta_i\right|}{1+\left|\xi_i-\psi_i\right|+\left|\psi_i-\eta_i\right|}\]
-\[\leq \sum_{i=1}^{+\infty}\frac{1}{2^i}\frac{\left|\xi_i-\psi_i\right|}{1+\left|\xi_i-\psi_i\right|}+\sum_{i=1}^{+\infty}\frac{1}{2^i}\frac{\left|\psi_i-\eta_i\right|}{1+\left|\psi_i-\eta_i\right|}=d(x,z)+d(z,y)\]
-
+\begin{equation*}
+    \begin{aligned}
+        \sum_{i=1}^{+\infty}\frac{1}{2^i}\frac{|\xi_i-\eta_i|}{1+|\xi_i-\eta_i|} & \leq \sum_{i=1}^{+\infty}\frac{1}{2^i}\frac{\left|\xi_i-\psi_i\right|+\left|\psi_i-\eta_i\right|}{1+\left|\xi_i-\psi_i\right|+\left|\psi_i-\eta_i\right|} \\
+        & =\sum_{i=1}^{+\infty}\frac{1}{2^i}\frac{\left|\xi_i-\psi_i\right|}{1+\left|\xi_i-\psi_i\right|+\left|\psi_i-\eta_i\right|}+\sum_{i=1}^{+\infty}\frac{1}{2^i}\frac{\left|\psi_i-\eta_i\right|}{1+\left|\xi_i-\psi_i\right|+\left|\psi_i-\eta_i\right|} \\
+        & \leq \sum_{i=1}^{+\infty}\frac{1}{2^i}\frac{\left|\xi_i-\psi_i\right|}{1+\left|\xi_i-\psi_i\right|}+\sum_{i=1}^{+\infty}\frac{1}{2^i}\frac{\left|\psi_i-\eta_i\right|}{1+\left|\psi_i-\eta_i\right|}=d(x,z)+d(z,y)
+    \end{aligned}
+\end{equation*}
 \paragraph*{例3} \quad 空间$S(E) \ E \subseteq \mathbb{R}$是$E$上$Lebesgue$可积函数全体，定义距离
 \[d(x,y)=\int_E\frac{\left|x(t)-y(t)\right|}{1+\left|x(t)-y(t)\right|}\dd t\]
 
@@ -61,10 +63,13 @@
 \paragraph*{例4} \quad 空间$L^2(E)=\{f\text{在$E$上可测} \ , \ \int_E|f|^2<+\infty\}$上，我们定义距离
 \[d(x,y)=\sqrt{\int_E|x(t)-y(t)|^2\dd t}\]
 同样，前两条性质显然，下证第三条：
-
-\[d^2(x,y)=\int_E|x(t)-y(t)|^2\dd t=\int_E(x^2(t)+y^2(t)-2x(t)y(t))\dd t\]
-\[\leq \int_Ex^2(t)\dd t+\int_Ey^2(t)\dd t+2\int_E|x(t)||y(t)|\dd t \leq \int_Ex^2(t)\dd t+\int_Ey^2(t)\dd t+2\sqrt{\int_Ex^2(t)\dd t}\sqrt{\int_Ey^2(t)\dd t}\]
-\[\leq \left(\sqrt{\int_Ex^2(t)\dd t}+\sqrt{\int_Ey^2(t)\dd t}\right)^2\]
+\begin{equation*}
+    \begin{aligned}
+        d^2(x,y) & =\int_E|x(t)-y(t)|^2\dd t=\int_E(x^2(t)+y^2(t)-2x(t)y(t))\dd t \\
+        & \leq \int_Ex^2(t)\dd t+\int_Ey^2(t)\dd t+2\int_E|x(t)||y(t)|\dd t \leq \int_Ex^2(t)\dd t+\int_Ey^2(t)\dd t+2\sqrt{\int_Ex^2(t)\dd t}\sqrt{\int_Ey^2(t)\dd t} \\
+        & \leq \left(\sqrt{\int_Ex^2(t)\dd t}+\sqrt{\int_Ey^2(t)\dd t}\right)^2
+    \end{aligned}
+\end{equation*}
 此时，如果我们令$x=f-h \ , \ y=g-h$，则上式可改写为
 \[d^2(f,g) \leq (d(f,h)+d(g,h))^2\]
 原不等式即证。
@@ -126,8 +131,12 @@
 于是有
 \[f_n(x) \rightarrow f(x)\textbf{ in measure} \ , \ (n \rightarrow \infty)\]
 Part 2
-\[\int_E\frac{\left|x_n(t)-x(t)\right|}{1+\left|x_n(t)-x(t)\right|}\dd t=\int_M\frac{\left|x_n(t)-x(t)\right|}{1+\left|x_n(t)-x(t)\right|}\dd t+\int_{E-M}\frac{\left|x_n(t)-x(t)\right|}{1+\left|x_n(t)-x(t)\right|}\dd t\]
-\[\leq m(M)+\frac{\sigma}{1+\sigma}m(E-M) \leq m(M)+\frac{\sigma}{1+\sigma}m(E)\]
+\begin{equation*}
+    \begin{aligned}
+        \int_E\frac{\left|x_n(t)-x(t)\right|}{1+\left|x_n(t)-x(t)\right|}\dd t & =\int_M\frac{\left|x_n(t)-x(t)\right|}{1+\left|x_n(t)-x(t)\right|}\dd t+\int_{E-M}\frac{\left|x_n(t)-x(t)\right|}{1+\left|x_n(t)-x(t)\right|}\dd t \\
+        & \leq m(M)+\frac{\sigma}{1+\sigma}m(E-M) \leq m(M)+\frac{\sigma}{1+\sigma}m(E)
+    \end{aligned}
+\end{equation*}
 \[\forall \varepsilon>0 \ , \ let \ \sigma=\frac{\varepsilon}{m(E)} \ (assume \ m(E)>1) \ , \ \exists \, N>0 \quad \text{s.t.} \quad n \geq N \ , \ m(M)<\varepsilon\]
 \[d(x_n(t),x(t)) \leq \varepsilon+\frac{\varepsilon}{1+\sigma}<2\varepsilon\]
 \[\lim_{n \rightarrow \infty}d(x_n(t),x(t))=0\]
@@ -387,8 +396,12 @@ $\{x_n(t)\}$是柯西列。且可以看出$x_n(t)$是逐点收敛(先固定t)于
 \textbf{Proof:}假设$\{x_n(t)\} \in L^2[0,1]$是柯西列，要证其在距离空间收敛$L^2[0,1]$只需证其有收敛子列。
 \[\forall k \in \mathbb{Z}_+ \ , \ \exists \, n_k>0 \ , \quad \text{s.t.} \quad n,m>n_k \ , \ d(x_n,x_m)<\frac{1}{2^k} \quad (\text{取}n_{k+1}>n_{k})\]
 考虑子列$\{x_{n_k}\}_{k=1}^{\infty}$,
-\[\int_0^1|x_{n_k}|\dd t=\int_0^1|x_{n_1}+\sum_{i=2}^k(x_{n_i}-x_{n_{i-1}})|\dd t \leq \int_0^1|x_{n_1}|\dd t+\sum_{i=2}^k\int_0^1|x_{n_i}-x_{n_{i-1}}|\dd t\]
-\[\leq \int_0^1|x_{n_1}|\dd t+\sum_{i=2}^k\left(\int_0^1|x_{n_i}-x_{n_{i-1}}|^2\dd t\right)^{\frac{1}{2}} \leq \int_0^1|x_{n_1}|\dd t+\sum_{i=2}^k\frac{1}{2^i}<+\infty\]
+\begin{equation*}
+    \begin{aligned}
+        \int_0^1|x_{n_k}|\dd t & =\int_0^1|x_{n_1}+\sum_{i=2}^k(x_{n_i}-x_{n_{i-1}})|\dd t \leq \int_0^1|x_{n_1}|\dd t+\sum_{i=2}^k\int_0^1|x_{n_i}-x_{n_{i-1}}|\dd t \\
+        & \leq \int_0^1|x_{n_1}|\dd t+\sum_{i=2}^k\left(\int_0^1|x_{n_i}-x_{n_{i-1}}|^2\dd t\right)^{\frac{1}{2}} \leq \int_0^1|x_{n_1}|\dd t+\sum_{i=2}^k\frac{1}{2^i}<+\infty
+    \end{aligned}
+\end{equation*}
 由$Fatou$引理：
 \[\int_0^1|x_{n_{\infty}}|\dd t=\int_0^1\varliminf_{k \to \infty}|x_{n_1}+\sum_{i=2}^k(x_{n_i}-x_{n_{i-1}})|\dd t \leq \varliminf_{k \to \infty}\int_0^1|x_{n_1}+\sum_{i=2}^k(x_{n_i}-x_{n_{i-1}})|\dd t<+\infty\]
 \[\int_0^1\varliminf_{k \to \infty}|x_{n_1}+\sum_{i=2}^k(x_{n_i}-x_{n_{i-1}})|\dd t<+\infty \ \Rightarrow \ \varliminf_{k \to \infty}|x_{n_1}+\sum_{i=2}^k(x_{n_i}-x_{n_{i-1}})|<+\infty \quad a.e.\]
@@ -475,9 +488,8 @@ Q.E.D
 \subsection{距离空间的完备化与压缩映射} \label{zip}
 \paragraph*{例} \quad $S=(C[0,1],d_1) \subset (L^1[0,1],d_1) \ $,$ \ C[0,1]$在$L^1[0,1]$中稠密，称$L^1[0,1]$是$C[0,1]$完备化。\\
 \textbf{Proof:}
-\[\text{令}x \in L^1[0,1]\text{可积} \ \Leftrightarrow \ \int_0^1|x(t)|\dd t<+\infty\]
-\[\int_0^1|x(t)|\dd t=\sum_{n=0}^{+\infty} \ \int\limits_{[0,1]\cap\{n \leq |x| \leq n+1\}}|x(t)|\dd t<+\infty \]
-\[ \Rightarrow \ \exists \, N>0 \quad \text{s.t.} \quad n \geq N \ , \ \int\limits_{[0,1]\cap\{|x|>N\}}|x(t)|\dd t<\frac{1}{n}\]
+\[\text{令}x \in L^1[0,1]\text{可积} \quad \Leftrightarrow \quad \int_0^1|x(t)|\dd t<+\infty\]
+\[\int_0^1|x(t)|\dd t=\sum_{n=0}^{+\infty} \ \int\limits_{[0,1]\cap\{n \leq |x| \leq n+1\}}|x(t)|\dd t<+\infty \quad \Rightarrow \quad \exists \, N>0 \quad \text{s.t.} \quad n \geq N \ , \ \int\limits_{[0,1]\cap\{|x|>N\}}|x(t)|\dd t<\frac{1}{n}\]
 令
 \[\tilde{x}(t)=\left \{
 \begin{array}{ll}
@@ -486,9 +498,14 @@ Q.E.D
 \right .\]
 由$Lusin$定理，存在连续函数$g_n(t)$，满足
 \[m([0,1]/\{\tilde{x}(t)=g_n(t)\})<\frac{1}{nN}\]
-\[d_1(g_n(t),x(t)) \leq d_1(g_n(t),\tilde{x}(t))+d_1(\tilde{x}(t),x(t))=\int_0^1|g_n(t)-\tilde{x}(t)|\dd t+\int_0^1|\tilde{x}(t)-x(t)|\dd t\]
-\[\leq \frac{1}{nN} \cdot N+\int\limits_{[0,1]\cap\{|x(t)|>N\}}|x(t)|\dd t=\frac{1}{n}+\frac{1}{n}=\frac{2}{n}\]
-\[\Rightarrow \ d_1(g_n(t),x(t)) \to 0 \ (n \to \infty)\]
+\begin{equation*}
+    \begin{aligned}
+        d_1(g_n(t),x(t)) & \leq d_1(g_n(t),\tilde{x}(t))+d_1(\tilde{x}(t),x(t))=\int_0^1|g_n(t)-\tilde{x}(t)|\dd t+\int_0^1|\tilde{x}(t)-x(t)|\dd t \\
+        & \leq \frac{1}{nN} \cdot N+\int\limits_{[0,1]\cap\{|x(t)|>N\}}|x(t)|\dd t=\frac{1}{n}+\frac{1}{n}=\frac{2}{n}
+    \end{aligned}
+\end{equation*}
+即
+\[d_1(g_n(t),x(t)) \to 0 \ (n \to \infty)\]
 \textbf{Q.E.D.}
 \begin{theorem}[$Lusin$定理]
     设$A \in \mathscr{L} \ , \ m(A)<+\infty \ , \ f:A \to \mathbb{R}$是处处有限的$Lebesgue$可测函数，则
@@ -568,8 +585,12 @@ $F$是等距映射
 \textbf{Proof:}\\
 \textbf{Claim 1 设$T$是压缩映射(这里不要求完备),$x \in X \ , \ \{T^n(x)\}_{n=0}^{\infty}$是柯西列}\\
 (\textbf{Proof:}设$m>n$,
-\[d(T^n(x),T^m(x)) \leq \sum_{i=0}^{m-n-1}d(T^{n+i}(x),T^{n+i+1}(x)) \leq \sum_{i=0}^{m-n-1}\theta^{n+i}d(x,T(x))\]
-\[=\theta^nd(x,T(x))\sum_{i=0}^{m-n-1}\theta^i=\frac{\theta^n(1-\theta^{m-n})}{1-\theta}d(x,T(x)) < \frac{\theta^n}{1-\theta}d(x,T(x))\]
+\begin{equation*}
+    \begin{aligned}
+        d(T^n(x),T^m(x)) & \leq \sum_{i=0}^{m-n-1}d(T^{n+i}(x),T^{n+i+1}(x)) \leq \sum_{i=0}^{m-n-1}\theta^{n+i}d(x,T(x)) \\
+        & =\theta^nd(x,T(x))\sum_{i=0}^{m-n-1}\theta^i=\frac{\theta^n(1-\theta^{m-n})}{1-\theta}d(x,T(x)) < \frac{\theta^n}{1-\theta}d(x,T(x))
+    \end{aligned}
+\end{equation*}
 \[\forall \varepsilon>0 \ , \ \exists \, N>0 \ , \quad \text{s.t.} \quad n>N \ , \ \theta^n<\frac{(1-\theta)\varepsilon}{d(x,T(x))} \ \Rightarrow \ \forall m,n \geq N \ , \ d(T^n(x),T^m(x))<\varepsilon\]
 )\\
 \textbf{存在性}
@@ -595,8 +616,12 @@ $F$是等距映射
 \[\vec{\xi}-A\vec{\xi}=\vec{b} \ (\vec{\xi},\vec{b}\in\mathbb{R}^n \ , \ A=[A]_{n \times n}) \ , \ \text{设}A=\{a_{ij}\}\text{且满足} \ 0<\sum_{i=1}^n\sum_{j=1}^na_{ij}^2<1\]
 证明:方程存在唯一解。\\
 \[X=\mathbb{R}^n\text{ (完备)} \quad T(\vec{\xi})=A\vec{\xi}+\vec{b} \quad \vec{\xi},\vec{\eta} \in X\]
-\[d(\vec{\xi},\vec{\eta})=|T(\vec{\xi})-T(\vec{\eta})|=|A(\vec{\xi}-\vec{\eta})|=\sqrt{\sum_{i=1}^n\left(\sum_{j=1}^na_{ij}(\xi_j-\eta_j)\right)^2}\]
-\[\leq \sqrt{\sum_{i=1}^n\left(\sum_{j=1}^na_{ij}\right)^2\left(\sum_{k=1}^n(\xi_k-\eta_k)\right)^2}=\sqrt{\sum_{i=1}^n\sum_{j=1}^na_{ij}^2}|\vec{\xi}-\vec{\eta}|=\theta|\vec{\xi}-\vec{\eta}| \quad (\theta \in (0,1))\]
+\begin{equation*}
+    \begin{aligned}
+        d(\vec{\xi},\vec{\eta}) & =|T(\vec{\xi})-T(\vec{\eta})|=|A(\vec{\xi}-\vec{\eta})|=\sqrt{\sum_{i=1}^n\left(\sum_{j=1}^na_{ij}(\xi_j-\eta_j)\right)^2} \\
+        & \leq \sqrt{\sum_{i=1}^n\left(\sum_{j=1}^na_{ij}\right)^2\left(\sum_{k=1}^n(\xi_k-\eta_k)\right)^2}=\sqrt{\sum_{i=1}^n\sum_{j=1}^na_{ij}^2}|\vec{\xi}-\vec{\eta}|=\theta|\vec{\xi}-\vec{\eta}| \quad (\theta \in (0,1))
+    \end{aligned}
+\end{equation*}
 后续证明略
 \paragraph*{例2} \quad $Fredholm$积分方程
 \[x(t)=\psi(t)+\lambda\int_a^bK(t,s)x(s)\dd s \ , \ K(t,s) \in C[a,b] \times [a,b] \ , \ \psi(t) \in C[a,b]\]
@@ -617,9 +642,13 @@ $K(t,s)$在闭区域上连续，可得$K(t,s)$有界。
 证明:方程有唯一解。\\
 \[T:C[a,b] \to C[a,b] \quad T(x(t))=\psi(t)+\lambda\int_a^tK(t,s)x(s)\dd s\]
 \[d(T(x(t)),T(y(t)))=\lambda\mathop {\text{sup}}\limits_{t \in [a,b]}\left|\int_a^tK(t,s)(x(s)-y(s))\dd s\right| \leq \lambda\mathop {\text{sup}}\limits_{t \in [a,b]}\left|K(t,s)\right|d(x,y)(t-a)\]
-\[d(T^2(x(t)),T^2(y(t)))=\lambda\mathop {\text{sup}}\limits_{t \in [a,b]}\left|\int_a^tK(t,s)\lambda\left|\int_a^tK(t,s)(x(s)-y(s))\dd s\right|\dd s\right|\]
-\[\leq \lambda^2\left(\mathop {\text{sup}}\limits_{t \in [a,b]}\left|K(t,s)\right|\right)^2d(x,y)\mathop {\text{sup}}\limits_{t \in [a,b]}\left|\int_a^t\int_a^s\dd\tilde{s}\dd s\right|\]
-\[=\lambda^2\left(\mathop {\text{sup}}\limits_{t \in [a,b]}\left|K(t,s)\right|\right)^2d(x,y)\mathop {\text{sup}}\limits_{t \in [a,b]}\left(\frac{(t-a)^2}{2}\right)=\lambda^2\left(\mathop {\text{sup}}\limits_{t \in [a,b]}\left|K(t,s)\right|\right)^2d(x,y) \cdot \frac{(b-a)^2}{2}\]
+\begin{equation*}
+    \begin{aligned}
+        d(T^2(x(t)),T^2(y(t))) & =\lambda\mathop {\text{sup}}\limits_{t \in [a,b]}\left|\int_a^tK(t,s)\lambda\left|\int_a^tK(t,s)(x(s)-y(s))\dd s\right|\dd s\right| \\
+        & \leq \lambda^2\left(\mathop {\text{sup}}\limits_{t \in [a,b]}\left|K(t,s)\right|\right)^2d(x,y)\mathop {\text{sup}}\limits_{t \in [a,b]}\left|\int_a^t\int_a^s\dd\tilde{s}\dd s\right| \\
+        & =\lambda^2\left(\mathop {\text{sup}}\limits_{t \in [a,b]}\left|K(t,s)\right|\right)^2d(x,y)\mathop {\text{sup}}\limits_{t \in [a,b]}\left(\frac{(t-a)^2}{2}\right)=\lambda^2\left(\mathop {\text{sup}}\limits_{t \in [a,b]}\left|K(t,s)\right|\right)^2d(x,y) \cdot \frac{(b-a)^2}{2}
+    \end{aligned}
+\end{equation*}
 易得
 \[d(T^n(x(t)),T^n(y(t))) \leq \left(\mathop {\text{sup}}\limits_{t \in [a,b]}\left|K(t,s)\right|\right)^n \cdot \frac{\lambda^n(b-a)^n}{n!}d(x,y):=\frac{\lambda^nM^n(b-a)^n}{n!}d(x,y)\]
 \[\lim_{n \to \infty}\frac{\lambda^nM^n(b-a)^n}{n!}=0 \ \Rightarrow \ \exists \, n_0 \ , \quad \text{s.t.} \quad \theta=\frac{\lambda^{n_0}M^{n_0}(b-a)^{n_0}}{{n_0}!}<1 \ \Rightarrow \ T^{n_0}\text{是压缩映射}\]

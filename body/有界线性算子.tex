@@ -2,6 +2,8 @@
     \item 有界线性算子~\ref{BX}
     \item $Banach$-$Steinhaus$定理~\ref{BS}
     \item 开映射定理与闭图像定理~\ref{kb}
+    \item $Hahn$-$Banach$定理~\ref{HB}
+    \item $Zorn$引理~\ref{Zorn}
 \end{introduction}
 \section{有界线性算子}\label{BX}
 在正式介绍赋范线性空间的有界线性算子之前，我们可以回忆一下有限维的情形，设$X,Y$为有限维空间，根据上一小节的描述，我们不妨假设$X=\mathbb{R}^m,Y=\mathbb{R}^n$，考虑线性变换$L:\mathbb{R}^m \to \mathbb{R}^n$，选取基底$\{e_i\}_{i=1}^m \subset X , \{f_j\}_{j=1}^n \subset Y$，线性变换$L$在基底上有如下关系
@@ -170,7 +172,7 @@ $\Rightarrow \quad T_n$逐点收敛于$0$。\\
 
 \textbf{Q.E.D.}
 
-从上面的证明来看，一致有界定理可以扩展到出发空间是第二纲集，其逆否定理叫共鸣定理。
+从上面的证明来看，一致有界定理可以扩展到出发空间是第二纲集，其逆否定理叫共鸣定理。共鸣定理指出了有界线性算子的点点有界等价于一致有界。
 \begin{theorem}[共鸣定理]
     $\{T_{\alpha}\}_{\alpha \in \Lambda} \subset \mathscr{B}(X,Y) \ , \ D(T_{\alpha})=X$ , $X$是$Banach$空间，若$||T_{\alpha}||=+\infty$则，$\exists \, x \in X \quad \text{s.t.} \quad ||T_{\alpha}x||=+\infty$。
 \end{theorem} 
@@ -356,7 +358,7 @@ $\{S_n\}$是$Cauchy$列，在完备空间$X$中收敛，记为$S$，则
 
 \textbf{Q.E.D.}
 
-由逆算子定理我们还有个推论。
+开映射定理和逆算子定理最重要的一点是得到了$T^{-1}$的连续的条件，该性质可以保证方程$Tx=y$解的稳定性。由逆算子定理我们还有个推论。
 \begin{proposition}
     若线性空间$X$上有两个范数$||\cdot||_1,||\cdot||_2$，使得$(X,||\cdot||_1),(X,||\cdot||_2)$都是$Banach$空间，且$||\cdot||_1$强于$||\cdot||_2$，则$||\cdot||_1$与$||\cdot||_2$等价。
 \end{proposition}
@@ -375,6 +377,9 @@ $\{S_n\}$是$Cauchy$列，在完备空间$X$中收敛，记为$S$，则
 \begin{theorem}[闭图像定理]
     设$X,Y$是$Banach$空间，若$T:X \to Y$是闭线性算子且$D(T)$是比线性子空间，则$T$是有界的。
 \end{theorem} 
+
+闭图像定理告诉我们如果$T$为闭算子，且其定义域$D(T)$是闭的，那么$T$就是连续的。因为证明一个算子为闭算子比证明它为线性有界算子更容易，所以闭图像定理给出了一个证明连续（有界）线性算子的方法。
+
 \textbf{Proof}:由于$T$是闭算子，故$G(T)=\{(x,Tx)|x \in D(T)\}$是$X \times Y$的闭线性子空间，从而$G(T)$是$Banach$空间，考虑算子$p:G(T) \to D(T) \ , \ (x,Tx) \mapsto x$，易知$p$良定义且为一一映射，且满足线性，且$p$有界
 \[||p(x,Tx)||=||x||_X \leq ||(x,Tx)||_{X \times Y} \leq ||x||_X + ||Tx||_Y\]
 由逆算子定理$\exists \, p^{-1}:D(T) \to G(T) \ , \ x \mapsto (x,Tx)$有界，即
@@ -391,5 +396,255 @@ $\{S_n\}$是$Cauchy$列，在完备空间$X$中收敛，记为$S$，则
 \[X=C[0,1] \ , \ T=\dv{t} \ , \ D(T)=C^1[0,1]\]
 这里，$D(T)$不是闭的，$T$是闭算子，设$x_n \to x \ , \ y_n=Tx_n=x_n' \to y$，则:
 \[x_n(t)-x_n(0)=\int_0^tx_n'(s) \dd s \quad \Rightarrow \quad x(t)-x(0)=\int_0^ty(s) \dd s\]
-即，$D(T)$中任意收敛于自身的点列在$T(D(T))$中也收敛于自身，但是$T$不为有界算子，因为存在反例如
+即，$D(T)$中任意收敛于自身的点列在$T[D(T)]$中也收敛于自身，但是$T$不为有界算子，因为存在反例如
 \[\lim_{n \to \infty}T(\sin nx)=+\infty\]
+
+\section{$Hahn$-$Banach$定理}
+在回答完算子的逆的存在性和其连续性等之后，我们可能会考虑算子空间的数量，更具体点，如果我们给定一个赋范线性空间$X$，其上的有界线性泛函全体$\mathscr{B}(X,\mathbb{K}) \ (\mathbb{K}=\mathbb{R}/\mathbb{C} \ , \ X\text{是}\mathbb{K}\text{上的线性空间})$的数量有多少，结构又如何？
+
+当$X$为有限维时，那么但很简单，$\mathscr{B}(X,\mathbb{K})$与$X$同构，那么在无限维的时候我们又该如何回答这个问题呢？这将是$Hahn$-$Banach$定理要回答的问题。
+
+$Hahn$-$Banach$定理告诉我们，在线性赋范空间中，我们可以定义“足够多”的不同的线性泛函。
+它的思路是：如果我们能把子空间上的线性泛函$M$延拓到全空间$X$上不就可以辣？因为我们很容易找个子空间构建个线性泛函，如果这些子空间的线性泛函能够全都延拓到全空间，那不就说明全空间上可以有“足够多”的线性泛函辣！
+感觉有点涩（
+\begin{theorem}[$Hahn$-$Banach$定理]\label{HB}
+    设$M$是$X$的线性子空间，$f \in \mathscr{B}(M,\mathbb{K})=M^*$，则$f$可线性保范延拓至整个空间，即
+    \[\exists \, F \in \mathscr{B}(M,\mathbb{K})=X^* \quad \text{s.t.} \quad \forall x \in M \ , \ F|_M=f \ , \ ||F||_X=||f||_M\]
+\end{theorem} 
+该定理的证明分为两步:1、证明$\mathbb{K}=\mathbb{R}$情形；2、证明$\mathbb{K}=\mathbb{C}$情形。但再此之前，我们需要一个强大的武器$Zorn$引理。
+有限维任意证明，我们自然而然会想到从有限维借助数学归纳法推广到无穷维，但是如果无穷维是不可数的该怎么办呢，$Zorn$引理告诉我们，使用超限归纳法照样推！
+\begin{definition}[偏序(半序)关系]
+    设集合$S$中的一个二元关系$\prec \, :S \times S \to S$，若其满足:\\
+    1、自反性$x \prec x$;\\
+    2、传递性$\forall x,y,z \in S \ , \ x \prec y \ , \ y \prec z \quad \Rightarrow \quad x \prec z$;\\
+    3、反对称性$x \prec y \ , \ y \prec x \quad \Rightarrow \quad x=y$;\\
+    则称$\prec$为一个偏序(半序)关系，$(S,\prec)$称为一个偏序集。若$\mathscr{A} \subset S$满足$\forall x,y \in \mathscr{A} \ , \ x \prec y$或$y \prec x$，则称$\mathscr{A}$是$S$的全序子集。
+\end{definition}
+\paragraph*{例} \quad $(\mathbb{R},\leq)$是全序集，$(2^X,\subseteq)$是偏序集。
+\begin{definition}[上界]
+    对$\mathscr{A} \subset S$，若$\exists \, \beta \in S \quad \text{s.t.} \quad \forall \alpha \in S \ , \ \alpha \prec \beta$则称$\beta$是$\mathscr{A}$的上界。
+\end{definition}
+\begin{definition}[极大元]
+    $\exists \, \beta \in S \quad \text{s.t.} \quad \forall \alpha \in S \ , \ \beta \prec \alpha$都有$\alpha=\beta$则称$\beta$是$S$的极大元。
+\end{definition}
+\begin{theorem}[$Zorn$引理]\label{Zorn}
+    若$S$中的任意全序子集都有上界，则$S$中必然存在(至少一个)极大元。
+\end{theorem} 
+$Zorn$引理与选择公理等价，这里就不证明了，超出了本书的范围(才不是因为我懒(逃
+
+实空间的$Hahn$-$Banach$定理可以被转换为次可加函数版本，这样处理起来更方便，那么什么是次可加函数呢？
+\begin{definition}[次可加函数]
+    若$p:X \to \mathbb{R}$满足：\\
+    1、$\forall x,y \in X \ , \ p(x+y) \leq p(x) + p(y)$; 
+    2、$\forall x \in X \ , \ t \in \mathbb{R}^+ \ , \ p(tx)=tp(x)$;\\
+    则称$p$为次可加函数。
+\end{definition}
+\paragraph*{例} \quad 若$X=\mathbb{R} \ , \ a,b \in \mathbb{R} \ , \ a>b$，可定义次可加函数$p(x)$:
+\[p(x)=\left\{\begin{array}{ll}
+    ax & ,x \geq 0 \\
+    bx & ,x<0    
+\end{array}\right.\]
+按照次可加函数的定义可以知道次可加函数都是凸函数，且$p(0)=0$。
+
+次可加函数版本的实空间$Hahn$-$Banach$定理叙述如下：
+\begin{theorem}[$Hahn$-$Banach$定理，$\mathbb{K}=\mathbb{R}$]
+    设$M$是$X$的实线性子空间，$p:X \to \mathbb{R}$是次可加函数，$f \in \mathscr{B}(M,\mathbb{R})=M^*$，且$\forall x \in M \ , \ f(x) \leq p(x)$则存在线性延拓$F \in \mathscr{B}(M,\mathbb{R})=X^*$满足$F|_M=f \ , \ \forall x \in X \ , \ F(x) \leq p(x)$。
+\end{theorem} 
+在证明定理4.16之前需要声明该定理可以推出上面我们介绍的实空间情形的$Hahn$-$Banach$定理。\\
+\textbf{Proof of Theorem 4.16 to Theorem 4.14}:
+
+设$||f||_M=\alpha>0$，定义$p:X \to \mathbb{R} \ , \ x \mapsto \alpha||x||$，容易验证$p(x)$为次可加函数且$|f(x)| \leq ||f||_M||x||=p(x)$。
+根据定理4.16$\exists \, F \in X^* \quad \text{s.t.} \quad F|_M=f \ , \ \forall x \in X \ , \ F(x) \leq p(x)=\alpha ||x||$，即$||F||_X \leq \alpha$。
+又因为
+\[||F||_X=\sup_{||x||=1 \ , \ x \in X}|Fx| \geq \sup_{||x||=1 \ , \ x \in M}|Fx|=||f||_M=\alpha\]
+
+故$||F||_X=||f||_M$。\\
+\textbf{Q.E.D.}
+
+下面我们可以开始正式证明定理4.16了。\\
+\textbf{Proof of Theorem 4.16}:
+
+\textbf{Claim}: $\forall x_1 \in X/M$定义$M_1=\{x+tx_1 \in X|x \in M \ , \ t \in \mathbb{R}\}$则存在线性延拓
+\[\exists \, F_1 \in \mathscr{B}(M,\mathbb{R}) \quad \text{s.t.} \quad F_1|_M=f \ , \ \forall x \in M_1 \ , \ F_1(x) \leq p(x)\]
+
+\textbf{Proof of Claim}：因为
+\[\forall y_1,y_2 \in M \ , \ f(y_1)+f(y_2)=f(y_1+y_2) \leq p(y_1+y_2) \leq p(y_1-x_1) + p(y_2+x_1)\]
+\[\Rightarrow \quad f(y_1)-p(y_1-x_1) \leq p(y_2+x_1)-f(y_2)\]
+
+记$\beta=F_1(x_1)$，则$F_1(x+tx_1)=F_1(x)+tF(x_1)=f(x)+t\beta \leq p(x+tx_1)$
+\[\Rightarrow \quad \left\{
+\begin{array}{ll}
+    \beta \leq p(x/t+x_1)-f(x/t) & ,t \geq 0 \\
+    \beta \geq f(x/t)-p(x/t-x_1) & ,t < 0
+\end{array}
+\right.\]
+
+即$\forall y_1,y_2 \in M \ , \ f(y_1)-p(y_1-x_1) \leq \beta \leq p(y_2+x_1)-f(y_2)$，故只需取
+\[\beta \in \left[\sup_{y_1 \in M}f(y_1)-p(y_1-x_1),\inf_{y_2 \in M}p(y_2+x_1)-f(y_2)\right]\]
+
+即可找到满足要求的$F_1$。
+
+\textbf{Q.E.D.}
+
+使用超限归纳法，考虑集合$S=\{F|F\text{是}f\text{满足定理要求的线性延拓}\}$，定义偏序$\prec$，若$F_1,F_2 \in S \ , \ F_1 \prec F_2$则$D(F_1) \subseteq D(F_2) \ , \ F_2|_{D(F_1)}=F_1$，容易证明$(S,\prec)$是偏序集。
+下面验证满足$Zorn$引理的条件，即$(S,\prec)$中任意全序子集$\mathscr{F}$都有上界:
+
+定义$\Phi:D \to \mathbb{R}$满足$F \in \mathscr{F} \ , \ x \in D(F)$有$\Phi(x)=F(x)$，记
+\[D=\bigcup_{F \in \mathscr{F}}D(F)\]
+
+则$\forall F \in \mathscr{F}$有$D(F) \subset D \ , \ \Phi|_{D(F)}=F$，即$F \prec \Phi$，$\Phi$为$\mathscr{F}$的上界。
+
+进而由$Zorn$引理可知$S$中有极大元$\Phi (D(\Phi)=X)$。\\
+\textbf{Q.E.D.}
+
+自然而然地，复数情形下我们会将其考虑分解$f \in \mathscr{B}(M,\mathbb{C}) \ , \ f(x)=\phi(x)+i\psi(x)$和$f(ix)=\phi(ix)+i\psi(ix)$，联立可得$\phi(x)=\psi(ix) \ , \ \psi(x)=-\phi(ix)$，即$f(x)=\phi(x)-i\phi(ix)$，由实空间的情形可知，存在一个$\phi$的实线性延拓$\Phi$使得满足条件的$f$的线性延拓$F(X)=\Phi(x)-i\Phi(ix)$存在。
+
+$Hahn$-$Banach$定理有许多有用的推论，接下来我们会介绍一部分。
+\begin{proposition}
+    赋范线性空间$X$上$\forall x_0 \in X \ , \ x_0 \neq 0 \ , \ \exists \, f \in X^* \quad \text{s.t.} \quad ||f||=1 \ , \ f(x_0)=||x_0||$。
+\end{proposition}
+\textbf{Proof}：令$M=\{\lambda x_0|\lambda \in \mathbb{K}\} \subset X \ , \ f_0:M \to \mathbb{K} \ , \ \lambda x_0 \mapsto |\lambda|\cdot||x_0||$，则
+\[|f(\lambda x_0)|=\sup_{\lambda \in \mathbb{K}}\frac{|\lambda|\cdot||x_0||}{||\lambda x_0||}=1 \quad \Rightarrow \quad ||f_0||_M=1\]
+
+再由$Hahn$-$Banach$定理即证。
+
+\textbf{Q.E.D.}
+\begin{proposition}
+    赋范线性空间$X$上$\forall x_1,x_2 \in X \ , \ x_1 \neq x_2 \ , \ \exists \, f \in X^* \quad \text{s.t.} \quad ||f||=1 \ , \ f(x_1) \neq f(x_2)$。
+\end{proposition}
+令$x_0=x_1-x_2 \neq 0$，则由推论1，$f(x_0)=f(x_1-f_2)=f(x_1)-f(x_2) \neq 0$。
+
+可以看到我们可以用一个有界线性泛函去区分两个点的不同性质。
+\begin{proposition}
+    $X$是赋范线性空间$M \subset X$是线性子空间，$x_0 \in X$满足
+    \[d(x_0,M)=\inf_{x \in M}||x-x_0||>0\]
+    则$\exists \, f \in X^* \quad \text{s.t.} \quad x \in M \ , \ ||f||=1 \ , \ f(x_0)=d \ , \ f|_M=0$。
+\end{proposition}
+\textbf{Proof}：令$M=\{x+tx_0|t \in \mathbb{K} \ , \ x \in M\}$，定义$f:M \to \mathbb{K} \ , \ x+tx_0 \mapsto td$，则一方面
+\[|f(x+tx_0)|=|t|d \leq |t| \cdot \left\|\frac{x}{t}+x_0\right\|=||x+tx_0|| \quad \Rightarrow \quad ||f|| \leq 1\]
+
+另一方面$\exists \{x_n\} \subset M \ , \ ||x_n -x_0|| \to d \ (n \to \infty) \ ,$
+\[|f(x_n-x_0)|=|f(x_n)-f(x_0)|=|f(x_0)|=d \leq ||f|| \cdot ||x_n-x_0|| \to ||f||d \quad \Rightarrow \quad ||f|| \geq 1\]
+
+结合上文可知$||f||=1$，再由$Hahn$-$Banach$定理即证。
+
+\textbf{Q.E.D.}
+
+需要注意的是$Hahn$-$Banach$定理只证明了延拓的存在性，但不保证唯一。
+\section{对偶空间和共轭算子}
+上文提到了泛函，俺就不得不提到与泛函相关的对偶空间。
+\begin{definition}[对偶空间]
+    $X^*=\mathscr{B}(X,\mathbb{K})$称为$X$的对偶空间。
+\end{definition}
+对偶空间一定是$Banach$空间。
+\begin{definition}[共轭算子]
+    $X,Y$是赋范线性空间，$T \in \mathscr{B}(X,Y)$，定义$T^*:Y^* \to X^*$满足
+    \[\forall f \in Y^* \ , \ x \in X \ , \ (T^*f)x=f(Tx)\]
+    则称$T^*$为共轭算子。
+\end{definition}
+共轭算子具有以下性质：
+\begin{theorem}
+    1、$T \in \mathscr{B}(X,Y) \ , \ T^* \in \mathscr{B}(Y^*,X^*)$则$||T^*||=||T||$;\\
+    2、$\forall \alpha \in \mathbb{K} \ , \ (\alpha T)^*=\alpha T^*$;\\
+    3、$(T_1+T_2)^*=T_1^*+T_2^*$;\\
+    4、$(T_1T_2)^*=T_2^*T_1^*$;\\
+    5、若$T$有有界逆$T^{-1}$，则$T^*$也有有界逆且$(T^*)^{-1}=(T^{-1})^*$。\\
+    或者考虑映射$*:\mathscr{B}(X,Y) \to \mathscr{B}(Y^*,X^*)$，则1:*是有界等距映射，2\&3:线性，4:乘法，5:与逆可交换。
+\end{theorem} 
+看几个例子。
+\begin{proposition}
+    1、$X=(\mathbb{R}^n,||\cdot||) \ , \ X^*=X$;\\
+    2、$(L^p[a,b])^*=L^q[a,b]$其中$1/p+1/q=1 \ , \ p \in [1,+\infty)$，反之$L^{\infty}$的对偶空间严格比$L^1$大;\\
+    3、$(l^p[a,b])^*=l^q[a,b]$其中$1/p+1/q=1 \ , \ p \in [1,+\infty)$;\\
+    4、$(C[a,b])^*=V_0[a,b]:=\{v \in V[a,b] \, | \, v(a)=0 \ , \ v(t+0)=v(t) \ , \ \forall t \in [a,b]\}$，其中$V[a,b]$是$[a,b]$上有界变差函数全体;\\
+    5、记收敛数列空间为$c$，则$c^*=l^1$。
+\end{proposition}
+对第一个例子，分别记$X,X^*$的一组对偶基$\{e_i\}_{i=1}^n \ , \ \{f_i\}_{i=1}^n$，即$f_i(e_j)=\delta_{ij}$，构造$e_i \to f_i$即得$X$与$X^*$之间存在一个等距一一映射，即证。
+我们可以来证明第二个例子$(1<p<+\infty)$，其他例子留待读者自证。
+
+\textbf{Proof}:证明的目标是构造如下等距一一映射
+\[\Phi:L^q \to (L^p)^* \ , \ g \mapsto \Phi_g \quad \text{s.t.} \quad \forall f \in L^p \ , \ \Phi_g(f)=\int_a^bf(t)g(t) \dd t\]
+线性显然，有界性($h\ddot{o}lder$不等式):
+\[||\Phi_g(f)|| \leq ||f||_{L^p} \cdot ||g||_{L^q} \quad \Rightarrow \quad ||\Phi_g|| \leq ||g||_{L^q}\]
+下证等距即$||\Phi_g||=||g||_{L^q}$，取
+\[f_0=\frac{1}{||g||_{L^q}^{q-1}} \cdot g^{q-1} \cdot \text{sgn}(g) \in L^p \quad (\int_a^b|f_0|^p \dd t=\int_a^b\frac{|g|^{p(q-1)}}{||g||_{L^q}^{p(q-1)}} \dd t=\frac{1}{||g||_{L^q}^q}\int_a^b|g|^q \dd t=1 < +\infty)\]
+\[\Phi_g(f_0)=\int_a^bf_0 \cdot g \, \dd t=\frac{1}{||g||_{L^q}^{q-1}}\int_a^bg^{q-1} \cdot \text{sgn}(g) \cdot g \, \dd t=||g||_{L^q} \quad \Rightarrow \quad ||\Phi_g|| \geq \frac{||\Phi_g(f_0)||}{||f_0||_{L^p}}=||g||_{L^q}\]
+综上所述即证明等距。下证双射，其中单射$(\Phi_{g_1}=\Phi_{g_2} \ \Leftrightarrow \ g_1=g_2)$是好证的:
+\[\forall f_0=(g_1-g_2)^{q-1} \cdot \text{sgn}(g_1-g_2) \in L^p \ , \ \Phi_{g_1}(f_0)-\Phi_{g_2}(f_0)=\int_a^b(g_1-g_2)f_0 \dd t=0\]
+则有
+\[0=\int_a^b(g_1-g_2)f_0 \dd t=\int_a^b(g_1-g_2) \cdot (g_1-g_2)^{q-1} \cdot \text{sgn}(g_1-g_2) \dd t=||g_1-g_2||_{L^q}^q \quad \Leftrightarrow \quad g_1=g_2\]
+
+要证满射即证
+\[\forall F \in (L^p)^* \ , \ \exists \, g \in L^q \quad \text{s.t.} \quad F=\Phi_g \quad \text{i.e.} \quad \forall f \in L^p \ , \ F(f)=\Phi_g(f)=\int_a^bg \cdot f \, \dd t\]
+但是直接证明该结论较为困难，我们分三步证明:
+
+\textbf{Step 1}: 先证该结论对简单函数成立，只需证明对特征函数$\chi_s$成立。
+\[\chi_s=\chi_{[a,s]}(t)=\left\{
+    \begin{array}{ll}
+        1 & ,t\in[a,s] \\
+        0 & ,t\in(s,b]        
+    \end{array}
+\right.\]
+即证明存在$g$满足
+\[F(\chi_s)=\int_a^bg(t)\chi(t) \, \dd t=\int_a^sg(t) \, \dd t \quad \Rightarrow \quad g(s)=F'(\chi_s)\]
+那么我们只需要证明$F(\chi_s)$几乎处处可导，又因为几乎处处可导可以由绝对连续推出，故只需证明$F(\chi_s)$绝对连续。
+令$G(s)=F(\chi_s) \ \delta_k=(s_k,t_k) \subset [a,b] \ (k=1,2,\cdots,n)$为$[a,b]$互不相交的分割。记$\varepsilon_k=\text{sgn}\left(F(\chi_{t_k}-\chi_{s_k})\right)$，则
+\begin{equation*}
+    \begin{aligned}
+        \sum_{k=1}^n|G(t_k)-G(s_k)| & =\sum_{k=1}^n|F(\chi_{t_k})-F(\chi_{s_k})|=\sum_{k=1}^n|F(\chi_{t_k}-\chi_{s_k})|=\sum_{k=1}^nF(\chi_{t_k}-\chi_{s_k}) \cdot \text{sgn}\left(F(\chi_{t_k}-\chi_{s_k})\right) \\
+        & =F\left(\sum_{k=1}^{n}\varepsilon_k(\chi_{t_k}-\chi_{s_k})\right)=F\left(\sum_{k=1}^{n}\varepsilon_k\chi_{[s_k,t_k]}\right) \\
+        & \leq ||F|| \cdot \left\|\sum_{k=1}^n\varepsilon_k\chi_{[s_k,t_k]}\right\|_{L^p} \leq ||F|| \cdot \sum_{k=1}^n\left\|\varepsilon_k\chi_{[s_k,t_k]}\right\|_{L^p}=||F|| \cdot \sum_{k=1}^n|t_k-s_k|
+    \end{aligned}
+\end{equation*}
+可知$F(\chi_s)$绝对连续，即
+\[\forall \varepsilon>0 \ , \ \exists \, \sum_{k=1}^n|t_k-s_k|<\frac{\varepsilon}{||F||} \quad \text{s.t.} \quad \sum_{k=1}^n|G(t_k)-G(s_k)|<\varepsilon\]
+再由
+\[G(s)=G(a)+\int_a^sg(t) \, \dd t=\int_a^sg(t) \, \dd t=\int_a^bg(t)\chi_s(t) \, \dd t=\Phi_g(\chi_s)\]
+即找到了$g$满足条件，由特征函数情形可知，对简单函数(阶梯函数)该结论也成立，即
+\[\forall F \in (L^p)^* \ , \ \exists \, g \in L^q \quad \text{s.t.} \quad \forall \psi(t)=\sum_{k=1}^{n}a_k\chi_{[s_k,t_k]} \in L^p \ , \ F(\psi)=\Phi_g(\psi)=\int_a^bg \cdot \psi \, \dd t\]
+
+\textbf{Step 2}: 再证该结论对有界可测函数成立。\\
+若$f$为有界可测函数，则存在简单函数$\{\psi_n\} \quad \text{s.t.} \quad \psi_n \xrightarrow{a.e.} f$，有$Lebesgue$控制收敛定理可知只要$g \in L^1$，即有
+\[F(f)=F\left(\lim_{n \to \infty}\psi_n\right)=\lim_{n \to \infty}F\left(\psi_n\right)=\lim_{n \to \infty}\Phi_g(\psi_n)=\lim_{n \to \infty}\int_a^b\psi_n(t)g(t) \, \dd t=\int_a^bf(t)g(t) \, \dd t=\Phi_g(f)\]
+下面只需证明找到的$g \in L^q$即可，考虑
+\[f=\frac{1}{||g||_{L^q}^{q-1}} \cdot g^{q-1} \cdot \text{sgn}(g) \ , \ f_N=\left\{
+    \begin{array}{ll}
+        f & ,||f|| \leq N \\ 0 & ,||f||>N
+    \end{array}
+\right.\]
+则
+\[|F(f_n)|=|\Phi_g(f_N)|=\frac{1}{||g||_{L^q}^{q-1}}\int_{\{|f| \leq N\}}g^{q-1} \cdot \text{sgn}(g) \cdot g \, \dd t=\frac{1}{||g||_{L^q}^{q-1}}\int_{\{|f| \leq N\}}|g|^q \, \dd t \leq ||F|| \cdot ||f_N||_{L^p}\]
+当$n \to +\infty$时，有
+\[|F(f_n)|=||g||_{L^q} \leq ||F|| \cdot 1 = ||F||\]
+即证$g \in L^q$。
+
+\textbf{Step 3}: 最后证该结论对$\forall f \in L^p$成立。\\
+类似Step 2中的构造，考虑$\forall f \in L^p$，存在一列简单可测函数列$\{f_N\} \quad \text{s.t.} \quad F_n \xrightarrow{L^p} f \ , \ ||f_N|| \leq N$，故
+\[F(f_N-f)=\int_a^b(f_N-f) \cdot g \, \dd t \leq ||f_n-f||_{L^p} \cdot ||g||_{L^q} \to 0 \quad \Rightarrow \quad F(f_N) \to F(f)\]
+
+综述三步所述，我们通过一步构造两步逼近证明了满射。
+
+\textbf{Q.E.D.}
+\section{自反性与弱收敛}
+考虑共轭空间的共轭空间，定义为
+\begin{definition}[二次共轭空间]
+    设$X$为赋范线性空间，$X^{**}=(X^*)^*$是$X$的二次共轭空间。
+\end{definition}
+联想到负负得正这个我们熟知的在整数上的特性，我们自然会考虑，二次共轭空间是否就是原空间呢？考虑如下映射，称为\textbf{典型映射}：
+\[F:X \to X^{**} \ , \ x \mapsto F_x \quad \text{s.t.} \quad \forall f \in X^* \ , \ F_x(f)=f(x)\]
+验证$F_x \in X^{**}$即验证其有界线性：
+\[F_x(\alpha f+\beta g)=(\alpha f+\beta g)(x)=\alpha f(x)+\beta g(x)=\alpha F_x(f)+\beta F_x(g)\]
+\[|F_x(f)|=|f(x)| \leq ||f|| \cdot ||x|| \quad \Rightarrow \quad ||F_x|| \leq ||x||\]
+再由$Hahn-Banach$定理：$\exists \, f_0 \quad \text{s.t.} \quad ||f_0||=1 \ , \ f_0(x)=||x||$，则
+\[|F_x(f_0)|=|f_0(x)|=||x|| \quad \Rightarrow \quad ||F_x|| \geq ||x||\]
+综上所述$F$是一个单的等距映射$||F_x||=||x||$，但不一定满。如果$F$是满的那么二次共轭空间在等距的意义下就是原空间，我们将这类空间称之为\textbf{自反空间}。
+\begin{definition}[二次共轭空间]
+    设$X$为赋范线性空间，若典型映射$F$是满射则称$X$为自反空间。
+\end{definition}
+可以来看几个自反空间的例子。
+\begin{proposition}
+    1、$L^p \ , \ p \in (1,+\infty)$是自反空间;\\
+    2、$l^p \ , \ p \in (1,+\infty)$是自反空间;\\
+    3、$L^1,L^{\infty},l^1,l^{\infty}$不是自反空间;\\
+    4、$C[a,b]$不是自反空间。
+\end{proposition}
