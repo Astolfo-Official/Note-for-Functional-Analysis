@@ -2,272 +2,240 @@
     \item 距离空间~\ref{def:Metric}
     \item 距离空间的点集~\ref{pointset}
     \item 距离空间的完备性~\ref{complete}
-    \item $Baire$定理~\ref{the:Baire}
+    \item Baire定理~\ref{the:Baire}
     \item 压缩映射定理~\ref{zip}
     \item 拓扑空间~\ref{topo}
     \item 距离空间上的紧集~\ref{compact}
-    \item $Arzela-Ascoli$定理~\ref{the:AA}
+    \item Arzela-Ascoli定理~\ref{the:AA}
   \end{introduction}
-\section{距离空间 $Metric \ Space$}
+\section{距离空间 Metric Space}
 \subsection{定义及举例}
 事实上，我们可以通过定义距离这个几何上的概念很好地定义收敛和连续这两个我们关心的分析上的概念。
-例如，在欧氏空间$\mathbb{R}^n$上，我们定义距离：
-\[\mathbb{R}^n=\{\overrightarrow{x}=(x_1,x_2,\cdots,x_n)|x_i \in \mathbb{R} \ (i=1,2,\cdots,n)\}\]
+例如，在欧氏空间$\mathbb{R}^n=\{\overrightarrow{x}=(x_1,x_2,\cdots,x_n)|x_i \in \mathbb{R} \ (i=1,2,\cdots,n)\}$上，我们定义距离：
 \[d(\overrightarrow{x},\overrightarrow{y})=\sqrt{\sum_{i=1}^n\left|x_i-y_i\right|^2}\]
-\paragraph*{收敛性} \quad $\overrightarrow{x}_m \rightarrow \overrightarrow{x}$:
-\[\overrightarrow{x}_m \rightarrow \overrightarrow{x} \Leftrightarrow d(\overrightarrow{x},\overrightarrow{y}) \rightarrow 0 \Leftrightarrow x_{m,i} \rightarrow x_i \ (i=1,2,\cdots,n)\]
-\paragraph*{连续性} \quad 定义函数$f$：
-\[f:\mathbb{R}^n \rightarrow \mathbb{R}^m\]
-如果$f$满足
+通过距离$d$，我们可以定义收敛和连续:
+\begin{proposition}
+\begin{itemize}
+\item 1. \textbf{收敛性}：$\overrightarrow{x}_m \rightarrow \overrightarrow{x} \ \Leftrightarrow \ d(\overrightarrow{x},\overrightarrow{y}) \rightarrow 0 \ \Leftrightarrow \ x_{m,i} \rightarrow x_i, \ (i=1,2,\cdots,n)$
+\item 2. \textbf{连续性}：定义函数$f:\mathbb{R}^n \rightarrow \mathbb{R}^m$，如果$f$满足
 \[\overrightarrow{x}_0 \in \mathbb{R}^n\ , \ \forall \varepsilon >0 \ , \ \exists \, \delta >0 \ , \quad \text{s.t.} \quad d_{\mathbb{R}^n}(\overrightarrow{x},\overrightarrow{x}_0)<\delta \ , \ d_{\mathbb{R}^m}(f(\overrightarrow{x}),f(\overrightarrow{x}_0))<\varepsilon\]
 则称$f$在点$\overrightarrow{x}_0$连续，进而可以推广到处处连续。
+\end{itemize}
+\end{proposition}
 
 从欧氏空间出发，我们可以定义抽象距离空间：
 \begin{definition}[抽象距离空间] \label{def:Metric}
-    $X$是一个非空集合,$d$是一个定义在$X \times X$上的函数，满足：\\
-    1、非负性：$d(x,y) \geq 0$且$d(x,y)=0$当且仅当$x=y$;\\
-    2、对称性：$d(x,y)=d(y,x)$;\\
-    3、三角不等式：$d(x,y) \leq d(x,z)+d(z,y)$
+$X$是一个非空集合,$d$是一个定义在$X \times X$上的函数，满足：
+\begin{itemize}
+    \item 1. 非负性：$d(x,y) \geq 0$且$d(x,y)=0$当且仅当$x=y$；
+    \item 2. 对称性：$d(x,y)=d(y,x)$；
+    \item 3. 三角不等式：$d(x,y) \leq d(x,z)+d(z,y)$。
+\end{itemize}
 \end{definition}
-
-下面我们看几个距离空间的例子：
-\paragraph*{例1} \quad $C[a,b]$,定义距离
+\begin{example} \quad 连续函数空间$C[a,b]$，定义距离
 \[d(x(t),y(t))=\mathop{\text{sup}}\limits_{t \in [a,b]}\left|x(t)-y(t)\right|\]
-前两个性质显然成立，主要证第三条：
-
-由于由三角不等式恒成立：
+\end{example}
+\begin{proof}
+前两个性质显然成立，主要证第三条，由三角不等式恒成立：
 \[\left|x(t)-y(t)\right| \leq \left|x(t)-z(t)\right|+\left|z(t)-y(t)\right|\]
 两边取上确界即证毕：
-\[\mathop{\text{sup}}\limits_{t \in [a,b]}\left|x(t)-y(t)\right| \leq \mathop{\text{sup}}\limits_{t \in [a,b]}\left|x(t)-z(t)\right|+\mathop{\text{sup}}\limits_{t \in [a,b]}\left|z(t)-y(t)\right|\]
-\[d(x,y) \leq d(x,z)+d(z,y)\]
+\[\mathop{\text{sup}}\limits_{t \in [a,b]}\left|x(t)-y(t)\right| \leq \mathop{\text{sup}}\limits_{t \in [a,b]}\left|x(t)-z(t)\right|+\mathop{\text{sup}}\limits_{t \in [a,b]}\left|z(t)-y(t)\right| \quad \Leftrightarrow \quad d(x,y) \leq d(x,z)+d(z,y)\]
+\end{proof}
 
-\paragraph*{例2} \quad 空间$s=\{x=\{\xi_i\}_{i=1}^{+\infty} \ , \ \xi_i \in \mathbb{R}\}$(规定后续符号对应:$x,t,z \rightarrow \xi,\eta,\psi$)，定义距离
+\begin{example} \quad 空间$s=\{x=\{\xi_i\}_{i=1}^{+\infty} \ , \ \xi_i \in \mathbb{R}\}$（$x,y,z$对应的分量符号$\xi,\eta,\psi$），定义距离
 \[d(x,y)=\sum_{i=1}^{+\infty}\frac{1}{2^i}\frac{|\xi_i-\eta_i|}{1+|\xi_i-\eta_i|}\]
-同样，前两条性质显然，下证第三条：
-
-同样由三角不等式：
+\end{example}
+\begin{proof}
+前两条性质显然，下证第三条，由三角不等式：
 \begin{equation*}
-    \begin{aligned}
-        \sum_{i=1}^{+\infty}\frac{1}{2^i}\frac{|\xi_i-\eta_i|}{1+|\xi_i-\eta_i|} & \leq \sum_{i=1}^{+\infty}\frac{1}{2^i}\frac{\left|\xi_i-\psi_i\right|+\left|\psi_i-\eta_i\right|}{1+\left|\xi_i-\psi_i\right|+\left|\psi_i-\eta_i\right|} \\
-        & =\sum_{i=1}^{+\infty}\frac{1}{2^i}\frac{\left|\xi_i-\psi_i\right|}{1+\left|\xi_i-\psi_i\right|+\left|\psi_i-\eta_i\right|}+\sum_{i=1}^{+\infty}\frac{1}{2^i}\frac{\left|\psi_i-\eta_i\right|}{1+\left|\xi_i-\psi_i\right|+\left|\psi_i-\eta_i\right|} \\
-        & \leq \sum_{i=1}^{+\infty}\frac{1}{2^i}\frac{\left|\xi_i-\psi_i\right|}{1+\left|\xi_i-\psi_i\right|}+\sum_{i=1}^{+\infty}\frac{1}{2^i}\frac{\left|\psi_i-\eta_i\right|}{1+\left|\psi_i-\eta_i\right|}=d(x,z)+d(z,y)
-    \end{aligned}
+\begin{aligned}
+\sum_{i=1}^{+\infty}\frac{1}{2^i}\frac{|\xi_i-\eta_i|}{1+|\xi_i-\eta_i|} & \leq \sum_{i=1}^{+\infty}\frac{1}{2^i}\frac{\left|\xi_i-\psi_i\right|+\left|\psi_i-\eta_i\right|}{1+\left|\xi_i-\psi_i\right|+\left|\psi_i-\eta_i\right|} \\
+& =\sum_{i=1}^{+\infty}\frac{1}{2^i}\frac{\left|\xi_i-\psi_i\right|}{1+\left|\xi_i-\psi_i\right|+\left|\psi_i-\eta_i\right|}+\sum_{i=1}^{+\infty}\frac{1}{2^i}\frac{\left|\psi_i-\eta_i\right|}{1+\left|\xi_i-\psi_i\right|+\left|\psi_i-\eta_i\right|} \\
+& \leq \sum_{i=1}^{+\infty}\frac{1}{2^i}\frac{\left|\xi_i-\psi_i\right|}{1+\left|\xi_i-\psi_i\right|}+\sum_{i=1}^{+\infty}\frac{1}{2^i}\frac{\left|\psi_i-\eta_i\right|}{1+\left|\psi_i-\eta_i\right|}=d(x,z)+d(z,y)
+\end{aligned}
 \end{equation*}
-\paragraph*{例3} \quad 空间$S(E) \ E \subseteq \mathbb{R}$是$E$上$Lebesgue$可积函数全体，定义距离
+\end{proof}
+
+\begin{example} \quad 空间$S(E) \ E \subseteq \mathbb{R}$是$E$上$Lebesgue$可积函数全体，定义距离
 \[d(x,y)=\int_E\frac{\left|x(t)-y(t)\right|}{1+\left|x(t)-y(t)\right|}\dd t\]
+\end{example}
+\begin{proof}
+证明类似例2。顺便一说，在这个距离定义下的收敛等价于依测度收敛，下一小节会证明。
+\end{proof}
 
-证明类似例2。
-
-顺便一说，在这个距离定义下的收敛等价于依测度收敛，下一小节会证明。
-
-\paragraph*{例4} \quad 空间$L^2(E)=\{f\text{在$E$上可测} \ , \ \int_E|f|^2<+\infty\}$上，我们定义距离
+\begin{example} \quad 空间$L^2(E)=\{f\text{在$E$上可测} \ , \ \int_E|f|^2<+\infty\}$上，我们定义距离
 \[d(x,y)=\sqrt{\int_E|x(t)-y(t)|^2\dd t}\]
+\end{example}
+\begin{proof}
 同样，前两条性质显然，下证第三条：
 \begin{equation*}
     \begin{aligned}
-        d^2(x,y) & =\int_E|x(t)-y(t)|^2\dd t=\int_E(x^2(t)+y^2(t)-2x(t)y(t))\dd t \\
+        d^2(x,y) & =\int_E|x(t)-y(t)|^2\dd t=\int_E[x^2(t)+y^2(t)-2x(t)y(t)]\dd t \\
         & \leq \int_Ex^2(t)\dd t+\int_Ey^2(t)\dd t+2\int_E|x(t)||y(t)|\dd t \leq \int_Ex^2(t)\dd t+\int_Ey^2(t)\dd t+2\sqrt{\int_Ex^2(t)\dd t}\sqrt{\int_Ey^2(t)\dd t} \\
         & \leq \left(\sqrt{\int_Ex^2(t)\dd t}+\sqrt{\int_Ey^2(t)\dd t}\right)^2
     \end{aligned}
 \end{equation*}
 此时，如果我们令$x=f-h \ , \ y=g-h$，则上式可改写为
 \[d^2(f,g) \leq (d(f,h)+d(g,h))^2\]
-原不等式即证。
-
-欧氏空间是距离空间也可类似证明。
-
-上面的几个例子都是函数空间，当然我们也可以来看几个不是函数空间的距离空间的例子。
-
-\paragraph*{例5} \quad 离散空间$X$为任意集合，定义距离
-\[d(x,y)=\left \{
-\begin{array}{c}
-1 \ , \ x \neq y \\ 0 \ , \ x=y
-\end{array}   
-\right .
-\]
-
-\paragraph*{例6} \quad 图($Graph$)
-
-图包含顶点集$V=\{v_1,v_2,\cdots,v_n\}$，边集$E=\{e_{ij}\}$，定义$d(v_i,v_j)$为$v_i$和$v_j$之间最短的路线长度。
+原不等式即证。欧氏空间是距离空间也可类似证明。
+\end{proof}
 
 \subsection{距离空间的性质}
 在上一小节我们介绍了距离空间以及距离的概念，我们可以很自然地引入一般度量意义下的收敛。
-
-\paragraph*{距离空间$(X,d)$上的收敛} \quad 我们称$x_n$收敛于$x$，当其满足
+\begin{proposition}
+\begin{itemize}
+\item 1. 距离空间$(X,d)$上的收敛：我们称$x_n$收敛于$x$，当其满足
 \[\lim_{n \rightarrow \infty}d(x_n,x)=0\]
-
-这里我们回顾一下之前接触过的函数列收敛的种类。
-
-\paragraph*{逐点收敛} \quad $f_n(x) \rightarrow f(x) \ , \ x \in [a,b] \ , \ (n \rightarrow \infty)$
+\item 2. 逐点收敛：$f_n(x) \rightarrow f(x) \ , \ x \in [a,b]$
 \[\forall x \in [a,b] \ , \ \forall \varepsilon>0 \ , \ \exists \, N(\varepsilon,x)>0 \ , \quad \text{s.t.} \quad n \geq N \ , \ |f_n(x)-f(x)|<\varepsilon\]
-
-\paragraph*{一致收敛} \quad $f_n(x) \rightrightarrows f(x) \ , \ (n \rightarrow \infty)$
+\item 3. 一致收敛：$f_n(x) \rightrightarrows f(x) \ , \ (n \rightarrow \infty)$
 \[\forall x \in [a,b] \ , \ \forall \varepsilon>0 \ , \ \exists \, N(\varepsilon)>0 \ , \quad \text{s.t.} \quad n \geq N \ , \ |f_n(x)-f(x)|<\varepsilon\]
-
-\paragraph*{依测度收敛} \quad $f_n(x) \rightarrow f(x)\textbf{ in measure} \ , \ (n \rightarrow \infty)$
+\item 4. 依测度收敛：$f_n(x) \rightarrow f(x)\textbf{ in measure} \ , \ (n \rightarrow \infty)$
 \[\forall \sigma>0 \ , \ \lim_{n \rightarrow \infty}m\{|f_n(x)-f(x)| \geq \sigma\}=0\]
-
-逐点收敛和一致收敛的区别仅在$N$是否与$x$有关，现在我们来考察一下这些收敛跟距离的关系。
-我们知道距离这个概念能诱导出收敛，但是收敛并不意味着一定有距离意义。很显然，逐点收敛没有对应的距离意义，因为$N$与$x$有关。
-
-下面我们来看其他两种收敛对应的距离空间上的收敛。
-
-\paragraph*{例1} \quad $X=C[a,b]$
+\end{itemize}
+\end{proposition}
+逐点收敛和一致收敛的区别仅在$N$是否与$x$有关，现在我们来考察一下这些收敛跟距离的关系。我们知道距离这个概念能诱导出收敛，但是收敛并不意味着一定有距离意义。很显然，逐点收敛没有对应的距离意义，因为$N$与$x$有关。其他两种收敛可以对应的距离空间上的收敛。
+\begin{example} 连续函数空间$C[a,b]$上距离的收敛等价于一致收敛
 \[d(x(t),y(t))=\mathop {\text{sup}}\limits_{t \in [a,b]}|x(t)-y(t)|\]
-\[x_n(t) \rightarrow x(t) \quad (n \rightarrow \infty) \qquad \lim_{n \rightarrow \infty}d(x_n(t),x)=\lim_{n \rightarrow \infty}\mathop {\text{sup}}\limits_{t \in [a,b]}|x_n(t)-x(t)|=0\]
-\[\forall \varepsilon>0 \ , \ \exists \, N(\varepsilon)>0 \ , \quad \text{s.t.} \quad n \geq N \ , \ \mathop {\text{sup}}\limits_{t \in [a,b]}|x_n(t)-x(t)|<\varepsilon\]
-即
+\end{example}
+\begin{proof}
+在连续函数空间$C[a,b]$上的收敛$x_n(t) \rightarrow x(t), \ (n \rightarrow \infty)$：
+\[\lim_{n \rightarrow \infty}d(x_n(t),x)=\lim_{n \rightarrow \infty}\mathop {\text{sup}}\limits_{t \in [a,b]}|x_n(t)-x(t)|=0 \quad \Leftrightarrow \quad \forall \varepsilon>0 \ , \ \exists \, N(\varepsilon)>0 \quad \text{s.t.} \quad n \geq N \ , \ \mathop {\text{sup}}\limits_{t \in [a,b]}|x_n(t)-x(t)|<\varepsilon\]
+由于取 sup，$N$与自变量$t$无关，即
 \[\forall t \in [a,b] \ , \ \forall \varepsilon>0 \ , \ \exists \, N(\varepsilon)>0 \ , \quad \text{s.t.} \quad n \geq N \ , \ |x_n(t)-x(t)|<\varepsilon\]
-可见该空间下距离的收敛等价于一致收敛。
+\end{proof}
 
-\paragraph*{例2} \quad 空间$S(E) \ E \subseteq \mathbb{R}$是$E$上$Lebesgue$可积函数全体
+\begin{example}
+空间$S(E) \ , \ E \subseteq \mathbb{R}$是$E$上$Lebesgue$可积函数全体上的收敛等价于依测度收敛
 \[d(x,y)=\int_E\frac{\left|x(t)-y(t)\right|}{1+\left|x(t)-y(t)\right|}\dd t\]
-证明:Part 1
+\end{example}
+\begin{proof} 距离收敛 $\Rightarrow$ 依测度收敛
 \[\lim_{n \rightarrow \infty}d(x_n(t),x(t))=\lim_{n \rightarrow \infty}\int_E\frac{\left|x_n(t)-x(t)\right|}{1+\left|x_n(t)-x(t)\right|}\dd t=0\]
-记$M=\{|x_n(t)-x(t)| \geq \sigma\}\cap E$
+记$M=\{|x_n(t)-x(t)| \geq \sigma\}\cap E$：
 \[\int_E\frac{\left|x_n(t)-x(t)\right|}{1+\left|x_n(t)-x(t)\right|}\dd t \geq \int_M\frac{\left|x_n(t)-x(t)\right|}{1+\left|x_n(t)-x(t)\right|}\dd t \geq \int_M\frac{\sigma}{1+\sigma}\dd t=\frac{\sigma}{1+\sigma}m(M)\]
 则有
-\[0 \leq m(M) \leq \frac{1+\sigma}{\sigma}d(x_n(t),x(t))\rightarrow 0 \quad n \rightarrow \infty\]
-于是有
-\[f_n(x) \rightarrow f(x)\textbf{ in measure} \ , \ (n \rightarrow \infty)\]
-Part 2
+\[0 \leq m(M) \leq \frac{1+\sigma}{\sigma}d(x_n(t),x(t))\rightarrow 0, \ (n \rightarrow \infty) \quad \Leftrightarrow \quad f_n(x) \rightarrow f(x)\textbf{ in measure} \ , \ (n \rightarrow \infty)\]
+依测度收敛 $\Rightarrow$ 距离收敛
 \begin{equation*}
-    \begin{aligned}
-        \int_E\frac{\left|x_n(t)-x(t)\right|}{1+\left|x_n(t)-x(t)\right|}\dd t & =\int_M\frac{\left|x_n(t)-x(t)\right|}{1+\left|x_n(t)-x(t)\right|}\dd t+\int_{E-M}\frac{\left|x_n(t)-x(t)\right|}{1+\left|x_n(t)-x(t)\right|}\dd t \\
-        & \leq m(M)+\frac{\sigma}{1+\sigma}m(E-M) \leq m(M)+\frac{\sigma}{1+\sigma}m(E)
-    \end{aligned}
+\begin{aligned}
+\int_E\frac{\left|x_n(t)-x(t)\right|}{1+\left|x_n(t)-x(t)\right|}\dd t & =\int_M\frac{\left|x_n(t)-x(t)\right|}{1+\left|x_n(t)-x(t)\right|}\dd t+\int_{E-M}\frac{\left|x_n(t)-x(t)\right|}{1+\left|x_n(t)-x(t)\right|}\dd t \\
+& \leq m(M)+\frac{\sigma}{1+\sigma}m(E-M) \leq m(M)+\frac{\sigma}{1+\sigma}m(E)
+\end{aligned}
 \end{equation*}
-\[\forall \varepsilon>0 \ , \ let \ \sigma=\frac{\varepsilon}{m(E)} \ (assume \ m(E)>1) \ , \ \exists \, N>0 \quad \text{s.t.} \quad n \geq N \ , \ m(M)<\varepsilon\]
-\[d(x_n(t),x(t)) \leq \varepsilon+\frac{\varepsilon}{1+\sigma}<2\varepsilon\]
-\[\lim_{n \rightarrow \infty}d(x_n(t),x(t))=0\]
-证毕。
+\[\forall \varepsilon>0 \ , \ let \ \sigma=\frac{\varepsilon}{m(E)} \ (\text{假设} \ m(E)>1) \ , \ \exists \, N>0 \quad \text{s.t.} \quad n \geq N \ , \ m(M)<\varepsilon \ , \ d(x_n(t),x(t)) \leq \varepsilon+\frac{\varepsilon}{1+\sigma}<2\varepsilon\]
+\[\Leftrightarrow \quad \lim_{n \rightarrow \infty}d(x_n(t),x(t))=0\]
+\end{proof}
 
 距离空间还有其他的性质如下：
-
-1) 极限存在必定唯一；
-
-2) $x_n \rightarrow x$，则$\{x_{n,i}\} \subset \{x_n\} \quad \text{s.t.} \quad x_{n,i} \rightarrow x$ (距离意义下的收敛)
-
-3) $x_n \rightarrow x$,$x_n \rightarrow x$,则有$d(x_n,y_n) \rightarrow d(x,y)$
-
-前两个性质容易得到，我们下证第三条。
-
-由三角不等式
+\begin{lemma}
+\begin{itemize}
+\item 1. 极限存在必定唯一；
+\item 2. $x_n \rightarrow x$，则$\{x_{n,i}\} \subset \{x_n\} \quad \text{s.t.} \quad x_{n,i} \rightarrow x$ (距离意义下的收敛)；
+\item 3. $x_n \rightarrow x$，$y_n \rightarrow y$,则有$d(x_n,y_n) \rightarrow d(x,y)$。
+\end{itemize}
+\end{lemma}
+\begin{proof}
+前两个性质容易得到，我们下证第三条，由三角不等式
 \[d(x_n,y_n) \leq d(x_n,x)+d(x,y)+d(y,y_n) \Leftrightarrow d(x_n,y_n)-d(x,y) \leq d(x_n,x)+d(y_n,y)\]
 \[d(x,y) \leq d(x,x_n)+d(x_n,y_n)+d(y_n,y) \Leftrightarrow d(x_n,y_n)-d(x,y) \geq d(x_n,x)+d(y_n,y)\]
 \[\Rightarrow \ |d(x_n,y_n)-d(x,y)|=d(x_n,x)+d(y_n,y) \ \rightarrow 0 \ (n \rightarrow \infty)\]
-证毕。
+\end{proof}
 
-我们也可以定义一般度量意义下的连续性。
-\paragraph*{距离空间$(X,d)$上的连续} \quad 设$f:(X,d_X) \rightarrow (Y,d_Y)$是距离空间中的映射。我们称$f$在$x_0$处连续，如果其满足
+我们也可以定义距离空间上的连续。
+\begin{definition}[距离空间$(X,d)$上的连续]
+设$f:(X,d_X) \rightarrow (Y,d_Y)$是距离空间中的映射。我们称$f$在$x_0$处连续，如果其满足
 \[\forall x_0 \in X \ , \ \forall \varepsilon>0 \ , \ \exists \, \delta>0 \ , \quad \text{s.t.} \quad d_Y(f(x),f(x_0))<\varepsilon \ , \ if \ d_X(x,x_0)<\delta\]
-
+\end{definition}
 定义了单点连续后我们容易得到如果$f$在任意$x_0 \in X$上都连续我们就称$f$在$X$上连续。
 
 还有一个比较值得探讨的东西是等距映射。
-\paragraph*{等距映射} \quad 设$f:(X,d_X) \rightarrow (Y,d_Y)$是距离空间中的映射，若满足
+\begin{definition}[等距映射]
+设$f:(X,d_X) \rightarrow (Y,d_Y)$是距离空间中的映射，若满足
 \[\forall x,y \in X \ , \ d_Y(f(x),f(y))=d_X(x,y)\]
-则称$f$为等距映射，称$(X,d_X)$与$(Y,d_Y)$等距($isometry$)。
-
+则称$f$为等距映射，称$(X,d_X)$与$(Y,d_Y)$等距(isometry)。
+\end{definition}
 显然，等距映射是连续且单射的，且$x \rightarrow f(x)$是双射。
 
-举个例子，$\mathbb{R}^n \rightarrow \mathbb{R}^n$的等距映射有且仅有合同变换一种。
-\[f(\overrightarrow{x})=A\overrightarrow{x}+\overrightarrow{x}_0 \quad A \in O(n)(\text{正交矩阵})\]
+举个例子，$\mathbb{R}^n \rightarrow \mathbb{R}^n$的等距映射有且仅有合同变换一种$f(\overrightarrow{x})=A\overrightarrow{x}+\overrightarrow{x}_0, \ A \in O(n) \ (\text{正交矩阵})$。
 
 \subsection{距离空间的点集} \label{pointset}
-这一小节主要是想说明一般度量空间内的如下几个定义:开集、内部、闭集、闭包、稠密性、可分性。这些概念在拓扑学中有更广泛的定义。
-
-首先我们想在度量空间内定义开集，我们首先需要定义开球：
+这一小节主要是想说明一般度量空间内的如下几个定义：开集、内部、闭集、闭包、稠密性、可分性。这些概念在拓扑学中有更广泛的定义。首先我们想在度量空间内定义开集，我们首先需要定义开球：
 \begin{definition}[开球]
-    我们称$B_r(x)=S(x,r)=\{y \in X \ , \ d(x,y)<r\}$为以$x$为球心$r$为半径的开球。
+我们称$B_r(x)=S(x,r)=\{y \in X \ , \ d(x,y)<r\}$为以$x$为球心$r$为半径的开球。
 \end{definition}
 \begin{definition}[开集]
-    设$A \subset X$,如果$A$满足
-    \[\forall x \in A \ , \ \exists \, \varepsilon>0 \quad \text{s.t.} \quad B_{\varepsilon}(x) \subset A\]
-    则称$A$为$X$中的开集。
+设$A \subset X$,如果$A$满足$\forall x \in A \ , \ \exists \, \varepsilon>0 \quad \text{s.t.} \quad B_{\varepsilon}(x) \subset A$，则称$A$为$X$中的开集。
 \end{definition}
 进而，我们还能定义内点和内部。
 \begin{definition}[内点]
-    设$A \subset X$是开集，若
-    \[x \in X \ , \ \exists \, \varepsilon>0 \quad \text{s.t.} \quad B_{\varepsilon}(x) \subset A\]
-    则称$x$是$A$的内点。
+设$A \subset X$是开集，若$x \in X \ , \ \exists \, \varepsilon>0 \quad \text{s.t.} \quad B_{\varepsilon}(x) \subset A$，则称$x$是$A$的内点。
 \end{definition}
 \begin{definition}[内部]
-    $A$的全部内点构成的集合称为$A$的内部，记作\AA。
+$A$的全部内点构成的集合称为$A$的内部，记作$\mathring{A}$。
 \end{definition}
-容易看出$A$是开集$ \ \Leftrightarrow \ A=$\AA。
-
-下面我们来看看开集的基本性质。
-\begin{theorem}
-    设$(X,d)$是距离空间，则有:\\
-    1、$X$，$\varnothing$是开集；\\
-    2、任意多个开集的并是开集；\\
-    3、有限多个开集的交是开集。
-\end{theorem}
-
-前两个性质是显然的，下面我们来看看第三个性质的证明。
-
-假设$G_i \ (i=1,2,\cdots,k)$都是开集。
+容易看出$A$是开集$ \ \Leftrightarrow \ A=\mathring{A}$。下面我们来看看开集的基本性质。
+\begin{lemma}\label{theorem:2.2}
+设$(X,d)$是距离空间，则有：
+\begin{itemize}
+    \item 1. $X$，$\varnothing$是开集；
+    \item 2. 任意多个开集的并是开集；
+    \item 3. 有限多个开集的交是开集。
+\end{itemize}
+\end{lemma}
+\begin{proof}
+前两个性质是显然的，下面我们来看看第三个性质的证明。假设$G_i \ (i=1,2,\cdots,k)$都是开集，
 \[\bigcap_{i=1}^kG_i \neq \varnothing \ \Leftrightarrow \ x \in \bigcap_{i=1}^kG_i  \quad \text{且} \quad \exists \, \varepsilon_i >0 \ , \ B_{\varepsilon_i}(x) \subset G_i \quad (i=1,2,\cdots,k)\]
-则，我们可以取
-\[\varepsilon=\text{min}\{\varepsilon_1,\varepsilon_2,\cdots,\varepsilon_k\} \tag{2-1}\]
-使得
-\[B_{\varepsilon}(x) \subset B_{\varepsilon_i}(x) \subset G_i \qquad (i=1,2,\cdots,k)\]
-即
+则，我们可以取$\varepsilon=\text{min}\{\varepsilon_1,\varepsilon_2,\cdots,\varepsilon_k\}$使得$B_{\varepsilon}(x) \subset B_{\varepsilon_i}(x) \subset G_i, \ (i=1,2,\cdots,k)$，即
 \[B_{\varepsilon}(x) \subset \bigcap_{i=1}^kG_i\]
-证毕。
+\end{proof}
 
-为什么必须是有限个开集的交?从2-1式我们应该能看出来。
-如果是取无限个开集的交，2-1式中的min将无法取到，而应取inf，而取inf的后果将有可能使得$\varepsilon=0$，让后续证明失效。
+为什么必须是有限个开集的交?从上面取$\varepsilon$我们应该能看出来，如果是取无限个开集的交，$\varepsilon$中的min将无法取到，而应取inf，而取inf的后果将有可能使得$\varepsilon=0$，让后续证明失效。
 \begin{definition}[接触点]
-    设$A \subset X$是开集，若
-    \[x \in X \ , \ \forall \varepsilon>0 \quad \text{s.t.} \quad B_{\varepsilon}(x) \cap A \neq \varnothing\]
-    则称$x$是$A$的接触点。
+设$A \subset X$是开集，若$x \in X \ , \ \forall \varepsilon>0 \quad \text{s.t.} \quad B_{\varepsilon}(x) \cap A \neq \varnothing$，则称$x$是$A$的接触点。
 \end{definition}
 
 当$x \in A$时，$x$一定是$A$的接触点，$A$的接触点不一定属于$A$。
 
 \begin{definition}[闭包]
-    $A$的全部接触点构成的集合称为$A$的闭包，记作$\bar{A}$。
+$A$的全部接触点构成的集合称为$A$的闭包，记作$\bar{A}$。
 \end{definition}
 \begin{definition}[闭集]
-    定义1:若$A=\bar{A}$则称$A$为闭集。\\
-    定义2:若$A^c$为开集，则$A$为闭集。
+\begin{itemize}
+\item 定义1：若$A=\bar{A}$则称$A$为闭集；
+\item 定义2：若$A^c$为开集，则$A$为闭集。
+\end{itemize}
 \end{definition}
 
 下面我们来看看闭包的性质。
 \begin{theorem}
-    设$(X,d)$是距离空间，$A,B \subset X$，则有
-    \[1)\bar{\varnothing}=\varnothing \, ; \quad 2)A \subset \bar{A} \, ; \quad 3)\bar{\bar{A}}=\bar{A} \, ; \quad 4)\overline{A \cup B}=\bar{A} \cup \bar{B}\]
+设$(X,d)$是距离空间，$A,B \subset X$，则有$1. \ \bar{\varnothing}=\varnothing \, ; \quad 2. \ A \subset \bar{A} \, ; \quad 3. \ \bar{\bar{A}}=\bar{A} \, ; \quad 4. \ \overline{A \cup B}=\bar{A} \cup \bar{B}$。
 \end{theorem}
-
-前两点是显然的，我们来证明一下第三第四点。
-
-Proof (2):设
-\[x \in \bar{\bar{A}} \ , \ \forall \varepsilon>0 \ , \ B_{\varepsilon}(x) \cap \bar{A} \neq \varnothing\]
+\begin{proof}前两点是显然的，我们来证明一下第三第四点。
+\begin{itemize}
+\item 3. 假设$x \in \bar{\bar{A}}$，即$\forall \varepsilon>0 \ , \ B_{\varepsilon}(x) \cap \bar{A} \neq \varnothing$
 \[\Rightarrow \ \exists \, y \in B_{\varepsilon}(x) \cap \bar{A} \ \Rightarrow \ B_{\varepsilon}(y) \cap A \neq \varnothing \ \Rightarrow \ B_{\varepsilon}(y) \subset B_{2\varepsilon}(x) \ \Rightarrow \ B_{2\varepsilon}(x) \cap A \neq \varnothing \ \Rightarrow \ x \in \bar{A}\]
-
-Proof (3):设$x \in \overline{A \cup B}$
-\[\forall \varepsilon>0 \ , \ B_{\varepsilon}(x) \cap (A \cup B) \neq \varnothing \ \Rightarrow \ B_{\varepsilon}(x) \cap A \neq \varnothing \ or \ B_{\varepsilon}(x) \cap B \neq \varnothing\]
-假设$x \notin \bar{A} \cup \bar{B}$则
+\item 4. 设$x \in \overline{A \cup B}$，即$\forall \varepsilon>0 \ , \ B_{\varepsilon}(x) \cap (A \cup B) \neq \varnothing \ \Rightarrow \ B_{\varepsilon}(x) \cap A \neq \varnothing \ \text{or} \ B_{\varepsilon}(x) \cap B \neq \varnothing$，若$x \notin \bar{A} \cup \bar{B}$则
 \[\exists \, \varepsilon_1,\varepsilon_2>0 \quad \text{s.t.} \quad B_{\varepsilon_1}(x) \cap A=\varnothing \ , \ B_{\varepsilon_2}(x) \cap B=\varnothing\]
-\[\varepsilon:=\text{min}\{\varepsilon_1,\varepsilon_2\} \quad \text{s.t.} \quad B_{\varepsilon_1}(x) \cap A=\varnothing \ , \ B_{\varepsilon_2}(x) \cap B=\varnothing\]
-矛盾，故$x \in \bar{A} \cup \bar{B}$。
+进而我们可以取
+\[\varepsilon=\text{min}\{\varepsilon_1,\varepsilon_2\} \quad \text{s.t.} \quad B_{\varepsilon}(x) \cap A=\varnothing \ , \ B_{\varepsilon}(x) \cap B=\varnothing\]
+这与条件矛盾，故$x \in \bar{A} \cup \bar{B}$。
 
-反之，设$x \in \bar{A} \cup \bar{B}$，不妨设$x \in A$，
-\[\forall \varepsilon>0 \ , \ B_{\varepsilon}(x) \cap A \neq \varnothing \ \Rightarrow \ \forall \varepsilon>0 \ , \ B_{\varepsilon}(x) \cap (A \cup B) \neq \varnothing \ \Rightarrow  \ x \in \overline{A \cup B}\]
-证毕。
+反之，设$x \in \bar{A} \cup \bar{B}$，不妨设$x \in A$，则$\forall \varepsilon>0 \ , \ B_{\varepsilon}(x) \cap A \neq \varnothing \ \Rightarrow \ \forall \varepsilon>0 \ , \ B_{\varepsilon}(x) \cap (A \cup B) \neq \varnothing \ \Rightarrow  \ x \in \overline{A \cup B}$。
+\end{itemize}
+\end{proof}
 
 下面我们来看闭集的一些性质。
 \begin{theorem}
-    设$(X,d)$是距离空间，则有:\\
-    1、$X$，$\varnothing$是闭集；\\
-    2、任意多个闭集的交是闭集；\\
-    3、有限多个闭集的并是闭集。
+设$(X,d)$是距离空间，则有:
+\begin{itemize}
+\item 1. $X$，$\varnothing$是闭集；
+\item 2. 任意多个闭集的交是闭集；
+\item 3. 有限多个闭集的并是闭集。
+\end{itemize}
 \end{theorem}
 
-这些性质的证明可以通过$De \ Morgan's \ Law$证明类似例2。
-\begin{theorem}[$De \ Morgan's \ Law$]
+这些性质的证明可以通过 De Morgan's Law 证明类似[定理\ref{theorem:2.2}]。
+\begin{theorem}[De Morgan's Law]
 \[\left(\bigcup\limits_{\lambda \in \Lambda}A_{\lambda}\right)^c=\bigcap\limits_{\lambda \in \Lambda}A_{\lambda}^c \qquad \left(\bigcap\limits_{\lambda \in \Lambda}A_{\lambda}\right)^c=\bigcup\limits_{\lambda \in \Lambda}A_{\lambda}^c\]
 \end{theorem}
 
@@ -277,30 +245,33 @@ Proof (3):设$x \in \overline{A \cup B}$
 \end{theorem}
 
 下面我们来看稠密性和可分性。
-
-\paragraph*{例1} \quad $\mathbb{R}$中，$\mathbb{Q}$是稠密的($\mathbb{R}$上任意小的区间都有$x \in \mathbb{Q}$);$\mathbb{Q}$是可数的。
 \begin{definition}[稠密性]
     若$A \subset X$且$\bar{A}=X$则称$A$在$X$中是稠密的(原本应该是$X \subseteq \bar{A}$,当$X$取全空间的时候只能是$\bar{A}=X$)。
 \end{definition}
 \begin{definition}[可分性]
     若$X$有可数的稠密子集则称$X$是可分的。
 \end{definition}
-\paragraph*{例2} \quad $C[a,b]$是可分的
-
-\textbf{Proof:}利用$Weierstrass$定理
-\begin{theorem}[$Weierstrass$定理]
+\begin{example} $\mathbb{R}$中，$\mathbb{Q}$是稠密的($\mathbb{R}$上任意小的区间都有$x \in \mathbb{Q}$)；$\mathbb{Q}$是可数的。
+\end{example}
+\begin{example}
+$C[a,b]$是可分的
+\end{example}
+\begin{proof}利用 Weierstrass 定理
+\begin{theorem}[Weierstrass 定理]
     设$f(x)$是$[a,b]$上的连续函数，那么存在一列多项式$\{P_n(x)\}$，使得
-    \[P_n(x) \rightrightarrows f(x) \quad (n \rightarrow \infty)\]
+    \[P_n(x) \rightrightarrows f(x), \ (n \rightarrow \infty)\]
 \end{theorem}
+
 $\forall P_n(x)$，存在有理多项式列$\{q_{n,i}(x)\}_{i=1}^{\infty}$使得$q_{n,i}(x) \rightrightarrows P_n(x) \ (i \rightarrow \infty)$，则
 \[\forall k \in \mathbb{N}_+ \ , \ \exists \, n_k,i_k \ , \ q_{n_k,i_k}(x) \rightrightarrows f(x)\]
-再多证明一步即可:
-\[d(q_{n_k,i_k}(t),f(t)) \rightarrow 0 \ (n \rightarrow \infty) \ \Leftrightarrow \ q_{n_k,i_k}(x) \rightrightarrows f(x) \tag{*}\]
-Proof (*):
+
+只需证明
+\[d(q_{n_k,i_k}(t),f(t)) \rightarrow 0 \ (n \rightarrow \infty) \ \Leftrightarrow \ q_{n_k,i_k}(x) \rightrightarrows f(x)\]
+
+利用三角不等式容易得到
 \[\forall k \in \mathbb{Z}_+ \ , \ \exists \, n_k>0 \quad \text{s.t.} \quad n \geq n_k \ , \ |P_n(t)-f(t)|<\frac{1}{k} \ , \ \forall t \in [a,b]\]
 \[\exists \, i_k>0 \ , \quad \text{s.t.} \quad i \geq i_k \ , \ |q_{n_k,i_k}(t)-P_{n_k}(t)|<\frac{1}{k} \ , \ \forall t \in [a,b]\]
 \[|q_{n_k,i_k}(t)-f(t)| \leq |q_{n_k,i_k}(t)-P_{n_k}(t)|+|P_n(t)-f(t)|<\frac{1}{k}+\frac{1}{k}=\frac{2}{k} \ , \ \forall t \in [a,b]\]
-上述是要证的两个条件的共同$\varepsilon-\delta$语言的描述，故(*)证毕。
 
 对上述证明做一下形象化证明，上述的证明实质上是相当于取一个对角线子列$\{a_{i,j}\}$:
 \[
@@ -309,98 +280,86 @@ Proof (*):
     a_{2,1} & a_{2,2} & a_{2,3} & \cdots & \rightarrow & a_2 \\
     \vdots & \vdots & \vdots & \vdots & \rightarrow & \vdots \\
       &   &   &   &   & \downarrow \\
-    \vdots & \vdots & \vdots & \vdots & \rightarrow & a_{\infty}
+    a_{\infty,1} & a_{\infty,2} & a_{\infty,3} & \cdots & \rightarrow & a_{\infty}
 \end{array}    
 \]
 
-\paragraph*{例2} \quad $l^{\infty}=\{x|\left\{\xi_i\right\}_{i=1}^{\infty} \ (\xi_i \in \mathbb{R}) \ , \ d(x,0)<\infty\}$，$x$为实数列且$l^{\infty} \in \{\text{所有实数列}\}$，定义$l^{\infty}$上的距离：
-\[d(x,y)=\mathop {\text{sup}}\limits_{i=1,2,\cdots}|x_i-y_i| \qquad let \ x=\left\{x_i\right\}_{i=1}^{\infty} \ , \ y=\left\{y_i\right\}_{i=1}^{\infty}\]
+\end{proof}
+\begin{example}
+$l^{\infty}=\{x|\left\{\xi_i\right\}_{i=1}^{\infty} \ (\xi_i \in \mathbb{R}) \ , \ d(x,0)<\infty\}$，$x$为实数列且$l^{\infty} \in \{\text{所有实数列}\}$，定义$l^{\infty}$上的距离：
+\[d(x,y)=\mathop {\text{sup}}\limits_{i=1,2,\cdots}|x_i-y_i|, \ x=\left\{x_i\right\}_{i=1}^{\infty} \ , \ y=\left\{y_i\right\}_{i=1}^{\infty}\]
 是不可分的。
-
-其中有
-\[d(x,0)<\infty \Leftrightarrow \mathop {\text{sup}}\limits_{i=1,2,\cdots}|\xi_i|<\infty\]
-
-\textbf{Proof:}易知有：
-\[D=\{\left\{\xi_i\right\}_{i=1}^{\infty} \ , \ \xi_i=0 \ or \ 1\} \quad \forall x,y \in D \ , \ d(x,y)=0 \ or \ 1\]
-显然，如果我们把$D$中的每一位放到$0.$后面，可以看出就是一个$[0,1]$区间上的二进制表示，故$D$的基数与$\mathbb{R}$相同。
-\[\text{card}(D)=\text{card}([0,1])=\text{card}(\mathbb{R})\]
-
-我们利用反证法，假设$l^{\infty}$是可分的，则其可以表示为一个可数稠密子集的闭包
-\[l^{\infty}=\bar{A}\]
-由于$A$稠密且可数，我们可以知道
-\[l^{\infty} \in \bigcup_{a \in A}B_{\frac{1}{3}}(a) \tag{*}\]
-(Proof(*): 
-\[\forall x \in l^{\infty} \ , \ l^{\infty}=\bar{A} \ \Rightarrow \ x\text{是}A\text{的接触点} \ \Rightarrow \ B_{\frac{1}{4}}(x)\cap A \neq \varnothing\]
-\[let \ y \in B_{\frac{1}{4}}(x)\cap A \ \Rightarrow \ x \in B_{\frac{1}{3}}(y) \ \Rightarrow \ x \in \bigcup_{a \in A}B_{\frac{1}{3}}(a)\]
-\textbf{Q.E.D.})
+\end{example}
+\begin{proof}
+取集合$D=\{\left\{\xi_i\right\}_{i=1}^{\infty} \ , \ \xi_i=0,1\}$显然$\forall x,y \in D \ , \ d(x,y)=0,1$。如果我们把$D$中的每一位放到$0.$后面，可以看出就是一个$[0,1]$区间上的二进制表示，故$D$的基数与$\mathbb{R}$相同$(\text{card}(D)=\text{card}([0,1])=\text{card}(\mathbb{R}))$。我们利用反证法，假设$l^{\infty}$是可分的，则其可以表示为一个可数稠密子集的闭包$l^{\infty}=\bar{A}$，由$A$稠密且可数：
+\[\forall x \in l^{\infty} \ , \ l^{\infty}=\bar{A} \ \Rightarrow \ B_{\frac{1}{4}}(x)\cap A \neq \varnothing \ \Rightarrow \ y \in B_{\frac{1}{4}}(x)\cap A \ \Rightarrow \ x \in B_{\frac{1}{3}}(y) \ \Rightarrow \ x \in \bigcup_{a \in A}B_{\frac{1}{3}}(a) \ \text{即} \ l^{\infty} \subset \bigcup_{a \in A}B_{\frac{1}{3}}(a)\]
+$A$可数，$D$不可数，且有$D \subset l^{\infty} \subset \bigcup_{a \in A}B_{\frac{1}{3}}(a)$，则
+\[\exists \, x \neq y \ , \ x,y \in D \quad \text{s.t.} \quad x,y \in \bigcup_{a \in A}B_{\frac{1}{3}}(a) \ \Rightarrow \ d(x,y)=1 \leq d(x,a)+d(y,a) \leq \frac{2}{3}\]
+矛盾，故$l^{\infty}$不可分。
 \begin{figure}[htbp]
     \center
     \includegraphics[scale=0.5]{./fig/2.1.3_1.png}
 \end{figure}
-
-$A$可数，$D$不可数，且有$D \in l^{\infty} \in \bigcup_{a \in A}B_{\frac{1}{3}}(a)$:
-\[\Rightarrow \ \exists \, x \neq y \ , \ x,y \in D \ , \quad \text{s.t.} \quad x,y \in \bigcup_{a \in A}B_{\frac{1}{3}}(a) \ (a \in A)\]
-\[\Rightarrow \ d(x,y)=1 \leq d(x,a)+d(y,a) \leq \frac{2}{3} \qquad \text{矛盾}\]
-故$l^{\infty}$不可分。
+\end{proof}
 
 \subsection{距离空间的完备性}\label{complete}
 \begin{definition}[柯西列]
     设$(X,d)$是距离空间,若$X$中的点列$\{x_n\}_{n=1}^{\infty}$满足：
-    \[\{x_n\}_{n=1}^{\infty} \in X \ , \ \forall \varepsilon>0 \ , \ \exists \, N>0 \ , \quad \text{s.t.} \quad n,m \geq N \ , \ d(x_n,x_m)<\varepsilon\]
+    \[\{x_n\}_{n=1}^{\infty} \in X \ , \ \forall \varepsilon>0 \ , \ \exists \, N>0 \quad \text{s.t.} \quad n,m \geq N \ , \ d(x_n,x_m)<\varepsilon\]
     则称$\{x_n\}_{n=1}^{\infty}$为柯西列。
 \end{definition}
-
-\paragraph*{例1} \quad 收敛点列一定是柯西列，柯西列是否一定收敛？
-
-$\mathbb{R}^n$中是，一般距离空间不成立。
+\begin{example}
+收敛点列一定是柯西列，柯西列是否一定收敛？$\mathbb{R}^n$中是，一般距离空间不成立。
+\end{example}
 \begin{definition}[完备距离空间]
     设$(X,d)$是距离空间。若该距离空间中所有柯西列都收敛，则称距离空间$(X,d)$是完备的。
 \end{definition}
 
-\paragraph*{例2} \quad $S=(C[0,1],d_1) \quad d_1(x,y)=\int_0^1|x(t)-y(t)|\dd t$这个距离空间是不完备的。
-
+\begin{example}
+$S=(C[0,1],d_1), \ d_1(x,y)=\int_0^1|x(t)-y(t)|\dd t$这个距离空间是不完备的。
+\end{example}
+\begin{proof}
 找反例，令
 \[x_n(t)=\left \{
-\begin{array}{ll}
-    0 & ,t \in [0,\frac{1}{2}-\frac{1}{n}) \\
-    \frac{n}{2}x-\frac{n}{4}+\frac{1}{2} & ,t \in [\frac{1}{2}-\frac{1}{n},\frac{1}{2}+\frac{1}{n}] \\
-    1 & ,t \in (\frac{1}{2}+\frac{1}{n},1]
+\begin{array}{cl}
+0 & , \ t \in [0,\frac{1}{2}-\frac{1}{n}) \\
+\frac{n}{2}x-\frac{n}{4}+\frac{1}{2} & , \ t \in [\frac{1}{2}-\frac{1}{n},\frac{1}{2}+\frac{1}{n}] \\
+1 & , \ t \in (\frac{1}{2}+\frac{1}{n},1]
 \end{array}
 \right .\]
 \begin{figure}[htbp]
     \center
     \includegraphics[scale=0.4]{./fig/2.1.4_1.png}
-    \caption{$x_n(t)$的图像}
 \end{figure}
-\[m>n \ , \ d_1(x_n,x_m)=\int_0^1|x_n(t)-x_m(t)|\dd t \leq \int_{\frac{1}{2}-\frac{1}{n}}^{\frac{1}{2}+\frac{1}{n}}|x_n(t)-x_m(t)|\dd t \leq \frac{2}{n} \cdot 1=\frac{2}{n}\]
-\[\forall \varepsilon>0 \ , \ let \ N>\frac{2}{\varepsilon} \ , \ \text{s.t.} m>n \geq N \ d_1(x_m,x_n) \leq \frac{2}{n} < \varepsilon\]
-$\{x_n(t)\}$是柯西列。且可以看出$x_n(t)$是逐点收敛(先固定t)于下列函数$x_{\infty}(t)$。
-\[x_n(t) \rightarrow x_{\infty}(t)=\left \{
+\[\forall \, m>n \ , \ d_1(x_n,x_m)=\int_0^1|x_n(t)-x_m(t)|\dd t \leq \int_{\frac{1}{2}-\frac{1}{n}}^{\frac{1}{2}+\frac{1}{n}}|x_n(t)-x_m(t)|\dd t \leq \frac{2}{n} \cdot 1=\frac{2}{n}\]
+\[\Rightarrow \quad \forall \varepsilon>0 \ , \exists \, N>\frac{2}{\varepsilon} \quad \text{s.t.} \quad m>n \geq N \ , \ d_1(x_m,x_n) \leq \frac{2}{n} < \varepsilon\]
+因此$\{x_n(t)\}$是柯西列。且可以看出$x_n(t)$是逐点收敛(先固定t)于下列函数$x_{\infty}(t)$。
+\[x_n(t) \rightarrow x_{\infty}(t)=\left\{
 \begin{array}{ll}
     0 & ,t \in [0,\frac{1}{2}) \\
     \frac{1}{2} & ,t=\frac{1}{2} \\
     1 & ,t \in (\frac{1}{2},1]
-\end{array}
-\right . \qquad (n \rightarrow \infty)\]
+\end{array}\right.\]
 
 采用反证法，假设
 \[y \in S \quad \text{s.t.} \quad d_1(x_n,y) \rightarrow 0 \ (n \rightarrow \infty) \ \Leftrightarrow \ \int_0^1|x_n(t)-y(t)|\dd t \rightarrow 0 \ (n \rightarrow \infty)\]
+
 则有
 \[d_1(x_{\infty},y) \leq d_1(x_{\infty},x_n)+d_1(x_n,y) \rightarrow 0 \ \Rightarrow \ x_{\infty}(t)=y(t)\]
-由$y \in S \ \Rightarrow \ y \in C[0,1]$可得矛盾。
 
-故上述函数列$\{x_n(t)\}$并不在距离空间$(S,d_1)$中收敛。
-
-\paragraph*{例3} \quad $L^2[0,1]$完备
+由$y \in S \ \Rightarrow \ y \in C[0,1]$可得矛盾。故上述函数列$\{x_n(t)\}$并不在距离空间$(S,d_1)$中收敛。
+\end{proof}
+\begin{example}$L^2[0,1]$完备
 \[L^2[0,1]=\{f\text{在$[0,1]$上可测} \ , \ \int_0^1|f|^2<+\infty\} \quad d(x,y)=\sqrt{\int_0^1(x(t)-y(t))^2\dd t}\]
-\textbf{Proof:}假设$\{x_n(t)\} \in L^2[0,1]$是柯西列，要证其在距离空间收敛$L^2[0,1]$只需证其有收敛子列。
-\[\forall k \in \mathbb{Z}_+ \ , \ \exists \, n_k>0 \ , \quad \text{s.t.} \quad n,m>n_k \ , \ d(x_n,x_m)<\frac{1}{2^k} \quad (\text{取}n_{k+1}>n_{k})\]
-考虑子列$\{x_{n_k}\}_{k=1}^{\infty}$,
+\end{example}
+\begin{proof}
+假设$\{x_n(t)\} \in L^2[0,1]$是柯西列，要证其在距离空间收敛$L^2[0,1]$只需证其有收敛子列，取子列$\{x_{n_k}(t)\}$：
+\[\forall k \in \mathbb{Z}_+ \ , \ \exists \, n_k>0 \quad \text{s.t.} \quad n,m>n_k \ , \ d(x_n,x_m)<\frac{1}{2^k}, \ (\text{取 }n_{k+1}>n_{k}, \ k\in\mathbb{Z}_+)\]
 \begin{equation*}
-    \begin{aligned}
-        \int_0^1|x_{n_k}|\dd t & =\int_0^1|x_{n_1}+\sum_{i=2}^k(x_{n_i}-x_{n_{i-1}})|\dd t \leq \int_0^1|x_{n_1}|\dd t+\sum_{i=2}^k\int_0^1|x_{n_i}-x_{n_{i-1}}|\dd t \\
-        & \leq \int_0^1|x_{n_1}|\dd t+\sum_{i=2}^k\left(\int_0^1|x_{n_i}-x_{n_{i-1}}|^2\dd t\right)^{\frac{1}{2}} \leq \int_0^1|x_{n_1}|\dd t+\sum_{i=2}^k\frac{1}{2^i}<+\infty
-    \end{aligned}
+\begin{aligned}
+\int_0^1|x_{n_k}|\dd t & =\int_0^1|x_{n_1}+\sum_{i=2}^k(x_{n_i}-x_{n_{i-1}})|\dd t \leq \int_0^1|x_{n_1}|\dd t+\sum_{i=2}^k\int_0^1|x_{n_i}-x_{n_{i-1}}|\dd t \\
+& \leq \int_0^1|x_{n_1}|\dd t+\sum_{i=2}^k\left(\int_0^1|x_{n_i}-x_{n_{i-1}}|^2\dd t\right)^{\frac{1}{2}} \leq \int_0^1|x_{n_1}|\dd t+\sum_{i=2}^k\frac{1}{2^i}<+\infty
+\end{aligned}
 \end{equation*}
 由$Fatou$引理：
 \[\int_0^1|x_{n_{\infty}}|\dd t=\int_0^1\varliminf_{k \to \infty}|x_{n_1}+\sum_{i=2}^k(x_{n_i}-x_{n_{i-1}})|\dd t \leq \varliminf_{k \to \infty}\int_0^1|x_{n_1}+\sum_{i=2}^k(x_{n_i}-x_{n_{i-1}})|\dd t<+\infty\]
@@ -411,7 +370,7 @@ $\{x_n(t)\}$是柯西列。且可以看出$x_n(t)$是逐点收敛(先固定t)于
 \[\int_0^1|x_{\infty}(t)|^2\dd t \leq \varliminf_{k \to \infty}\int_0^1|x_{n_k}(t)|^2\dd t<+\infty\]
 由控制收敛定理得：
 \[\lim_{k \to \infty}\int_0^1|x_{n_k}(t)-x_{\infty}(t)|^2\dd t=0\]
-\textbf{Q.E.D.}
+
 \begin{theorem}[$Fatou$引理]
     设$(S,\Sigma,\mu)$是测度空间，$\{f_n(x)\}$是测度空间上的实值非负可测函数列，则
     \[\int_E\varliminf_{n \to \infty}f_n(x)\dd x \leq \varliminf_{n \to \infty}\int_Ef_n(x)\dd x\]
@@ -423,6 +382,7 @@ $\{x_n(t)\}$是柯西列。且可以看出$x_n(t)$是逐点收敛(先固定t)于
     则
     \[\int f_nd\mu \to \int fd\mu \ (n \to \infty)\]
 \end{theorem}
+\end{proof}
 
 \paragraph*{例4} \quad $L^1[0,1] \quad d_1(x,y)=\int_0^1|x(t)-y(t)|\dd t \ \{f\text{可测},\int|f|<+\infty\}$完备
 \[S=\left(C^1[0,1],d_1\right) \xrightarrow{\text{完备化}} L^1[0,1]\]

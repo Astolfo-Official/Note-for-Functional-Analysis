@@ -648,3 +648,17 @@ $Hahn$-$Banach$定理有许多有用的推论，接下来我们会介绍一部�
     3、$L^1,L^{\infty},l^1,l^{\infty}$不是自反空间;\\
     4、$C[a,b]$不是自反空间。
 \end{proposition}
+
+在引入共轭空间后我们可以新定义一种收敛方式，称为\textbf{弱收敛}。
+\begin{definition}[弱收敛]
+设$X$为赋范线性空间，$\{x_n\} \subset X$，若$\forall f \in X^* \ , \ \exists \, x_0 \in X, \ , \ f(x_n) \to f(x_0)$则称$\{x_n\}$弱收敛于$x_0$，记为$x_n \xrightarrow{w} x_0$，称$x_0$为$\{x_n\}$的弱极限。
+\end{definition}
+弱收敛有以下性质：
+\begin{lemma}
+1、弱极限存在必唯一；\\
+2、强收敛$\Rightarrow$弱收敛；\\
+3、有限维赋范线性空间是自反空间。
+\end{lemma}
+\begin{proof}
+1、设$x_n \xrightarrow{w} x_0, \ x_1$，则$\forall f \in X^* \ , \ f(x_n)\to f(x_0), \ f(x_1)$，由Hahn-Banach定理可知$x_0=x_1$；\\
+\end{proof}

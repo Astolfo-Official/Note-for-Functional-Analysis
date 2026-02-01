@@ -9,10 +9,12 @@
 \[x(t)=x_0+\int_{t_0}^tf(x(s),s)\dd s \tag{1-2}\]
 
 为证明上述积分方程的存在唯一性，我们可以构造如下函数列$\{x_n(t)\}$(又称$Picard$序列)：
-\[x_1(t)=x_0+\int_{t_0}^tf(x_0(s),s)\dd s\]
-\[x_2(t)=x_0+\int_{t_0}^tf(x_1(s),s)\dd s\]
-\[\vdots\]
-\[x_{n+1}(t)=x_0+\int_{t_0}^tf(x_n(s),s)\dd s\]
+\[\begin{aligned}
+x_1(t)&=x_0+\int_{t_0}^tf(x_0(s),s)\dd s\\
+x_2(t)&=x_0+\int_{t_0}^tf(x_1(s),s)\dd s\\
+&\vdots \\
+x_{n+1}(t)&=x_0+\int_{t_0}^tf(x_n(s),s)\dd s
+\end{aligned}\]
 若证得函数列$\{x_n(t)\}$收敛，则其一定会收敛于$x(t)$，即证明初值问题(1)。证明如下：
 \begin{equation*}
     \begin{aligned}
