@@ -4,11 +4,11 @@
 \[\forall x \in \bigcup_{\lambda \in \Lambda}A_{\lambda} \ \Rightarrow \ x \in A_{\lambda_i} \ \Rightarrow \ B_{\varepsilon}(x) \subset A_{\lambda_i} \subset \bigcup_{\lambda \in \Lambda}A_{\lambda}\]
 \textbf{Q.E.D.}
 
-\paragraph*{2.}证明:在$(X,d)$中，$\bar{A}=A \ \Leftrightarrow \ A^c$是开集\\
-Proof ($\bar{A}=A \ \Rightarrow \ A^c$是开集):
+\paragraph*{2.}证明:在$(X,d)$中，$\overline{A}=A \ \Leftrightarrow \ A^c$是开集\\
+Proof ($\overline{A}=A \ \Rightarrow \ A^c$是开集):
 \[\forall x \in A^c \ \Rightarrow \ \exists \, B_{\varepsilon}(x) \cap A=\varnothing \ \Leftrightarrow \ B_{\varepsilon}(x) \subset A^c \ \Rightarrow \ A^c\text{是开集}\]
-Proof ($A^c$是开集$ \ \Rightarrow \ \bar{A}=A$):
-\[\forall x \in A^c \ \Rightarrow \ \exists \, B_{\varepsilon}(x) \subset A^c \ \Leftrightarrow \ B_{\varepsilon}(x) \cap A=\varnothing \ \Rightarrow \ A\text{的所有接触点都在$A$中} \ \Rightarrow \ \bar{A}=A\]
+Proof ($A^c$是开集$ \ \Rightarrow \ \overline{A}=A$):
+\[\forall x \in A^c \ \Rightarrow \ \exists \, B_{\varepsilon}(x) \subset A^c \ \Leftrightarrow \ B_{\varepsilon}(x) \cap A=\varnothing \ \Rightarrow \ A\text{的所有接触点都在$A$中} \ \Rightarrow \ \overline{A}=A\]
 \textbf{Q.E.D.}
 
 \paragraph*{3.}
@@ -66,8 +66,8 @@ Proof ($A^c$是开集$ \ \Rightarrow \ \bar{A}=A$):
 \textbf{Proof:}原命题等价于设$(X,d)$中任一套闭球套$(r_n \to 0)$都有非空交，那么$(X,d)$完备。\\
 设$\{x_n\}$是$X$中的柯西列，由它构造闭球套:
 \[\forall k \in \mathbb{Z}_+ \ , \ \exists \, n_k>0 \quad \text{s.t.} \quad m,n \geq n_k \ , \ d(x_m,x_n)<\frac{1}{2^k} \ \Rightarrow \ x_n \in B_{\frac{1}{2^{k+1}}}(x_{n_k})\]
-\[\Rightarrow \ \exists \, \{x_{n_k}\} \ (k=1,2,\cdots) \quad \text{s.t.} \quad \bar{B}_{\frac{1}{2^{k+1}}}(x_{n_{k+1}}) \subset \bar{B}_{\frac{1}{2^k}}(x_{n_k})\]
-\[\text{由题设} \exists \,! \, x \in \bigcap_{k=1}^{\infty}\bar{B}_{\frac{1}{2^k}}(x_{n_k}) \ , \ d(x_{n_k},x) \to 0 \ (n \to \infty) \ \Rightarrow \ d(x_n,x) \to 0 \ (n \to \infty)\]
+\[\Rightarrow \ \exists \, \{x_{n_k}\} \ (k=1,2,\cdots) \quad \text{s.t.} \quad \overline{B}_{\frac{1}{2^{k+1}}}(x_{n_{k+1}}) \subset \overline{B}_{\frac{1}{2^k}}(x_{n_k})\]
+\[\text{由题设} \exists \,! \, x \in \bigcap_{k=1}^{\infty}\overline{B}_{\frac{1}{2^k}}(x_{n_k}) \ , \ d(x_{n_k},x) \to 0 \ (n \to \infty) \ \Rightarrow \ d(x_n,x) \to 0 \ (n \to \infty)\]
 (柯西列+收敛子列$\ \Rightarrow \ $柯西列收敛)\\
 \textbf{Q.E.D.}
 
@@ -77,7 +77,7 @@ Proof ($A^c$是开集$ \ \Rightarrow \ \bar{A}=A$):
 证明:$\exists \, M>0 \ , \ \exists \, U\text{(开集)} \in X \quad \text{s.t.} \quad \forall x \in U \ , \ F \in \tilde{f} \ , \ |F(x)| \leq M$\\
 Proof($Baire$定理应用):设$E_n=\{x|x \in X \ , \ |F(x)| \leq n \ , \ F \in \tilde{f}\}$
 \[\text{由题设} \forall x \in X \ , \ x \in E_{[M_x]+1} \ \Rightarrow \ X \subset \bigcup_{n=1}^{\infty}E_n \ \left(or \ X=\bigcup_{n=1}^{\infty}E_n \right)\]
-$(X,d)$完备,由$Baire$定理，至少存在一个$M$使得$E_M$不是疏集，即存在一个开集$U \subset \bar{E}_M$
+$(X,d)$完备,由$Baire$定理，至少存在一个$M$使得$E_M$不是疏集，即存在一个开集$U \subset \overline{E}_M$
 \[\forall x \in U \ , \ \exists \, \{x_n\} \subset E_M \ , \ x_n \to x \ (n \to \infty)\]
 由连续性可知
 \[|F(x)|=\lim_{n \to \infty}|F(x_n)| \leq M \ , \ \forall F \in \tilde{f}\]
@@ -112,13 +112,13 @@ Claim (2):
 \[T(x)=x \ \Rightarrow \ \frac{1}{1+x}=0 \ \Rightarrow \ x\text{无解，无不动点}\]
 \textbf{Q.E.D.}
 
-\paragraph*{12.}$T:X \to X \ , \ X$完备，$T$在闭球$\bar{B}_r(x_0) \ x_0 \in X$上为压缩映射，即满足
+\paragraph*{12.}$T:X \to X \ , \ X$完备，$T$在闭球$\overline{B}_r(x_0) \ x_0 \in X$上为压缩映射，即满足
 \[d(Tx,Ty) \leq \theta d(x,y) \ (\theta \in (0,1))\text{，且}d(x_0,Tx_0)<(1-\theta)r\]
-证明:$T$在$\bar{B}_r(x_0)$上有唯一不动点。\\
-\textbf{Proof:}只需证$T(\bar{B}_r(x_0)) \subset \bar{B}_r(x_0)$ (后续由完备闭子空间也是完备的可证)
-\[\forall x \in \bar{B}_r(x_0) \ , \ d(Tx,x_0) \leq d(Tx,Tx_0)+d(Tx_0,x_0) \leq \theta d(x,x_0)+(1-\theta)r \leq \theta r+(1-\theta)r=r\]
-\[\Rightarrow \ Tx \in \bar{B}_r(x_0) \ \text{由}x\text{的任意性} \ T(\bar{B}_r(x_0)) \subset \bar{B}_r(x_0)\]
-把$T$限制在$\bar{B}_r(x_0)$上:$T:\bar{B}_r(x_0) \to \bar{B}_r(x_0) \ , \ T$为压缩映射，$\bar{B}_r(x_0)$是完备空间$X$上的闭子空间，所以$\bar{B}_r(x_0)$完备。由压缩映射定理即证。\\
+证明:$T$在$\overline{B}_r(x_0)$上有唯一不动点。\\
+\textbf{Proof:}只需证$T(\overline{B}_r(x_0)) \subset \overline{B}_r(x_0)$ (后续由完备闭子空间也是完备的可证)
+\[\forall x \in \overline{B}_r(x_0) \ , \ d(Tx,x_0) \leq d(Tx,Tx_0)+d(Tx_0,x_0) \leq \theta d(x,x_0)+(1-\theta)r \leq \theta r+(1-\theta)r=r\]
+\[\Rightarrow \ Tx \in \overline{B}_r(x_0) \ \text{由}x\text{的任意性} \ T(\overline{B}_r(x_0)) \subset \overline{B}_r(x_0)\]
+把$T$限制在$\overline{B}_r(x_0)$上:$T:\overline{B}_r(x_0) \to \overline{B}_r(x_0) \ , \ T$为压缩映射，$\overline{B}_r(x_0)$是完备空间$X$上的闭子空间，所以$\overline{B}_r(x_0)$完备。由压缩映射定理即证。\\
 \textbf{Q.E.D.}
 
 \paragraph*{13.}$(t_0,s_0) \in \mathbb{R}^2 \ , \ f(t,s)$在$(t_0,s_0)$邻域$N$中连续，$s_0=f(t_0,s_0) \ , \ f_s(t,s)$在$N$中存在且在$(t_0,s_0)$连续，且$f_s(t_0,s_0)=0$。\\
@@ -161,9 +161,9 @@ $T$是压缩映射
 
 \paragraph*{15.}证明:$ \ C^1[0,1]$中的有界集$A$是$C[0,1]$中的相对紧集。
 \begin{definition}[相对紧集]
-    若集合$M$的闭包$\bar{M}$在空间中是紧集，则称$M$是相对紧集。
+    若集合$M$的闭包$\overline{M}$在空间中是紧集，则称$M$是相对紧集。
 \end{definition}
-$C[0,1]$是距离空间，故$C[0,1]$中的紧集是列紧的闭集，$\bar{A}$是闭集，故只需证明$\bar{A}$是列紧的。显然接下来我们是要利用$Arzela$定理分三步证明:
+$C[0,1]$是距离空间，故$C[0,1]$中的紧集是列紧的闭集，$\overline{A}$是闭集，故只需证明$\overline{A}$是列紧的。显然接下来我们是要利用$Arzela$定理分三步证明:
 
 1、$A$在距离空间$C[0,1]$中有界(即一致有界); \ 2、$A$等度连续 ;\\
 由1、2以及$Arzela$定理可以证明$A$是列紧的；
@@ -178,11 +178,11 @@ $C[0,1]$是距离空间，故$C[0,1]$中的紧集是列紧的闭集，$\bar{A}$�
 \[\text{取} \ |t_1-t_2|<\frac{\varepsilon}{K} \ \Rightarrow \ |x(t_1)-x(t_2)|<\varepsilon\]
 由1、2以及$Arzela$定理可得，$A$是列紧的；
 \textbf{3.}
-\[\text{任取}\{x_n(t)\}_{n=1}^{\infty} \subset \bar{A} \ \Rightarrow \ \forall x_n(t) \in \bar{A} \ , \ \exists \, y_n(t) \in A \quad \text{s.t.} \quad d_C(x_n(t),y_n(t))<\frac{1}{n}\]
+\[\text{任取}\{x_n(t)\}_{n=1}^{\infty} \subset \overline{A} \ \Rightarrow \ \forall x_n(t) \in \overline{A} \ , \ \exists \, y_n(t) \in A \quad \text{s.t.} \quad d_C(x_n(t),y_n(t))<\frac{1}{n}\]
 因为$A$是列紧的:
 \[\exists \, n_k \quad \text{s.t.} \quad y_{n_k}(t) \to y(t) \ (k \to \infty)\]
 \[d_C(x_{n_k}(t),y(t)) \leq d_C(x_{n_k}(t),y_{n_k}(t))+d_C(y_{n_k}(t),y_{n_k}(t))\]
-\[\leq \frac{1}{n_k}+d_C(y_{n_k}(t),y_{n_k}(t)) \to 0 \ (k \to \infty) \ \Rightarrow \ \bar{A}\text{列紧}\]
+\[\leq \frac{1}{n_k}+d_C(y_{n_k}(t),y_{n_k}(t)) \to 0 \ (k \to \infty) \ \Rightarrow \ \overline{A}\text{列紧}\]
 \textbf{Q.E.D.}
 
 \paragraph*{16.}$X$是紧距离空间，$T:X \to X$是连续映射，满足$d(Tx,Ty)<d(x,y) \ \forall x \neq y$。\\

@@ -95,7 +95,7 @@ $X$是一个非空集合,$d$是一个定义在$X \times X$上的函数，满足�
 \end{itemize}
 \end{proposition}
 逐点收敛和一致收敛的区别仅在$N$是否与$x$有关，现在我们来考察一下这些收敛跟距离的关系。我们知道距离这个概念能诱导出收敛，但是收敛并不意味着一定有距离意义。很显然，逐点收敛没有对应的距离意义，因为$N$与$x$有关。其他两种收敛可以对应的距离空间上的收敛。
-\begin{example} 连续函数空间$C[a,b]$上距离的收敛等价于一致收敛
+\begin{example} \quad 连续函数空间$C[a,b]$上距离的收敛等价于一致收敛
 \[d(x(t),y(t))=\mathop {\text{sup}}\limits_{t \in [a,b]}|x(t)-y(t)|\]
 \end{example}
 \begin{proof}
@@ -105,7 +105,7 @@ $X$是一个非空集合,$d$是一个定义在$X \times X$上的函数，满足�
 \[\forall t \in [a,b] \ , \ \forall \varepsilon>0 \ , \ \exists \, N(\varepsilon)>0 \ , \quad \text{s.t.} \quad n \geq N \ , \ |x_n(t)-x(t)|<\varepsilon\]
 \end{proof}
 
-\begin{example}
+\begin{example} \quad 
 空间$S(E) \ , \ E \subseteq \mathbb{R}$是$E$上$Lebesgue$可积函数全体上的收敛等价于依测度收敛
 \[d(x,y)=\int_E\frac{\left|x(t)-y(t)\right|}{1+\left|x(t)-y(t)\right|}\dd t\]
 \end{example}
@@ -197,30 +197,30 @@ $A$的全部内点构成的集合称为$A$的内部，记作$\mathring{A}$。
 当$x \in A$时，$x$一定是$A$的接触点，$A$的接触点不一定属于$A$。
 
 \begin{definition}[闭包]
-$A$的全部接触点构成的集合称为$A$的闭包，记作$\bar{A}$。
+$A$的全部接触点构成的集合称为$A$的闭包，记作$\overline{A}$。
 \end{definition}
 \begin{definition}[闭集]
 \begin{itemize}
-\item 定义1：若$A=\bar{A}$则称$A$为闭集；
+\item 定义1：若$A=\overline{A}$则称$A$为闭集；
 \item 定义2：若$A^c$为开集，则$A$为闭集。
 \end{itemize}
 \end{definition}
 
 下面我们来看看闭包的性质。
 \begin{theorem}
-设$(X,d)$是距离空间，$A,B \subset X$，则有$1. \ \bar{\varnothing}=\varnothing \, ; \quad 2. \ A \subset \bar{A} \, ; \quad 3. \ \bar{\bar{A}}=\bar{A} \, ; \quad 4. \ \overline{A \cup B}=\bar{A} \cup \bar{B}$。
+设$(X,d)$是距离空间，$A,B \subset X$，则有$1. \ \overline{\varnothing}=\varnothing \, ; \quad 2. \ A \subset \overline{A} \, ; \quad 3. \ \overline{\overline{A}}=\overline{A} \, ; \quad 4. \ \overline{A \cup B}=\overline{A} \cup \overline{B}$。
 \end{theorem}
 \begin{proof}前两点是显然的，我们来证明一下第三第四点。
 \begin{itemize}
-\item 3. 假设$x \in \bar{\bar{A}}$，即$\forall \varepsilon>0 \ , \ B_{\varepsilon}(x) \cap \bar{A} \neq \varnothing$
-\[\Rightarrow \ \exists \, y \in B_{\varepsilon}(x) \cap \bar{A} \ \Rightarrow \ B_{\varepsilon}(y) \cap A \neq \varnothing \ \Rightarrow \ B_{\varepsilon}(y) \subset B_{2\varepsilon}(x) \ \Rightarrow \ B_{2\varepsilon}(x) \cap A \neq \varnothing \ \Rightarrow \ x \in \bar{A}\]
-\item 4. 设$x \in \overline{A \cup B}$，即$\forall \varepsilon>0 \ , \ B_{\varepsilon}(x) \cap (A \cup B) \neq \varnothing \ \Rightarrow \ B_{\varepsilon}(x) \cap A \neq \varnothing \ \text{or} \ B_{\varepsilon}(x) \cap B \neq \varnothing$，若$x \notin \bar{A} \cup \bar{B}$则
+\item 3. 假设$x \in \overline{\overline{A}}$，即$\forall \varepsilon>0 \ , \ B_{\varepsilon}(x) \cap \overline{A} \neq \varnothing$
+\[\Rightarrow \ \exists \, y \in B_{\varepsilon}(x) \cap \overline{A} \ \Rightarrow \ B_{\varepsilon}(y) \cap A \neq \varnothing \ \Rightarrow \ B_{\varepsilon}(y) \subset B_{2\varepsilon}(x) \ \Rightarrow \ B_{2\varepsilon}(x) \cap A \neq \varnothing \ \Rightarrow \ x \in \overline{A}\]
+\item 4. 设$x \in \overline{A \cup B}$，即$\forall \varepsilon>0 \ , \ B_{\varepsilon}(x) \cap (A \cup B) \neq \varnothing \ \Rightarrow \ B_{\varepsilon}(x) \cap A \neq \varnothing \ \text{or} \ B_{\varepsilon}(x) \cap B \neq \varnothing$，若$x \notin \overline{A} \cup \overline{B}$则
 \[\exists \, \varepsilon_1,\varepsilon_2>0 \quad \text{s.t.} \quad B_{\varepsilon_1}(x) \cap A=\varnothing \ , \ B_{\varepsilon_2}(x) \cap B=\varnothing\]
 进而我们可以取
 \[\varepsilon=\text{min}\{\varepsilon_1,\varepsilon_2\} \quad \text{s.t.} \quad B_{\varepsilon}(x) \cap A=\varnothing \ , \ B_{\varepsilon}(x) \cap B=\varnothing\]
-这与条件矛盾，故$x \in \bar{A} \cup \bar{B}$。
+这与条件矛盾，故$x \in \overline{A} \cup \overline{B}$。
 
-反之，设$x \in \bar{A} \cup \bar{B}$，不妨设$x \in A$，则$\forall \varepsilon>0 \ , \ B_{\varepsilon}(x) \cap A \neq \varnothing \ \Rightarrow \ \forall \varepsilon>0 \ , \ B_{\varepsilon}(x) \cap (A \cup B) \neq \varnothing \ \Rightarrow  \ x \in \overline{A \cup B}$。
+反之，设$x \in \overline{A} \cup \overline{B}$，不妨设$x \in A$，则$\forall \varepsilon>0 \ , \ B_{\varepsilon}(x) \cap A \neq \varnothing \ \Rightarrow \ \forall \varepsilon>0 \ , \ B_{\varepsilon}(x) \cap (A \cup B) \neq \varnothing \ \Rightarrow  \ x \in \overline{A \cup B}$。
 \end{itemize}
 \end{proof}
 
@@ -246,15 +246,15 @@ $A$的全部接触点构成的集合称为$A$的闭包，记作$\bar{A}$。
 
 下面我们来看稠密性和可分性。
 \begin{definition}[稠密性]
-    若$A \subset X$且$\bar{A}=X$则称$A$在$X$中是稠密的(原本应该是$X \subseteq \bar{A}$,当$X$取全空间的时候只能是$\bar{A}=X$)。
+    若$A \subset X$且$\overline{A}=X$则称$A$在$X$中是稠密的(原本应该是$X \subseteq \overline{A}$,当$X$取全空间的时候只能是$\overline{A}=X$)。
 \end{definition}
 \begin{definition}[可分性]
     若$X$有可数的稠密子集则称$X$是可分的。
 \end{definition}
-\begin{example} $\mathbb{R}$中，$\mathbb{Q}$是稠密的($\mathbb{R}$上任意小的区间都有$x \in \mathbb{Q}$)；$\mathbb{Q}$是可数的。
+\begin{example}  \quad $\mathbb{R}$中，$\mathbb{Q}$是稠密的($\mathbb{R}$上任意小的区间都有$x \in \mathbb{Q}$)；$\mathbb{Q}$是可数的。
 \end{example}
 \begin{example}
-$C[a,b]$是可分的
+ \quad $C[a,b]$是可分的
 \end{example}
 \begin{proof}利用 Weierstrass 定理
 \begin{theorem}[Weierstrass 定理]
@@ -286,13 +286,13 @@ $\forall P_n(x)$，存在有理多项式列$\{q_{n,i}(x)\}_{i=1}^{\infty}$使得
 
 \end{proof}
 \begin{example}
-$l^{\infty}=\{x|\left\{\xi_i\right\}_{i=1}^{\infty} \ (\xi_i \in \mathbb{R}) \ , \ d(x,0)<\infty\}$，$x$为实数列且$l^{\infty} \in \{\text{所有实数列}\}$，定义$l^{\infty}$上的距离：
+ \quad $l^{\infty}=\{x|\left\{\xi_i\right\}_{i=1}^{\infty} \ (\xi_i \in \mathbb{R}) \ , \ d(x,0)<\infty\}$，$x$为实数列且$l^{\infty} \in \{\text{所有实数列}\}$，定义$l^{\infty}$上的距离：
 \[d(x,y)=\mathop {\text{sup}}\limits_{i=1,2,\cdots}|x_i-y_i|, \ x=\left\{x_i\right\}_{i=1}^{\infty} \ , \ y=\left\{y_i\right\}_{i=1}^{\infty}\]
 是不可分的。
 \end{example}
 \begin{proof}
-取集合$D=\{\left\{\xi_i\right\}_{i=1}^{\infty} \ , \ \xi_i=0,1\}$显然$\forall x,y \in D \ , \ d(x,y)=0,1$。如果我们把$D$中的每一位放到$0.$后面，可以看出就是一个$[0,1]$区间上的二进制表示，故$D$的基数与$\mathbb{R}$相同$(\text{card}(D)=\text{card}([0,1])=\text{card}(\mathbb{R}))$。我们利用反证法，假设$l^{\infty}$是可分的，则其可以表示为一个可数稠密子集的闭包$l^{\infty}=\bar{A}$，由$A$稠密且可数：
-\[\forall x \in l^{\infty} \ , \ l^{\infty}=\bar{A} \ \Rightarrow \ B_{\frac{1}{4}}(x)\cap A \neq \varnothing \ \Rightarrow \ y \in B_{\frac{1}{4}}(x)\cap A \ \Rightarrow \ x \in B_{\frac{1}{3}}(y) \ \Rightarrow \ x \in \bigcup_{a \in A}B_{\frac{1}{3}}(a) \ \text{即} \ l^{\infty} \subset \bigcup_{a \in A}B_{\frac{1}{3}}(a)\]
+取集合$D=\{\left\{\xi_i\right\}_{i=1}^{\infty} \ , \ \xi_i=0,1\}$显然$\forall x,y \in D \ , \ d(x,y)=0,1$。如果我们把$D$中的每一位放到$0.$后面，可以看出就是一个$[0,1]$区间上的二进制表示，故$D$的基数与$\mathbb{R}$相同$(\text{card}(D)=\text{card}([0,1])=\text{card}(\mathbb{R}))$。我们利用反证法，假设$l^{\infty}$是可分的，则其可以表示为一个可数稠密子集的闭包$l^{\infty}=\overline{A}$，由$A$稠密且可数：
+\[\forall x \in l^{\infty} \ , \ l^{\infty}=\overline{A} \ \Rightarrow \ B_{\frac{1}{4}}(x)\cap A \neq \varnothing \ \Rightarrow \ y \in B_{\frac{1}{4}}(x)\cap A \ \Rightarrow \ x \in B_{\frac{1}{3}}(y) \ \Rightarrow \ x \in \bigcup_{a \in A}B_{\frac{1}{3}}(a) \ \text{即} \ l^{\infty} \subset \bigcup_{a \in A}B_{\frac{1}{3}}(a)\]
 $A$可数，$D$不可数，且有$D \subset l^{\infty} \subset \bigcup_{a \in A}B_{\frac{1}{3}}(a)$，则
 \[\exists \, x \neq y \ , \ x,y \in D \quad \text{s.t.} \quad x,y \in \bigcup_{a \in A}B_{\frac{1}{3}}(a) \ \Rightarrow \ d(x,y)=1 \leq d(x,a)+d(y,a) \leq \frac{2}{3}\]
 矛盾，故$l^{\infty}$不可分。
@@ -309,14 +309,14 @@ $A$可数，$D$不可数，且有$D \subset l^{\infty} \subset \bigcup_{a \in A}
     则称$\{x_n\}_{n=1}^{\infty}$为柯西列。
 \end{definition}
 \begin{example}
-收敛点列一定是柯西列，柯西列是否一定收敛？$\mathbb{R}^n$中是，一般距离空间不成立。
+ \quad 收敛点列一定是柯西列，柯西列是否一定收敛？$\mathbb{R}^n$中是，一般距离空间不成立。
 \end{example}
 \begin{definition}[完备距离空间]
     设$(X,d)$是距离空间。若该距离空间中所有柯西列都收敛，则称距离空间$(X,d)$是完备的。
 \end{definition}
 
 \begin{example}
-$S=(C[0,1],d_1), \ d_1(x,y)=\int_0^1|x(t)-y(t)|\dd t$这个距离空间是不完备的。
+ \quad $S=(C[0,1],d_1), \ d_1(x,y)=\int_0^1|x(t)-y(t)|\dd t$这个距离空间是不完备的。
 \end{example}
 \begin{proof}
 找反例，令
@@ -349,106 +349,94 @@ $S=(C[0,1],d_1), \ d_1(x,y)=\int_0^1|x(t)-y(t)|\dd t$这个距离空间是不完
 
 由$y \in S \ \Rightarrow \ y \in C[0,1]$可得矛盾。故上述函数列$\{x_n(t)\}$并不在距离空间$(S,d_1)$中收敛。
 \end{proof}
-\begin{example}$L^2[0,1]$完备
-\[L^2[0,1]=\{f\text{在$[0,1]$上可测} \ , \ \int_0^1|f|^2<+\infty\} \quad d(x,y)=\sqrt{\int_0^1(x(t)-y(t))^2\dd t}\]
+\begin{example} \quad $L^2[0,1]$完备
+\[L^2[0,1]=\{f\text{在$[0,1]$上可测} \ , \ \int_0^1|f|^2<+\infty\}, \ d(x,y)=\sqrt{\int_0^1(x(t)-y(t))^2\dd t}\]
 \end{example}
 \begin{proof}
 假设$\{x_n(t)\} \in L^2[0,1]$是柯西列，要证其在距离空间收敛$L^2[0,1]$只需证其有收敛子列，取子列$\{x_{n_k}(t)\}$：
 \[\forall k \in \mathbb{Z}_+ \ , \ \exists \, n_k>0 \quad \text{s.t.} \quad n,m>n_k \ , \ d(x_n,x_m)<\frac{1}{2^k}, \ (\text{取 }n_{k+1}>n_{k}, \ k\in\mathbb{Z}_+)\]
-\begin{equation*}
-\begin{aligned}
-\int_0^1|x_{n_k}|\dd t & =\int_0^1|x_{n_1}+\sum_{i=2}^k(x_{n_i}-x_{n_{i-1}})|\dd t \leq \int_0^1|x_{n_1}|\dd t+\sum_{i=2}^k\int_0^1|x_{n_i}-x_{n_{i-1}}|\dd t \\
-& \leq \int_0^1|x_{n_1}|\dd t+\sum_{i=2}^k\left(\int_0^1|x_{n_i}-x_{n_{i-1}}|^2\dd t\right)^{\frac{1}{2}} \leq \int_0^1|x_{n_1}|\dd t+\sum_{i=2}^k\frac{1}{2^i}<+\infty
-\end{aligned}
-\end{equation*}
-由$Fatou$引理：
-\[\int_0^1|x_{n_{\infty}}|\dd t=\int_0^1\varliminf_{k \to \infty}|x_{n_1}+\sum_{i=2}^k(x_{n_i}-x_{n_{i-1}})|\dd t \leq \varliminf_{k \to \infty}\int_0^1|x_{n_1}+\sum_{i=2}^k(x_{n_i}-x_{n_{i-1}})|\dd t<+\infty\]
-\[\int_0^1\varliminf_{k \to \infty}|x_{n_1}+\sum_{i=2}^k(x_{n_i}-x_{n_{i-1}})|\dd t<+\infty \ \Rightarrow \ \varliminf_{k \to \infty}|x_{n_1}+\sum_{i=2}^k(x_{n_i}-x_{n_{i-1}})|<+\infty \quad a.e.\]
-\[a.e. \ \text{单调有界} \ \Rightarrow \ a.e. \ \text{收敛}\]
-\[\varliminf_{k \to \infty}|x_{n_1}+\sum_{i=2}^k(x_{n_i}-x_{n_{i-1}})|=\varliminf_{k \to \infty}|x_{n_k}|<+\infty \quad a.e. \ \text{收敛}\]
-极限记为$x_{\infty}(t)$，同样由$Fatou$引理：
-\[\int_0^1|x_{\infty}(t)|^2\dd t \leq \varliminf_{k \to \infty}\int_0^1|x_{n_k}(t)|^2\dd t<+\infty\]
-由控制收敛定理得：
-\[\lim_{k \to \infty}\int_0^1|x_{n_k}(t)-x_{\infty}(t)|^2\dd t=0\]
-
+可以证明子列$\{x_{n_k}(t)\}$有界，考虑距离的平方：
+\[\int_0^1|x_{n_k}|^2\dd t=\int_0^1|x_{n_1}+\sum_{i=2}^k(x_{n_i}-x_{n_{i-1}})|^2\dd t \leq \int_0^1|x_{n_1}|^2\dd t+\sum_{i=2}^k\int_0^1|x_{n_i}-x_{n_{i-1}}|^2\dd t=\int_0^1|x_{n_1}|^2\dd t+\sum_{i=2}^k\frac{1}{4^i}<+\infty\]
 \begin{theorem}[$Fatou$引理]
     设$(S,\Sigma,\mu)$是测度空间，$\{f_n(x)\}$是测度空间上的实值非负可测函数列，则
     \[\int_E\varliminf_{n \to \infty}f_n(x)\dd x \leq \varliminf_{n \to \infty}\int_Ef_n(x)\dd x\]
     其中函数极限是在逐点收敛的意义上的极限，函数取值和积分可以是无穷大。
 \end{theorem}
+记子列$\{x_{n_k}(t)\}$的极限点为$x_{n_{\infty}}$，由$Fatou$引理可证明极限点也在$L^2$中：
+\[\int_0^1|x_{n_{\infty}}|^2\dd t=\int_0^1\varliminf_{k \to \infty}|x_{n_1}+\sum_{i=2}^k(x_{n_i}-x_{n_{i-1}})|^2\dd t \leq \varliminf_{k \to \infty}\int_0^1|x_{n_1}+\sum_{i=2}^k(x_{n_i}-x_{n_{i-1}})|^2\dd t=\varliminf_{k \to \infty}\int_0^1|x_{n_k}|^2\dd t<+\infty\]
+存在收敛子列$\{x_{n_k}(t)\}$可知柯西列$\{x_n(t)\}$收敛，记其收敛于$x_{\infty}(t)$。类似地，柯西列$\{x_n(t)\}$在$L^1$中也收敛：
+\[\int_0^1|x_{n_{\infty}}|\dd t=\int_0^1\varliminf_{k \to \infty}|x_{n_1}+\sum_{i=2}^k(x_{n_i}-x_{n_{i-1}})|\dd t \leq \varliminf_{k \to \infty}\int_0^1|x_{n_1}+\sum_{i=2}^k(x_{n_i}-x_{n_{i-1}})|\dd t=\varliminf_{k \to \infty}\int_0^1|x_{n_k}|\dd t<+\infty\]
 \begin{theorem}[控制收敛定理]
-    设$(X,\mathscr{F},\mu)$是测度空间，$\{f_n\}$是测度空间上的可测函数列，满足
-    \[f_n \xrightarrow{p} f \ or \ f_n \xrightarrow{a.e.} f \ , \ \text{且}\exists \, g \in L^1 \ , \quad \text{s.t.} \quad |f_n| \leq g\]
-    则
-    \[\int f_nd\mu \to \int fd\mu \ (n \to \infty)\]
+设$(X,\mathscr{F},\mu)$是测度空间，$\{f_n\}$是测度空间上的可测函数列，在$X$中逐点收敛或几乎处处（逐点）收敛于可测函数$f$，且存在$L^1$函数$g$使得对任意$n$都有$|f_n|\leq g$，则有$f \in L^1$，且
+\[\lim_{n \to \infty}\int_X f_n\dd\mu = \int_X \lim_{n \to \infty}f_n\dd\mu = \int_X f\dd\mu\]
+且$\{f_n\}$在$L^1$范数意义下收敛于$f$，即
+\[\lim_{n \to \infty}\int_X|f_n-f|\dd\mu=0\]
 \end{theorem}
+考虑如下柯西列$\{|x_n|^2\}$，容易看出其至少被一个$L^1$常函数控制（有界），由控制收敛定理得：
+\[\lim_{n \to \infty}\int_0^1|x_n(t)|^2\dd t=\int_0^1|x_{\infty}(t)|^2\dd t \quad \Rightarrow \quad \lim_{k \to \infty}\int_0^1|x_n(t)-x_{\infty}(t)|^2\dd t=0\]
+\end{proof}
+\begin{example}
+ \quad $L^1[0,1], \ d_1(x,y)=\int_0^1|x(t)-y(t)|\dd t$完备
+\end{example}
+\begin{proof}
+在$(C^1[0,1],d_1)$的例子中我们证明了连续函数可能收敛到不连续的函数，但他们都是可测函数，因此将这部分不连续的可测函数纳入即可得到完备的空间。在例\ref{example:l1complete}中有详细证明。
+\[S=\left(C^1[0,1],d_1\right) \xrightarrow{\text{完备化}} L^1[0,1]\]
 \end{proof}
 
-\paragraph*{例4} \quad $L^1[0,1] \quad d_1(x,y)=\int_0^1|x(t)-y(t)|\dd t \ \{f\text{可测},\int|f|<+\infty\}$完备
-\[S=\left(C^1[0,1],d_1\right) \xrightarrow{\text{完备化}} L^1[0,1]\]
-
 \begin{theorem}
-    设$(X,d)$是完备距离空间，则\\
-    1、所有柯西列收敛； \ 2、闭球套定理； \ 3、$Baire$纲定理
+设$(X,d)$是完备距离空间，则
+\begin{itemize}
+    \item 1. 闭球套定理；
+    \item 2. $Baire$纲定理。
+\end{itemize}
 \end{theorem}
 \begin{theorem}[闭球套定理]
-设$(X,d)$是完备距离空间,假设存在一列闭球
-\[\{\bar{B}_{r_i}(x_i)\} \ (i=1,2,\cdots) \ , \quad \text{s.t.} \quad \bar{B}_{r_1}(x_1) \supset \bar{B}_{r_2}(x_2) \supset \cdots \quad (r_i \to 0)\]
-则
-\[\exists \, ! \ x \in \bigcap_{i=1}^{\infty}\bar{B}_{r_i}(x_i)\]
+设$(X,d)$是完备距离空间,假设存在一列闭球$\{\overline{B}_{r_i}(x_i)\}$满足$\overline{B}_{r_1}(x_1) \supset \overline{B}_{r_2}(x_2) \supset \cdots$且$r_i \to 0$，则
+\[\exists \, ! \ x \in \bigcap_{i=1}^{\infty}\overline{B}_{r_i}(x_i)\]
 \end{theorem}
-
-\textbf{Proof:}\\
-\textbf{Claim 1:$\{x_i\}$是柯西列。}\\
-(\textbf{Proof:}
-\[r_i \to 0 \ \Leftrightarrow \ \forall \varepsilon>0 \ , \ \exists \, N>0 \ , \quad \text{s.t.} \quad i \geq N \ , \ r_i<\varepsilon\]
-\[\forall j>i>N \ , \ x_j \in \bar{B}_{r_j}(x_j) \subset \bar{B}_{r_i}(x_i) \ \Rightarrow \ d(x_i,x_j)<r_i<\varepsilon\]
-\textbf{Q.E.D.})
-
-下证存在唯一性：\\
-(a)存在性:\\
-由完备性
-\[\exists \, x \in X \ , \quad \text{s.t.} \quad d(x_i,x) \rightarrow 0 \ (i \rightarrow \infty)\]
-(b)唯一性:\\
-假设
-\[\exists \, y \in \bigcap_{i=1}^{\infty}\bar{B}_{r_i}(x_i)\]
-则
-\[d(x,y) \leq d(x,x_i)+d(x_i,y) \rightarrow 0 \ (i \rightarrow \infty)\]
-\textbf{Q.E.D.} 
+\begin{proof}
+任意两个球的球心之间的距离都小于等于较大的球的半径：
+\[\overline{B}_{r_j}(x_j) \subset \overline{B}_{r_i}(x_i) \ \Rightarrow \ \forall \varepsilon>0 \ , \ \exists \, N>0 \quad \text{s.t.} \quad j>i>N \ , \ d(x_i,x_j)<r_i<\varepsilon\]
+所以球心列$\{x_i\}$是柯西列，完备的距离空间内所有柯西列都收敛，即存在$x \in X$使得$d(x_i,x) \to 0$。假设存在另外一个极限点$y \in X$使得$d(x_i,y) \to 0$，那么由三角不等式$d(x,y) \leq d(x,x_i)+d(x_i,y) \rightarrow 0$可知$x=y$。
+\end{proof}
 
 在介绍$Baire$定理之前，我们需要介绍一些定义：
 \begin{definition}[疏集]
-    设$E \subset X$，若$\bar{E}$不包含任何开球，则称$E$为疏集。
+    设$E \subset X$，若$\overline{E}$不包含任何开球，则称$E$为疏集。
 \end{definition}
-\paragraph*{例} \quad $\mathbb{Z} \subset \mathbb{R} \ , \ \bar{\mathbb{Z}}=\mathbb{Z}$无开区间，为疏集。
+\begin{example}
+ \quad $\mathbb{Z} \subset \mathbb{R} \ , \ \overline{\mathbb{Z}}=\mathbb{Z}$无开区间，为疏集。
+\end{example}
+
 \begin{definition}[第一纲集，第二纲集]
     距离空间$X$可以分成可数个疏集的并，则称$X$为第一纲集，否则称为第二纲集。
 \end{definition}
-\paragraph*{例} \quad $\mathbb{Q}$是第一纲集，$\mathbb{R}$是第二纲集。
+\begin{example}
+ \quad $\mathbb{Q}$是第一纲集，$\mathbb{R}$是第二纲集。
+\end{example}
 \begin{theorem}[$Baire$定理] \label{the:Baire}
     完备距离空间一定是第二纲集。
 \end{theorem}
-\textbf{Proof:}\\
+\begin{proof}
 反证法：假设完备距离空间$X$是第一纲集，即
 \[X=\bigcup_{n=1}^{\infty}E_n \ , \ E_n\text{是疏集}\]
-\[\bar{E}_1\text{中无开集} \ \Rightarrow \ \forall x_0 \in X \ , \ r_0>0 \ , \ B_{r_0}(x_0) \nsubseteq \bar{E}_1\]
+由疏集的定义可知$\overline{E}_1$中无开集，即$\forall x_0 \in X \ , \ r_0>0 \ , \ B_{r_0}(x_0) \nsubseteq \overline{E}_1$，取$x_1 \in B_{r_0}(x_0)-\overline{E}_1=B_{r_0}(x_0)\cap\overline{E}_1^c$，注意到$B_{r_0}(x_0)\cap\overline{E}_1^c$是开集，则$\exists \, r_1>0$满足$B_{2r_1}(x_1) \subset B_{r_0}(x_0)-\overline{E}_1$，进而可以得到一个闭球$\overline{B}_{r_1}(x_1) \subset B_{2r_1}(x_1) \subset B_{r_0}(x_0)-\overline{E}_1$。由于$\overline{E}_2$也是疏集，故$B_{r_1}(x_1) \nsubseteq \overline{E}_2$，则$\exists \, r_2>0$满足$B_{2r_2}(x_2) \subset B_{r_1}(x_1)-\overline{E}_2$，进而可以得到一个新的闭球$\overline{B}_{r_2}(x_2) \subset B_{2r_2}(x_2)\cap(\overline{E}_1\cup\overline{E}_2)^c$。
 \begin{figure}[htbp]
     \center
     \includegraphics[scale=0.4]{./fig/2.1.4_2.png}
 \end{figure}
-\[\text{取}x_1 \in B_{r_0}(x_0)-\bar{E}_1=B_{r_0}(x_0)\cap\bar{E}_1^c\text{是个开集，则}\exists \, r_1>0 \ , \quad \text{s.t.} \quad B_{2r_1}(x_1) \subset B_{r_0}(x_0)-\bar{E}_1\]
-\[\Rightarrow \ \bar{B}_{r_1}(x_1) \subset B_{2r_1}(x_1) \subset B_{r_0}(x_0)-\bar{E}_1\]
-\[\text{由于}\bar{E}_2\text{也是疏集} \ , \ B_{r_1}(x_1) \nsubseteq \bar{E}_2\text{则}\exists \, r_2>0 \ , \quad \text{s.t.} \quad B_{2r_2}(x_2) \subset B_{r_1}(x_1)-\bar{E}_2\]
-\[\Rightarrow \ \bar{B}_{r_2}(x_2) \subset B_{2r_2}(x_2)\cap(\bar{E}_1\cup\bar{E}_2)^c \qquad (\bar{B}_{r_2}(x_2) \subset \bar{B}_{r_1}(x_1)  \quad \text{且} \quad \bar{B}_{r_2}(x_2)\cap(\bar{E}_1\cup\bar{E}_2)=\varnothing)\]
-由归纳得存在一系列闭球$\{\bar{B}_{r_n}(x_n)\}_{n=1}^{\infty}$
-\[\text{s.t.} \ \bar{B}_{r_1}(x_1) \supset \bar{B}_{r_2}(x_2) \supset \bar{B}_{r_3}(x_3) \supset \cdots \quad \text{and} \quad \bar{B}_{r_n}(x_n)\subset(\bar{E}_1\cup\bar{E}_2\cup\cdots\cup\bar{E}_n)^c=\bigcap_{i=1}^n\bar{E}_i^c\]
-\[\Rightarrow \ \bigcap_{i=1}^{\infty}\bar{B}_{r_i}(x_i) \subset \bigcap_{i=1}^{\infty}\bar{E}_i^c=\left(\bigcup_{i=1}^{\infty}\bar{E}_i\right)^c=X^c=\varnothing \quad \text{推出矛盾，故假设不成立}\]
-Q.E.D
+
+由归纳得存在一系列闭球$\{\overline{B}_{r_n}(x_n)\}_{n=1}^{\infty}$，满足$\overline{B}_{r_1}(x_1) \supset \overline{B}_{r_2}(x_2) \supset \overline{B}_{r_3}(x_3) \supset \cdots$且
+\[\overline{B}_{r_n}(x_n)\subset\bigcap_{i=1}^n\overline{E}_i^c \quad \Rightarrow \quad \bigcap_{i=1}^{\infty}\overline{B}_{r_i}(x_i) \subset \bigcap_{i=1}^{\infty}\overline{E}_i^c=\left(\bigcup_{i=1}^{\infty}\overline{E}_i\right)^c=X^c=\varnothing\]
+得出矛盾，故完备距离空间一定是第二纲集。
+\end{proof}
 
 \subsection{距离空间的完备化与压缩映射} \label{zip}
-\paragraph*{例} \quad $S=(C[0,1],d_1) \subset (L^1[0,1],d_1) \ $,$ \ C[0,1]$在$L^1[0,1]$中稠密，称$L^1[0,1]$是$C[0,1]$完备化。\\
-\textbf{Proof:}
-\[\text{令}x \in L^1[0,1]\text{可积} \quad \Leftrightarrow \quad \int_0^1|x(t)|\dd t<+\infty\]
+\begin{example}\label{example:l1complete}
+\quad $S=(C[0,1],d_1) \subset (L^1[0,1],d_1) \ $,$ \ C[0,1]$在$L^1[0,1]$中稠密，称$L^1[0,1]$是$C[0,1]$完备化。
+\end{example}
+\begin{proof}
+设$x \in L^1[0,1]$，则
 \[\int_0^1|x(t)|\dd t=\sum_{n=0}^{+\infty} \ \int\limits_{[0,1]\cap\{n \leq |x| \leq n+1\}}|x(t)|\dd t<+\infty \quad \Rightarrow \quad \exists \, N>0 \quad \text{s.t.} \quad n \geq N \ , \ \int\limits_{[0,1]\cap\{|x|>N\}}|x(t)|\dd t<\frac{1}{n}\]
 令
 \[\tilde{x}(t)=\left \{
@@ -456,24 +444,23 @@ Q.E.D
     x(t) & , x \leq N \\ 0 & , x>N
 \end{array}    
 \right .\]
-由$Lusin$定理，存在连续函数$g_n(t)$，满足
+\begin{theorem}[Lusin 定理]
+设$A \in \mathscr{L} \ , \ m(A)<+\infty \ , \ f:A \to \mathbb{R}$是处处有限的$Lebesgue$可测函数，则
+\[\forall \varepsilon>0 \ , \ \exists \, g \in C(A):A\to \mathbb{R} \quad \text{s.t.} \quad m(\{g \neq f\}) \leq \varepsilon\]
+这表明连续函数和可测函数没太大的差别。
+\end{theorem}
+由 Lusin 定理，存在连续函数$g_n(t)$，仅仅在测度小于$\frac{1}{nN}$的集合上与$\tilde{x}(t)$不同，即
 \[m([0,1]/\{\tilde{x}(t)=g_n(t)\})<\frac{1}{nN}\]
+此时有
 \begin{equation*}
     \begin{aligned}
         d_1(g_n(t),x(t)) & \leq d_1(g_n(t),\tilde{x}(t))+d_1(\tilde{x}(t),x(t))=\int_0^1|g_n(t)-\tilde{x}(t)|\dd t+\int_0^1|\tilde{x}(t)-x(t)|\dd t \\
         & \leq \frac{1}{nN} \cdot N+\int\limits_{[0,1]\cap\{|x(t)|>N\}}|x(t)|\dd t=\frac{1}{n}+\frac{1}{n}=\frac{2}{n}
     \end{aligned}
 \end{equation*}
-即
-\[d_1(g_n(t),x(t)) \to 0 \ (n \to \infty)\]
-\textbf{Q.E.D.}
-\begin{theorem}[$Lusin$定理]
-    设$A \in \mathscr{L} \ , \ m(A)<+\infty \ , \ f:A \to \mathbb{R}$是处处有限的$Lebesgue$可测函数，则
-    \[\forall \varepsilon>0 \ , \ \exists \, g \in C(A):A\to \mathbb{R} \ , \quad \text{s.t.} \quad m(\{g \neq f\}) \leq \varepsilon\]
-\end{theorem}
-$Lusin$定理实际上表明连续函数和可测函数没太大的差别。
+即$d_1(g_n(t),x(t)) \to 0$。
+\end{proof}
 
-下面我们来介绍一个极其破防的定理以及它更加破防的证明。
 \begin{theorem}[完备化定理]
     设$(X,d)$是距离空间，则存在$(\tilde{X},\tilde{d})$是完备距离空间，以及等距映射$F:(X,d) \rightarrow (\tilde{X},\tilde{d})$，且$F(x) \subset (\tilde{X},\tilde{d})$是稠密的。
     称$(\tilde{X},\tilde{d})$是$(X,d)$的完备化。若$(\tilde{Y},\tilde{d}_Y)$是另一个完备化，那么$(\tilde{X},\tilde{d})$与$(\tilde{Y},\tilde{d}_Y)$等距(等距意义下的唯一)。
@@ -664,7 +651,7 @@ $K(t,s)$在闭区域上连续，可得$K(t,s)$有界。
 
 若在$X$上，$\tau_1 \subset \tau_2$，则称$\tau_2$强于$\tau_1$。
 \begin{definition}[闭集]
-    若$A^c \in \tau$，则称$A$是闭集。($A$是闭集$\ \Leftrightarrow \ A=\bar{A}$)
+    若$A^c \in \tau$，则称$A$是闭集。($A$是闭集$\ \Leftrightarrow \ A=\overline{A}$)
 \end{definition}
 \begin{definition}[邻域]
     设$x \in X \ , \ U_x \subset \tau \ , \ x \in U_x$，则称$U_x$是$x$的一个邻域(包含$x$的开集)
@@ -700,11 +687,11 @@ $X=\{0,1\} \quad \tau_D=\{\varnothing,\{0\},\{1\},X\}$单点集在$\mathbb{R}^n$
     距离空间满足$T_4$公理。
 \end{theorem}
 Proof(反证法):先预设一些对象：
-\[\bar{A}=A \ , \ \bar{B}=B \ , \ A \cap B=\varnothing \ , \ f_A(x):=\mathop {\text{inf}}\limits_{y \in A}d(x,y) \ , \ f_B(x):=\mathop {\text{inf}}\limits_{y \in B}d(x,y)\]
+\[\overline{A}=A \ , \ \overline{B}=B \ , \ A \cap B=\varnothing \ , \ f_A(x):=\mathop {\text{inf}}\limits_{y \in A}d(x,y) \ , \ f_B(x):=\mathop {\text{inf}}\limits_{y \in B}d(x,y)\]
 \textbf{Claim} \quad $f_A(x)>0 \ \Rightarrow \ x \notin A$\\
 (\textbf{Proof:}反证法
 
-若$f_A(x)=0 \ \Rightarrow \ \exists \, \{y_n\} \subset A \quad \text{s.t.} \quad d(x,y_n) \to 0 \ \Rightarrow \ x$是$A$的接触点$ \ \Rightarrow \ x \in \bar{A}=A$\\
+若$f_A(x)=0 \ \Rightarrow \ \exists \, \{y_n\} \subset A \quad \text{s.t.} \quad d(x,y_n) \to 0 \ \Rightarrow \ x$是$A$的接触点$ \ \Rightarrow \ x \in \overline{A}=A$\\
 矛盾)\\
 记
 \[U_B=\bigcup_{x \in B}B_{\frac{1}{2}f_A(x)}(x) \ , \ B \subset U_B \qquad U_A=\bigcup_{x \in A}B_{\frac{1}{2}f_B(x)}(x) \ , \ A \subset U_A \quad \text{都是开集}\]
@@ -776,11 +763,11 @@ Proof(反证法):先预设一些对象：
 \end{definition}
 \paragraph*{例1} $\mathbb{R}^n$上的紧集是有界闭集，但在一般距离空间中不再成立。
 
-\paragraph*{例2} $l^2$空间是完备的，其上的闭球$\bar{B}_1(0)$不是紧集。
+\paragraph*{例2} $l^2$空间是完备的，其上的闭球$\overline{B}_1(0)$不是紧集。
 \[l^2=\left\{\{x_n\}_{n=1}^{\infty} \ , \ x_n \in \mathbb{R} \ , \ \sum_{n=1}^{\infty}x_n^2<\infty\right\} \quad d(x,y)=\sqrt{\sum_{n=1}^{\infty}(x_n-y_n)^2}\]
-\textbf{Proof:}令$x_n=\{0,0,\cdots,1,0,\cdots\}$(第$n$个为$1$) \quad $x_n \in \bar{B}_1(0) \ (d(x_n,0)=\sqrt{1^2}=1)$
-\[\forall n \neq m \ , \ d(x_n,x_m)=\sqrt{1^2+1^2}=\sqrt{2} \ \text{当$m,n$足够大的时候并不趋于0} \ \Rightarrow \ \bar{B}_1(0)\text{不是列紧的}\]
-在后续的介绍中，我们会证明，度量空间中列紧的闭集就是紧集，所以这里我们就能看出$\bar{B}_1(0)$不是紧集。当然我们需要解释一下什么是列紧。
+\textbf{Proof:}令$x_n=\{0,0,\cdots,1,0,\cdots\}$(第$n$个为$1$) \quad $x_n \in \overline{B}_1(0) \ (d(x_n,0)=\sqrt{1^2}=1)$
+\[\forall n \neq m \ , \ d(x_n,x_m)=\sqrt{1^2+1^2}=\sqrt{2} \ \text{当$m,n$足够大的时候并不趋于0} \ \Rightarrow \ \overline{B}_1(0)\text{不是列紧的}\]
+在后续的介绍中，我们会证明，度量空间中列紧的闭集就是紧集，所以这里我们就能看出$\overline{B}_1(0)$不是紧集。当然我们需要解释一下什么是列紧。
 \begin{definition}[(相对)列紧性]
     若集合$A$中的任意点列都有收敛子列，则称$A$是列紧的，不要求极限也在$A$中(当$A$为闭时，则极限必然在$A$中，但列紧性要求极限在集合中)。
 \end{definition}
@@ -817,9 +804,9 @@ Proof(反证法):先预设一些对象：
 \textbf{Proof:}(列紧闭$ \ \Rightarrow \ $紧)\\
 \textbf{Claim 1 全有界集可分}\\
 \textbf{Proof:}设$A$为全有界集，对任意$n \in \mathbb{Z}_+$，存在$A$的有限$\varepsilon$-网$B_n$，不妨取$B_n \subset A$
-\[\text{考虑}B=\bigcup_{n=1}^{\infty}B_n \ , \ (\text{想证}\bar{B}=A)\]
+\[\text{考虑}B=\bigcup_{n=1}^{\infty}B_n \ , \ (\text{想证}\overline{B}=A)\]
 \[\forall x \in A \ , \ \varepsilon>0 \ , \ \exists \, n_{\varepsilon}=\left[\frac{1}{\varepsilon}\right]+1 \quad \text{s.t.} \quad \exists \, y \in B_{n_{\varepsilon}} \ , \ d(x,y)<\frac{1}{n_{\varepsilon}}<\varepsilon\]
-\[\Rightarrow \ B_{\varepsilon}(x) \cap B_{n_{\varepsilon}} \neq \varnothing \ \Rightarrow \ B_{\varepsilon}(x) \cap B \neq \varnothing \ \Rightarrow \ x \in \bar{B} \ \Rightarrow \ A \subset \bar{B} \ \Leftrightarrow \ A\text{可分}\]
+\[\Rightarrow \ B_{\varepsilon}(x) \cap B_{n_{\varepsilon}} \neq \varnothing \ \Rightarrow \ B_{\varepsilon}(x) \cap B \neq \varnothing \ \Rightarrow \ x \in \overline{B} \ \Rightarrow \ A \subset \overline{B} \ \Leftrightarrow \ A\text{可分}\]
 \textbf{Q.E.D.}\\
 \textbf{Claim 2 距离空间中的列紧集是全有界的}\\
 \textbf{Proof:}反证：若列紧的$A$不是全有界的，则存在$\varepsilon_n>0$，$A$没有有限$\varepsilon_n$-网。

@@ -84,20 +84,20 @@
 \paragraph*{例2} \quad 微分算子，一维情形下，考虑$X=C[0,1] \ , \ T:X \to X \ , \ x(t) \mapsto Tx=x'(t)$，则该算子为无解算子:
 \[x_n(t)=\sin nt \ , \ ||x_n||=1 \quad \Rightarrow \quad Tx_n=x_n'(t)=n \cos nt \ , \ ||Tx_n||=n \to +\infty\]
 
-高维情形下也类似，考虑$\Omega \subset \mathbb{R}^n$，记$C^k(\bar{\Omega})=\{f:\bar{\Omega} \to \mathbb{R}|\partial^{\alpha}f \in C(\bar{\Omega}) \ , \ |\alpha| \leq k\}$，其上范数为:
-\[||f||_{C^k}=\mathop \text{max}\limits_{|\alpha| \leq k}||\partial^{\alpha}f||_{C^0}=\mathop \text{max}\limits_{|\alpha| \leq k}\mathop \text{max}\limits_{x \in \bar{\Omega}}|\partial^{\alpha}f(x)|\]
+高维情形下也类似，考虑$\Omega \subset \mathbb{R}^n$，记$C^k(\overline{\Omega})=\{f:\overline{\Omega} \to \mathbb{R}|\partial^{\alpha}f \in C(\overline{\Omega}) \ , \ |\alpha| \leq k\}$，其上范数为:
+\[||f||_{C^k}=\mathop \text{max}\limits_{|\alpha| \leq k}||\partial^{\alpha}f||_{C^0}=\mathop \text{max}\limits_{|\alpha| \leq k}\mathop \text{max}\limits_{x \in \overline{\Omega}}|\partial^{\alpha}f(x)|\]
 其中
 \[\alpha=(\alpha_1,\alpha_2,\cdots,\alpha_n) \ , \ \partial^{\alpha}f=\partial^{\alpha_1}_{x_1}\partial^{\alpha_2}_{x_2}\cdots\partial^{\alpha_n}_{x_n}f(x_1,x_2,\cdots,x_n) \ , \ \sum_{i=1}^n\alpha_i \leq k\]
 因此，在高维版本中上述的一维微分算子可表示为
-\[X=C^{\infty}(\bar{\Omega})=\bigcap_{k=1}^{\infty}C^k(\bar{\Omega}) \ , \ T:X \to X \ , \ x(t) \mapsto Tx=\sum_{|\alpha| \leq k}a_{\alpha}(t)\cdot\partial^{\alpha}x(t)\]
+\[X=C^{\infty}(\overline{\Omega})=\bigcap_{k=1}^{\infty}C^k(\overline{\Omega}) \ , \ T:X \to X \ , \ x(t) \mapsto Tx=\sum_{|\alpha| \leq k}a_{\alpha}(t)\cdot\partial^{\alpha}x(t)\]
 其依然是无界算子，反例类似一维。
 
 \paragraph*{例3} \quad 积分算子，考虑 $L^2$上的$Lebesgue$积分
-\[X=L^2(\bar{\Omega}) \ , \ T:X \to \mathbb{R}^n \ , \ u(x) \mapsto Tu=\int_{\bar{\Omega}}u(x)\psi(x)\dd x\]
+\[X=L^2(\overline{\Omega}) \ , \ T:X \to \mathbb{R}^n \ , \ u(x) \mapsto Tu=\int_{\overline{\Omega}}u(x)\psi(x)\dd x\]
 由柯西不等式
 \[||Tu||=|Tu| \leq ||u||_{L^2}||\psi||_{L^2} \quad \Rightarrow \quad ||T|| \leq ||\psi||_{L^2}\]
 再由
-\[||T\psi||=|T\psi|=\int_{\bar{\Omega}}|\psi|^2=||\psi||_{L^2}^2 \quad \Rightarrow \quad ||T||=||\psi||_{L^2}\]
+\[||T\psi||=|T\psi|=\int_{\overline{\Omega}}|\psi|^2=||\psi||_{L^2}^2 \quad \Rightarrow \quad ||T||=||\psi||_{L^2}\]
 
 \section{有界线性算子空间}
 上一小节中，我们提及有界线性算子全体构成一个赋范线性空间$(\mathscr{B}(X,Y),||\cdot||)$，自然而然我们也会想知道在这样一个赋范线性空间上，元素的收敛性该如何刻画，这对后面讨论空间完备性时至关重要。
