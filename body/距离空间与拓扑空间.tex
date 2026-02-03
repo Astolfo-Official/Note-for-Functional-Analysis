@@ -647,14 +647,26 @@ f(x,0)=\phi(x)
 
 显然距离空间并不是一个足够广泛的空间可以支撑得起这些概念，因此，我们需要考虑一个更广泛的空间，这里我们讲简要介绍拓扑空间。
 \begin{definition}[拓扑]
-    设$X \neq \varnothing$,记$P(X)=\{X\text{的所有子集}\}$，设$\tau \in P(X)$满足：\\
-    \textbf{1.} $\varnothing,X \in \tau$; \qquad \textbf{2.} $\tau$中任意个集合的并属于$\tau$; \qquad \textbf{3.} $\tau$中有限个集合的交属于$\tau$。\\
-    则称$\tau$是$X$上的拓扑，$\tau$中的集合称为开集。(拓扑就是指定集合上的哪些子集是开集)
+设$X \neq \varnothing$,记$P(X)=\{X\text{的所有子集}\}$，设$\tau \in P(X)$满足：
+\begin{itemize}
+\item 1. $\varnothing,X \in \tau$;
+\item 2. $\tau$中任意个集合的并属于$\tau$;
+\item 3. $\tau$中有限个集合的交属于$\tau$。
+\end{itemize}
+则称$\tau$是$X$上的拓扑，$\tau$中的集合称为开集。
 \end{definition}
-\paragraph*{例1} $(X,d)$是距离空间，$\tau_d=\{x\text{中的开集}\}$
-\paragraph*{例2} $X=\{0,1\}$，令
-\[\tau_1=\{\varnothing,X\}\text{(平凡拓扑)} \quad \tau_2=\{\varnothing,\{0\},X\}\text{(是个拓扑)}\]
-\[\tau_3=\{\varnothing,\{0\},\{1\},X\}\text{(离散拓扑，由$X$的所有子集组成的拓扑，包含$X$的所有单点集)}\]
+拓扑就是指定集合上的哪些子集是开集。
+\begin{example}
+\quad $(X,d)$是距离空间，$\tau_d=\{x \ \text{中的开集}\}$
+\end{example}
+\begin{example}
+\quad  令$X=\{0,1\}$，则：
+\begin{itemize}
+    \item 1. $\tau=\{\varnothing,X\}$，称为平凡拓扑；
+    \item 2. $\tau=\{\varnothing,\{0\},X\}$，是个拓扑；
+    \item 3. $\tau=\{\varnothing,\{0\},\{1\},X\}$，称为离散拓扑，由$X$的所有子集组成的拓扑，包含$X$的所有单点集。
+\end{itemize}
+\end{example}
 
 若在$X$上，$\tau_1 \subset \tau_2$，则称$\tau_2$强于$\tau_1$。
 \begin{definition}[闭集]
@@ -669,94 +681,92 @@ f(x,0)=\phi(x)
 \begin{theorem}
     若$X,Y$是拓扑空间，$f:X \to Y$是连续映射当且仅当开集的原像是开集。
 \end{theorem}
-这里我们规定符号$f^{-1}$仅表示原像
-\[f:X \to Y \ (A \subseteq Y) \quad f^{-1}(A)=\{x \in X \ , \ f(x) \in A\}\]
-最后给个奇怪的例子作为这一小节的总结，在下一小节虽然我们也将介绍一些拓扑空间中可以定义的概念，但我们更愿意将他放到距离空间的背景下来考量，因为这门课是泛函分析(乐)。
-\paragraph*{奇怪的例子} 定义如下拓扑
-
-$X=\{0,1\} \quad \tau_D=\{\varnothing,\{0\},\{1\},X\}$单点集在$\mathbb{R}^n$和距离空间中是闭集，但这里是开集。
+这里我们规定符号$f^{-1}$仅表示原像$f:X \to Y \ (A \subseteq Y), \ f^{-1}(A)=\{x \in X \ , \ f(x) \in A\}$。最后给个奇怪的例子作为这一小节的总结，在下一小节虽然我们也将介绍一些拓扑空间中可以定义的概念，但我们更愿意将他放到距离空间的背景下来考量，因为这门课是泛函分析(乐)。
+\begin{example}
+\quad 在$X=\{0,1\}$上定义拓扑$\tau_D=\{\varnothing,\{0\},\{1\},X\}$，单点集在$\mathbb{R}^n$和距离空间中是闭集，但这里是开集。
+\end{example}
 
 \subsection{紧集}
 在介绍距离空间上的紧性之前，我们需要介绍一下四种分离公理并指认距离空间所属的公理。
 \begin{proposition}[分离公理]
-    $T_1$公理：$\forall x \neq y \ , \ \exists \, U_x,U_y \ , \quad \text{s.t.} \quad x \in U_x \ , \ y \notin U_x \ ; \ y \in U_y \ , \ x \notin U_y$\\
-    $T_2$公理：$\forall x \neq y \ , \ \exists \, U_x \cap U_y=\varnothing \ , \quad \text{s.t.} \quad x \in U_x \ , \ y \notin U_x \ ; \ y \in U_y \ , \ x \notin U_y$\\
-    $T_3$公理：$\forall$ 闭集$A \cap x=\varnothing \ , \ \exists \, U_x \cap U_A=\varnothing \ , \quad \text{s.t.} \quad x \in U_x \ , \ A \notin U_x \ ; \ A \in U_A \ , \ x \notin U_A$\\
-    $T_4$公理：$\forall$ 闭集$A \cap B=\varnothing \ , \ \exists \, U_A \cap U_B=\varnothing \ , \quad \text{s.t.} \quad A \in U_A \ , \ B \notin U_A \ ; \ B \in U_B \ , \ B \notin U_A$
+\begin{itemize}
+    \item $T_1$公理：$\forall x \neq y \ , \ \exists \, U_x,U_y$满足：$x \in U_x \ , \ y \notin U_x \ ; \ y \in U_y \ , \ x \notin U_y$；
+    \item $T_2$公理：$\forall x \neq y \ , \ \exists \, U_x \cap U_y=\varnothing$满足：$x \in U_x \ , \ y \notin U_x \ ; \ y \in U_y \ , \ x \notin U_y$；
+    \item $T_3$公理：$\forall$ 闭集$A \cap x=\varnothing \ , \ \exists \, U_x \cap U_A=\varnothing$满足：$x \in U_x \ , \ A \notin U_x \ ; \ A \in U_A \ , \ x \notin U_A$；
+    \item $T_4$公理：$\forall$ 闭集$A \cap B=\varnothing \ , \ \exists \, U_A \cap U_B=\varnothing$满足：$A \in U_A \ , \ B \notin U_A \ ; \ B \in U_B \ , \ B \notin U_A$。
+\end{itemize}
 \end{proposition}
 很显然，这四个公理的限制逐级加强，下面我们可以来看看这几个公理的形象化描述：
 \begin{figure}[htbp]
     \center
     \includegraphics[scale=0.4]{./fig/2.2.2.png}
 \end{figure}
-对应$T_2$公理，我们又将其称为$Hausdorff$性质，距离空间是满足$T_4$公理的，对于这件事我们可以来证明一下。
+
+$T_2$公理又称为 Hausdorff 性质，距离空间是满足$T_4$公理的，对于这件事我们可以来证明一下。
 \begin{theorem}
     距离空间满足$T_4$公理。
 \end{theorem}
-Proof(反证法):先预设一些对象：
-\[\overline{A}=A \ , \ \overline{B}=B \ , \ A \cap B=\varnothing \ , \ f_A(x):=\mathop {\text{inf}}\limits_{y \in A}d(x,y) \ , \ f_B(x):=\mathop {\text{inf}}\limits_{y \in B}d(x,y)\]
-\textbf{Claim} \quad $f_A(x)>0 \ \Rightarrow \ x \notin A$\\
-(\textbf{Proof:}反证法
+\begin{proof}
+在两不相交的闭集$A,B$上利用距离定义以下两函数：
+\[f_A(x):=\mathop {\text{inf}}\limits_{y \in A}d(x,y) \ , \ f_B(x):=\mathop {\text{inf}}\limits_{y \in B}d(x,y)\]
+显然有$f_A(x)>0 \ \Rightarrow \ x \notin A$，如若不然，即存在$A$之外的点$x$满足$f_A(x)=0$，则$\exists \, \{y_n\} \subset A $满足$d(x,y_n) \to 0$，即$x$是$A$的接触点，由于$A$是闭集，故$x \in A$，矛盾。同理可得$f_B(x)>0 \ \Rightarrow \ x \notin B$。
 
-若$f_A(x)=0 \ \Rightarrow \ \exists \, \{y_n\} \subset A \quad \text{s.t.} \quad d(x,y_n) \to 0 \ \Rightarrow \ x$是$A$的接触点$ \ \Rightarrow \ x \in \overline{A}=A$\\
-矛盾)\\
-记
-\[U_B=\bigcup_{x \in B}B_{\frac{1}{2}f_A(x)}(x) \ , \ B \subset U_B \qquad U_A=\bigcup_{x \in A}B_{\frac{1}{2}f_B(x)}(x) \ , \ A \subset U_A \quad \text{都是开集}\]
-假设
-\[\exists \, z \in U_A \cap U_B \ \Rightarrow \ \exists \, x \in A \quad \text{s.t.} \quad z \in B_{\frac{1}{2}f_B(x)}(x) \ , \ \exists \, y \in B \quad \text{s.t.} \quad z \in B_{\frac{1}{2}f_A(y)}(y)\]
-\[\Rightarrow \ d(x,z)<\frac{1}{2}f_B(x) \ , \ d(z,y)<\frac{1}{2}f_A(y)\]
+定义邻域：
+\[U_B=\bigcup_{x \in B}B_{\frac{1}{2}f_A(x)}(x) \ , \ U_A=\bigcup_{x \in A}B_{\frac{1}{2}f_B(x)}(x)\]
+显然$U_B,U_A$都是开集，且$B \subset U_B,A \subset U_A$。假设$\exists \, z \in U_A \cap U_B$，则$\exists \, x \in A, \ y \in B$满足
+\[z \in B_{\frac{1}{2}f_B(x)}(x) \ , \ z \in B_{\frac{1}{2}f_A(y)}(y) \quad \Rightarrow \quad d(x,z)<\frac{1}{2}f_B(x) \ , \ d(z,y)<\frac{1}{2}f_A(y)\]
 \[d(x,y) \leq d(x,z)+d(z,y)<\frac{1}{2}f_B(x)+\frac{1}{2}f_A(y)<\frac{1}{2}d(x,y)+\frac{1}{2}d(x,y)=d(x,y)\]
-矛盾。
+得出矛盾，因此$U_A \cap U_B=\varnothing$，距离空间满足$T_4$公理。
+\end{proof}
 \begin{definition}[子集拓扑]
     $(X,\tau)$为拓扑空间，$A \subset X$，令$\tau_A=\{U \cap A \ , \ U \in \tau\}$，则称$\tau_A$为$X$上的子集拓扑(诱导拓扑)。
 \end{definition}
-下面，我们将要开始引入我们我们这小节的主要内容，刻画距离空间的紧性，接着上面的内容，我们先看看拓扑空间下紧性的定义。
 \begin{definition}[紧(致)性]
-    $(X,\tau)$为拓扑空间，若$X$的任意开覆盖都有有限子覆盖，则称$X$是紧(致)的。
-    \[X \subset \bigcup_{\lambda \in \Lambda}A_{\lambda} \ \text{$A_{\lambda}$是开集} \ \Rightarrow \ X \subset \bigcup_{i=1}^kA_{\lambda_i}\]
+    $(X,\tau)$为拓扑空间，若$X$的任意开覆盖$\{A_{\lambda}\}$都有有限子覆盖，即存在有限个开集$\{A_{\lambda_i}\}$
+    \[X \subset \bigcup_{\lambda \in \Lambda}A_{\lambda} \ \Rightarrow \ X \subset \bigcup_{i=1}^kA_{\lambda_i}\]
+    可以将$X$完全覆盖，则称$X$是紧(致)的。
 \end{definition}
-\paragraph*{例} $\mathbb{R}^n$上的闭区间(有界闭集)是紧的。
+\begin{example}
+\quad $\mathbb{R}^n$上的闭区间(有界闭集)是紧的。
+\end{example}
 \begin{definition}[紧集]
     $(X,\tau)$为拓扑空间，$A \subset (X,\tau)$，若$(A,\tau_A)$是紧的，则称$A$是$X$中的紧集。
 \end{definition}
-下面我们将讨论拓扑空间下闭集和紧集的关系，我们知道欧氏空间中紧集就是有界闭集，那么这个性质在一般的拓扑空间中还成立吗?
+我们知道欧氏空间中紧集就是有界闭集，那么这个性质在一般的拓扑空间中还成立吗?
 \begin{theorem}
     紧空间的闭子集一定是紧集。
 \end{theorem}
-\textbf{Proof:}设$X$是一紧空间(或者拓扑空间中的紧子集),$A \subset X$,设
+\begin{proof}
+设$X$是一紧空间(或者拓扑空间中的紧子集)，$A \subset X$，设存在$A$的开覆盖$U_{\lambda}$：
 \[A \subset \bigcup_{\lambda \in \Lambda}U_{\lambda} \ \Rightarrow \ X \subset \left(\bigcup_{\lambda \in \Lambda}U_{\lambda}\right) \cup A^c\]
-因为$X$是紧的，有
-\[\exists \, \lambda_1,\lambda_2,\cdots,\lambda_k>0 \quad \text{s.t.} \quad X \subset \left(\bigcup_{i=1}^kU_{\lambda_i}\right) \cup A^c\]
-\[A \subset X \subset \left(\bigcup_{i=1}^kU_{\lambda_i}\right) \cup A^c\]
-故$A$是紧的。\\
-\textbf{Q.E.D.}
+因为$X$是紧的，存在有限个开集$U_{\lambda_1},U_{\lambda_2},\cdots,U_{\lambda_k}$满足：
+\[X \subset \left(\bigcup_{i=1}^kU_{\lambda_i}\right) \cup A^c \quad \Rightarrow \quad A \subset X \subset \left(\bigcup_{i=1}^kU_{\lambda_i}\right) \cup A^c\]
+故$A$也是紧的。
+\end{proof}
 \begin{theorem}
     $T_2$空间的紧子集是闭集。
 \end{theorem}
-\textbf{Proof:}设$X$是$T_2$空间,$A \subset X$,需证明$A^c$为开集，即需证$\forall x \in A^c \ , \ \exists \, U_x \subset A^c$。
+\begin{proof}
+设$X$是$T_2$空间，$A \subset X$，需证明$A^c$为开集，即需证$\forall x \in A^c \ , \ \exists \, U_x \subset A^c$。假设$y \in A \ , \ x \in A^c$，由$T_2$公理，存在$x$的开邻域$U_{x,y}$，$y$的开邻域$V_{x,y}$（$U_{x,y},V_{x,y}$选取与$x,y$都有关）满足$U_{x,y} \cap V_{x,y}=\varnothing$，由紧性：
+\[\exists \, y_1,y_2,\cdots,y_k \in A \quad \text{s.t.} \quad A \subset \bigcup_{i=1}^kV_{x,y_i}\]
+令
+\[U_x=\bigcup_{i=1}^kU_{x,y_i} \quad \Rightarrow \quad U_x \cap \bigcup_{i=1}^kV_{x,y_i}=\varnothing \quad \Rightarrow \quad U_x \cap A=\varnothing \quad \Leftrightarrow \quad U_x \cap A^c\]
+\end{proof}
 
-设$y \in A \ , \ x \in A^c$，由$T_2$公理，存在$x$的开邻域$U_{x,y}$，$y$的开邻域$V_{x,y}$($U_{x,y},V_{x,y}$选取与$x,y$都有关)满足$U_{x,y} \cap V_{x,y}=\varnothing$
-\[\Rightarrow \ A \subset \bigcup_{y \in A}V_{x,y} \ , \ \text{由紧性} \ , \ \exists \, y_1,y_2,\cdots,y_k \in A \quad \text{s.t.} \quad A \subset \bigcup_{i=1}^kV_{x,y_i}\]
-\[\text{令}U_x=\bigcup_{i=1}^kU_{x,y_i} \ \Rightarrow \ U_x \cap \bigcup_{i=1}^kV_{x,y_i}=\varnothing \ \Rightarrow \ U_x \cap A=\varnothing \ \text{即} \ U_x \cap A^c\]
-\textbf{Q.E.D.}
-
-可以看到，在一般拓扑空间下紧和闭是两个等同的概念，紧比闭更强一点。下面我们来看一个紧的性质结束这一小节。
+可以看到，在一般拓扑空间下紧和闭是两个等同的概念，紧比闭更强一点。
 \begin{theorem}
     紧空间(子集)在连续映射下的像也是紧的。
 \end{theorem}
-\textbf{Proof:}
+\begin{proof}设$A \subset X$是紧的，从$X$到$Y$的连续映射$f$，需证明$f(A) \subset Y$是紧的。设$f(A)$有开覆盖$\{G_{\alpha}\}$，由$f$为连续映射可得$f^{-1}(G_{\alpha})$是开集且
+\[A \subset \bigcup_{\alpha}f^{-1}(G_{\alpha}) \quad \Rightarrow \quad \exists \, \alpha_1,\alpha_2,\cdots,\alpha_k \quad \text{s.t.} \quad A \subset \bigcup_{i=1}^kf^{-1}(G_{\alpha_1}) \ , \ f(A) \subset \bigcup_{i=1}^kG_{\alpha_i}\]
+\end{proof}
 \begin{figure}[htbp]
     \center
     \includegraphics[scale=0.2]{./fig/2.2.2-1.png}
 \end{figure}
-\[\text{设}A \subset X\text{是紧的，}f(A) \subset \bigcup_\alpha G_\alpha \ , \ \{G_{\alpha}\}\text{为}Y\text{中的一族开集}\]
-\[\text{由$f$为连续映射可得}f^{-1}(G_{\alpha})\text{是开集且}A \subset \bigcup_{\alpha}f^{-1}(G_{\alpha})\]
-\[\text{由$A$紧可得} \exists \, \alpha_1,\alpha_2,\cdots,\alpha_k \quad \text{s.t.} \quad A \subset \bigcup_{i=1}^kf^{-1}(G_{\alpha_1}) \ , \ f(A) \subset \bigcup_{i=1}^kG_{\alpha_i}\]
 
-\textbf{Q.E.D.}
 
 \subsection{刻画距离空间上的紧集} \label{compact}
-下面我们来看距离空间中的紧集是如何定义的。
 \begin{definition}[距离空间中的紧集]
     $(X,d)$为距离空间，$A \subset X$,
     \[A \subset \bigcup_{\lambda \in \Lambda}B_{r_{\lambda}}(x_{\lambda})\text{是$A$的任一开球覆盖必有一有限子覆盖}\bigcup_{i=1}^kB_{r_{\lambda_i}}(x_{\lambda_i})\]
