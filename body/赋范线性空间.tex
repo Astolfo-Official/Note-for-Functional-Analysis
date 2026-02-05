@@ -1,46 +1,48 @@
 \begin{introduction}
-    \item $Banach$空间~\ref{Banach}
+    \item Banach 空间~\ref{Banach}
     \item 有界变差函数~\ref{bounded variation}
     \item $L^p$空间~\ref{lp}
     \item $L^{\infty}$空间~\ref{infty}
     \item 赋范线性空间的基~\ref{baseset}
     \item 有限维赋范线性空间~\ref{the:B}
-    \item $Riesz$引理~\ref{Riesz}
+    \item Riesz 引理~\ref{Riesz}
   \end{introduction}
 \section{赋范线性空间概述}
-\subsection{范数，赋范线性空间，$Banach$空间} \label{Banach}
-在泛函分析中我们大多处理的都是线性的函数空间，这是基于很多函数空间都是无穷维的线性空间这一事实。
-无穷维线性空间区别于有限维线性空间，一些在有限维线性空间中成立的事情在无穷维线性空间中不一定成立:
-例如，单位闭球在有限维线性空间中是紧致的但在无穷维线性空间中不一定紧致，这点在上一章的讨论中有证明。
+\subsection{范数，赋范线性空间，Banach 空间} \label{Banach}
+在泛函分析中我们大多处理的都是线性空间。无穷维线性空间区别于有限维线性空间，一些在有限维线性空间中成立的事情在无穷维线性空间中不一定成立：例如，单位闭球在有限维线性空间中是紧致的但在无穷维线性空间中不一定紧致，这点在上一章的讨论中有证明。
 
 在线性代数中，我们定义过$\mathbb{R}^n$上(有限维线性空间)的模长：
 \[\mathbb{R}^n \ : \ \vec{v} \in \mathbb{R}^n \ , \ |\vec{v}|=\sqrt{\sum_{i=1}^nx_i^2}\]
 
-在无限维线性空间我们也同样可以定义类似的概念——范数($norm$)可以看作是模长的推广(其实都是距离空间中的距离)。
+在无限维线性空间我们也同样可以定义类似的概念——范数(norm)可以看作是模长的推广(其实都是距离空间中的距离)。
 \begin{definition}[范数]
-    设$X$是定义在$\mathbb{R}$或者$\mathbb{C}$上的线性空间，函数$|| \cdot ||:X \to \mathbb{R}$如果满足\\
-    \qquad 1. $\forall x \in X \ , \ ||x|| \geq 0 \ \text{and} \ ||x||=0 \ \text{if and only if} \ x=0 \ $(非负性)\\
-    \qquad 2. $\forall x \in X \ , \ \forall a \in \mathbb{R} \ or \ \mathbb{C} \ , \ ||ax||=|a|||x|| \ $(齐次性)\\
-    \qquad 3. $\forall x,y \in X \ , \ ||x+y|| \leq ||x||+||y|| \ $(三角不等式)\\
-    则称$||\cdot||$是$X$上的一个范数，$(X,||\cdot||)$称为赋范线性空间。
+设$X$是定义在$\mathbb{R}$或者$\mathbb{C}$上的线性空间，函数$|| \cdot ||:X \to \mathbb{R}$如果满足
+\begin{itemize}
+    \item 1. 非负性：$\forall x \in X \ , \ ||x|| \geq 0 \ \text{and} \ ||x||=0 \ \text{if and only if} \ x=0 \ $
+    \item 2. 齐次性：$\forall x \in X \ , \ \forall a \in \mathbb{R} \ or \ \mathbb{C} \ , \ ||ax||=|a|||x|| \ $
+    \item 3. 三角不等式：$\forall x,y \in X \ , \ ||x+y|| \leq ||x||+||y|| \ $
+\end{itemize}
+则称$||\cdot||$是$X$上的一个范数，$(X,||\cdot||)$称为赋范线性空间。
 \end{definition}
-容易证明，赋范线性空间是距离空间。
+容易证明，赋范线性空间是距离空间，只需把范数中的元素换成两个元素之差即可。
 \begin{definition}[强收敛(依范数收敛)]
-    若$d(x_n,x) \to 0 \ (n \to \infty)$即$||x_n-x|| \to 0 \ (n \to \infty)$,则称$x_n$强收敛于$x$或称依范数收敛。
+若$d(x_n,x) \to 0 \ (n \to \infty)$即$||x_n-x|| \to 0 \ (n \to \infty)$,则称$x_n$强收敛于$x$或称依范数收敛。
 \end{definition}
-我们将完备的赋范线性空间称为$Banach$空间。
+我们将完备的赋范线性空间称为 Banach 空间。
 
 同一个集合上可以定义不同的范数：
-\[(\mathbb{R}^2,|\vec{x}|) \ , \ |\vec{x}|=\sqrt{x_1^2+x_2^2} \qquad \qquad \qquad (\mathbb{R}^2,|\vec{x}|) \ , \ |\vec{x}|=|x_1|+|x_2|\]
 \begin{figure}[H]
     \centering
     \begin{minipage}[t]{0.3\textwidth}
     \centering
     \includegraphics[width=3.5cm]{./fig/3.1.1-1.png}
+    \caption{$(\mathbb{R}^2,|\vec{x}|) \ , \ |\vec{x}|=\sqrt{x_1^2+x_2^2}$}
     \end{minipage}
+    \hspace{2cm}
     \begin{minipage}[t]{0.3\textwidth}
     \centering
     \includegraphics[width=3.5cm]{./fig/3.1.1-2.png}
+    \caption{$(\mathbb{R}^2,|\vec{x}|) \ , \ |\vec{x}|=|x_1|+|x_2|$}
     \end{minipage}
 \end{figure}
 下面我们来看几个赋范线性空间的例子。
