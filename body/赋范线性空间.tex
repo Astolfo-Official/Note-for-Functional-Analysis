@@ -197,110 +197,95 @@ $B_r(0)=\{x|x \in X \ ,||x||<r\}$，设$x,y \in B_r(0) \ , \ t \in (0,1)$，则�
 不动点在$y=x$上，连续映射保证了任意一个$T$都必然与$y=x$有交点。
 
 \section{$L^p$空间} \label{lp}
-\begin{proposition}[$L^p$空间]
+\begin{definition}[$L^p$空间]
 设$E$是$\mathbb{R}$上的可测集。$L^p$空间定义为
 \[L^p(E)=\left\{x(t) \ \text{可测} \ , \ \int_E|x(t)|^p<+\infty\right\}\]
 这里$x(t)$是等价类，为方便书写取一代表元，这里$x(t) \sim y(t)$当且仅当$x(t)=y(t) \quad a.e.$，定义范数：
 \[||x(t)||_{L^p(E)}=\left(\int_E|x(t)|^p\dd t\right)^{\frac{1}{p}}\]
+\end{definition}
+\begin{proof}
 \begin{itemize}
 \item 1. 正定性
 \[||x(t)|| \geq 0 \ \text{显然，若}||x(t)||=0 \ \Rightarrow \ \int_E|x(t)|^p\dd t=0 \ \text{，不妨设} \ m(E)>0 \ \Rightarrow \ x(t)=0 \quad a.e.\]
 \item 2. 齐次性
 \[||kx(t)||=\left(\int_Ek|x(t)|^p\dd t\right)^{\frac{1}{p}}=\left(|k|^p\int_E|x(t)|^p\dd t\right)^{\frac{1}{p}}=|k|\left(\int_E|x(t)|^p\dd t\right)^{\frac{1}{p}}\]
-\item 3. 三角不等式：Minkowski 不等式
+\item 3. 三角不等式：Minkowski 不等式（要证明 Minkowski 不等式，我们需要一些其他的基础不等式）
 \end{itemize}
-\end{proposition}
-要证明Minkowski 不等式，我们需要一些其他的基础不等式：
-\begin{theorem}[$Young$不等式]
+\end{proof}
+\begin{theorem}[Young 不等式]
     \[\text{若} \forall p,q>0 \ \text{满足} \ \frac{1}{p}+\frac{1}{q}=1 \ \text{，则对} \ \forall a,b>0 \ \text{都有} \ |ab| \leq \frac{|a|^p}{p}+\frac{|b|^q}{q}\]
 \end{theorem}
-\textbf{Proof:}不妨设$a,b>0$
-\[\frac{1}{p}+\frac{1}{q}=1 \ \Leftrightarrow \ \frac{q}{p}+1=q \ \Leftrightarrow \ 1-q=-\frac{q}{p}\]
-\[|ab| \leq \frac{|a|^p}{p}+\frac{|b|^q}{q} \ \Leftrightarrow \ ab^{1-q} \leq \frac{1}{p}\left(\frac{a^p}{b^q}\right)+\frac{1}{q} \ \Leftrightarrow \ \left(\frac{a^p}{b^q}\right)^{\frac{1}{p}}-1 \leq \frac{1}{p}\left(\frac{a^p}{b^q}-1\right)\]
-令$t=a^p/b^q>0$，则只需证
-\[t^{\frac{1}{p}}-1 \leq \frac{1}{p}(t-1) \quad (t>0 \ ,p>0)\]
-令
-\[f(t)=t^{\frac{1}{p}}-\frac{1}{p}t-1+\frac{1}{p} \quad (t>0 \ ,p>0)\]
-则
-\[f'(t)=\frac{1}{p}t^{\frac{1}{p}-1}-\frac{1}{p}=\frac{1}{p}\left(t^{\frac{1}{p}-1}-1\right)\]
-易证明$x=1$为$f(x)$的极大值点:
-\[f(x) \leq f(1)=0 \ \Rightarrow \ t^{\frac{1}{p}}-1 \leq \frac{1}{p}(t-1) \quad (t>0 \ ,p>0)\]
-原命题得证。
-
-\textbf{Q.E.D.}
-
-在使用$Young$不等式的时候我们可以用到一下小技巧:
+\begin{proof}
+不妨设$a,b>0$，
+\[\frac{1}{p}+\frac{1}{q}=1 \quad \Leftrightarrow \quad \frac{q}{p}+1=q \quad \Leftrightarrow \quad 1-q=-\frac{q}{p}\]
+\[|ab| \leq \frac{|a|^p}{p}+\frac{|b|^q}{q} \quad \Leftrightarrow \quad ab^{1-q} \leq \frac{1}{p}\left(\frac{a^p}{b^q}\right)+\frac{1}{q} \quad \Leftrightarrow \quad \left(\frac{a^p}{b^q}\right)^{\frac{1}{p}}-1 \leq \frac{1}{p}\left(\frac{a^p}{b^q}-1\right)\]
+令$t=a^p/b^q>0$，则只需证：
+\[t^{\frac{1}{p}}-1 \leq \frac{1}{p}(t-1) \ , \ (t>0 \ ,p>0) \quad \Rightarrow \quad \text{定义：} f(t)=t^{\frac{1}{p}}-\frac{1}{p}t-1+\frac{1}{p} \ , \ (t>0 \ , \ p>0)\]
+\[f'(t)=\frac{1}{p}t^{\frac{1}{p}-1}-\frac{1}{p}=\frac{1}{p}\left(t^{\frac{1}{p}-1}-1\right) \quad \Rightarrow \quad f(x) \leq f(1)=0 \quad \Rightarrow \quad t^{\frac{1}{p}}-1 \leq \frac{1}{p}(t-1) \ , \ (t>0 \ , \ p>0)\]
+\end{proof}
+在使用 Young 不等式的时候我们可以用到一下小技巧：
+\begin{lemma}
 \[\text{若} \forall p,q>0 \ \text{满足} \ \frac{1}{p}+\frac{1}{q}=1 \ \text{，则对} \ \forall a,b>0 \ , \ \forall \varepsilon>0 \ \text{都有} \ |ab|=|\varepsilon a \cdot \frac{1}{\varepsilon}b| \leq \varepsilon^p\frac{|a|^p}{p}+\frac{1}{\varepsilon^q}\frac{|b|^q}{q}\]
+\end{lemma}
 由于$\varepsilon$的任意性，可以用这种小技巧将一些性质不好的项(我不喜欢的项)压住。
-\begin{theorem}[$H\ddot{o}lder$不等式]
+\begin{theorem}[H\"{o}lder 不等式]
     设$E$是可测集，$x(t),y(t)$是$E$上的可测函数，则有
-    \[\int_E|x(t)y(t)|\dd t \leq \left(\int_E|x(t)|^p\dd t\right)^{\frac{1}{p}}\left(\int_E|y(t)|^q\dd t\right)^{\frac{1}{q}} \quad (p,q>0 \ , \ \frac{1}{p}+\frac{1}{q}=1)\]
+    \[\int_E|x(t)y(t)|\dd t \leq \left(\int_E|x(t)|^p\dd t\right)^{\frac{1}{p}}\left(\int_E|y(t)|^q\dd t\right)^{\frac{1}{q}} \ , \ (p,q>0 \ , \ \frac{1}{p}+\frac{1}{q}=1)\]
     若$x(t) \in L^p(E) \ , \ y(t) \in L^q(E)$则
     \[\int_E|x(t)y(t)|\dd t \leq ||x(t)||_{L^p(E)}||y(t)||_{L^q(E)}\]
 \end{theorem}
-\textbf{Proof:}设
-\[A=||x(t)||_{L^p(E)}=\left(\int_E|x(t)|^p\dd t\right)^{\frac{1}{p}} \qquad B=||y(t)||_{L^q(E)}=\left(\int_E|y(t)|^q\dd t\right)^{\frac{1}{q}}\]
-由$Young$不等式:
+\begin{proof}
+设
+\[A=||x(t)||_{L^p(E)}=\left(\int_E|x(t)|^p\dd t\right)^{\frac{1}{p}} \ , \ B=||y(t)||_{L^q(E)}=\left(\int_E|y(t)|^q\dd t\right)^{\frac{1}{q}}\]
+由 Young 不等式:
 \[\frac{|x(t)| \cdot |y(t)|}{A \cdot B} \leq \frac{1}{p}\frac{|x(t)|^p}{A^p}+\frac{1}{q}\frac{|y(t)|^q}{B^q} \ \Rightarrow \ \frac{\int_E|x(t)y(t)|\dd t}{A \cdot B} \leq \frac{1}{p}\frac{\int_E|x(t)|^p\dd t}{A^p}+\frac{1}{q}\frac{\int_E|y(t)|^q\dd t}{B^q}=1\]
-\[\Rightarrow \ \int_E|x(t)y(t)|\dd t \leq A \cdot B\]
+\end{proof}
 
-\textbf{Q.E.D.}
-
-下面我可以来证明$Minkowski$不等式($L^p$空间的三角不等式):
-\begin{theorem}[$Minkowski$不等式]
-    设$x(t),y(t) \in L^p(E) \ (p \geq 1)$，则有
-    \[\left(\int_E|x(t)+y(t)|^p\dd t\right)^{\frac{1}{p}} \leq \left(\int_E|x(t)|^p\dd t\right)^{\frac{1}{p}}+\left(\int_E|y(t)|^p\dd t\right)^{\frac{1}{p}}\]
-    即
-    \[||x(t)+y(t)||_{L^p(E)} \leq ||x(t)||_{L^p(E)}+||y(t)||_{L^p(E)}\]
+\begin{theorem}[Minkowski 不等式]
+设$x(t),y(t) \in L^p(E) \ (p \geq 1)$，则有
+\[\left(\int_E|x(t)+y(t)|^p\dd t\right)^{\frac{1}{p}} \leq \left(\int_E|x(t)|^p\dd t\right)^{\frac{1}{p}}+\left(\int_E|y(t)|^p\dd t\right)^{\frac{1}{p}}\]
+即
+\[||x(t)+y(t)||_{L^p(E)} \leq ||x(t)||_{L^p(E)}+||y(t)||_{L^p(E)}\]
 \end{theorem}
-\textbf{Proof:} $p=1$时，显然；$p>1$时，有
-\[\frac{1}{p}+\frac{1}{q}=1 \ \Leftrightarrow \ p=(p-1)q\]
-由$H\ddot{o}lder$不等式:
-\[\int_E|x(t)+y(t)|^p\dd t=\int_E|x(t)+y(t)||x(t)+y(t)|^{p-1}\dd t\]
-\[\leq \int_E|x(t)||x(t)+y(t)|^{p-1}\dd t+\int_E|y(t)||x(t)+y(t)|^{p-1}\dd t\]
+\begin{proof}
+$p=1$时，显然；$p>1$时，有
+\[\frac{1}{p}+\frac{1}{q}=1 \quad \Leftrightarrow \quad p=(p-1)q\]
+由 H\"{o}lder 不等式：
+\[\int_E|x(t)+y(t)|^p\dd t=\int_E|x(t)+y(t)|\cdot|x(t)+y(t)|^{p-1}\dd t\]
+\[\leq \int_E|x(t)|\cdot|x(t)+y(t)|^{p-1}\dd t+\int_E|y(t)|\cdot|x(t)+y(t)|^{p-1}\dd t\]
 \[\leq \left(\int_E|x(t)|^p\dd t\right)^{\frac{1}{p}}\left(\int_E|x(t)+y(t)|^{q(p-1)}\dd t\right)^{\frac{1}{q}}+\left(\int_E|y(t)|^p\dd t\right)^{\frac{1}{p}}\left(\int_E|x(t)+y(t)|^{q(p-1)}\dd t\right)^{\frac{1}{q}}\]
 \[\leq \left(\int_E|x(t)|^p\dd t\right)^{\frac{1}{p}}\left(\int_E|x(t)+y(t)|^{p}\dd t\right)^{1-\frac{1}{p}}+\left(\int_E|y(t)|^p\dd t\right)^{\frac{1}{p}}\left(\int_E|x(t)+y(t)|^{p}\dd t\right)^{1-\frac{1}{p}}\]
 \[\Rightarrow \ \left(\int_E|x(t)+y(t)|^p\dd t\right) \cdot \left(\int_E|x(t)+y(t)|^{p}\dd t\right)^{\frac{1}{p}-1} \leq \left(\int_E|x(t)|^p\dd t\right)^{\frac{1}{p}}+\left(\int_E|y(t)|^p\dd t\right)^{\frac{1}{p}}\]
 \[\Leftrightarrow \ \left(\int_E|x(t)+y(t)|^{p}\dd t\right)^{\frac{1}{p}} \leq \left(\int_E|x(t)|^p\dd t\right)^{\frac{1}{p}}+\left(\int_E|y(t)|^p\dd t\right)^{\frac{1}{p}}\]
-
-\textbf{Q.E.D.}
+\end{proof}
 
 \section{$L^p$空间的性质}
-\begin{theorem}[$Riesz-Fischer$定理]
+\begin{theorem}[Riesz-Fischer 定理]
     $L^p(E) \ (p \geq 1)$是$Banach$空间。\footnote{这里我们指定$E$是$\mathbb{R}$上的可测集，因为说明这种情况比较简单(懒}
 \end{theorem}
-\textbf{Proof:} \\
-(想法是通过$L^p$中的收敛控制$L^1$的收敛($H\ddot{o}lder$不等式)，进而得到柯西列收敛从而证明完备性)
-\[\text{设} \ \{x_n(t)\} \ \text{是} \ L^p(E) \ \text{中的柯西列，取子列} \ \{x_{n_k}(t)\} \ \text{满足} \ ||x_{n_{k+l}}-x_{n_k}||<\frac{1}{2^k} \ (k=1,2,3,\cdots)\]
-(做法是
-\[\forall k,m>0 \ , \ \exists \, n_k>0 \quad \text{s.t.} \quad n_{k}>n_{k-1} \ , \ ||x_{n_k+m}-x_{n_k}||<\frac{1}{2^k} \ \Rightarrow \ \text{子列} \ \{x_{n_k}(t)\} \ \text{满足要求}\]
-)\\
-在下面的讨论中我们需要用到$m(E)<+\infty$这个条件，但是这并不是总能满足的，所有我们取可测集$E_1 \subset E \ , \ m(E_1)<+\infty$，由$H\ddot{o}lder$不等式:
+\begin{proof}目标是通过$L^p$中的收敛控制$L^1$的收敛（H\"{o}lder 不等式），进而得到柯西列收敛从而证明完备性。设$\{x_n(t)\}$是$L^p(E)$中的柯西列，取子列$\{x_{n_k}(t)\}$满足$||x_{n_{k+l}}-x_{n_k}||<2^{-k} \ (k=1,2,3,\cdots)$。在下面的讨论中我们需要用到$m(E)<+\infty$这个条件，但这并不是总能满足，因此取可测集$E_1 \subset E \ , \ m(E_1)<+\infty$，由 H\"{o}lder 不等式：
 \begin{equation*}
-    \begin{aligned}
-        \int_{E_1}|x_{n_{k+1}}(t)-x_{n_k}(t)|\dd t & \leq \left(\int_{E_1}1^q\dd t\right)^{\frac{1}{q}}\left(\int_{E_1}|x_{n_{k+1}}(t)-x_{n_k}(t)|^p\right)^{\frac{1}{p}} \\
-        & \leq \left[m(E_1)\right]^{\frac{1}{q}}||x_{n_{k+1}}(t)-x_{n_k}(t)||_{L^p(E_1)} \leq \left[m(E_1)\right]^{\frac{1}{q}}\frac{1}{2^k}
-    \end{aligned}
+\begin{aligned}
+\int_{E_1}|x_{n_{k+1}}(t)-x_{n_k}(t)|\dd t & \leq \left(\int_{E_1}1^q\dd t\right)^{\frac{1}{q}}\left(\int_{E_1}|x_{n_{k+1}}(t)-x_{n_k}(t)|^p\right)^{\frac{1}{p}} \\
+& \leq \left[m(E_1)\right]^{\frac{1}{q}}||x_{n_{k+1}}(t)-x_{n_k}(t)||_{L^p(E_1)} \leq \left[m(E_1)\right]^{\frac{1}{q}}\cdot 2^{-k}
+\end{aligned}
 \end{equation*}
-由$Fatou$引理:
-\[\Rightarrow \ \int_{E_1} \lim_{n \to \infty}\sum_{k=1}^n|x_{n_{k+1}}(t)-x_{n_k}(t)|\dd t \leq \lim_{n \to \infty} \int_{E_1} \sum_{k=1}^n|x_{n_{k+1}}(t)-x_{n_k}(t)|\dd t \leq \left[m(E_1)\right]^{\frac{1}{q}}\sum_{k=1}^{\infty}\frac{1}{2^k}<\infty\]
-\[\Rightarrow \ \sum_{k=1}^{\infty}|x_{n_{k+1}}(t)-x_{n_k}(t)| \ \text{在} \ E_1 \ \text{上} \ a.e. \ \text{收敛}\]
-我们知道以下两个事实:1、$E$可以写成可数个有限测度的子集的并集；2、由可列可加性保证可数个零测集的并集还是零测集。
-\[\Rightarrow \ \sum_{k=1}^{\infty}|x_{n_{k+1}}(t)-x_{n_k}(t)| \ \text{在} \ E \ \text{上} \ a.e. \ \text{收敛}\]
-\[\Rightarrow \ x_{n_l}(t)=x_{n_1}(t)+\sum_{k=1}^{l-1}\left(x_{n_{k+1}}(t)-x_{n_k}(t)\right) \leq x_{n_1}(t)+\sum_{k=1}^{l-1}|x_{n_{k+1}}(t)-x_{n_k}(t)| \ \text{在} \ E \ \text{上} \ a.e. \ \text{收敛}\]
+由 Fatou 引理：
+\[\int_{E_1} \lim_{n \to \infty}\sum_{k=1}^n|x_{n_{k+1}}(t)-x_{n_k}(t)|\dd t \leq \lim_{n \to \infty} \int_{E_1} \sum_{k=1}^n|x_{n_{k+1}}(t)-x_{n_k}(t)|\dd t \leq \left[m(E_1)\right]^{\frac{1}{q}}\sum_{k=1}^{\infty}\frac{1}{2^k}<\infty\]
+因此级数$\sum|x_{n_{k+1}}(t)-x_{n_k}(t)|$在$E_1$上$a.e.$（几乎处处）收敛。我们知道以下两个事实：1. $E$可以写成可数个有限测度的子集的并集；2. 由可列可加性保证可数个零测集的并集还是零测集。因此可以论断因此级数$\sum|x_{n_{k+1}}(t)-x_{n_k}(t)|$在$E$上$a.e.$（几乎处处）收敛。进而：
+\[x_{n_l}(t)=x_{n_1}(t)+\sum_{k=1}^{l-1}\left(x_{n_{k+1}}(t)-x_{n_k}(t)\right) \leq x_{n_1}(t)+\sum_{k=1}^{l-1}|x_{n_{k+1}}(t)-x_{n_k}(t)| \ \text{在} \ E \ \text{上} \ a.e. \ \text{收敛}\]
 
-记$x_{n_l}(t)$极限为$x(t)$，柯西列得到的是逐点收敛，为了证明完备性，下面要证明的自然是$x(t) \in L^p(E)$且$x_{n_l}(t) \to x(t) \ (l \to \infty)$，由$Fatou$引理(也可以用控制收敛定理)及柯西列的有界性:
-\[\int_E|x(t)|^p\dd t=\int_E\lim_{l \to \infty}|x_{n_l}(t)|^p\dd t \leq \lim_{l \to \infty}\int_E|x_{n_l}(t)|^p\dd t=\lim_{l \to \infty}||X_{n_l}(t)||^p_{L^p(E)}<+\infty\]
-即$x(t) \in L^p(E)$。
+记$x_{n_l}(t)$极限为$x(t)$，柯西列得到的是逐点收敛，为了证明完备性，下面要证明的自然是$x(t) \in L^p(E)$且$x_{n_l}(t) \to x(t)$，由 Fatou 引理(也可以用控制收敛定理)及柯西列的有界性:
+\[\int_E|x(t)|^p\dd t=\int_E\lim_{l \to \infty}|x_{n_l}(t)|^p\dd t \leq \lim_{l \to \infty}\int_E|x_{n_l}(t)|^p\dd t=\lim_{l \to \infty}||X_{n_l}(t)||^p_{L^p(E)}<+\infty \quad \Leftrightarrow \quad x(t) \in L^p(E)\]
 \begin{equation*}
-    \begin{aligned}
-        ||x_{n_k}(t)-x(t)||^p_{L^p(E)} & =\int_E|x_{n_k}(t)-x(t)|^p\dd t=\int_E\lim_{l \to \infty}|x_{n_k}(t)-x_{n_l}(t)|^p\dd t \\
-        & \leq \lim_{l \to \infty}\int_E|x_{n_k}(t)-x_{n_l}(t)|^p\dd t=\lim_{l \to \infty}||x_{n_k}(t)-x_{n_l}(t)||^p_{L^p(E)} \leq \left(\frac{1}{2^k}\right)^p \to 0 \ (k \to \infty)
-    \end{aligned}
+\begin{aligned}
+||x_{n_k}(t)-x(t)||^p_{L^p(E)} & =\int_E|x_{n_k}(t)-x(t)|^p\dd t=\int_E\lim_{l \to \infty}|x_{n_k}(t)-x_{n_l}(t)|^p\dd t \\
+& \leq \lim_{l \to \infty}\int_E|x_{n_k}(t)-x_{n_l}(t)|^p\dd t=\lim_{l \to \infty}||x_{n_k}(t)-x_{n_l}(t)||^p_{L^p(E)} \leq \left(\frac{1}{2^k}\right)^p \to 0
+\end{aligned}
 \end{equation*}
-即$x_{n_k}(t) \to x(t) \ (k \to \infty)$
+即$x_{n_k}(t)$强收敛于$x(t)$：$x_{n_k}(t) \to x(t)$。
+\end{proof}
 
-\textbf{Q.E.D.}
 \begin{theorem}
     $L^p(E) \ (p \geq 1)$是可分的。
 \end{theorem}
