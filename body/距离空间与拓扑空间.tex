@@ -842,13 +842,7 @@ $(X,d)$是距离空间，$A \subset X$，对$\forall \varepsilon>0 \ , \ \exists
 完备距离空间中的子集是紧集当且仅当它是全有界闭集。
 \end{theorem}
 \begin{proof}
-由定理\ref{theorem:jlj}和引理\ref{lemma:qyjkf}可知充分性显然，下证必要性，只需证明完备距离空间中全有界集是列紧的。设$A$全有界，$\{x_n\} \subset A$，
-\[\exists \, A\text{的有限}1\text{-网}N_1 \ \Rightarrow \ \exists \, x \in N_1 \ , \ B_1(x) \cap \{x_n\}\text{有无限多个点，取其中一个点记作}x_{n_1}\]
-\[B_1(x) \cap A\text{也是全有界的} \ , \ \exists \, A\text{的有限}\frac{1}{2}\text{-网}N_2 \ , \ \text{同理取其中一个点记作}x_{n_2}\]
-\[\vdots\]
-由归纳得
-\[\exists \, \{x_{n_k}\}_{k=1}^{\infty} \quad \text{s.t.} \quad d(x_{n_k},x_{n_{k+m}})<\frac{1}{2^k} \ \Rightarrow \ \{x_{n_k}\}\text{是柯西列}\]
-由完备性，$\exists \, x \in A \quad \text{s.t.} \quad x_{n_k} \to x \ , \ (k \to \infty)$。
+由定理\ref{theorem:jlj}和引理\ref{lemma:qyjkf}可知充分性显然，下证必要性，只需证明完备距离空间中全有界集是列紧的。设$A$全有界，$\{x_n\} \subset A$，存在$A$的有限$1$-网$N_1$，满足$\exists \, x \in N_1$，$B_1(x) \cap \{x_n\}$包含无数多个点，取其中一个记为$x_{n_1}$，显然$B_1(x) \cap A$也是全有界的，存在$B_1(x) \cap A$的有限$1/2$-网$N_2$，同上可得新的点$x_{n_2}$，由归纳得，存在点列$\{x_{n_k}\}$，满足$d(x_{n_k},x_{n_{k+m}})<2^{-k}$，进而可知$\{x_{n_k}\}$是柯西列。由完备性，$\exists \, x \in A$使得$x_{n_k} \to x$。
 \end{proof}
 
 \begin{figure}[htbp]
@@ -856,55 +850,44 @@ $(X,d)$是距离空间，$A \subset X$，对$\forall \varepsilon>0 \ , \ \exists
     \includegraphics[scale=0.25]{./fig/2.2.3-1.png}
 \end{figure}
 
-接下来我们可以看看具体完备距离空间中的(列)紧性的刻画。
-
-\paragraph*{例} \quad $C[a,b]$上的(列)紧性的刻画($Arzela-Ascoli$定理)
-
-为此，我们需要先铺垫一些定义：
 \begin{definition}[一致有界]
-    $A \subset C[a,b]$,且满足
-    \[\exists \, k>0 \ , \ \forall x(t) \in A \ , \ t \in [a,b] \quad \text{s.t.} \quad |x(t)| \leq k\]
-    则称$A$为一致有界的(与距离空间中的有界是同一回事)。
+    $A \subset C[a,b]$且$\exists \, k>0 \ , \ \forall x(t) \in A \ , \ t \in [a,b]$满足$|x(t)| \leq k$，则称$A$是一致有界的。
 \end{definition}
+上述一致有界与距离空间中的有界是同一回事。
 \begin{definition}[等度(一致)连续]
-    $\forall \varepsilon>0 \ , \ \exists \, \delta>0 \ $,
-    \[\forall x(t) \in A \ , \ t_1,t_2 \in [a,b] \ , \ |t_1-t_2|<\delta \quad \text{s.t.} \quad |x(t_1)-x(t_2)|<\varepsilon\]
-    则称$A$是等度(一致)连续的。
+    $A \subset C[a,b] \ , \ \forall \varepsilon>0, \ x(t) \in A \ , \ \exists \, \delta>0 \ , \ t_1,t_2 \in [a,b] \ , \ |t_1-t_2|<\delta$有$|x(t_1)-x(t_2)|<\varepsilon$，则称$A$是等度(一致)连续的。
 \end{definition}
-可以看出，等度(一致)连续是对一族函数的“一致连续”，其$\varepsilon,\delta$的取值与函数无关，容易看出它比一致连续强。
+可以看出，等度连续是对一族函数的”一致连续“，其$\varepsilon,\delta$的取值与函数无关，容易看出比一致连续强。
 
-\paragraph*{例1} \quad $\exists \, M>0 \ , \ \forall x(t) \in A \ , \ \forall t \in [a,b] \quad \text{s.t.} \quad |x'(t)| \leq M \ $，则$A$是等度连续。\\
-\textbf{Proof:}
-\[|x(t_1)-x(t_2)|=|x'(\xi)||t_1-t_2| \leq M|t_1-t_2| \quad \xi \in (t_1,t_2) \ : \ |t_1-t_2| \to 0 \ , \ |x(t_1)-x(t_2)| \to 0\]
-\textbf{Q.E.D.}
+\begin{example}
+\quad $\exists \, M>0 \ , \ \forall x(t) \in A \ , \ \forall t \in [a,b] \quad \text{s.t.} \quad |x'(t)| \leq M \ $，则$A$是等度连续。
+\end{example}
+\begin{proof}
+$|x(t_1)-x(t_2)|=|x'(\xi)||t_1-t_2| \leq M|t_1-t_2| \quad \xi \in (t_1,t_2) \ : \ |t_1-t_2| \to 0 \ , \ |x(t_1)-x(t_2)| \to 0$
+\end{proof}
 
-这个命题还能推广，证明也类似。
-
-\paragraph*{例2} \quad $A \subset C^1[a,b]$且$A$在$C^1[a,b]$，则$A$在$C[a,b]$是等度连续。
-\begin{theorem}[$Arzela-Ascoli$定理] \label{the:AA}
+\begin{theorem}[Arzela-Ascoli 定理] \label{the:AA}
     $C[a,b]$的子集是列紧的当且仅当它是一致有界且等度连续的。
 \end{theorem}
-Proof ($C[a,b]$列紧$ \ \Rightarrow \ $全有界$ \ \Rightarrow \ $有界):
-\[\forall \varepsilon>0 \ , \ \exists \, A\text{的有限}\frac{\varepsilon}{3}\text{-网}N\text{满足} \ \forall x_i \in N \ , \ \exists \,\delta_i \ , \ t_1,t_2 \in [a,b] \ , \ |t_1-t_2|<\delta_i \quad \text{s.t.} \quad |x(t_1)-x(t_2)|<\varepsilon\]
-\[\text{取}\delta=\mathop \text{min}\limits_{N}\{\delta_i\} \ , \ \exists \, i \quad \text{s.t.} \quad x(t) \subset B_{\frac{\varepsilon}{3}}(x_i(t)) \quad \text{则当}|t_1-t_2|<\delta \ , \ \forall x(t) \in A \ \text{时，有}\]
+\begin{proof}
+首先证明充分性：由引理\ref{lemma:qyjkf}知，列紧必定（全）有界，对$\forall \varepsilon>0$，存在$A$的有限$\varepsilon/3$-网$N$满足$\forall x_i \in N \ , \ \exists \,\delta_i \ , \ t_1,t_2 \in [a,b] \ , \ |t_1-t_2|<\delta_i $有$|x(t_1)-x(t_2)|<\varepsilon$，取$\delta=\min\{\delta_i\}$，则$\exists \, i$满足$x(t) \subset B_{\varepsilon/3}(x_i(t))$，当$|t_1-t_2|<\delta \ , \ \forall x(t) \in A$时，有
 \[|x(t_1)-x(t_2)| \leq |x(t_1)-x_i(t_1)|+|x_i(t_1)-x_i(t_2)|+|x_i(t_2)-x(t_2)|<\frac{\varepsilon}{3}+\frac{\varepsilon}{3}+\frac{\varepsilon}{3}=\varepsilon\]
-\textbf{Q.E.D.}
+等度连续得证。
 
-Proof ($C[a,b]$等度连续，一致有界$ \ \Rightarrow \ $列紧):\\
-由于$C[a,b]$完备，故只需证明$C[a,b]$全有界。
-\[\forall \varepsilon>0 \ , \ \exists \, \delta>0 \ , \ |t_1-t_2|<\delta \ , \ \forall x(t) \in A \quad \text{s.t.} \quad |x(t_1)-x(t_2)|<\varepsilon\]
-\[\exists \, k>0 \ , \ \forall x(t) \in A \ , \ t \in [a,b] \quad \text{s.t.} \quad |x(t)|<k \quad \text{一致有界}\]
-\[\text{取$[-k,k]$划分}:\{y_0,y_1,\cdots,y_n\}:y_0=-k \ , \ y_n=k \ , \ 0<y_{i+1}-y_i<\frac{\varepsilon}{5}\]
-\[\text{取$[a,b]$划分}:\{t_0,t_1,\cdots,t_m\}:t_0=a \ , \ t_m=b \ , \ 0<y_{i+1}-y_i<\delta\]
-\[\text{若}x(t_i) \in [y_k,y_{k+1}] \ , \ \text{令}f(t_i)=y_k \ , \ \text{其他地方用直线连接，则}\forall t \in [a,b] \ , \ \exists \, t_i \quad \text{s.t.} \quad t \in [t_i,t_{i+1}]\]
 \begin{figure}[htbp]
     \center
     \includegraphics[scale=0.3]{./fig/2.2.3-2.png}
 \end{figure}
-\[|x(t)-f(t)| \leq |x(t)-x(t_i)|+|x(t_i)-f(t_i)|+|f(t_i)-f(t)|<\frac{\varepsilon}{5}+\frac{\varepsilon}{5}+|f(t_i)-f(t)|\]
-\[<\frac{2}{5}\varepsilon+|f(t_i)-f(t_{i+1})|<\frac{2}{5}\varepsilon+|f(t_i)-x(t_i)|+|x(t_i)-x(t_{i+1})|+|x(t_{i+1})-f(t_{i+1})|\]
-\[<\frac{2}{5}\varepsilon+\frac{1}{5}\varepsilon+\frac{1}{5}\varepsilon+\frac{1}{5}\varepsilon=\varepsilon\]
-\[\text{因$f$至多有限个}(n+1)^{m+1} \ \Rightarrow \ \text{这些$f$构成$A$的一个有限$\varepsilon$-网}\]
-\textbf{Q.E.D.}
 
-至此，一般空间的部分我们已经叙述完成，在这一章中我们介绍了距离空间和拓扑空间的一些性质，这些性质将对后续我们叙述具体的距离空间有很大的帮助。
+下证必要性。由于$C[a,b]$完备，故只需证明$C[a,b]$全有界。由一致有界条件$\exists \, k>0 \ , \ \forall x(t) \in A \ , \ t \in [a,b]$满足$|x(t)|<k$以及等度连续条件$\forall \varepsilon>0 \ , \ \exists \, \delta>0 \ , \ |t_1-t_2|<\delta \ , \ \forall x(t) \in A$有$|x(t_1)-x(t_2)|<\varepsilon$，对函数族的定义域和值域做划分。取$[-k,k]$划分$\{y_0,y_1,\cdots,y_n\}:y_0=-k \ , \ y_n=k \ , \ 0<y_{i+1}-y_i<\varepsilon/5$，取$[a,b]$划分$\{t_0,t_1,\cdots,t_m\}:t_0=a \ , \ t_m=b \ , \ 0<y_{i+1}-y_i<\delta$。按如下规则绘制函数：若$x(t_i) \in [y_k,y_{k+1}]$，则令$f(t_i)=y_k$，其余部分用直线连接，则$\forall t \in [a,b] \ , \ \exists \, t_i$满足当$t \in [t_i,t_{i+1}]$时有：
+\begin{equation*}
+\begin{aligned}
+|x(t)-f(t)| &\leq |x(t)-x(t_i)|+|x(t_i)-f(t_i)|+|f(t_i)-f(t)|\\
+&<\frac{\varepsilon}{5}+\frac{\varepsilon}{5}+|f(t_i)-f(t)|\\
+&<\frac{2}{5}\varepsilon+|f(t_i)-f(t_{i+1})|\\
+&<\frac{2}{5}\varepsilon+|f(t_i)-x(t_i)|+|x(t_i)-x(t_{i+1})|+|x(t_{i+1})-f(t_{i+1})|\\
+&<\frac{2}{5}\varepsilon+\frac{1}{5}\varepsilon+\frac{1}{5}\varepsilon+\frac{1}{5}\varepsilon=\varepsilon\\
+\end{aligned}
+\end{equation*}
+因$f$至多有$(n+1)^{m+1}$个，因此这些$f$构成$A$的一个有限$\varepsilon$-网。全有界性得证。
+\end{proof}
