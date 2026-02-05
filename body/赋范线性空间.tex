@@ -26,7 +26,7 @@
 \end{definition}
 容易证明，赋范线性空间是距离空间，只需把范数中的元素换成两个元素之差即可。
 \begin{definition}[强收敛(依范数收敛)]
-若$d(x_n,x) \to 0 \ (n \to \infty)$即$||x_n-x|| \to 0 \ (n \to \infty)$,则称$x_n$强收敛于$x$或称依范数收敛。
+若$d(x_n,x) \to 0$即$||x_n-x|| \to 0$,则称$x_n$强收敛于$x$或称依范数收敛。
 \end{definition}
 我们将完备的赋范线性空间称为 Banach 空间。
 
@@ -45,143 +45,149 @@
     \caption{$(\mathbb{R}^2,|\vec{x}|) \ , \ |\vec{x}|=|x_1|+|x_2|$}
     \end{minipage}
 \end{figure}
-下面我们来看几个赋范线性空间的例子。
-\paragraph*{例1}$C[a,b] \ , \ ||x(t)||=\mathop \text{sup}\limits_{t \in [a,b]}|x(t)|$是$Banach$空间，无穷维且可分。\\
-验证：
+\begin{example}
+\quad $C[a,b] \ , \ ||x(t)||=\mathop \text{sup}\limits_{t \in [a,b]}|x(t)|$是 Banach 空间，无穷维且可分。
+\end{example}
+\begin{proof}
 \[||x(t)|| \leq 0 \ , \ \text{若}||x(t)||=0 \ \Rightarrow \ \mathop \text{sup}\limits_{t \in [a,b]}|x(t)|=0 \ \Leftrightarrow \ \forall t \in [a,b] \ , \ |x(t)|=0 \ \Rightarrow \ x(t)=0\]
 \[||ax(t)||=\mathop \text{sup}\limits_{t \in [a,b]}|ax(t)|=\mathop \text{sup}\limits_{t \in [a,b]}|a||x(t)|=|a|||x(t)||\]
 \[||x(t)+y(t)||=\mathop \text{sup}\limits_{t \in [a,b]}|x(t)+y(t)| \leq \mathop \text{sup}\limits_{t \in [a,b]}|x(t)|+\mathop \text{sup}\limits_{t \in [a,b]}|y(t)|=||x(t)||+||y(t)||\]
+\end{proof}
 
-\paragraph*{例2}$l^{\infty}$是所有有界数列构成的集合，设$X=(x_1,x_2,\cdots)$，设$||X||=\mathop \text{sup}\limits_{i \in \mathbb{N}_+}|x_i|$。容易验证:\\
-1、$||\cdot||$是范数; \quad 2、$(l^{\infty},||\cdot||)$是$Banach$空间，无穷维且不可分。
+\begin{example}
+\quad $l^{\infty}$是所有有界数列构成的集合，设$X=(x_1,x_2,\cdots)$，$||X||=\mathop \text{sup}\limits_{i \in \mathbb{N}_+}|x_i|$。容易验证：$||\cdot||$是范数以及$(l^{\infty},||\cdot||)$是 Banach 空间，无穷维且不可分。
+\end{example}
 
-\paragraph*{例3}$L^1[a,b]$是$[a,b]$上所有可积函数(等价类)构成的集合($Lebesgue$积分无法得到严格的相等，只能用等价类来表示，例如若$f=g \ a.e.$，则认为$f$与$g$在$L^1[a,b]$中相同)，定义范数
-\[||x(t)||_{L^1[a,b]}=\int_a^b|x(t)|\dd t \quad (Lebesgue\text{积分})\]
-验证:
-\[||x(t)||_{L^1[a,b]}=\int_a^b|x(t)|\dd t \geq 0 \ \text{若}||x(t)||_{L^1[a,b]}=0 \ \Rightarrow \ |x(t)|=0 \ a.e. \ \Rightarrow \ x(t)=0 \ a.e.\]
-其余两点容易验证，故$L^1[a,b]$是$Banach$空间。
+\begin{example}
+\quad $L^1[a,b]$是$[a,b]$上所有可积函数(等价类)构成的集合，利用 Lebesgue 积分定义范数
+\[||x(t)||_{L^1[a,b]}=\int_a^b|x(t)|\dd t\]
+\end{example}
+\begin{proof}其余两点容易验证，仅验证正定性：
+\[||x(t)||_{L^1[a,b]}=\int_a^b|x(t)|\dd t \geq 0 \ \text{若}||x(t)||_{L^1[a,b]}=0 \ \Rightarrow \ |x(t)|=0 \quad a.e. \ \Rightarrow \ x(t)=0 \quad a.e.\]
+\end{proof}
 
-由此联想，我们也容易想到一个不是$Banach$空间的例子：
-\paragraph*{例4}$(C^1[a,b],||\cdot||_{L^1[a,b]})$不完备，故不是$Banach$空间。这件事可以通过范数诱导出的距离加以证明:
+\begin{example}
+\quad $(C^1[a,b],||\cdot||_{L^1[a,b]})$不完备，故不是 Banach 空间。这件事可以通过范数诱导出的距离加以证明:
 \[d(x(t),y(t))=\int_a^b|x(t)-y(t)|\dd t\]
+\end{example}
 
-\paragraph*{例5}$V[a,b]$是$[a,b]$上的有界变差函数构成的集合，是$Banach$空间。
-
-当然我们需要先知道有界变差函数是什么。
 \begin{definition}[全变差,有界变差函数] \label{bounded variation}
-    \[\mathop \text{V}\limits_a^b(x(t))=\mathop \text{sup}\limits_p \sum |x(t_{i+1})-x(t_i)|\]
-    其中$p$为$[a,b]$上的任意有限划分$a=t_0<t_1<t_2<\cdots<t_n=b$。\\
-    若函数$x(t)$满足
-    \[\mathop \text{V}\limits_a^b(x(t))<\infty\]
-    则称$x(t)$为有界变差函数。
+定义函数$x(t)$的全变差定义为：
+\[\mathop \text{V}\limits_a^b(x(t))=\mathop \text{sup}\limits_p \sum |x(t_{i+1})-x(t_i)|\]
+其中$p$为$[a,b]$上的任意有限划分$a=t_0<t_1<t_2<\cdots<t_n=b$。若函数$x(t)$满足：
+\[\mathop \text{V}\limits_a^b(x(t))<\infty\]
+则称$x(t)$为有界变差函数。有界变差函数全体组成的空间记为$V[a,b]$。
 \end{definition}
-首先定义$V[a,b]$上的范数:
+\begin{proposition}[全变差空间$V[a,b]$]
+定义$V[a,b]$上的范数:
 \[||x(t)||=|x(a)|+\mathop \text{V}\limits_a^b(x(t))\]
-验证其是定义良好的范数:\\
-正定性：
-\[\text{显然} \ ||x(t)|| \geq 0 \ \text{若} \ ||x(t)||=0 \ \Rightarrow \ x(a)=0 \ \text{且} \ \mathop \text{V}\limits_a^b(x(t))=0 \quad \text{取对半划分:} \ \forall t \in [a,b] \ \text{有:}\]
+验证其是定义良好的范数：
+\begin{itemize}
+\item 1. 正定性：$||x(t)|| \geq 0$显然，若$||x(t)||=0$，则有$x(a)=0$且$\mathop \text{V}\limits_a^b(x(t))=0$。取对半划分$\forall t \in [a,b]$：
 \[|x(a)-x(t)|+|x(t)-x(b)| \leq \mathop \text{V}\limits_a^b(x(t))=0 \ \Rightarrow \ |x(a)-x(t)|=|x(t)-x(b)|=0 \ \Rightarrow \ x(t)=x(a)=0\]
-齐次性显然。\\
-三角不等式(注意:这里利用了不等式$\text{sup}(A+B) \leq \text{sup}A+\text{sup}B$)
+\item 2. 齐次性：显然
+\item 3. 三角不等式：利用不等式$\text{sup}(A+B) \leq \text{sup}A+\text{sup}B$：
 \begin{equation*}
     \begin{aligned}
-        ||x(t)+y(t)|| & =|x(a)+y(a)|+\mathop \text{V}\limits_a^b(x(t)+y(t))=|x(a)+y(a)|+\mathop \text{sup}\limits_p \sum|x_{i+1}(t)-x_i(t)+y_{i+1}(t)-y_i(t)| \\
-        & \leq |x(a)|+|y(a)|+\mathop \text{sup}\limits_p \sum|x_{i+1}(t)-x_i(t)|+\mathop \text{sup}\limits_p \sum|y_{i+1}(t)-y_i(t)|=||x(t)||+||y(t)||
+        ||x(t)+y(t)|| & =|x(a)+y(a)|+\mathop \text{V}\limits_a^b(x(t)+y(t))\\
+        & =|x(a)+y(a)|+\mathop \text{sup}\limits_p \sum|x_{i+1}(t)-x_i(t)+y_{i+1}(t)-y_i(t)| \\
+        & \leq |x(a)|+|y(a)|+\mathop \text{sup}\limits_p \sum|x_{i+1}(t)-x_i(t)|+\mathop \text{sup}\limits_p \sum|y_{i+1}(t)-y_i(t)|\\
+        &=||x(t)||+||y(t)||
     \end{aligned}
 \end{equation*}
-下面验证$V[a,b]$是$Banach$空间。\\
-\textbf{Proof:}\\
-设$\{x_n\}$是$V[a,b]$中的柯西列。
-\[\forall \varepsilon>0 \ , \ \exists \, N>0 \quad \text{s.t.} \quad n,m \geq N \ , \ ||x_m-x_n||<\varepsilon\]
-即对$[a,b]$上的任意有限划分$a=t_0<t_1<t_2<\cdots<t_n=b$都有
-\[|x_m(a)-x_n(a)|+\mathop \text{sup}\limits_p \sum |x_m(t_{i+1})-x_n(t_{i+1})-x_m(t_i)+x_n(t_i)|<\varepsilon\]
-由此可以得出两件事:一、$\{x_n(a)\}_{n=1}^{\infty}$是柯西列；二、类似的取对半划分:$ \ \forall t \in [a,b] \ $有:
-\[|x(a)-x(t)|+|x(t)-x(b)| \leq \mathop \text{V}\limits_a^b(x(t))<\varepsilon \ \Rightarrow \ |x(a)-x(t)|<\varepsilon \ \Rightarrow \ \{x_n(t)-x_n(a)\}_{n=1}^{\infty}\text{是柯西列}\]
-有限个柯西列的和还是柯西列，故我们可以得到:$\{x_n(t)\}_{n=1}^{\infty}$是柯西列，即
-\[\forall t \in [a,b] \ , \ x_n(t) \xrightarrow{\text{逐点}} x(t)\]
-在此基础上，如果我们想进一步证明$x_n(t)$强收敛于$x(t)$，我们需先证明柯西列极限$x(t)$在$V[a,b]$中(利用了有限加和与极限可交换):
-\[\mathop \text{V}\limits_a^b(x(t))=x(a)+\mathop \text{sup}\limits_p \lim_{n \to \infty}\sum |x_n(t_{i+1})-x_n(t_i)|=\lim_{n \to \infty} \left ( x_n(a)+\mathop \text{sup}\limits_p \sum |x_n(t_{i+1})-x_n(t_i)| \right )\]
-因为$\{x_n(t)\}_{n=1}^{\infty}$是$V[a,b]$中的柯西列，故$\{x_n(t)\}_{n=1}^{\infty}$是$V[a,b]$中的有界集:
-\[\forall n \in \mathbb{N}_+ \ , \ \exists \, M>0 \quad \text{s.t.} \quad ||x_n(t)|| \leq M \ \Rightarrow \ \mathop \text{V}\limits_a^b(x(t)) \leq M \ \Leftrightarrow \ \mathop \text{V}\limits_a^b(x(t)) \in V[a,b]\]
-下面我们可以开始证明$x_n(t)$强收敛于$x(t)$:
-\[||x_n(t)-x(t)||=|x_n(a)-x(a)|+\mathop \text{sup}\limits_p \sum |x_n(t_{i+1})-x(t_{i+1})-x_n(t_i)+x(t_i)|\]
-$\exists \, N>0$当$n>N$时:
-\[|x_n(a)-x(a)|=\lim_{m \to \infty}|x_n(a)-x_m(a)|<\varepsilon\]
-对任意划分$p$:
-\[\mathop \text{sup}\limits_p \sum |x_n(t_{i+1})-x(t_{i+1})-x_n(t_i)+x(t_i)|=\lim_{m \to \infty}\mathop \text{sup}\limits_p \sum |x_n(t_{i+1})-x_m(t_{i+1})-x_n(t_i)+x_m(t_i)|\]
-\[\leq \lim_{m \to \infty}\mathop \text{sup}\limits_p \sum |x_n(t_{i+1})-x_n(t_i)|+\lim_{m \to \infty}\mathop \text{sup}\limits_p \sum |x_m(t_{i+1})-x_m(t_i)|<\varepsilon+\varepsilon=2\varepsilon\]
-\[\Rightarrow \ \forall \varepsilon>0 \ , \ \exists \, N>0 \quad \text{s.t.} \quad n>N \ , \ ||x_n(t)-x(t)||<3\varepsilon \ \Leftrightarrow \ x_n \to x \ (n \to \infty)\]
-\textbf{Q.E.D.}
+\end{itemize}
+\end{proposition}
 
-赋范线性空间中一般用$x_n \to x \ (n \to \infty)$表示强收敛。
+\begin{example}
+\quad $V[a,b]$是$[a,b]$上的有界变差函数构成的集合，是 Banach 空间。
+\end{example}
+\begin{proof}
+设$\{x_n\}$是$V[a,b]$中的柯西列，即$\forall \varepsilon>0 \ , \ \exists \, N>0 \quad \text{s.t.} \quad n,m \geq N \ , \ ||x_m-x_n||<\varepsilon$，对$[a,b]$上的任意有限划分$a=t_0<t_1<t_2<\cdots<t_n=b$都有：
+$$|x_m(a)-x_n(a)|+\mathop \text{sup}\limits_p \sum |x_m(t_{i+1})-x_n(t_{i+1})-x_m(t_i)+x_n(t_i)|<\varepsilon$$
+由此可知$\{x_n(a)\}$是柯西列，类似的取对半划分：$\forall t \in [a,b]$有:
+\[|x_n(a)-x_n(t)|+|x_n(t)-x_n(b)| \leq \mathop \text{V}\limits_a^b(x_n(t))<\varepsilon \quad \Rightarrow \quad |x_n(a)-x_n(t)|<\varepsilon\]
+即$\{x_n(t)-x_n(a)\}$是柯西列，有限个柯西列的和还是柯西列，故可知$\{x_n(t)\}$是柯西列。记柯西列极限为$x(t)$，要证明$x(t)$在$V[a,b]$中，利用有限加和与极限可交换：
+\[\mathop \text{V}\limits_a^b(x(t))=x(a)+\mathop \text{sup}\limits_p \lim_{n \to \infty}\sum |x_n(t_{i+1})-x_n(t_i)|=\lim_{n \to \infty} \left ( x_n(a)+\mathop \text{sup}\limits_p \sum |x_n(t_{i+1})-x_n(t_i)| \right )\]
+因为$\{x_n(t)\}$是$V[a,b]$中的柯西列，故$\{x_n(t)\}$是$V[a,b]$中的有界集：
+\[\forall n \in \mathbb{N}_+ \ , \ \exists \, M>0 \quad \text{s.t.} \quad ||x_n(t)|| \leq M \quad \Rightarrow \quad \mathop \text{V}\limits_a^b(x(t)) \leq M \quad \Leftrightarrow \quad \mathop \text{V}\limits_a^b(x(t)) \in V[a,b]\]
+综上所述，$\forall t \in [a,b]$，$x_n(t)$逐点收敛到$x(t) \in V[a,b]$。在此基础上，可以证明$x_n(t)$强收敛于$x(t)$：
+\[||x_n(t)-x(t)||=|x_n(a)-x(a)|+\mathop \text{sup}\limits_p \sum |x_n(t_{i+1})-x(t_{i+1})-x_n(t_i)+x(t_i)|\]
+\[\exists \, N>0 \quad \text{s.t.} \quad n>N \ , \ |x_n(a)-x(a)|=\lim_{m \to \infty}|x_n(a)-x_m(a)|<\varepsilon\]
+\[\forall p \ , \ \mathop \text{sup}\limits_p \sum |x_n(t_{i+1})-x(t_{i+1})-x_n(t_i)+x(t_i)|=\lim_{m \to \infty}\mathop \text{sup}\limits_p \sum |x_n(t_{i+1})-x_m(t_{i+1})-x_n(t_i)+x_m(t_i)|\]
+\[\leq \lim_{m \to \infty}\mathop \text{sup}\limits_p \sum |x_n(t_{i+1})-x_n(t_i)|+\lim_{m \to \infty}\mathop \text{sup}\limits_p \sum |x_m(t_{i+1})-x_m(t_i)|<\varepsilon+\varepsilon=2\varepsilon\]
+即$\forall \varepsilon>0 \ , \ \exists \, N>0$满足$n>N \ , \ ||x_n(t)-x(t)||<3\varepsilon$即是$x_n \to x$。
+\end{proof}
 
 \subsection{赋范线性空间的基本性质}
-下面我们来看一些赋范线性空间的基本性质:
 \begin{theorem}
-    设$(X,||\cdot||)$是线性赋范空间，则:\\
-    1. 范数是连续函数,即$x_n \to x \ \Rightarrow \ ||x_n|| \to ||x|| \ (n \to \infty)$\\
-    2. 线性运算是连续映射\\
-    i) \ \ $x_n \to x \ , \ y_n \to y \ \Rightarrow \ x_n+y_n \to x+y$\\
-    ii) \ $x_n \to x \ , \ a_n \to a \ (\in \mathbb{R} \ or \ \mathbb{C}) \ \Rightarrow \ a_nx_n \to ax$
+    设$(X,||\cdot||)$是线性赋范空间，则：
+    \begin{itemize}
+        \item 1. 范数是连续函数，即$x_n \to x \ \Rightarrow \ ||x_n|| \to ||x|| \ (n \to \infty)$
+        \item 2. 线性运算是连续映射：
+        \begin{itemize}
+            \item 1. $x_n \to x \ , \ y_n \to y \ \Rightarrow \ x_n+y_n \to x+y$
+            \item 2. $x_n \to x \ , \ a_n \to a \ (\in \mathbb{R} \ or \ \mathbb{C}) \ \Rightarrow \ a_nx_n \to ax$
+        \end{itemize}
+    \end{itemize}
 \end{theorem}
-\textbf{Proof}\\
-(1):
+\begin{proof}
+\begin{itemize}
+\item 1. 
 \[||x_n||=||x_n-x+x|| \leq ||x_n-x||+||x|| \ \Rightarrow \ ||x_n||-||x|| \leq ||x_n-x||\]
 \[||x||=||x-x_n+x_n|| \leq ||x-x_n||+||x_n|| \ \Rightarrow \ ||x||-||x_n|| \leq ||x_n-x||\]
-\[\Rightarrow \ \text{\Large|} ||x||-||x_n|| \text{\Large|} \leq ||x_n-x|| \to 0 \ (n \to \infty) \ \Rightarrow \ ||x_n|| \to ||x|| \ (n \to \infty)\]
-(2.i):
+\[\Rightarrow \ \text{\Large|} ||x||-||x_n|| \text{\Large|} \leq ||x_n-x|| \to 0 \ \Rightarrow \ ||x_n|| \to ||x||\]
+\item 2-1
 \[||x_n+y_n-x-y|| \leq ||x_n-x||+||y_n-y|| \to 0\]
-(2.ii):
-\[||a_nx_n-ax|| \leq ||a_nx_n-ax_n+ax_n-ax|| \leq ||a_nx_n-ax_n||+||ax_n-ax||\]
-\[=|a_n-a|||x_n||+|a|||x_n-x|| \to 0\]
-\textbf{Q.E.D.}
+\item 2-2
+\[||a_nx_n-ax|| \leq ||a_nx_n-ax_n+ax_n-ax|| \leq ||a_nx_n-ax_n||+||ax_n-ax||=|a_n-a|||x_n||+|a|||x_n-x|| \to 0\]
+\end{itemize}
+\end{proof}
 
 在线性空间中可以利用加法定义级数，赋范线性空间中当然也可以定义级数:
 \begin{definition}[级数，部分和，级数收敛]
-    设赋范线性空间中的函数列$\{x_n\}_{n=1}^{\infty}$，定义级数为
-    \[\sum_{n=1}^{\infty}x_n=x_1+x_2+x_3+\cdots\]
-    定义部分和$S_n$
-    \[S_n=\sum_{i=1}^nx_i-x_1+x_2+\cdots+x_n\]
-    \[\text{若} \ S_n \to S \ (n \to \infty) \ , \ \text{则称级数} \ \sum_{n=1}^{\infty}x_n \ \text{收敛}\]
+设赋范线性空间中的函数列$\{x_n\}_{n=1}^{\infty}$，定义级数为
+\[\sum_{n=1}^{\infty}x_n=x_1+x_2+x_3+\cdots\]
+定义部分和$S_n$
+\[S_n=\sum_{i=1}^nx_i-x_1+x_2+\cdots+x_n\]
+若部分和有极限$S_n \to S$，则称级数存在极限。
 \end{definition}
 \begin{theorem}
-    \[(X,||\cdot||) \ \text{是$Banach$空间，级数} \ \sum_{n=1}^{\infty}||x_n|| \ \text{收敛，则} \ \sum_{n=1}^{\infty}x_n \ \text{收敛且} \ \left\| \sum_{n=1}^{\infty}x_n \right\| \leq \sum_{n=1}^{\infty}||x_n||\]
+\[(X,||\cdot||) \ \text{是$Banach$空间，若级数} \ \sum_{n=1}^{\infty}||x_n|| \ \text{收敛，则} \ \sum_{n=1}^{\infty}x_n \ \text{收敛且} \ \left\| \sum_{n=1}^{\infty}x_n \right\| \leq \sum_{n=1}^{\infty}||x_n||\]
 \end{theorem}
-\textbf{Proof:}
-\[\text{部分和的模长} \ ||S_j||=\left\| \sum_{n=1}^jx_n \right\| \leq \sum_{n=1}^j||x_n||\]
-\[\text{由} \ \sum_{n=1}^{\infty}||x_n|| \ \text{收敛} \ \Leftrightarrow \ \forall \varepsilon>0 \ , \ \exists \, N>0 \quad \text{s.t.} \quad j>i \geq N \ , \ \sum_{n=i}^j||x_n||<\varepsilon\]
-\[\Rightarrow \ ||S_{j+1}-S_{i-1}||=\sum_{n=i}^j||x_n||<\varepsilon\]
-可知部分和序列$\{S_n\}_{n=1}^{\infty}$是柯西列，即$\exists \, S \in X \quad \text{s.t.} \quad S_n \to S \ (n \to \infty)$
-\[\text{即} \ \sum_{n=1}^{\infty}x_n \ \text{收敛}\]
+\begin{proof}
+部分和的模长
+\[||S_j||=\left\| \sum_{n=1}^jx_n \right\| \leq \sum_{n=1}^j||x_n||\]
+由于模长的级数$\sum ||x_n||$存在：
+\[\sum_{n=1}^{\infty}||x_n||<+\infty \quad \Leftrightarrow \quad \forall \varepsilon>0 \ , \ \exists \, N>0 \quad \text{s.t.} \quad j>i \geq N \ , \ \sum_{n=i}^j||x_n||<\varepsilon \quad \Rightarrow \quad ||S_{j+1}-S_{i-1}||=\sum_{n=i}^j||x_n||<\varepsilon\]
+可知部分和序列$\{S_n\}$是柯西列，即$\exists \, S \in X$满足$S_n \to S$，即$\sum x_n$收敛。
 进而，由范数$||\cdot||$的连续性，对不等式两边取极限即证毕。
-\[\left\| \sum_{n=1}^jx_n \right\| \leq \sum_{n=1}^j||x_n|| \ \Rightarrow \ \left\| \sum_{n=1}^{\infty}x_n \right\| \leq \sum_{n=1}^{\infty}||x_n||\]
-\textbf{Q.E.D.}
+\[\left\| \sum_{n=1}^jx_n \right\| \leq \sum_{n=1}^j||x_n|| \quad \Rightarrow \quad \left\| \sum_{n=1}^{\infty}x_n \right\| \leq \sum_{n=1}^{\infty}||x_n||\]
+\end{proof}
 
-我们也可以看看赋范线性空间下凸集的性质。
 \begin{definition}[凸集]
-    设$X$是线性空间，集合$A$满足
-    \[A \subset X \ , \ \forall x,y \in A \ , \ t \in (0,1) \quad \text{s.t.} \quad tx+(1-t)y \in A\]
-    则称$A$为凸集。
+设$X$是线性空间，若集合$A \subset X$满足$\forall x,y \in A \ , \ t \in (0,1)$有$tx+(1-t)y \in A$，则称$A$为凸集。
 \end{definition}
-几何直观:
 \begin{figure}[htbp]
     \center
     \includegraphics[scale=0.22]{./fig/3.1.2.png}
 \end{figure}
+
 \begin{theorem}
     设$(X,||\cdot||)$是赋范线性空间，原点的球邻域$B_r(0)$是凸集。
 \end{theorem}
-\textbf{Proof:} $B_r(0)=\{x|x \in X \ ,||x||<r\}$，设$x,y \in B_r(0) \ , \ t \in (0,1)$
-\[||tx+(1-t)y|| \leq ||tx||+||(1-t)y||=|t|||x||+|1-t|||y||<tr+(1-t)r=r \ \Rightarrow \ tx+(1-t)y \in B_r(0)\]
-\textbf{Q.E.D.}
+\begin{proof}
+$B_r(0)=\{x|x \in X \ ,||x||<r\}$，设$x,y \in B_r(0) \ , \ t \in (0,1)$，则有
+\[||tx+(1-t)y|| \leq ||tx||+||(1-t)y||=|t|||x||+|1-t|||y||<tr+(1-t)r=r \quad \Rightarrow \quad tx+(1-t)y \in B_r(0)\]
+\end{proof}
+
 \begin{proposition}
     $(X,||\cdot||)$中任意球是凸集。
 \end{proposition}
-凸集还有其他基本性质，如任意个凸集的交集是凸集，具体的例子就是赋范线性空间中任意个球的交集是凸集。
+凸集还有其他基本性质，如任意个凸集的交集是凸集（赋范线性空间中任意个球的交集是凸集）。
 
 关于凸集的性质也有与不动点定理相关的，下面我们简要叙述一下该定理。
-\begin{theorem}[$Schauder$不动点定理]
-    设$X$是$Banach$空间，$A \subset X$是紧凸集，$T:A \to A$是连续映射，则$T$有不动点(不一定唯一，例如恒等映射)。
+\begin{theorem}[Schauder 不动点定理]
+    设$X$是 Banach 空间，$A \subset X$是紧凸集，$T:A \to A$是连续映射，则$T$有不动点(不一定唯一)。
 \end{theorem}
 \paragraph*{例} \quad $T:[0,1] \to [0,1]$
 \begin{figure}[htbp]
@@ -190,20 +196,21 @@ $\exists \, N>0$当$n>N$时:
 \end{figure}
 不动点在$y=x$上，连续映射保证了任意一个$T$都必然与$y=x$有交点。
 
-下面我们将要详细讨论一个赋范线性空间的例子:$L^p(E)$空间 $(p \geq 1)$。
-
 \section{$L^p$空间} \label{lp}
-出于方便，我们讨论$L^p$空间的时候都假设$E$是$\mathbb{R}$上的可测集。$L^p$空间定义为
+\begin{proposition}[$L^p$空间]
+设$E$是$\mathbb{R}$上的可测集。$L^p$空间定义为
 \[L^p(E)=\left\{x(t) \ \text{可测} \ , \ \int_E|x(t)|^p<+\infty\right\}\]
-这里$x(t)$是等价类，为方便书写取一代表元，这里$x(t) \sim y(t)$当且仅当$x(t)=y(t) \ a.e. \quad (t \in E)$，在这个集合上我们定义范数:
+这里$x(t)$是等价类，为方便书写取一代表元，这里$x(t) \sim y(t)$当且仅当$x(t)=y(t) \quad a.e.$，定义范数：
 \[||x(t)||_{L^p(E)}=\left(\int_E|x(t)|^p\dd t\right)^{\frac{1}{p}}\]
-验证:\\
-\textbf{1、正定性}
-\[||x(t)|| \geq 0 \ \text{显然，若}||x(t)||=0 \ \Rightarrow \ \int_E|x(t)|^p\dd t=0 \ \text{，不妨设} \ mE>0 \ \Rightarrow \ x(t)=0 \ a.e.\]
-\textbf{2、齐次性}
+\begin{itemize}
+\item 1. 正定性
+\[||x(t)|| \geq 0 \ \text{显然，若}||x(t)||=0 \ \Rightarrow \ \int_E|x(t)|^p\dd t=0 \ \text{，不妨设} \ m(E)>0 \ \Rightarrow \ x(t)=0 \quad a.e.\]
+\item 2. 齐次性
 \[||kx(t)||=\left(\int_Ek|x(t)|^p\dd t\right)^{\frac{1}{p}}=\left(|k|^p\int_E|x(t)|^p\dd t\right)^{\frac{1}{p}}=|k|\left(\int_E|x(t)|^p\dd t\right)^{\frac{1}{p}}\]
-\textbf{3、三角不等式}: $Minkowski$不等式\\
-要证明上述不等式，我们需要一些其他的基础不等式:
+\item 3. 三角不等式：Minkowski 不等式
+\end{itemize}
+\end{proposition}
+要证明Minkowski 不等式，我们需要一些其他的基础不等式：
 \begin{theorem}[$Young$不等式]
     \[\text{若} \forall p,q>0 \ \text{满足} \ \frac{1}{p}+\frac{1}{q}=1 \ \text{，则对} \ \forall a,b>0 \ \text{都有} \ |ab| \leq \frac{|a|^p}{p}+\frac{|b|^q}{q}\]
 \end{theorem}
