@@ -768,103 +768,89 @@ $T_2$公理又称为 Hausdorff 性质，距离空间是满足$T_4$公理的，�
 
 \subsection{刻画距离空间上的紧集} \label{compact}
 \begin{definition}[距离空间中的紧集]
-    $(X,d)$为距离空间，$A \subset X$,
-    \[A \subset \bigcup_{\lambda \in \Lambda}B_{r_{\lambda}}(x_{\lambda})\text{是$A$的任一开球覆盖必有一有限子覆盖}\bigcup_{i=1}^kB_{r_{\lambda_i}}(x_{\lambda_i})\]
-    则称$A$是$X$中的紧集。
+    $(X,d)$为距离空间，$A \subset X$，任一$A$的开球覆盖$\{B_{r_{\lambda}}(x_{\lambda})\}$，必有一有限子覆盖$\{B_{r_{\lambda_i}}(x_{\lambda_i})\}$，则称$A$是$X$中的紧集。
 \end{definition}
-顺便再额外看一下有界性的定义。
-\begin{definition}[距离空间中的有界性]
-    $(X,d)$为距离空间，$A \subset X$,
-    \[\exists \, R>0 \ , \ x \in X \ , \quad \text{s.t.} \quad A \subset B_R(x)\]
-    则称$A$有界。
-\end{definition}
-\paragraph*{例1} $\mathbb{R}^n$上的紧集是有界闭集，但在一般距离空间中不再成立。
-
-\paragraph*{例2} $l^2$空间是完备的，其上的闭球$\overline{B}_1(0)$不是紧集。
-\[l^2=\left\{\{x_n\}_{n=1}^{\infty} \ , \ x_n \in \mathbb{R} \ , \ \sum_{n=1}^{\infty}x_n^2<\infty\right\} \quad d(x,y)=\sqrt{\sum_{n=1}^{\infty}(x_n-y_n)^2}\]
-\textbf{Proof:}令$x_n=\{0,0,\cdots,1,0,\cdots\}$(第$n$个为$1$) \quad $x_n \in \overline{B}_1(0) \ (d(x_n,0)=\sqrt{1^2}=1)$
-\[\forall n \neq m \ , \ d(x_n,x_m)=\sqrt{1^2+1^2}=\sqrt{2} \ \text{当$m,n$足够大的时候并不趋于0} \ \Rightarrow \ \overline{B}_1(0)\text{不是列紧的}\]
-在后续的介绍中，我们会证明，度量空间中列紧的闭集就是紧集，所以这里我们就能看出$\overline{B}_1(0)$不是紧集。当然我们需要解释一下什么是列紧。
-\begin{definition}[(相对)列紧性]
-    若集合$A$中的任意点列都有收敛子列，则称$A$是列紧的，不要求极限也在$A$中(当$A$为闭时，则极限必然在$A$中，但列紧性要求极限在集合中)。
-\end{definition}
-在上述例子中我们可以看出列紧是比紧更弱一点的条件。下面我们给出一般距离空间和完备距离空间中紧集的完整刻画，并证明他们。
 \begin{theorem}
-    距离空间中的子集是紧集当且仅当它是列紧的闭集。
+距离空间上的紧集是闭集。
 \end{theorem}
-\textbf{Proof:}(紧$ \ \Rightarrow \ $列紧闭)
-\[A \text{是列紧的闭集} \ \Leftrightarrow \ \forall\{y_n\} \subset A\text{都有收敛子列}y_{n_k} \to y \in A\]
+\begin{proof}
+设$A \subset X$是距离空间$X$上的紧集，对$\forall y \in X/A$，构造$A$的开覆盖：$\{B_{r_{\lambda}}(x_{\lambda})|x_{\lambda} \in A, \ r_{\lambda}=d(x_{\lambda},y)/2\}$。由于$A$是紧集，上述开覆盖存在有限子覆盖$\{B_{r_i}(x_i)|x_i \in A, \ r_i=d(x_i,y)/2, \ i=1,2,\cdots,n\}$。因此构造开球$B_{r_{\min}}(y), \ r_{\min}=\min\{r_1,r_2,\cdots,r_n\}$。可以证明$B_{r_{\min}}(y)\cap A=\varnothing$：利用反证法，假设$z \in B_{r_{\min}}(y)\cap A=\varnothing$，则：
+\[d(x_i,y) \leq d(x_i,z)+d(z,y)<r_{\min}+r_{\min}=d(x_i,y)\]
+得出矛盾，故$B_{r_{\min}}(y)\cap A=\varnothing$，即说明$X/A$是开集，因此$A$是闭集。
+\end{proof}
+\begin{definition}[距离空间中的有界性]
+    $(X,d)$为距离空间，$A \subset X$，$\exists \, R>0 \ , \ x \in X$满足$A \subset B_R(x)$，则称$A$有界。
+\end{definition}
+\begin{example}
+\quad $\mathbb{R}^n$上的有界闭集是紧集，但在一般距离空间中不再成立。
+\end{example}
+\begin{definition}[(相对)列紧性]
+    若集合$A$中的任意点列都有收敛子列，则称$A$是列紧的，不要求极限也在$A$中(当$A$为闭时，则极限必然在$A$中)。
+\end{definition}
+\begin{example}
+\quad $l^2$空间是完备的，其上的闭球$\overline{B}_1(0)$不是紧集。
+\[l^2=\left\{\{x_n\}_{n=1}^{\infty} \ , \ x_n \in \mathbb{R} \ , \ \sum_{n=1}^{\infty}x_n^2<\infty\right\}, \quad d(x,y)=\sqrt{\sum_{n=1}^{\infty}(x_n-y_n)^2}\]
+\end{example}
+\begin{proof}
+令$x_n=\{0,0,\cdots,1,0,\cdots\}$（第$n$位为$1$），显然有$x_n \in \overline{B}_1(0)$因为$d(x_n,0)=\sqrt{1^2}=1$。同时$\forall n \neq m \ , \ d(x_n,x_m)=\sqrt{1^2+1^2}=\sqrt{2}$，当$m,n$足够大的时候并不趋于0，因此$\overline{B}_1(0)$不是列紧的。度量空间中列紧的闭集就是紧集（下面会证明），所以$\overline{B}_1(0)$不是紧集。
+\end{proof}
+可以看出列紧是比紧更弱一点的条件，但在距离空间中两者等价。
+\begin{theorem}\label{theorem:jlj}
+距离空间中的子集是紧集当且仅当它是列紧的闭集。
+\end{theorem}
+\begin{proof}
+先证充分条件：紧$ \ \Rightarrow \ $列紧闭，上面已经证明了紧集是闭集，采用反证法，假设存在$\{y_n\} \subset A$，它的任意子列不收敛于$A$中，即$\forall x \in A \ , \ \exists \, r_x>0 \ , \ B_{r_x}(x) \cap \{y_n\}=\{y_{n_1},y_{n_2},\cdots,y_{n_k}\} \ (k<\infty)$。显然$\{B_{r_x}(x)\}$是$A$的一个开覆盖，由$A$的紧性，存在一个有限子覆盖$\{B_{r_{x_i}}(x_i)\}\cap \{y_n\}=\{y_{n_1},y_{n_2},\cdots,y_{n_j}\} \ (j<\infty)$，因为$\{y_n\} \subset A$是柯西列，其个数不是有限个，故矛盾。
 
-反证法：设$\{y_n\} \subset A$，它的任意子列不收敛于$A$中的点。
-\[\forall x \in A \ , \ \exists \, r_x>0 \ , \ B_{r_x}(x) \cap \{y_n\}=\{y_{n_1},y_{n_2},\cdots,y_{n_k}\} \ (k<\infty) \ , \ A \subset \bigcup_{x\in A}B_{r_x}(x)\]
-由$A$的紧性:
-\[\exists \, x_1,x_2,\cdots,x_k \in A \ , \quad \text{s.t.} \quad A \subset \bigcup_{i=1}^kB_{r_{x_i}}(x_i) \ \Rightarrow \ A \cap \{y_n\}=\{y_{n_1},y_{n_2},\cdots,y_{n_j}\} \ (j<\infty)\]
-推出矛盾。\\
-\textbf{Q.E.D.}
-
-另外一半比较难证明，我们需要先引入全有界的概念，然后通过几个引理逐步证明。
+必要性比较难证，我们需要先引入全有界的概念，然后通过几个引理逐步证明。
 \begin{definition}[全有界性]
-    $(X,d)$是距离空间，$A \subset X$,
-    \[\forall \varepsilon>0 \ , \ \exists \, k<\infty \ , \ x_i \in A \ (i=1,2,\cdots,k) \quad \text{s.t.} \quad A \subset \bigcup_{i=1}^kB_{\varepsilon}(x_i) \ (k\text{与$\varepsilon$有关})\]
-    则称$A$是全有界的。
+$(X,d)$是距离空间，$A \subset X$，对$\forall \varepsilon>0 \ , \ \exists \, k(\varepsilon)<\infty \ , \ x_i \in A \ (i=1,2,\cdots,k)$，$\{B_{\varepsilon}(x_i)\}$是$A$的一个开覆盖，则称$A$是全有界的，开球的球心构成的集合$\{x_i\}_{i=1}^k$称为$A$的有限$\varepsilon$-网。全有界集一定是有界集。
 \end{definition}
 \begin{figure}[htbp]
     \center
     \includegraphics[scale=0.25]{./fig/2.2.3.png}
 \end{figure}
-显然，全有界集一定是有界集。
-\paragraph*{例} \quad $\mathbb{R}^n$中的有界集$\ \Leftrightarrow \ $全有界集。
-\begin{definition}[有限$\varepsilon$-网]
-    $\{x_i\}_{i=1}^k$称为$A$的有限$\varepsilon$-网。
-\end{definition}
-接下来我们来证明另外一半：\\
-\textbf{Proof:}(列紧闭$ \ \Rightarrow \ $紧)\\
-\textbf{Claim 1 全有界集可分}\\
-\textbf{Proof:}设$A$为全有界集，对任意$n \in \mathbb{Z}_+$，存在$A$的有限$\varepsilon$-网$B_n$，不妨取$B_n \subset A$
-\[\text{考虑}B=\bigcup_{n=1}^{\infty}B_n \ , \ (\text{想证}\overline{B}=A)\]
-\[\forall x \in A \ , \ \varepsilon>0 \ , \ \exists \, n_{\varepsilon}=\left[\frac{1}{\varepsilon}\right]+1 \quad \text{s.t.} \quad \exists \, y \in B_{n_{\varepsilon}} \ , \ d(x,y)<\frac{1}{n_{\varepsilon}}<\varepsilon\]
-\[\Rightarrow \ B_{\varepsilon}(x) \cap B_{n_{\varepsilon}} \neq \varnothing \ \Rightarrow \ B_{\varepsilon}(x) \cap B \neq \varnothing \ \Rightarrow \ x \in \overline{B} \ \Rightarrow \ A \subset \overline{B} \ \Leftrightarrow \ A\text{可分}\]
-\textbf{Q.E.D.}\\
-\textbf{Claim 2 距离空间中的列紧集是全有界的}\\
-\textbf{Proof:}反证：若列紧的$A$不是全有界的，则存在$\varepsilon_n>0$，$A$没有有限$\varepsilon_n$-网。
-\[\forall x_0 \in A \ , \ A-B_{\varepsilon_n}(x_0) \neq \varnothing\]
-\[\forall x_1 \in A-B_{\varepsilon_n}(x_0) \ , \ A-\bigcup_{i=0}^1B_{\varepsilon_n}(x_i) \neq \varnothing\]
-由归纳得存在点列$\{x_n\}_{n=0}^{\infty} \subset A$不收敛$(\forall i \neq j \ , \ d(x_i,x_j)>\varepsilon_n)$，即$A$中点列不全有收敛子列，与题设矛盾。\\
-\textbf{Q.E.D.}\\
-\textbf{Claim 3 距离空间中的子集是全有界的，那子集的任一开覆盖必有有限子覆盖}\\
-\textbf{Proof:}设$A$为全有界集，由引理1可得$A$是可分的，我们设$A$的稠密可数子集为$S$
-\[\text{假设有开覆盖}A \subset \bigcup_{\alpha}G_{\alpha} \ , \ \forall x \in A \ , \ \exists \, \alpha \ , \quad \text{s.t.} \quad x \in G_{\alpha}(\text{开集}) \ \Rightarrow \ \exists \,r>0 \ , \quad \text{s.t.} \quad B_r(x) \subset G_{\alpha}\]
-\[B_{\frac{1}{4}r}(x) \cap S \neq \varnothing \ \text{(稠密要求不能有"空洞"，不然闭包盖不住全集)} \ \Rightarrow \ y \in B_{\frac{1}{4}r}(x) \cap S\]
-\[\text{取}r' \in \left(\frac{r}{4},\frac{r}{2}\right) \cap \mathbb{Q} \ , \ \text{则有} \ x \in B_{r'}(y) \ \text{且} \ B_{r'}(y) \subset B_{r}(x) \subset G_{\alpha}\]
-\[\Rightarrow \ A \subset \bigcup_{r' \in \mathbb{Q}}\bigcup_{y \in S}B_{r'(y)}(y) \ \Rightarrow \ A\text{被可数个}B_{r'}(y)\text{覆盖} \ \Rightarrow \ A\text{被可数个}G_{\alpha}\text{覆盖}\]
-\textbf{Q.E.D.}\\
-下面我们开始正式证明刻画1的另一半:\\
-\textbf{Proof (body):}
-\[A\text{是列紧闭集，可知}A\text{是全有界的，且其任意开覆盖} \ A \subset \bigcup_{\alpha}G_{\alpha} \ \text{必有可数子覆盖} \ A \subset \bigcup_{i=1}^{\infty}G_{\alpha_i}\]
-采用反证法，假设$A$不是紧的，则存在一个$A$的开覆盖无有限子覆盖：
-\[\exists \, \{G_{\alpha_i}\}_{i=1}^{\infty} \ , \ \forall n \in \mathbb{Z}_+ \ , \ A \nsubset \bigcup_{i=1}^nG_{\alpha_i} \ \Rightarrow \ \text{取}x_n \in A-\bigcup_{i=1}^nG_{\alpha_i} \ (n=1,2,\cdots)\]
-易知，$\forall n \in \mathbb{Z}_+$，$G_{\alpha_n}$中只包含$\{x_n\}$中的有限个点。\\
-\[\text{由}A\text{是列紧的闭集可知,} \ \exists \, \{x_{n_k}\}_{k=1}^{\infty} \subset \{x_n\}_{n=1}^{\infty} \ , \quad \text{s.t.} \quad \lim_{k \to \infty}x_{n_k}=x \in A\]
-\[\Rightarrow \ \exists \, n_0>0 \quad \text{s.t.} \quad x \in G_{\alpha_{n_0}} \ \Rightarrow \ \exists \, r>0 \quad \text{s.t.} \quad B_r(x) \subset G_{\alpha_{n_0}} \ \Rightarrow \ \exists \, N>0 \quad \text{s.t.} \quad k \geq N \ , \ x_{n_k} \in B_r(x)\]
-与题设矛盾。\\
-\textbf{Q.E.D.}
+\begin{example}
+\quad $\mathbb{R}^n$中的有界集$\ \Leftrightarrow \ $全有界集。
+\end{example}
+
+\begin{proposition}[全有界集是可分的]\label{lemma:qyjkf}
+设$A$为全有界集，对任意$n \in \mathbb{Z}_+$，存在$A$的有限$\varepsilon$-网$B_n$，不妨取$B_n \subset A$，考虑所有$B_n$并成的集合$B$：
+\[\forall x \in A \ , \ \varepsilon>0 \ , \ \exists \, n_{\varepsilon}=\left[\frac{1}{\varepsilon}\right]+1 \quad \text{s.t.} \quad \exists \, y \in B_{n_{\varepsilon}} \ , \ d(x,y)<\frac{1}{n_{\varepsilon}}<\varepsilon \quad \Rightarrow \quad B_{\varepsilon}(x) \cap B_{n_{\varepsilon}} \neq \varnothing\]
+进而$B_{\varepsilon}(x) \cap B \neq \varnothing$，因此$x \in \overline{B}$，即$A \subset \overline{B}$，$A$可分得证。
+\end{proposition}
+
+\begin{proposition}[距离空间中的列紧集是全有界的]\label{lemma:ljqyj}
+反证：若列紧的$A$不是全有界的，则存在$\varepsilon_n>0$，$A$没有有限$\varepsilon_n$-网，因此对$\forall x_0 \in A \ , \ A-B_{\varepsilon_n}(x_0) \neq \varnothing$，取$x_1 \in A-B_{\varepsilon_n}(x_0)$，进而由归纳得存在点列$\{x_k\} \subset A$：
+\[x_k \in A-\bigcup_{i=0}^{k-1}B_{\varepsilon_n}(x_i) \neq \varnothing\]
+该点列不收敛，因为$\forall i \neq j \ , \ d(x_i,x_j)>\varepsilon_n$，即$A$中点列不全有收敛子列，与题设矛盾。
+\end{proposition}
+
+\begin{proposition}[距离空间中的子集是全有界的，那子集的任一开覆盖必有可数子覆盖]\label{lemma:kskfg}
+设$A$为全有界集，由引理\ref{lemma:qyjkf}可得$A$是可分的，设$A$的稠密可数子集为$S$，假设有开覆盖$\{G_{\alpha}\}$，$\forall x \in A \ , \ \exists \, \alpha $满足$x \in G_{\alpha}$由于$G_{\alpha}$是开集，因此$\exists \,r>0$满足$B_r(x) \subset G_{\alpha}$。由稠密性，$B_{r/4}(x) \cap S \neq \varnothing$，可以取$y \in B_{r/4}(x) \cap S$。再取$r' \in \left(r/4,r/2\right) \cap \mathbb{Q}$，则有$x \in B_{r'}(y)$，且$B_{r'}(y) \subset B_{r}(x) \subset G_{\alpha}$。因此$A$存在如下可数开覆盖：
+\[A \subset \bigcup_{r' \in \mathbb{Q}}\bigcup_{y \in S}B_{r'(y)}(y)\]
+由于$B_{r'}(y)\subset G_{\alpha}$，因此$A$被可数个$G_{\alpha}$覆盖。
+\end{proposition}
+
+现在证必要条件：列紧闭$ \ \Rightarrow \ $紧。设$A$是是列紧闭集，可知$A$是全有界的[引理\ref{lemma:ljqyj}]，且其任意开覆盖$\{G_{\alpha}\}$必有可数子覆盖$\{G_{\alpha_i}|i=1,2,\cdots\}$[引理\ref{lemma:kskfg}]。采用反证法，设$A$不是紧的，则存在一个$\{G_{\alpha}\}$的无有限子覆盖：
+\[\exists \, \{G_{\alpha_i}\}_{i=1}^{\infty} \ , \ \forall n \in \mathbb{Z}_+ \ , \ A \nsubset \bigcup_{i=1}^nG_{\alpha_i} \quad \Rightarrow \quad x_n \in A-\bigcup_{i=1}^nG_{\alpha_i}\neq\varnothing\]
+易知，$\forall n \in \mathbb{Z}_+$，$G_{\alpha_n}$中只包含$\{x_n\}$中的有限个点。
+
+由$A$是列紧的闭集可知，$\exists \, \{x_{n_k}\} \subset \{x_n\}$满足$x_{n_k} \to x \in A$。可取$x \in G_{\alpha_{n_0}}$，由于$G_{\alpha_{n_0}}$是开集，$\exists \, r>0$满足$B_r(x) \subset G_{\alpha_{n_0}}$，列紧性保证$\exists \, N>0$满足$k \geq N \ , \ x_{n_k} \in B_r(x)$，与上述无限子覆盖的要求矛盾。
+\end{proof}
+至此我们发现在距离空间中上述定义的三个关键概念强弱如下：紧>列紧>全有界。
 \begin{theorem}
-    完备距离空间中的子集是紧集当且仅当它是全有界闭集。
+完备距离空间中的子集是紧集当且仅当它是全有界闭集。
 \end{theorem}
-在上一个定理的证明中，我们结合前半部分的证明与后半部分的Claim 2，即证毕该定理的前一半，下面我们只需证明另一部分。其实这里已经可以看出三个条件的强弱:
-\[\text{紧}>\text{列紧}>\text{全有界}\]
-Proof (完备距离空间中的全有界闭集是紧集):\\
-\textbf{Claim 完备距离空间中全有界集是列紧的}\\
-\textbf{Proof:}设$A$全有界，$\{x_n\} \subset A$,
+\begin{proof}
+由定理\ref{theorem:jlj}和引理\ref{lemma:qyjkf}可知充分性显然，下证必要性，只需证明完备距离空间中全有界集是列紧的。设$A$全有界，$\{x_n\} \subset A$，
 \[\exists \, A\text{的有限}1\text{-网}N_1 \ \Rightarrow \ \exists \, x \in N_1 \ , \ B_1(x) \cap \{x_n\}\text{有无限多个点，取其中一个点记作}x_{n_1}\]
 \[B_1(x) \cap A\text{也是全有界的} \ , \ \exists \, A\text{的有限}\frac{1}{2}\text{-网}N_2 \ , \ \text{同理取其中一个点记作}x_{n_2}\]
 \[\vdots\]
 由归纳得
 \[\exists \, \{x_{n_k}\}_{k=1}^{\infty} \quad \text{s.t.} \quad d(x_{n_k},x_{n_{k+m}})<\frac{1}{2^k} \ \Rightarrow \ \{x_{n_k}\}\text{是柯西列}\]
-由完备性，$\exists \, x \in A \quad \text{s.t.} \quad x_{n_k} \to x \ , \ (k \to \infty)$。\\
-\textbf{Q.E.D.}\\
-再由上一个定理后半部分证明的结论可知，距离空间中的列紧闭集是紧集，则证毕。\\
-\textbf{Q.E.D.}
+由完备性，$\exists \, x \in A \quad \text{s.t.} \quad x_{n_k} \to x \ , \ (k \to \infty)$。
+\end{proof}
+
 \begin{figure}[htbp]
     \center
     \includegraphics[scale=0.25]{./fig/2.2.3-1.png}
