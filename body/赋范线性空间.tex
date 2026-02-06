@@ -260,7 +260,7 @@ $p=1$时，显然；$p>1$时，有
 \end{proof}
 
 \section{$L^p$空间的性质}
-\begin{theorem}[Riesz-Fischer 定理]
+\begin{theorem}[Riesz-Fischer 定理]\label{theorem:rf}
     $L^p(E) \ (p \geq 1)$是$Banach$空间。\footnote{这里我们指定$E$是$\mathbb{R}$上的可测集，因为说明这种情况比较简单(懒}
 \end{theorem}
 \begin{proof}目标是通过$L^p$中的收敛控制$L^1$的收敛（H\"{o}lder 不等式），进而得到柯西列收敛从而证明完备性。设$\{x_n(t)\}$是$L^p(E)$中的柯西列，取子列$\{x_{n_k}(t)\}$满足$||x_{n_{k+l}}-x_{n_k}||<2^{-k} \ (k=1,2,3,\cdots)$。在下面的讨论中我们需要用到$m(E)<+\infty$这个条件，但这并不是总能满足，因此取可测集$E_1 \subset E \ , \ m(E_1)<+\infty$，由 H\"{o}lder 不等式：
@@ -289,118 +289,121 @@ $p=1$时，显然；$p>1$时，有
 \begin{theorem}
     $L^p(E) \ (p \geq 1)$是可分的。
 \end{theorem}
-\textbf{Proof} (只证明$E=[a,b]$的情形，其他的不太好证):\\
-想法:逐步逼近(用$\Leftarrow$表示逼近):
-\[L^p \ \Leftarrow \ \text{有界}L^p \ \Leftarrow \ \text{连续函数} \ \Leftarrow \ \text{多项式} \ \Leftarrow \ \text{有理多项式}\]
-(i) 设$x(t) \in L^p(E)$，令
+\begin{proof}只证明$E=[a,b]$的情形，其他的不太好证，利用可数的多形式逐步逼近$L^p$函数：有理多项式$\Rightarrow$多项式$\Rightarrow$连续函数$\Rightarrow$有界$L^p$函数$\Rightarrow$$L^p$函数。设$x(t) \in L^p(E)$，令
 \[x_n(t)=\left \{
 \begin{array}{ll}
     x(t) & , \ |x(t)| \leq n \\ 0 & , \ |x(t)|>n
 \end{array}
 \right.
-\]
-\[\int_E|x(t)|^p\dd t=\sum_{n=1}^{\infty} \ \int\limits_{E \cap \{n<|x(t)| \leq n+1\}}|x(t)|^p\dd t<\infty\]
-\[\Rightarrow \ \forall \varepsilon>0 \ , \ \exists \, N>0 \quad \text{s.t.} \quad n \geq N \ , \ \int\limits_{E \cap \{|x(t)|>n\}}|x(t)|^p\dd t<\left(\frac{\varepsilon}{3}\right)^p\]
-\[\Rightarrow \ ||x_n(t)-x(t)||_{L^p(E)}=\left(\int_E|x_n(t)-x(t)|^p\dd t\right)^{\frac{1}{p}}=\left( \ \int\limits_{E \cap \{|x(t)|>n\}}|x(t)|^p\dd t\right)^{\frac{1}{p}}<\left(\frac{\varepsilon}{3}\right)^{p \cdot \frac{1}{p}}=\frac{\varepsilon}{3}\]
-(ii) 取定一个$n \geq N$，由$Lusin$定理：
+\quad \Rightarrow \quad \int_E|x(t)|^p\dd t=\sum_{n=1}^{\infty} \ \int\limits_{E \cap \{n<|x(t)| \leq n+1\}}|x(t)|^p\dd t<\infty\]
+\[\Rightarrow \quad \forall \varepsilon>0 \ , \ \exists \, N>0 \quad \text{s.t.} \quad n \geq N \ , \ \int\limits_{E \cap \{|x(t)|>n\}}|x(t)|^p\dd t<\left(\frac{\varepsilon}{3}\right)^p\]
+\[\Rightarrow \quad ||x_n(t)-x(t)||_{L^p(E)}=\left(\int_E|x_n(t)-x(t)|^p\dd t\right)^{\frac{1}{p}}=\left( \ \int\limits_{E \cap \{|x(t)|>n\}}|x(t)|^p\dd t\right)^{\frac{1}{p}}<\left(\frac{\varepsilon}{3}\right)^{p \cdot \frac{1}{p}}=\frac{\varepsilon}{3}\]
+取定一个$n \geq N$，由 Lusin 定理[定理\ref{theorem:lusin}]：
 \[\exists \, y(t) \in C[a,b] \ , \ \mathop \text{sup}\limits_{t \in [a,b]}|y(t)| \leq 2n \quad \text{s.t.} \quad m(\{y(t) \neq x(t)\} \cap E)<\left(\frac{\varepsilon}{3}\right)^p \cdot \frac{1}{(3n)^p}\]
-\[(\text{可取上述$|y(t)|$的理由：} \ y(t) \in C[a,b] \ \Rightarrow \ \mathop \text{min}\limits_{t \in [a,b]}\{y(t),2n\} \in C[a,b]\]
-\[\text{且} \ |x_n(t)| \leq n \ \Rightarrow \ m(\{y(t)=x_n(t)\})\text{不受影响})\]
-\[\Rightarrow \ ||x_n(t)-y(t)||_{L^p(E)}=\left(\int_E|x_n(t)-y(t)|^p\dd t\right)^{\frac{1}{p}}=\left( \ \int\limits_{E \cap \{x_n(t) \neq y(t)\}}|x_n(t)-y(t)|^p\dd t\right)^{\frac{1}{p}}\]
-\[\leq \left( \ \int\limits_{E \cap \{x_n(t) \neq y(t)\}}(n+2n)^p\dd t\right)^{\frac{1}{p}} \leq \left(\left(\frac{\varepsilon}{3}\right)^p \cdot \frac{1}{(3n)^p} \cdot (3n)^p\right)^{\frac{1}{p}}=\frac{\varepsilon}{3}\]
-(iii) 由$Weierstrass$定理，存在有理系数多项式$P(t)$使得
-\[\mathop \text{sup}\limits_{t \in [a,b]}|P(t)-y(t)|<\frac{\varepsilon}{3m(E)^{\frac{1}{p}}}\]
-\[||P(t)-y(t)||_{L^p(E)}=\left(\int_E|P(t)-y(t)|^p\dd t\right)^{\frac{1}{p}} \leq \left(m(E) \cdot \frac{\varepsilon^p}{3^pm(E)}\right)^{\frac{1}{p}}=\frac{\varepsilon}{3}\]
+对任意$y(t) \in C[a,b]$，$\min\{|y(t)|,2n\} \in C[a,b]$且因为$|x(t)|<n$，上述取法对计算$m(\{y(t)=x_n(t)\})$没有影响。
+\begin{equation*}
+\begin{aligned}
+||x_n(t)-y(t)||_{L^p(E)}&=\left(\int_E|x_n(t)-y(t)|^p\dd t\right)^{\frac{1}{p}}=\left( \ \int\limits_{E \cap \{x_n(t) \neq y(t)\}}|x_n(t)-y(t)|^p\dd t\right)^{\frac{1}{p}}\\
+&\leq \left( \ \int\limits_{E \cap \{x_n(t) \neq y(t)\}}(n+2n)^p\dd t\right)^{\frac{1}{p}} \leq \left(\left(\frac{\varepsilon}{3}\right)^p \cdot \frac{1}{(3n)^p} \cdot (3n)^p\right)^{\frac{1}{p}}=\frac{\varepsilon}{3}
+\end{aligned}
+\end{equation*}
+由 Weierstrass 定理，存在有理系数多项式$P(t)$使得
+\[\mathop \text{sup}\limits_{t \in [a,b]}|P(t)-y(t)|<\frac{\varepsilon}{3m(E)^{\frac{1}{p}}} \quad \Rightarrow \quad ||P(t)-y(t)||_{L^p(E)}=\left(\int_E|P(t)-y(t)|^p\dd t\right)^{\frac{1}{p}} \leq \left(m(E) \cdot \frac{\varepsilon^p}{3^pm(E)}\right)^{\frac{1}{p}}=\frac{\varepsilon}{3}\]
 由三角不等式
 \[||P(t)-x(t)||_{L^p(E)} \leq ||P(t)-y(t)||_{L^p(E)}+||y(t)-x_n(t)||_{L^p(E)}+||x_n(t)-x(t)||_{L^p(E)}<\varepsilon\]
 由$\varepsilon$的任意性，得$||P(t)-x(t)||_{L^p(E)} \to 0$。即有理多项式集合在$L^p(E)$中稠密，即$L^p(E)$可分。
+\end{proof}
 
-\textbf{Q.E.D.}
-
-在这$Riesz-Fischer$定理的证明中，我们有提到过不同范数之间的强弱，我们下面对这件事进行以下严格地叙述。
-
+在这 Riesz-Fischer 定理[定理\ref{theorem:rf}]的证明中，我们有提到过不同范数之间的强弱：
+\begin{proposition}[范数强弱]
 设$m(E)<\infty \ , \ p_1<p_2$，由$H\ddot{o}lder$不等式:
 \[\left(\int_E|x(t)|^{p_1}\dd t\right)^{\frac{1}{p_1}} \leq \left[\left(\int_E\left(|x(t)|^{p_1}\right)^{\frac{p_2}{p_1}}\dd t\right)^{\frac{p_1}{p_2}}\left(\int_E1^{\frac{p_2}{p_2-p_1}}\dd t\right)^{1-\frac{p_1}{q_2}}\right]^{\frac{1}{p_1}} \leq \left(\int_E|x(t)|^{p_2}\dd t\right)^{\frac{1}{p_2}} \cdot m(E)^{\frac{1}{p_1}-\frac{1}{p_2}}\]
-\[\text{即} \ x(t) \in L^{p_2}(E) \ \Rightarrow \ x(t) \in L^{p_1}(E) \ , \ \text{即} \ L^{p_2}(E) \subset L^{p_1}(E) \ (p_2>p_1)\]
+即$x(t) \in L^{p_2}(E) \ \Rightarrow \ x(t) \in L^{p_1}(E) \ , \ \text{即} \ L^{p_2}(E) \subset L^{p_1}(E)$。
+\end{proposition}
 
-我们自然会好奇，当上面这个性质当$p \to \infty$时成立吗?下面我们来看看$L^{\infty}(E)$空间。我们先引入一些辅助概念来定义$L^{\infty}(E)$空间。
+我们自然会好奇，上面这个性质当$p \to \infty$时成立吗？
 \begin{definition}[本质有界]
-    若存在零测集$E_0 \ , \ m(E_0)=0$使$x(t)$在$E/E_0$上有界，则称$x(t)$在$E$上本质有界($essentially \ bounded$)。
+若存在零测集$E_0 \ , \ m(E_0)=0$使$x(t)$在$E/E_0$上有界，则称$x(t)$在$E$上本质有界（essentially bounded）。
 \end{definition}
-我们将$L^{\infty}(E)$空间定义为:
-\[L^{\infty}(E)=\left\{E\text{上本质有界的可测函数构成的集合}\right\}\]
-并且定义$L^{\infty}(E)$范数:
+\begin{definition}
+我们将$L^{\infty}(E)$空间定义为$L^{\infty}(E)=\left\{E\text{上本质有界的可测函数构成的集合}\right\}$，并且定义$L^{\infty}(E)$范数：
 \[||x(t)||_{L^p(E)}=\mathop \text{inf}\limits_{\substack{E_0 \subset E \\ m(E_0)=0}}\mathop \text{sup}\limits_{E/E_0}|x(t)|\]
-可以验证$||x(t)||_{L^p(E)}$也是范数。我们可以证明，$||x(t)||_{L^p(E)}<\infty \ \Leftrightarrow \ $本质有界。\\
-\textbf{Proof:} 若$x(t)$本质有界，则$\exists \, E_0 \quad \text{s.t.} \quad E/E_0$上$|x(t)|$有界$ \ \Rightarrow \ ||x(t)||_{L^{\infty}(E)}<\infty$。\\
-反之，由下确界的性质有:
+\end{definition}
+\begin{proof}
+可以验证$||x(t)||_{L^p(E)}$也是范数，同时可以证明$||x(t)||_{L^p(E)}<\infty \ \Leftrightarrow \ $本质有界。
+
+若$x(t)$本质有界，则$\exists \, E_0 \quad \text{s.t.} \quad E/E_0$上$|x(t)|$有界$ \ \Rightarrow \ ||x(t)||_{L^{\infty}(E)}<\infty$。反之，由下确界的性质有:
 \[\forall n \in \mathbb{Z}_+ \ , \ \exists \,E_n \subset E \ , \ m(E_n)=0 \quad \text{s.t.} \quad \mathop \text{sup}\limits_{E/E_n}|x(t)|<||x(t)||_{L^{\infty}(E)}+\frac{1}{n}\]
-令
-\[E_0=\bigcup_{n=1}^{\infty}E_n \ , \ m(E_n)=0 \ \Rightarrow \ m(E_0)=0 \ \Rightarrow \ \mathop \text{sup}\limits_{E/E_0}|x(t)|<||x(t)||_{L^{\infty}(E)}<\infty\]
-那么$x(t)$本质有界。\\
-\textbf{Q.E.D.}
+\[E_0=\bigcup_{n=1}^{\infty}E_n \ , \ m(E_n)=0 \quad \Rightarrow \quad m(E_0)=0 \quad \Rightarrow \quad \mathop \text{sup}\limits_{E/E_0}|x(t)|<||x(t)||_{L^{\infty}(E)}<\infty\]
+即$x(t)$本质有界。
+\end{proof}
+
 \begin{definition}[本质上界] \label{infty}
     我们称$||x(t)||_{L^{\infty}} (E)$为$x(t)$在$E$上的本质上界(确实是对$|x(t)|$而言的)。
 \end{definition}
-这里我们不加证明的叙述一些$L^{\infty}(E)$空间的性质，如果我们限定$m(E)<+\infty$，则$\forall x(t) \in L^{\infty}(E) \ , \ x(t) \in L^p(E) \ (p \geq 1)$，反之则不然，这也即：
+
+\begin{proposition}[$L^{\infty}(E)$空间的性质]
+限定$m(E)<+\infty$，则$\forall x(t) \in L^{\infty}(E) \ , \ x(t) \in L^p(E) \ (p \geq 1)$，反之则不然，这也即：
 \[L^{\infty}(E) \subset \bigcap_{p \geq p_0}L^{p}(E) \ (\forall p_0 \geq 1)\]
 但需要注意
 \[L^{\infty}(E) \neq \bigcap_{p \geq p_0}L^{p}(E) \ (\forall p_0 \geq 1)\]
-同时我们也容易看出来$||x||_{L^p(E)} \leq ||x||_{L^{\infty}(E)}$，毕竟正常$L^p$范数可以看作是对函数值的p次几何平均，而$L^{\infty}$范数只取了极大值。下面我们可以看一个具体的例子:
-\paragraph*{例} \quad $x(t)=\ln t \ , \ t \in (0,1]$，可以验证$x(t) \in L^p(0,1] \ (p \geq 1)$但$x(t) \notin L^{\infty}(E)(0,1]$。
+同时我们也容易看出来$||x||_{L^p(E)} \leq ||x||_{L^{\infty}(E)}$，毕竟正常$L^p$范数可以看作是对函数值的p次几何平均，而$L^{\infty}$范数只取了极大值。
+\end{proposition}
 
-下面我们看看其他$L^{\infty}(E)$空间的性质。
+\begin{example}
+\quad $x(t)=\ln t \ , \ t \in (0,1]$，可以验证$x(t) \in L^p(0,1] \ (p \geq 1)$但$x(t) \notin L^{\infty}(E)(0,1]$。
+\end{example}
+
 \begin{theorem}
-    $(L^{\infty}(E),||\cdot||_{L^{\infty}(E)})$是$Banach$空间。
+    $(L^{\infty}(E),||\cdot||_{L^{\infty}(E)})$是 Banach 空间。
 \end{theorem}
-\textbf{Proof:}设$\{x_n(t)\}$是柯西列，则
-\[\exists \, \{x_{n_{k}}(t)\} \subset \{x_n(t)\} \quad \text{s.t.} \quad \forall k,l \in \mathbb{N} \ , \ ||x_{n_{k+l}}(t)-x_{n_{k}}(t)||<\frac{1}{2^k}\]
-\[\Rightarrow \ \exists \, E_{k,l} \ , \ m(E_{k,l})=0 \quad \text{s.t.} \quad \forall k,l \in \mathbb{N} \ , \ |x_{n_{k+l}}(t)-x_{n_{k}}(t)|<\frac{1}{2^k} \ , \ \forall t \in E/E_{k,l}\]
-由可列可加性:
-\[E_0=\bigcup_{k,l\in \mathbb{N}}E_{k,l} \ \Rightarrow \ m(E_0)=0\]
-\[\Rightarrow \ \forall t \in E/E_0 \quad \text{s.t.} \quad \forall k,l \in \mathbb{N} \ , \ |x_{n_{k+l}}(t)-x_{n_{k}}(t)|<\frac{1}{2^k}\]
-\[\Rightarrow \ \forall t \in E/E_0 \quad \text{s.t.} \quad \sum_{k=1}^{\infty}|x_{n_{k+1}}(t)-x_{n_{k}}(t)|<\sum_{k=1}^{\infty}\frac{1}{2^k}=1<+\infty\]
-\[\Rightarrow \ x(t):=\lim_{k \to \infty}x_{n_k}(t) \quad \forall t \in E/E_0 \quad \text{s.t.} \quad |x(t)|=\left|x_{n_1}(t)+\sum_{k=1}^{\infty}(x_{n_{k+1}}(t)-x_{n_{k}}(t))\right|<+\infty\]
-$\Rightarrow \ x_{n_k}(t) \to x(t) \ (k \to \infty)$，即$x_{n_k}(t)$逐点收敛到$x(t)$，证明完逐点收敛后下证依范数收敛。
-\[\forall t \in E/E_0 \quad \text{s.t.} \quad |x_{n_{k+l}}(t)-x_{n_{k}}(t)|<\frac{1}{2^k} \ \Rightarrow \ \mathop \text{sup}\limits_{E/E_0}|x_{n_{k+1}}(t)-x_{n_{k}}(t)| \leq \frac{1}{2^k} \ (\forall l=1,2,\cdots)\]
-当$l \to \infty$时，
-\[\mathop \text{sup}\limits_{E/E_0}|x(t)-x_{n_{k}}(t)| \leq \frac{1}{2^k} \ (\forall l=1,2,\cdots)\]
-\[\Rightarrow \ ||x(t)-x_{n_k}(t)||_{L^{\infty}(E)}=\mathop \text{inf}\limits_{\substack{E_0 \subset E \\ m(E_0)=0}} \mathop \text{sup}\limits_{E/E_0}|x(t)-x_{n_{k}}(t)| \leq \frac{1}{2^k} \ (\forall k=1,2,\cdots)\]
-令$k \to \infty \ , \ x_{n_k}(t) \to x(t)$即$x_{n_k}(t)$依范数收敛到$x(t)$。\\
-\textbf{Q.E.D.}
+\begin{proof}
+设$\{x_n(t)\}$是柯西列，则$\exists \, \{x_{n_{k}}(t)\} \subset \{x_n(t)\}$满足$\forall k,l \in \mathbb{N} \ , \ ||x_{n_{k+l}}(t)-x_{n_{k}}(t)||<2^{-k}$，因此$\exists \, E_{k,l}$满足$m(E_{k,l})=0$，使得对$\forall k,l \in \mathbb{N}, \ t \in E/E_{k,l}$都有$|x_{n_{k+l}}(t)-x_{n_{k}}(t)|<2^{-k}$成立。由可列可加性：
+\[E_0=\bigcup_{k,l\in \mathbb{N}}E_{k,l} \quad \Rightarrow \quad m(E_0)=0 \quad \Rightarrow \quad \forall t \in E/E_0 \quad \text{s.t.} \quad \forall k,l \in \mathbb{N} \ , \ |x_{n_{k+l}}(t)-x_{n_{k}}(t)|<2^{-k}\]
+因此，如下级数存在：
+\[\forall t \in E/E_0 \quad \text{s.t.} \quad \sum_{k=1}^{\infty}|x_{n_{k+1}}(t)-x_{n_{k}}(t)|<\sum_{k=1}^{\infty}2^{-k}=1<+\infty\]
+定义子列$\{x_{n_k}(t)\}$的极限为$x(t)$，则
+\[\forall t \in E/E_0 \quad \text{s.t.} \quad |x(t)|=\left|x_{n_1}(t)+\sum_{k=1}^{\infty}(x_{n_{k+1}}(t)-x_{n_{k}}(t))\right|<+\infty\]
+因此$x_{n_k}(t) \to x(t)\in L^{\infty}(E)$，证明完逐点收敛后下证依范数收敛。对$\forall t \in E/E_0$，
+\[|x_{n_{k+l}}(t)-x_{n_{k}}(t)|<2^{-k} \quad \Rightarrow \quad \forall l \in \mathbb{N}_+ \ , \  \mathop \text{sup}\limits_{E/E_0}|x_{n_{k+l}}(t)-x_{n_{k}}(t)| \leq 2^{-k} \quad \Rightarrow \quad \mathop \text{sup}\limits_{E/E_0}|x(t)-x_{n_{k}}(t)| \leq 2^{-k}\]
+因此对以下范数：
+\[||x(t)-x_{n_k}(t)||_{L^{\infty}(E)}=\mathop \text{inf}\limits_{\substack{E_0 \subset E \\ m(E_0)=0}} \mathop \text{sup}\limits_{E/E_0}|x(t)-x_{n_{k}}(t)| \leq 2^{-k} \ (\forall k=1,2,\cdots)\]
+令$k \to \infty \ , \ x_{n_k}(t) \to x(t)$即$x_{n_k}(t)$依范数收敛到$x(t)$。
+\end{proof}
 
-$L^p$空间也有离散情形下的例子，在$\mathbb{Z}_+$上考虑计数测度$\mu_c$，数列$x=\{\xi_n\}_{n=1}^{\infty}$可视为$\mathbb{Z}_+$的可测函数，他的积分:
+\begin{definition}[离散化的$L^p$空间：$l^p$]
+在$\mathbb{Z}_+$上考虑计数测度$\mu_c$，数列$x=\{\xi_n\}_{n=1}^{\infty}$可视为$\mathbb{Z}_+$的可测函数，积分定义为：
 \[\int_{\mathbb{Z}_+}|x|^p\dd\mu_c=\sum_{n=1}^{\infty}|\xi_n|^p\]
-我们定义:
-\[l^p=\{\{\xi_n\}_{n=1}^{\infty} \ , \ \sum_{n=1}^{\infty}|\xi_n|^p<\infty\} \qquad ||x||_{l^p}=\left(\sum_{n=1}^{\infty}|\xi_n|^p\right)^{\frac{1}{p}}\]
-当$p=\infty$时
-\[l^{\infty}=\{\{\xi_n\}_{n=1}^{\infty} \ , \ \mathop \text{sup}\limits_{n \in \mathbb{Z}_+}|\xi_n|<\infty\} \qquad ||x||_{l^{\infty}}=\mathop \text{sup}\limits_{n \in \mathbb{Z}_+}|\xi_n|\]
+我们定义$l^p$空间：
+\[l^p=\{\{\xi_n\}_{n=1}^{\infty} \ , \ \sum_{n=1}^{\infty}|\xi_n|^p<\infty\}, \quad ||x||_{l^p}=\left(\sum_{n=1}^{\infty}|\xi_n|^p\right)^{\frac{1}{p}}\]
+当$p=\infty$时：
+\[l^{\infty}=\{\{\xi_n\}_{n=1}^{\infty} \ , \ \mathop \text{sup}\limits_{n \in \mathbb{Z}_+}|\xi_n|<\infty\}, \quad ||x||_{l^{\infty}}=\mathop \text{sup}\limits_{n \in \mathbb{Z}_+}|\xi_n|\]
 可以证明$l^p \ , \ l^{\infty}$是$Banach$空间。
-\paragraph*{$L^p \ , \ L^{\infty}$的应用举例——纳什迭代($Nash-Moser \ iteration$)} \quad \\
-$\Delta u=fu \ , \ f$是给定函数 $u:\Omega \subset \mathbb{R}^n \to \mathbb{R}$，若$f \in L^q(\Omega)$，则$\exists \, c>0 \quad \text{s.t.} \quad ||u||_{L^{\infty}(\Omega)} \leq ||u||_{L^p(\Omega)}$
+\end{definition}
 
 \section{赋范线性空间的其他性质}
 \subsection{赋范线性空间的子空间与完备化}
-设$(X,||\cdot||)$是赋范线性空间，$X_1$是$X$的子空间，$(X_1,||\cdot||)$是赋范线性空间，则称$(X_1,||\cdot||)$是$(X,||\cdot||)$的一个子空间。
+\begin{definition}[赋范线性空间的子空间]
+设$(X,||\cdot||)$是赋范线性空间，$X_1$是$X$的子空间，若$(X_1,||\cdot||)$是赋范线性空间，则称$(X_1,||\cdot||)$是$(X,||\cdot||)$的一个子空间。
+\end{definition}
 \begin{theorem}
-    \paragraph*{1.} 赋范线性空间的完备子空间是$Banach$空间；
-    \paragraph*{2.} $Banach$空间的闭子空间是$Banach$空间。
+\begin{itemize}
+    \item 1. 赋范线性空间的完备子空间是 Banach 空间；
+    \item 2. Banach 间的闭子空间是 Banach 空间。
+\end{itemize}
 \end{theorem}
-\paragraph*{例} $l^{\infty}$是$Banach$空间，$||x||=\mathop \text{sup}\limits_{n \in \mathbb{Z}_+}|\xi_n| \ , \ x=\{\xi_n\}$，记$c=l^{\infty}$中的收敛数列的集合。可证明$c$是$Banach$空间。\\
-\textbf{Proof:} 只需证明$c$是$l^{\infty}$的闭子空间。
-
-设$x_n=\{\xi_{n,i}\}_{i=1}^{\infty}$是$c$中的收敛点列，设$x_n \to x=\{\xi_i\}_{i=1}^{\infty}$，需证$x \in c$，即证$\{\xi_i\}_{i=1}^{\infty}$是收敛数列。
+\begin{example}
+\quad $l^{\infty}$是 Banach 空间，$||x||=\mathop \text{sup}\limits_{n \in \mathbb{Z}_+}|\xi_n| \ , \ x=\{\xi_n\}$，记$c=\{l^{\infty}\text{中的收敛数列全体}\}$，$c$是 Banach 空间。
+\end{example}
+\begin{proof}
+只需证明$c$是$l^{\infty}$的闭子空间。设$x_n=\{\xi_{n,i}\} \in c$，$x_n \to x=\{\xi_i\}$，需证$x \in c$，即证$\{\xi_i\}$是收敛数列：
 \[\forall \varepsilon>0 \ , \ \exists \, N>0 \quad \text{s.t.} \quad n \geq N \ , \ ||x_n-x||_{l^{\infty}}<\varepsilon \ \Rightarrow \ \exists \, N>0 \quad \text{s.t.} \quad n \geq N \ , \ \mathop \text{sup}\limits_{i \in \mathbb{Z}_+}|\xi_{n,i}-\xi_i|<\varepsilon\]
-由于$\{\xi_{n,i}\}_{i=1}^{\infty}$是收敛点列，故它是柯西列，则有
-\[\forall \varepsilon>0 \ , \ \exists \, I_n>0 \quad \text{s.t.} \quad i,j \geq I_n \ , \ |\xi_{n,i}-\xi_{n,j}|<\varepsilon\]
-则当$i,j \geq I_n$时，有
+由于$\{\xi_{n,i}\}$是收敛点列，故它是柯西列，则对$\forall \varepsilon>0 \ , \ \exists \, I_n>0 \ , \ i,j \geq I_n$有$|\xi_{n,i}-\xi_{n,j}|<\varepsilon$。因此：
 \[|\xi_{i}-\xi_{j}| \leq |\xi_{i}-\xi_{n,1}|+|\xi_{n,i}-\xi_{n,j}|+|\xi_{n,j}-\xi_{j}|<3\varepsilon\]
-即$x=\{\xi_i\}_{i=1}^{\infty}$是柯西列且是实数列，故$x$收敛，从而$x \in c$。\\
-\textbf{Q.E.D.}
+即$x=\{\xi_i\}$是柯西列且是实数列，故$x$收敛，从而$x \in c$。
+\end{proof}
 
-在上述子空间的内容中我们用到了完备赋范线性空间($Banach$空间)，我们自然就会关心赋范线性空间如何完备化的。
-
-我们知道，赋范线性空间是一个距离空间，距离空间是可以完备化的，那么我们自然就会去思考，这样完备化得到的距离空间还是不是赋范线性空间呢?为此我们需要验证其线性结构(加法，数乘)、范数。
+我们知道，赋范线性空间是一个距离空间，距离空间是可以完备化的，那么我们自然就会去思考，这样完备化得到的距离空间还是不是赋范线性空间呢？为此我们需要验证其线性结构(加法，数乘)以及范数。
 \begin{theorem}
     设$(X,||\cdot||)$是不完备的赋范线性空间，它作为距离空间有完备化$\tilde{X}$,可以证明$\tilde{X}$是$Banach$空间。
 \end{theorem}
