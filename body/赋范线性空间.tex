@@ -485,7 +485,7 @@ $V$是定义在数域$\mathbb{K}$上的一个有限维向量空间，$V$的商�
 \begin{definition}[Hamel 基]
 设赋范线性空间$X$的一组线性无关子集$\{x_{\alpha}\} \ (\alpha \in \Lambda)$，若其张成的空间(称为线性包)满足$\text{Span}\{x_{\alpha}\}=X$，则称$\{x_{\alpha}\}$为$X$的一个 Hamel 基。
 \end{definition}
-这样的基是有限维赋范线性空间的基的直接推广，它总是存在的(这点可以利用$Zorn$引理证明)，但缺点也很明显，就是基的个数可能太多，这显然会给运算带来很大的麻烦。如果限制基的数量为可数个：
+这样的基是有限维赋范线性空间的基的直接推广，它总是存在的(这点可以利用 Zorn 引理证明)，但缺点也很明显，就是基的个数可能太多，这显然会给运算带来很大的麻烦。如果限制基的数量为可数个：
 \begin{definition}[Schauder 基]
 设赋范线性空间$X$中的点列$\{e_n\}_{n=1}^{\infty}$若满足：
 \[\forall x \in X \ , \ \exists \, !\{\xi_n\}_{n=1}^{\infty} \ (\xi_n \in \mathbb{R}^1) \quad \text{s.t.} \quad x=\sum_{i=1}^{\infty}\xi_ie_i\]
@@ -569,7 +569,7 @@ $||\cdot||_2$比$||\cdot||_1$强$ \quad \Leftrightarrow \quad \forall \{x_n\} \s
 \[x=\sum_{i=1}^n\xi_ie_i \mapsto \xi=(\xi_1,\xi_2,\cdots,\xi_n)\]
 易知$T$是良定义的，且是双射(因为基表示是唯一的)，存在逆算子$T^{-1}$，则$X$与$\mathbb{R}^n$线性同构，下证同胚。考虑范数$||\cdot||_X$和$||x||_T:=||TX||_{\mathbb{R}^n}$，容易验证后者确实是范数。
 \[\forall x \in X \ , \ ||x||_X=\left\|\sum_{i=1}^n\xi_ie_i\right\| \leq \sum_{i=1}^n|\xi_i|||e_i|| \leq \left(\sum_{i=1}^n|\xi_i|^2\right)^{\frac{1}{2}}\left(\sum_{i=1}^n||e_i||^2\right)^{\frac{1}{2}}:=\alpha||\xi||_{\mathbb{R}^n} \quad \Leftrightarrow \quad ||\xi||_{\mathbb{R}^n} \geq \frac{1}{\alpha}||T^{-1}\xi||\]
-利用算子范数的定义（xxx）和有界线性算子都是连续的（xxx），可知$\alpha \geq ||T^{-1}||$。同样的，考虑函数$f$:
+利用算子范数的定义[定义\ref{definition:szfs}]和有界线性算子都是连续的[定理\ref{theorem:yjlx}]，可知$\alpha \geq ||T^{-1}||$。同样的，考虑函数$f$:
 \[f: \ \mathbb{R}^n \to \mathbb{R} \ , \ \xi \mapsto ||T^{-1}\xi||=||x||\]
 容易验证$f$连续，对$\forall \xi \eta \in \mathbb{R}^n$定义$x:=T^{-1}\xi \ , \ y:=T^{-1}\eta$，则有：
 \[|f(\xi)-f(\eta)|=|||x||-||y||| \leq ||x-y|| \leq \alpha ||T(x-y)||_{\mathbb{R}^n}=\alpha ||\xi-\eta||_{\mathbb{R}^n}\]

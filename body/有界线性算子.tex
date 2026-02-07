@@ -1,15 +1,15 @@
 \begin{introduction}
     \item 有界线性算子~\ref{BX}
-    \item $Banach$-$Steinhaus$定理~\ref{BS}
+    \item Banach-Steinhaus 定理~\ref{BS}
     \item 开映射定理与闭图像定理~\ref{kb}
-    \item $Hahn$-$Banach$定理~\ref{HB}
-    \item $Zorn$引理~\ref{Zorn}
+    \item Hahn-Banach 定理~\ref{HB}
+    \item Zorn 引理~\ref{Zorn}
 \end{introduction}
 \section{有界线性算子}\label{BX}
-在正式介绍赋范线性空间的有界线性算子之前，我们可以回忆一下有限维的情形，设$X,Y$为有限维空间，根据上一小节的描述，我们不妨假设$X=\mathbb{R}^m,Y=\mathbb{R}^n$，考虑线性变换$L:\mathbb{R}^m \to \mathbb{R}^n$，选取基底$\{e_i\}_{i=1}^m \subset X , \{f_j\}_{j=1}^n \subset Y$，线性变换$L$在基底上有如下关系
+在正式介绍赋范线性空间的有界线性算子之前，我们可以回忆一下有限维的情形，设$X,Y$为有限维空间，根据上一小节的描述，我们不妨假设$X=\mathbb{R}^m,Y=\mathbb{R}^n$，考虑线性变换$L:\mathbb{R}^m \to \mathbb{R}^n$，选取基底$\{e_i\}_{i=1}^m \subset X , \ \{f_j\}_{j=1}^n \subset Y$，线性变换$L$在基底上有如下关系：
 \[Le_i=\sum_j^na_{ij}f_j \ (a_{ij} \in \mathbb{R})\]
-则$L$等价于矩阵$A=(a_{ij})_{1 \leq i \leq m , 1 \leq j \leq n}$，取
-\[x=\sum_{i=1}^m\xi_ie_i \in X \ , \ y=\sum_{j=1}^n\eta_jf_j \quad \text{则} \quad Lx=
+则$L$等价于矩阵$A=(a_{ij})_{1 \leq i \leq m , 1 \leq j \leq n}$，取：
+\[x=\sum_{i=1}^m\xi_ie_i \in X \ , \ y=\sum_{j=1}^n\eta_jf_j \quad \Rightarrow \quad Lx=
 \begin{pmatrix}
     a_{11} & a_{12} & \cdots & a_{1m} \\
     a_{21} & a_{22} & \cdots & a_{2m} \\
@@ -25,79 +25,67 @@
 =y
 \]
 
-众所周知，泛函分析至少无穷维的线性代数，所以类似的我们可以延拓线性变换的定义到线性算子。
 \begin{definition}[线性算子]
-    设$X,Y$是赋范线性空间，$T$是从$X$的线性子空间$D(T) \subset X$到$Y$的映射，若其满足
-    \[\forall x,y \in X \ , \ \alpha,\beta \in \mathbb{K} \ , \ T(\alpha x+\beta y)=\alpha Tx+\beta Ty\]
+设$X,Y$是赋范线性空间，$T$是从$X$的线性子空间$D(T) \subset X$到$Y$的映射，若其满足：
+\[\forall x,y \in X \ , \ \alpha,\beta \in \mathbb{K} \ , \ T(\alpha x+\beta y)=\alpha Tx+\beta Ty\]
 \end{definition}
-值得注意的是线性算子的定义并不要求其定义域是出发空间的全空间，只要求是出发空间的一个线性子空间即可，当然可以是平凡子空间$(D(T)=X)$，但是默认全空间更省事所以一般默认全空间，同时无穷维的子空间也可以是稠密的$(C[0,1] \subset L[0,1])$。
-
-回应一下章节标题，现在该定义线性算子的有界。
+\begin{remark}
+线性算子的定义并不要求其定义域是出发空间的全空间，只要求是出发空间的一个线性子空间即可，当然可以是平凡子空间$(D(T)=X)$，同时无穷维的子空间也可以是稠密的$(C[0,1] \subset L[0,1])$。叫法上的区分：1、$T:D(T)=X \to Y$在$X$上到$Y$上；2、$T:D(T) \subset X \to Y$在$X$中到$Y$上。
+\end{remark}
 \begin{definition}[有界线性算子]
-    设$T:X \to Y$是线性算子，若其满足
-    \[\exists \, M>0 \quad \text{s.t.} \quad ||Tx||_Y \leq M||x||_x \ (\forall x \in X)\]
-    则称其为有界线性算子。
+设$T:X \to Y$是线性算子，若$\forall x \in X \ , \ \exists \, M>0$使得$||Tx||_Y \leq M||x||_X$，则称其为有界线性算子。
 \end{definition}
 从$X \to Y$的全体有界线性算子记为$\mathscr{B}(X,Y)$。有界线性算子具有一些不错的性质，可以看下面一个定理。
-\begin{theorem}
-    设$T:X \to Y$是线性算子，则:\\
-    1、$T$连续等价于$T$在一点处连续;\\
-    2、$T$连续等价于$T$有界。
+\begin{theorem}\label{theorem:yjlx}
+设$T:X \to Y$是线性算子，则：
+\begin{itemize}
+\item 1. $T$连续等价于$T$在一点处连续；
+\item 2. $T$连续等价于$T$有界。
+\end{itemize}
 \end{theorem}
-\textbf{Proof} of (1):“$\Rightarrow$” 显然
-
-“$\Leftarrow$” 设$T$在$x_0 \in X$连续$\quad \Leftrightarrow \quad x_n \to x \ \Rightarrow \ Tx_n \to Tx$，则有
+\begin{proof}
+\begin{itemize}
+\item 1. 充分性显然，下证必要性：设$T$在$x_0 \in X$连续，即$x_n \to x \ \Rightarrow \ Tx_n \to Tx$，则有：
 \[Tx_n-Tx=T(x_n-x+y)-Ty \to 0 \quad (\forall y \in X)\]
-
-\textbf{Proof} of (2):“$\Leftarrow$” 由(1)知只需证明在一点处连续，不妨取为原点，取收敛于原点的点列$\{x_n\}$，由有界性
-\[||Tx_n|| \leq M||x_n|| \to 0 \quad \Rightarrow \quad Tx_n \to 0 \quad \Leftrightarrow \quad Tx_n-T0 \to 0 \ (x_n-0 \to 0)\]
-
-“$\Rightarrow$” 反证，设$T$连续但是无界，$\forall n \in \mathbb{N} \ , \ \exists \, x_n \in X \quad \text{s.t.} \quad ||Tx_n||>n||x_n||$，令
+\item 2. 充分性：由上一条知只需证明在一点处连续，不妨取为原点，取收敛于原点的点列$\{x_n\}$，由有界性：
+\[||Tx_n|| \leq M||x_n|| \to 0 \quad \Rightarrow \quad Tx_n \to 0 \quad \Leftrightarrow \quad Tx_n-T(0) \to 0\]
+必要性采用反证法：设$T$连续但是无界，$\forall n \in \mathbb{N} \ , \ \exists \, x_n \in X$满足$||Tx_n||>n||x_n||$，令：
 \[y_n=\frac{x_n}{n||x_n||} \ , \ ||y_n||=\frac{||x_n||}{n||x_n||}=\frac{1}{n} \to 0 \quad \Rightarrow \quad y_n \to 0\]
-
-由线性性可知$T0=0$，而
-\[||Ty_n-T0||=||Ty_n||=\left\|\frac{Tx_n}{n||x_n||}\right\|>1\]
-
+由线性性可知$T(0)=0$，而
+\[||Ty_n-T(0)||=||Ty_n||=\left\|\frac{Tx_n}{n||x_n||}\right\|>1\]
 与连续性矛盾。
+\end{itemize}
+\end{proof}
 
-\textbf{Q.E.D.}
-
-上面提到了算子的有界性，那么自然外面会想用一个指标来衡量一个算子到底多有界，于是就有了算子范数的概念。
-\begin{definition}[算子范数]
-    设$T \in \mathscr{B}(X,Y)$，定义算子范数
-    \[||T||=\mathop \text{sup}\limits_{x \in X/\{0\}}\frac{||Tx||}{||x||}=\mathop \text{sup}\limits_{||x||=1}||Tx||=\mathop \text{sup}\limits_{||x|| \leq 1}||Tx||\]
+\begin{definition}[算子范数]\label{definition:szfs}
+设$T \in \mathscr{B}(X,Y)$，定义算子范数：
+\[||T||=\mathop \text{sup}\limits_{x \in X/\{0\}}\frac{||Tx||}{||x||}=\mathop \text{sup}\limits_{||x||=1}||Tx||=\mathop \text{sup}\limits_{||x|| \leq 1}||Tx||\]
 \end{definition}
-既然叫范数说明$||T||$满足范数要求的条件这里不过多赘述，同时上述三个定义也是等价的，这些内容留待读者自证(笑
-
-因此$(\mathscr{B}(X,Y),||\cdot||)$就构成了一个赋范线性空间，这还是比较有意思的，当然后面会更有意思(笑
-
-另外一件事关于之前提到的线性算子的定义域的内容，我们说线性算子的定义域可以是出发空间的一个子空间也可以是出发空间本身，这两者在叫法上就区分为：
-1、$T:D(T)=X \to Y$在$X$上到$Y$上；2、$T:D(T) \subset X \to Y$在$X$中到$Y$上。
-
-下面我们来看几个例子。
-\paragraph*{例1} \quad $X=\mathbb{R}^m,Y=\mathbb{R}^n \ , \ L \in \mathscr{B}(X,Y)$，选定基底后$L$等价于矩阵$A=(a_{ij})_{m \times n}$，分别取$X,Y$空间中的两个元素，$x,y$满足
-\[x=(\xi_1,\xi_2,\cdots,\xi_m)^{\text{T}} \ , \ y=(\eta_1,\eta_2,\cdots,\eta_n)^{\text{T}} \ , \ Lx=y\]
-则
+既然叫范数说明$||T||$满足范数要求的条件，同时上述三个定义也是等价的。因此$(\mathscr{B}(X,Y),||\cdot||)$就构成了一个赋范线性空间。
+\begin{example}
+\quad $X=\mathbb{R}^m,Y=\mathbb{R}^n \ , \ L \in \mathscr{B}(X,Y)$，选定基底后$L$等价于矩阵$A=(a_{ij})_{m \times n}$，分别取$X,Y$空间中的两个元素，$x=(\xi_1,\xi_2,\cdots,\xi_m)^{\text{T}} \ , \ y=(\eta_1,\eta_2,\cdots,\eta_n)^{\text{T}}$满足$Lx=y$，则：
 \[||Lx||=||y||=\sqrt{\sum_{i=1}^n|\eta_i|^2}=\sqrt{\sum_{i=1}^n\left|\sum_{j=1}^ma_{ij}\xi_j\right|^2} \leq \sqrt{\sum_{i=1}^n\sum_{j=1}^ma_{ij}^2 \cdot \sum_{j=1}^m\xi_j^2}=\text{tr}(A^{\text{T}}A)^{\frac{1}{2}}||x||:=||A||\cdot||X||\]
 由上确界性质可知$||L|| \leq ||A||$，实际上是取等。
+\end{example}
 
-\paragraph*{例2} \quad 微分算子，一维情形下，考虑$X=C[0,1] \ , \ T:X \to X \ , \ x(t) \mapsto Tx=x'(t)$，则该算子为无解算子:
-\[x_n(t)=\sin nt \ , \ ||x_n||=1 \quad \Rightarrow \quad Tx_n=x_n'(t)=n \cos nt \ , \ ||Tx_n||=n \to +\infty\]
-
-高维情形下也类似，考虑$\Omega \subset \mathbb{R}^n$，记$C^k(\overline{\Omega})=\{f:\overline{\Omega} \to \mathbb{R}|\partial^{\alpha}f \in C(\overline{\Omega}) \ , \ |\alpha| \leq k\}$，其上范数为:
+\begin{example}
+\quad 微分算子，一维情形下，考虑$X=C[0,1] \ , \ T:X \to X \ , \ x(t) \mapsto Tx=x'(t)$，则该算子为无界算子，如取$x_n(t)=\sin nt \ , \ ||x_n||=1$，则$Tx_n=x_n'(t)=n \cos nt \ , \ ||Tx_n||=n \to +\infty$。高维情形下也类似，考虑$\Omega \subset \mathbb{R}^n$，记$C^k(\overline{\Omega})=\{f:\overline{\Omega} \to \mathbb{R}|\partial^{\alpha}f \in C(\overline{\Omega}) \ , \ |\alpha| \leq k\}$，其上范数为：
 \[||f||_{C^k}=\mathop \text{max}\limits_{|\alpha| \leq k}||\partial^{\alpha}f||_{C^0}=\mathop \text{max}\limits_{|\alpha| \leq k}\mathop \text{max}\limits_{x \in \overline{\Omega}}|\partial^{\alpha}f(x)|\]
-其中
+其中：
 \[\alpha=(\alpha_1,\alpha_2,\cdots,\alpha_n) \ , \ \partial^{\alpha}f=\partial^{\alpha_1}_{x_1}\partial^{\alpha_2}_{x_2}\cdots\partial^{\alpha_n}_{x_n}f(x_1,x_2,\cdots,x_n) \ , \ \sum_{i=1}^n\alpha_i \leq k\]
-因此，在高维版本中上述的一维微分算子可表示为
+因此，在高维版本中上述的一维微分算子可表示为：
 \[X=C^{\infty}(\overline{\Omega})=\bigcap_{k=1}^{\infty}C^k(\overline{\Omega}) \ , \ T:X \to X \ , \ x(t) \mapsto Tx=\sum_{|\alpha| \leq k}a_{\alpha}(t)\cdot\partial^{\alpha}x(t)\]
 其依然是无界算子，反例类似一维。
+\end{example}
 
-\paragraph*{例3} \quad 积分算子，考虑 $L^2$上的$Lebesgue$积分
+\begin{example}
+\quad 积分算子，考虑 $L^2$上的 Lebesgue 积分：
 \[X=L^2(\overline{\Omega}) \ , \ T:X \to \mathbb{R}^n \ , \ u(x) \mapsto Tu=\int_{\overline{\Omega}}u(x)\psi(x)\dd x\]
-由柯西不等式
+由柯西不等式：
 \[||Tu||=|Tu| \leq ||u||_{L^2}||\psi||_{L^2} \quad \Rightarrow \quad ||T|| \leq ||\psi||_{L^2}\]
-再由
+再由：
 \[||T\psi||=|T\psi|=\int_{\overline{\Omega}}|\psi|^2=||\psi||_{L^2}^2 \quad \Rightarrow \quad ||T||=||\psi||_{L^2}\]
+\end{example}
 
 \section{有界线性算子空间}
 上一小节中，我们提及有界线性算子全体构成一个赋范线性空间$(\mathscr{B}(X,Y),||\cdot||)$，自然而然我们也会想知道在这样一个赋范线性空间上，元素的收敛性该如何刻画，这对后面讨论空间完备性时至关重要。
