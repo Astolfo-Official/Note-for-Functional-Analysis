@@ -323,7 +323,7 @@ $p=1$时，显然；$p>1$时，有
 
 我们自然会好奇，上面这个性质当$p \to \infty$时成立吗？
 \begin{definition}[本质有界]
-若存在零测集$E_0 \ , \ m(E_0)=0$使$x(t)$在$E/E_0$上有界，则称$x(t)$在$E$上本质有界（essentially bounded）。
+若存在零测集$E_0 \ , \ m(E_0)=0$使$x(t)$在$E-E_0$上有界，则称$x(t)$在$E$上本质有界（essentially bounded）。
 \end{definition}
 \begin{definition}
 我们将$L^{\infty}(E)$空间定义为$L^{\infty}(E)=\left\{E\text{上本质有界的可测函数构成的集合}\right\}$，并且定义$L^{\infty}(E)$范数：
@@ -332,7 +332,7 @@ $p=1$时，显然；$p>1$时，有
 \begin{proof}
 可以验证$||x(t)||_{L^p(E)}$也是范数，同时可以证明$||x(t)||_{L^p(E)}<\infty \ \Leftrightarrow \ $本质有界。
 
-若$x(t)$本质有界，则$\exists \, E_0 \quad \text{s.t.} \quad E/E_0$上$|x(t)|$有界$ \ \Rightarrow \ ||x(t)||_{L^{\infty}(E)}<\infty$。反之，由下确界的性质有:
+若$x(t)$本质有界，则$\exists \, E_0 \quad \text{s.t.} \quad E-E_0$上$|x(t)|$有界$ \ \Rightarrow \ ||x(t)||_{L^{\infty}(E)}<\infty$。反之，由下确界的性质有:
 \[\forall n \in \mathbb{Z}_+ \ , \ \exists \,E_n \subset E \ , \ m(E_n)=0 \quad \text{s.t.} \quad \mathop \text{sup}\limits_{E/E_n}|x(t)|<||x(t)||_{L^{\infty}(E)}+\frac{1}{n}\]
 \[E_0=\bigcup_{n=1}^{\infty}E_n \ , \ m(E_n)=0 \quad \Rightarrow \quad m(E_0)=0 \quad \Rightarrow \quad \mathop \text{sup}\limits_{E/E_0}|x(t)|<||x(t)||_{L^{\infty}(E)}<\infty\]
 即$x(t)$本质有界。
@@ -378,7 +378,7 @@ $p=1$时，显然；$p>1$时，有
 \[l^p=\{\{\xi_n\}_{n=1}^{\infty} \ , \ \sum_{n=1}^{\infty}|\xi_n|^p<\infty\}, \quad ||x||_{l^p}=\left(\sum_{n=1}^{\infty}|\xi_n|^p\right)^{\frac{1}{p}}\]
 当$p=\infty$时：
 \[l^{\infty}=\{\{\xi_n\}_{n=1}^{\infty} \ , \ \mathop \text{sup}\limits_{n \in \mathbb{Z}_+}|\xi_n|<\infty\}, \quad ||x||_{l^{\infty}}=\mathop \text{sup}\limits_{n \in \mathbb{Z}_+}|\xi_n|\]
-可以证明$l^p \ , \ l^{\infty}$是$Banach$空间。
+可以证明$l^p \ , \ l^{\infty}$是 Banach 空间。
 \end{definition}
 
 \section{赋范线性空间的其他性质}
@@ -407,258 +407,253 @@ $p=1$时，显然；$p>1$时，有
 \begin{theorem}
     设$(X,||\cdot||)$是不完备的赋范线性空间，它作为距离空间有完备化$\tilde{X}$,可以证明$\tilde{X}$是$Banach$空间。
 \end{theorem}
-\paragraph*{recall} \quad 设$\tilde{x}=[\{x_n\}] \in \tilde{X}$是$X$中柯西列的等价类。
-\paragraph*{定义加法} \quad $\tilde{x}+\tilde{y}=[\{x_n+y_n\}]$\\
-容易验证: 1.柯西列相加还是柯西列; 2.加法的定义与等价类无关。
-\paragraph*{定义数乘} \quad $k\tilde{x}=[\{kx_n\}]$\\
-容易验证: 1.柯西列数乘后还是柯西列; 2.数乘的定义与等价类无关。
-\paragraph*{定义范数}
+\begin{proof}
+设$\tilde{x}=[\{x_n\}] \in \tilde{X}$是$X$中柯西列的等价类。
+\begin{itemize}
+\item 1. 加法 $\tilde{x}+\tilde{y}=[\{x_n+y_n\}]$：柯西列相加还是柯西列，且加法的定义与等价类无关；
+\item 2. 数乘 $k\tilde{x}=[\{kx_n\}]$：柯西列数乘后还是柯西列，且数乘的定义与等价类无关；
+\end{itemize}
+定义范数：
 \[||\tilde{x}||_{\tilde{X}}=\lim_{n \to \infty}||x_n||_X\]
-我们需要验证:1.$\{\tilde{x}_n\}$是柯西列; 2.$||\tilde{x}||_{\tilde{X}}$的取值与代表元的选取无关。\\
-我们知道，$\{x_n\}_{n=1}^{\infty} \subset X$是柯西列时，可以得到$\{||x_n||\}_{n=1}^{\infty}$是收敛的柯西列。
-\[\forall \varepsilon>0 \ , \ \exists \, N>0 \quad \text{s.t.} \quad \forall m>n \geq N \ , \ ||x_n-x_m||<\varepsilon\]
-\[\forall \varepsilon>0 \ , \ \exists \, N>0 \quad \text{s.t.} \quad \forall m>n \geq N \ , \ \left|||x_n||-||x_m||\right| \leq ||x_n-x_m||<\varepsilon\]
-当$m \to \infty$时，记$x:=x_m \ (m \to \infty)$:
-\[\forall \varepsilon>0 \ , \ \exists \, N>0 \quad \text{s.t.} \quad \forall n \geq N \ , \ \left|||x_n||-||x||\right|<\varepsilon\]
-1.即证。
-
-我们定义等价类为$x \mapsto \tilde{x}=[\{x,x,\cdots\}]$，则$x$可嵌入$\tilde{x}$中，则
+验证：
+\begin{itemize}
+\item 1. $\{\tilde{x}_n\}$是柯西列：设$\{x_n\} \subset X$是柯西列，即$\forall \varepsilon>0 \ , \ \exists \, N>0$满足对$\forall m>n \geq N$有$||x_n-x_m||<\varepsilon$，利用三角不等式：
+$$\left|||x_n||-||x_m||\right| \leq ||x_n-x_m||<\varepsilon$$
+当$m \to \infty$时，记极限为$x_m \to x$，则：
+$$\forall \varepsilon>0 \ , \ \exists \, N>0 \ , \ \forall n \geq N \ , \ \left|||x_n||-||x||\right|<\varepsilon$$
+即证。
+\item 2. $||\tilde{x}||_{\tilde{X}}$的取值与代表元的选取无关：我们定义等价类为$x \mapsto \tilde{x}=[\{x,x,\cdots\}]$，则$x$可嵌入$\tilde{x}$中，则：
 \[||\tilde{x}||_{\tilde{X}}=\lim_{n \to \infty}||x_n||_X=||x||_X\]
-两个范数的定义是一致的，2.也证毕。\\
-\textbf{Q.E.D.}
+两个范数的定义是一致的，证毕。
+\end{itemize}
+\end{proof}
 
 \subsection{商空间与乘积空间}
-在有限维空间中，商空间的定义如下，我们先定义$V$是定义在数域$\mathbf{K}$上的一个向量空间：
-\begin{definition}[商空间]
-    商空间$V/A=\{\tilde{x}=x+A\}$，其中$\tilde{x}$是一个等价类，等价关系$\sim$定义如下：$x \sim y$当且仅当$x-y \in A$。
+\begin{definition}[有限维商空间]
+$V$是定义在数域$\mathbb{K}$上的一个有限维向量空间，$V$的商空间$V/A=\{\tilde{x}=x+A\}$，其中$\tilde{x}$是一个等价类，等价关系$\sim$定义如下：$x \sim y$当且仅当$x-y \in A$。进一步定义商映射$\pi:V \to V/A \ , \ x \mapsto \tilde{x}$，显然商映射线性且满的。
 \end{definition}
-再者，我们定义商映射$\pi:V \to V/A \ , \ x \mapsto \tilde{x}$，显然，这是个线性映射且是满射。
-\[\text{加法：}\tilde{x}+\tilde{y}=\tilde{x+y} \qquad \text{数乘：}k\tilde{x}=\tilde{kx} \ (x,y \in V \ , \ k \in \mathbb{K})\]
-注：有限维的子空间都是闭子空间。
+有限维的子空间都是闭子空间。商空间其实是我们所熟知的平行这个概念的推广，现在这个空间中的跟某个$x$之差属于$A$的元素$\tilde{x}$视作一个等价类，可以说是$\tilde{x}$跟$x$只差了一个$A$。
 
-可以看到，商空间其实是我们所熟知的平行这个概念的推广，现在这个空间中的跟某个$x$之差属于$A$的元素$\tilde{x}$视作一个等价类，可以说说$\tilde{x}$跟x只差了一个$A$。
-
-下面我们来看无限维的情况：假设X是赋范线性空间，$M$是$X$的闭子空间，在商空间$X/M$中定义范数
+\begin{definition}[无限维商空间]
+假设X是赋范线性空间，$M$是$X$的闭子空间，在商空间$X/M$中定义范数：
 \[||\tilde{x}||=\mathop \text{inf}\limits_{y \in \tilde{x}}||y||=\mathop \text{inf}\limits_{y-x \in M}||y||=\mathop \text{inf}\limits_{z \in M}||x+z||\]
-则课称$X/M$是关于$M$的赋范商空间。我们可以验证$||\tilde{x}||$是范数:
-\paragraph*{1、正定性} \quad $||\tilde{x}||>0$是显然的，而当
-\[||\tilde{x}||=0 \ , \ \exists \, \{y_n\}_{n=1}^{\infty} \subset \tilde{x} \quad \text{s.t.} \quad \lim_{n \to \infty}||y_n||=0\]
-而由于$M$是闭子空间，$x+M$也是闭子空间，故$\exists \, y \in \tilde{x} \quad \text{s.t.} \quad y_n \to y \ (n \to \infty)$
-\[||y||=\lim_{n \to \infty}||y_n||=0 \ \Rightarrow \ y=0 \ \Rightarrow \ \tilde{x}=\tilde{y}=\tilde{0}\]
-\paragraph*{2、齐次性}
-\[||k\tilde{x}||=\mathop \text{inf}\limits_{y \in k\tilde{x}=\tilde{kx}}||y||=\mathop \text{inf}\limits_{z \in \tilde{x}}||kz||=|k|\mathop \text{inf}\limits_{z \in \tilde{x}}||z||=|k|||\tilde{x}||\] 
-\paragraph*{3、三角不等式} \quad $\tilde{x},\tilde{y} \in X/M$
-\[||\tilde{x}+\tilde{y}||=\mathop \text{inf}\limits_{z \in \tilde{x+y}}||z||=\mathop \text{inf}\limits_{z \in M}||x+y+z|| \leq \mathop \text{inf}\limits_{z \in M}\left(||x+\frac{1}{2}z||+||y+\frac{1}{2}z||\right)\]
-\[\leq \mathop \text{inf}\limits_{z \in M}||x+\frac{1}{2}z||+||y+\mathop \text{inf}\limits_{z \in M}\frac{1}{2}z||=||\tilde{x}||+||\tilde{y}||\]
-关于商空间，我们有以下定理。
-\begin{theorem}
-    若$X$是$Banach$空间，$M$是$X$的闭子空间，那么$X/M$是$Banach$空间。
-\end{theorem}
-\textbf{Proof:} 设$\{\tilde{x}_n\}$是$X/M$中的柯西列，取其子列$\{\tilde{x}_{n_k}\}$使得$||\tilde{x}_{n_{k+1}}-\tilde{x}_{n_k}||<1/2^k \ (k=1,2,\cdots)$，由范数的定义：
-\[\mathop \text{inf}\limits_{y_k \in \tilde{x}_{n_{k+1}}-\tilde{x}_{n_k}}||y_k||<\frac{1}{2^k} \quad (\forall k \in \mathbb{Z}_+) \quad \Leftrightarrow \quad \exists \, y_k \in \tilde{x}_{n_{k+1}}-\tilde{x}_{n_k} \quad \text{s.t.} \quad ||y_k||<\frac{1}{2^k}\]
-\[\Rightarrow \quad \sum_{k=1}^{\infty}y_k \ \text{在$X$中收敛} \quad \Rightarrow \quad x_{n+1}+\sum_{k=1}^{\infty}y_k \ \text{在$X$中收敛，记极限为} \ S\]
-记上述级数的部分和为$S_i$，则易知$S_i$在$X$中的收敛
-\[S_i=x_{n_1}+\sum_{k=1}^{i-1}y_k\]
-则
-\[\tilde{S}_i=\tilde{x}_{n_1}+\sum_{k=1}^{i-1}\tilde{y}_k=\tilde{x}_{n_1}+\sum_{k=1}^{i-1}\left(\tilde{x}_{n_{k+1}}-\tilde{x}_{n_k}\right)=\tilde{x}_{n_i}\]
-\[\Rightarrow \quad ||\tilde{x}_{n_i}-\tilde{x}||=||\tilde{S}_i-\tilde{x}||=\mathop \text{inf}\limits_{y \in \tilde{S}_i-\tilde{x}}||y|| \leq ||S_i-x||\rightarrow 0 \quad (i \rightarrow \infty)\]
-子列收敛，故原柯西列也收敛。
-
-\textbf{Q.E.D.}
-\begin{definition}[乘积空间]
-    设$(X_1,||\cdot||_{X_1})$与$(X_2,||\cdot||_{X_2})$是赋范线性空间，则称$(X_1 \times X_2,||\cdot||)$为乘积空间，其中范数定义如下
-    \[||(x_1,x_2)||=||x_1||_{X_1}+||x_2||_{X_2} \quad (\forall x_1 \in X_1,x_2 \in X_2)\]
+则课称$X/M$是关于$M$的赋范商空间。
 \end{definition}
-若$(X_1,||\cdot||_{X_1})$与$(X_2,||\cdot||_{X_2})$是$Banach$空间，则$(X_1 \times X_2,||\cdot||)$也为$Banach$空间。
+\begin{proof}
+可以验证$||\tilde{x}||$是范数：
+\begin{itemize}
+\item 1. 正定性：$||\tilde{x}||>0$是显然的，而当
+\[||\tilde{x}||=0 \ , \ \exists \, \{y_n\} \subset \tilde{x} \quad \text{s.t.} \quad \lim_{n \to \infty}||y_n||=0\]
+而由于$M$是闭子空间，$x+M$也是闭子空间，故$\exists \, y \in \tilde{x}$满足$y_n \to y$：
+\[||y||=\lim_{n \to \infty}||y_n||=0 \quad \Rightarrow \quad y=0 \quad \Rightarrow \quad \tilde{x}=\tilde{y}=\tilde{0}\]
+\item 2. 齐次性：
+\[||k\tilde{x}||=\mathop \text{inf}\limits_{y \in k\tilde{x}=\tilde{kx}}||y||=\mathop \text{inf}\limits_{z \in \tilde{x}}||kz||=|k|\mathop \text{inf}\limits_{z \in \tilde{x}}||z||=|k|||\tilde{x}||\] 
+\item 3. 三角不等式：
+\begin{equation*}
+\begin{aligned}
+||\tilde{x}+\tilde{y}||&=\mathop \text{inf}\limits_{z \in \tilde{x+y}}||z||=\mathop \text{inf}\limits_{z \in M}||x+y+z|| \leq \mathop \text{inf}\limits_{z \in M}\left(||x+\frac{1}{2}z||+||y+\frac{1}{2}z||\right)\\
+&\leq \mathop \text{inf}\limits_{z \in M}||x+\frac{1}{2}z||+||y+\mathop \text{inf}\limits_{z \in M}\frac{1}{2}z||=||\tilde{x}||+||\tilde{y}||
+\end{aligned}
+\end{equation*}
+\end{itemize}
+\end{proof}
+
+\begin{theorem}
+    若$X$是 Banach 空间，$M$是$X$的闭子空间，那么$X/M$是 Banach 空间。
+\end{theorem}
+\begin{proof}
+设$\{\tilde{x}_n\}$是$X/M$中的柯西列，取其子列$\{\tilde{x}_{n_k}\}$使得$||\tilde{x}_{n_{k+1}}-\tilde{x}_{n_k}||<2^{-k}$，由范数的定义：
+\[\mathop \text{inf}\limits_{y_k \in \tilde{x}_{n_{k+1}}-\tilde{x}_{n_k}}||y_k||<2^{-k} \quad (\forall k \in \mathbb{Z}_+) \quad \Leftrightarrow \quad \exists \, y_k \in \tilde{x}_{n_{k+1}}-\tilde{x}_{n_k} \quad \text{s.t.} \quad ||y_k||<2^{-k}\]
+可得级数$\sum y_k$在$X$中收敛，进而可知级数$x_{n+1}+\sum y_k$存在，记为$S$，同时记上述级数的部分和为$S_i$，则易知$S_i$在$X$中的收敛：
+\[S_i=x_{n_1}+\sum_{k=1}^{i-1}y_k\]
+则在商空间$X/M$中：
+\[\tilde{S}_i=\tilde{x}_{n_1}+\sum_{k=1}^{i-1}\tilde{y}_k=\tilde{x}_{n_1}+\sum_{k=1}^{i-1}\left(\tilde{x}_{n_{k+1}}-\tilde{x}_{n_k}\right)=\tilde{x}_{n_i}\]
+\[\Rightarrow \quad ||\tilde{x}_{n_i}-\tilde{x}||=||\tilde{S}_i-\tilde{x}||=\mathop \text{inf}\limits_{y \in \tilde{S}_i-\tilde{x}}||y|| \leq ||S_i-x||\rightarrow 0\]
+子列收敛，故原柯西列也收敛。
+\end{proof}
+
+\begin{definition}[乘积空间]
+设$(X_1,||\cdot||_{X_1})$与$(X_2,||\cdot||_{X_2})$是赋范线性空间，则称$(X_1 \times X_2,||\cdot||)$为乘积空间，其中范数定义如下：
+\[||(x_1,x_2)||=||x_1||_{X_1}+||x_2||_{X_2} \quad (\forall x_1 \in X_1,x_2 \in X_2)\]
+\end{definition}
+若$(X_1,||\cdot||_{X_1})$与$(X_2,||\cdot||_{X_2})$是 Banach 空间，则$(X_1 \times X_2,||\cdot||)$也为 Banach 空间。
 
 \subsection{赋范线性空间的基} \label{baseset}
-对有限维赋范线性空间$X$，如果我们称$\{e_i\}_{i=1}^{\infty} \subset X$为是$X$的一组基，则其应满足
+对有限维赋范线性空间$X$，如果我们称$\{e_i\}_{i=1}^n \subset X$为是$X$的一组基，则其应满足：
 \[\forall x \in X \ , \ \exists \, ! (\xi_1,\xi_2,\cdots,\xi_n) \in \mathbb{R}^n \quad \text{s.t.} \quad x=\sum_{i=1}^n\xi_ie_i\]
-
-类似的，我们也希望基的概念能拓展到无限维的赋范线性空间上来\footnote{毕竟泛函分析又名无穷维线性代数(乐}，类似的我们可能会有以下两种想法(然而并不会)：
-\paragraph*{$Hamel$基}
-如果我们保留有限组合这个性质，我们按照如下方式可以定义$Hamel$基:
-\begin{definition}[$Hamel$基]
-    设无穷维赋范线性空间$X$的线性无关子集为$\{x_{\alpha}\} \ (\alpha \in \Lambda)$，若其张成的空间(称为线性包)满足$\text{Span}\{x_{\alpha}\}=X$，则称$\{x_{\alpha}\}$为$X$的一个$Hamel$基。
+类似的，我们也希望基的概念能拓展到无限维的赋范线性空间上来\footnote{毕竟泛函分析又名无穷维线性代数(乐}，类似的我们可能会有以下两种定义：
+\begin{definition}[Hamel 基]
+设赋范线性空间$X$的一组线性无关子集$\{x_{\alpha}\} \ (\alpha \in \Lambda)$，若其张成的空间(称为线性包)满足$\text{Span}\{x_{\alpha}\}=X$，则称$\{x_{\alpha}\}$为$X$的一个 Hamel 基。
 \end{definition}
-这样的基是有限维赋范线性空间的基的直接推广，它总是存在的(这点可以利用$Zorn$引理证明，但这个结果其实挺显然而且我不关心这个证明所以我不证)，但缺点也很明显，就是基的个数可能会太多，这显然会给运算带来很大的麻烦。
-
-于是便有了另外一种基的出现:
-\paragraph*{$Schauder$基}
-我们将组合的个数适当拓展到至多可数，我们便可按照如下方式定义$Schauder$基:
-\begin{definition}[$Schauder$基]
-    设无穷维赋范线性空间$X$中的点列$\{e_n\}_{n=1^{\infty}}$若满足
-    \[\forall x \in X \ , \ \exists \, !\{\xi_n\}_{n=1}^{\infty} \ (\xi_n \in \mathbb{R}^1) \quad \text{s.t.} \quad x=\sum_{i=1}^{\infty}\xi_ie_i\]
-    则称$\{e_n\}_{n=1^{\infty}}$是$X$的一个$Schauder$基。
+这样的基是有限维赋范线性空间的基的直接推广，它总是存在的(这点可以利用$Zorn$引理证明)，但缺点也很明显，就是基的个数可能太多，这显然会给运算带来很大的麻烦。如果限制基的数量为可数个：
+\begin{definition}[Schauder 基]
+设赋范线性空间$X$中的点列$\{e_n\}_{n=1}^{\infty}$若满足：
+\[\forall x \in X \ , \ \exists \, !\{\xi_n\}_{n=1}^{\infty} \ (\xi_n \in \mathbb{R}^1) \quad \text{s.t.} \quad x=\sum_{i=1}^{\infty}\xi_ie_i\]
+则称$\{e_n\}_{n=1}^{\infty}$是$X$的一个 Schauder 基。
 \end{definition}
-当然，从定义可以看出，不是所有赋范线性空间都有$Schauder$基，$Schauder$基的存在要求其赋范线性空间是可分的。
-\paragraph*{例1} \quad $l^p \ (p \geq 1) \ , \ e_i=\{0,\cdots,0,1,0,\cdots\}$ (第$i$位为1)，可验证$\{e_n\}_{n=1}^{\infty}$是$Schauder$基。
-\paragraph*{例2} \quad $L^2[0,2\pi]$可验证$\{1,\cos nx,\sin nx \ (n=1,2,\cdots)\}$是$Schauder$基。
+从定义可以看出，Schauder 基的存在要求其赋范线性空间是可分的。
+\begin{example}
+ \quad $l^p \ (p \geq 1) \ , \ e_i=\{0,\cdots,0,1,0,\cdots\}$ (第$i$位为1)，可验证$\{e_n\}_{n=1}^{\infty}$是 Schauder 基。
+\end{example}
+\begin{example}
+\quad $L^2[0,2\pi]$可验证$\{1,\cos nx,\sin nx \ (n=1,2,\cdots)\}$是 Schauder 基。
+\end{example}
 
-对于$Schauder$基还有以下小结论:
-\[x=\sum_{i=1}^{\infty}\xi_ie_i=\lim_{n \to \infty}\sum_{i=1}^{n}\xi_ie_i \quad \Leftrightarrow \quad ||x-\sum_{i=1}^n\xi_ie_i||=||\sum_{i=n+1}^{\infty}\xi_ie_i|| \rightarrow 0 \quad (n \rightarrow 0) \quad \Rightarrow \quad \xi_i \rightarrow 0 \ (i \to \infty)\]
-该结论可以用于快速判断某些点列是不是$Schauder$基，同时，这其实也暗示了可分的赋范线性空间其实“维数”也并不是很多。
-\paragraph*{例1} \quad $l^{\infty} \ , \ e_i=\{0,\cdots,0,1,0,\cdots\}$ (第$i$位为1)，$\{e_n\}_{n=1}^{\infty}$不是$Schauder$基。
+对于 Schauder 基还有以下小结论：
+\[x=\sum_{i=1}^{\infty}\xi_ie_i=\lim_{n \to \infty}\sum_{i=1}^{n}\xi_ie_i \quad \Leftrightarrow \quad ||x-\sum_{i=1}^n\xi_ie_i||=||\sum_{i=n+1}^{\infty}\xi_ie_i|| \rightarrow 0 \quad (n \rightarrow 0) \quad \Rightarrow \quad \xi_i \rightarrow 0\]
+该结论可以用于快速判断某些点列是不是 Schauder 基，同时，这其实也暗示了可分的赋范线性空间的基底数量也并不是很多。
+\begin{example}
+\quad $l^{\infty} \ , \ e_i=\{0,\cdots,0,1,0,\cdots\}$ (第$i$位为1)，$\{e_n\}_{n=1}^{\infty}$不是 Schauder 基。
+\end{example}
+\begin{proof}
+假设 $\{e_n\}$ 是 $l^{\infty}$ 的 Schauder 基，则对任意 $x\in l^{\infty}$ 存在唯一系数序列 $\{\xi_n\}$ 使得
+\[ x=\sum_{n=1}^{\infty}\xi_n e_n,\]
+且部分和 $S_N=\sum_{n=1}^N\xi_n e_n$ 在 $\|\cdot\|_{\infty}$ 下收敛于 $x$。注意到对所有 $N$ 有
+\[ \left\|x-S_N\right\|_{\infty}=\sup_{m>N}|\xi_m|,\]
+因此必须有 $\xi_m\to0$ (否则上式不可能趋于 $0$)。
 
-这是显然的，因为该点列末端并不$\to 0$。
+取特殊的 $x=(1,1,1,\dots)\in l^{\infty}$，若存在表示 $x=\sum_{n=1}^{\infty}\xi_n e_n$，比较各坐标可得对任意 $n$ 有 $\xi_n=1$，这显然与 $\xi_n\to0$ 矛盾。因此 $\{e_n\}$ 不能是 $l^{\infty}$ 的 Schauder 基。
+\end{proof}
+
+\begin{remark}
+点列 $\{e_n\}$ 作为标准单位向量确实是 $c_0$（所有序列以 $0$ 收敛的空间）的 Schauder 基，而在 $l^{\infty}$ 中其线性包的闭包恰为 $c_0$，因此不能生成整个 $l^{\infty}$。
+\end{remark}
+
 \begin{theorem}
-    $Banach$空间$X$有$Schauder$基，则$X$可分。
+Banach 空间$X$有 Schauder 基，则$X$可分。
 \end{theorem}
-\textbf{Proof:}
+\begin{proof}
 \[\text{令}A=\left\{\left.x=\sum_{i=1}^nr_ie_i\right|r_i \in \mathbb{Q} \ , \ n \in \mathbb{N}\right\}\text{，则$A$是可数集}\]
 下证$A$在$X$中稠密，即:
 \[\forall \varepsilon>0 \ , \ x \in X \ , \ x=\sum_{i=1}^{\infty}\xi_ie_i \quad \Leftrightarrow \quad \lim_{n \to \infty}||x-\sum_{i=1}^n\xi_ie_i||=0 \quad \Leftrightarrow \quad \exists \, N \in \mathbb{N} \quad \text{s.t.} \quad ||x-\sum_{i=1}^N\xi_ie_i||<\frac{\varepsilon}{2}\]
 容易看出:
 \[\exists \, r_1,r_2,\cdots,r_N \in \mathbb{Q} \ , \ y=\sum_{i=1}^Nr_ie_i \in A \quad \text{s.t.} \quad ||y-\sum_{i=1}^N\xi_ie_i||=||\sum_{i=1}^N(r_i-\xi_i)e_i|| \leq \sum_{i=1}^N|r_i-\xi_i|\cdot||e_i||\]
-利用$Schwartz$不等式:
+利用 Schwartz 不等式:
 \[\sum_{i=1}^N|r_i-\xi_i|\cdot||e_i|| \leq \sqrt{\sum_{i=1}^N|r_i-\xi_i|^2} \cdot \sqrt{\sum_{i=1}^N||e_i||^2} \leq N \cdot \mathop \text{max}\limits_i||e_i|| \cdot \mathop \text{max}\limits_i|r_i-\xi_i|<\frac{\varepsilon}{2}\]
 故有
 \[||x-y|| \leq ||x-\sum_{i=1}^N\xi_ie_i||+||y-\sum_{i=1}^N\xi_ie_i||<\varepsilon\]
+\end{proof}
 
-\textbf{Q.E.D.}
-
-但是反之并不一定成立，可分的$Banach$空间并不一定有$Schauder$基。
-\vspace{0.5cm}
-同一个空间可以定义不同的范数，也即不同的距离函数，那我们自然而然地会想问不同距离函数之间是否有关系，他们的收敛性如何让，拓扑关系如何？
+但是反之并不一定成立，可分的 Banach 空间并不一定有 Schauder 基。同一个空间可以定义不同的范数，也即不同的距离函数，那不同距离函数之间是否有关系，他们的收敛性如何，拓扑关系如何？
 \begin{definition}[等价范数]
-    设$||\cdot||_1,||\cdot||_2$是赋范线性空间$X$上的两个范数，若满足
-    \[\forall x \in X \ , \ \exists \, c>0 \quad \text{s.t.} \quad ||x||_1 \leq c||x||_2\]
-    则称$||\cdot||_2$比$||\cdot||_1$强。\\
-    如果$||\cdot||_1$比$||\cdot||_2$强且$||\cdot||_2$比$||\cdot||_1$强，则称$||\cdot||_2,||\cdot||_1$等价，即
-    \[\forall x \in X \ , \ \exists \, c_1,c_2>0 \quad \text{s.t.} \quad c_1||x||_1 \leq ||x||_2 \leq c_2||x||_1\]
+设$||\cdot||_1,||\cdot||_2$是赋范线性空间$X$上的两个范数，若满足对$\forall x \in X \ , \ \exists \, c>0$有$||x||_1 \leq c||x||_2$，则称$||\cdot||_2$比$||\cdot||_1$强。如果$||\cdot||_1$比$||\cdot||_2$强且$||\cdot||_2$比$||\cdot||_1$强，则称$||\cdot||_2,||\cdot||_1$等价，即：
+\[\forall x \in X \ , \ \exists \, c_1,c_2>0 \quad \text{s.t.} \quad c_1||x||_1 \leq ||x||_2 \leq c_2||x||_1\]
 \end{definition}
-一个范数比一个范数更强，这种说法看起来比较模糊，其实强想描述的事情就是一个范数能被另外一个范数控制：
+范数强想描述的事情就是一个范数能被另外一个范数控制：
 \begin{theorem}
-    $||\cdot||_2$比$||\cdot||_1$强$ \quad \Leftrightarrow \quad \forall \{x_n\}_{n=1}^{\infty} \subset X \ , \ \text{if} \ ||x_n||_2 \to 0 \ , \ ||x_n||_1 \to 0$
+$||\cdot||_2$比$||\cdot||_1$强$ \quad \Leftrightarrow \quad \forall \{x_n\} \subset X \ , \ \text{if} \ ||x_n||_2 \to 0 \ , \ ||x_n||_1 \to 0$
 \end{theorem}
-\textbf{Proof:}\\
-$"\Rightarrow" \quad \exists \, c>0 \quad \text{s.t.} \quad 0 \leq ||x_n||_1 \leq c||x_n||_2 \to 0 \quad \Rightarrow \quad ||x_n||_1 \to 0$\\
-$"\Leftarrow" \quad$ 反证法，如若不然，则有：$\forall k \in \mathbb{N} \ , \ \exists \, x_k \in X \quad \text{s.t.} \quad ||x_k||_1>k||x_n||_2$\\
-\[\text{令} \ y=\frac{x_k}{||x_k||_1} \ , \ \text{则} \ ||y_k||_1=\left\|\frac{x_k}{||x_k||_1}\right\|_1=1>k\frac{||x_k||_2}{||x_k||_1}=k\left\|\frac{x_k}{||x_k||_1}\right\|_2\]
-\[\Rightarrow \quad ||y_k||_2<\frac{1}{k} \to 0 \quad (k \to \infty) \ \text{，但} \ ||y_k||_1=1\]
-推出矛盾，故原命题成立。
-
-\textbf{Q.E.D.}
+\begin{proof}充分性：由范数强弱性可知，$\exists \, c>0$满足$0 \leq ||x_n||_1 \leq c||x_n||_2 \to 0$，可以推出$||x_n||_1 \to 0$。\\
+必要性：采用反证法，如若不然，则对$\forall k \in \mathbb{N} \ , \ \exists \, x_k \in X$满足$||x_k||_1>k||x_n||_2$。\\
+令：
+\[y=\frac{x_k}{||x_k||_1}\]
+则有：
+\[||y_k||_1=\left\|\frac{x_k}{||x_k||_1}\right\|_1=1>k\frac{||x_k||_2}{||x_k||_1}=k\left\|\frac{x_k}{||x_k||_1}\right\|_2\]
+可以推出：
+\[||y_k||_2<\frac{1}{k} \to 0\]
+但是$||y_k||_1=1$，推出矛盾，故原命题成立。
+\end{proof}
 
 \section{有限维赋范线性空间}
 我们常常戏称希尔伯特空间是大号欧氏空间，是因为两者具有类似的空间结构和内积定义，加之可数和有限其实没多大差别。
 但是在更一般的距离空间中，如果我们还想获得和欧氏空间类似的性质时，我们对空间的要求可以预料到会有相应的提高。
 但这样的提高具体的条件是什么呢，看看本小结的标题就知道了。
 \begin{theorem}\label{the:B}
-    \textbf{1.} \quad 有限维赋范线性空间上的任意两个范数等价；\\
-    \textbf{2.} \quad 任意$n$维赋范线性空间$X$与$\mathbb{R}^n$代数同构，拓扑同胚\footnote{代数同构指的是作为线性空间两者同构，可以用一个保持线性结构的双射关联；拓扑同胚指的是两者可以用一个双连续映射关联。}。
+\begin{itemize}
+\item 1. 有限维赋范线性空间上的任意两个范数等价；
+\item 2. 任意$n$维赋范线性空间$X$与$\mathbb{R}^n$代数同构，拓扑同胚\footnote{代数同构指的是作为线性空间两者同构，可以用一个保持线性结构的双射关联；拓扑同胚指的是两者可以用一个双连续映射关联。}。
+\end{itemize}
 \end{theorem}
-\textbf{Proof:} \quad 设$X$是$n$维赋范线性空间，$\{e_1,e_2,\cdots,e_n\}$是$X$的基，定义如下映射
-\[T: \qquad X \to \mathbb{R}^n \qquad x=\sum_{i=1}^n\xi_ie_i \mapsto \xi=(\xi_1,\xi_2,\cdots,\xi_n)\]
-易知$T$是良定义的，且是双射(因为基表示是唯一的)，则$X$与$\mathbb{R}^n$线性同构，下证同胚。
-
-考虑范数$||\cdot||_X$和$||x||_T:=||TX||_{\mathbb{R}^n}$，任意验证后者确实是范数。
-
-第一步，通过算子的有界即连续（不知道为什么算子范数的内容会出现在这里）验证$T^{-1}$的连续性。
-\[\forall x \in X \ , \ ||x||_X\left\|\sum_{i=1}^n\xi_ie_i\right\| \leq \sum_{i=1}^n|\xi_i|||e_i|| \leq \left(\sum_{i=1}^n|\xi_i|^2\right)^{\frac{1}{2}}\left(\sum_{i=1}^n||e_i||^2\right)^{\frac{1}{2}}:=\alpha||\xi||_{\mathbb{R}^n}\]
-\[\Leftrightarrow \quad ||TX||_{\mathbb{R}^n} \geq \frac{1}{\alpha}||x|| \quad \Leftrightarrow \quad ||\xi||_{\mathbb{R}^n} \geq \frac{1}{\alpha}||T^{-1}\xi|| \quad \Rightarrow \quad \alpha \geq ||T^{-1}||\]
-然后由$T^{-1}$的有界性知其连续，这个性质的证明等下一章再说。
-
-第二步，同样的方法，利用上一步的结论，考虑函数$f$:
-\[f: \qquad \mathbb{R}^n \to \mathbb{R} \qquad \xi \mapsto ||T^{-1}\xi||=||x||\]
-容易验证$f$连续,$\forall \xi \eta \in \mathbb{R}^n \ , \ x:=T^{-1}\xi \ , \ y:=T^{-1}\eta$
+\begin{proof}
+设$X$是$n$维赋范线性空间，$\{e_1,e_2,\cdots,e_n\}$是$X$的基，定义映射$T: \ X \to \mathbb{R}^n$，
+\[x=\sum_{i=1}^n\xi_ie_i \mapsto \xi=(\xi_1,\xi_2,\cdots,\xi_n)\]
+易知$T$是良定义的，且是双射(因为基表示是唯一的)，存在逆算子$T^{-1}$，则$X$与$\mathbb{R}^n$线性同构，下证同胚。考虑范数$||\cdot||_X$和$||x||_T:=||TX||_{\mathbb{R}^n}$，容易验证后者确实是范数。
+\[\forall x \in X \ , \ ||x||_X=\left\|\sum_{i=1}^n\xi_ie_i\right\| \leq \sum_{i=1}^n|\xi_i|||e_i|| \leq \left(\sum_{i=1}^n|\xi_i|^2\right)^{\frac{1}{2}}\left(\sum_{i=1}^n||e_i||^2\right)^{\frac{1}{2}}:=\alpha||\xi||_{\mathbb{R}^n} \quad \Leftrightarrow \quad ||\xi||_{\mathbb{R}^n} \geq \frac{1}{\alpha}||T^{-1}\xi||\]
+利用算子范数的定义（xxx）和有界线性算子都是连续的（xxx），可知$\alpha \geq ||T^{-1}||$。同样的，考虑函数$f$:
+\[f: \ \mathbb{R}^n \to \mathbb{R} \ , \ \xi \mapsto ||T^{-1}\xi||=||x||\]
+容易验证$f$连续，对$\forall \xi \eta \in \mathbb{R}^n$定义$x:=T^{-1}\xi \ , \ y:=T^{-1}\eta$，则有：
 \[|f(\xi)-f(\eta)|=|||x||-||y||| \leq ||x-y|| \leq \alpha ||T(x-y)||_{\mathbb{R}^n}=\alpha ||\xi-\eta||_{\mathbb{R}^n}\]
-
-由于有限维，$f$限制在单位球面$S^{n-1} \subset \mathbb{R}^n$(紧集)上的最值可被达到，这里考虑最小值，即
+由于有限维，$f$限制在单位球面$S^{n-1} \subset \mathbb{R}^n$(紧集)上的最值可被达到，这里考虑最小值，即：
 \[\exists \, \xi_0=\sum_{i=1}^n\xi_0^ie_i \in S^{n-1} \quad \text{s.t.} \quad \beta:=f(\xi_0)=\mathop \text{min}\limits_{x \in S^{n-1}}f(x)=\left\|\sum_{i=1}^n\xi_0^ie_i\right\|>0\]
-记$q=||\xi||_{\mathbb{R}^n}$，则
+记$q=||\xi||_{\mathbb{R}^n}$，则：
 \[||x||=q\left\|\frac{x}{q}\right\|=qf\left(\frac{\xi}{q}\right) \geq q\beta=\beta||Tx||_{\mathbb{R}^n}\]
-同上可知然后由$T$连续。
-
-综上所述，$T$的拓扑同胚可证，最后由于范数$||x||$的任意性可知原命题成立。(实际上证明的是两个范数$||\cdot||_X$和$||x||_T:=||TX||_{\mathbb{R}^n}$等价)
-
-\textbf{Q.E.D.}
+同上可知然后由$T$连续。综上所述，$T$的拓扑同胚可证，最后由于范数$||x||$的任意性可知原命题成立。
+\end{proof}
 
 上述定理告诉我们有限维的赋范线性空间基本上可以直接当成欧氏空间来看，当然是在范数意义下。
 从证明中我们还可以知道，任意有限维赋范线性空间都是完备的，其上点列的依范数收敛直接等价于坐标分量收敛，这点可以通过证明中定义的映射$T$看出。
 
-最重要的，有限维赋范线性空间中的有界集列紧，有界闭集是紧集。这个性质还可以用于判定一个赋范线性空间是否为有限维，我们将在后面证明这个定理，但在证明之前我们需要先介绍一个非常有用的工具——$Riesz$引理。
-\begin{theorem}[$Riesz$引理]\label{Riesz}
-    设$X_0$是赋范线性空间$X$的真闭子空间(不要求有限维),则
-    \[\forall \varepsilon>0 \ , \ \exists \, x_0 \in X / X_0 \quad \text{s.t.} \quad ||x_0||=1 \ , \ d(x_0,X_0):=\mathop \text{inf}\limits_{x \in X_0}d(x_0,x) \geq 1-\varepsilon\]
+最重要的，有限维赋范线性空间中的有界集列紧，有界闭集是紧集。这个性质还可以用于判定一个赋范线性空间是否为有限维，我们将在后面证明这个定理。
+\begin{theorem}[Riesz 引理]\label{Riesz}
+设$X_0$是赋范线性空间$X$的真闭子空间（不要求有限维），则：
+\[\forall \varepsilon>0 \ , \ \exists \, x_0 \in X / X_0 \quad \text{s.t.} \quad ||x_0||=1 \ , \ d(x_0,X_0):=\mathop \text{inf}\limits_{x \in X_0}d(x_0,x) \geq 1-\varepsilon\]
 \end{theorem}
-\textbf{Proof:} 依照定理描述，我们知道
+\begin{proof}依照定理描述：
 \[\forall x_1 \in X/X_0 \ , \ d:=d(x_1,X_0)=\mathop \text{inf}\limits_{x \in X_0}d(x_1,x)=\mathop \text{inf}\limits_{x \in X_0}||x_1-x||\]
-由于$X_0$闭，可知$d>0$，且由下确界性质可知
+由于$X_0$闭，可知$d>0$，且由下确界性质可知：
 \[\forall \varepsilon \in (0,1) \ , \ \exists \, x_2 \in X_0 \quad \text{s.t.} \quad d(x_1,x_2)=||x_1-x_2||<\frac{d}{1-\varepsilon}\]
-则此时我们如下定义$x_0$
+则此时我们如下定义$x_0$：
 \[x_0=\frac{x_1-x_2}{||x_1-x_2||} \quad \Rightarrow \quad ||x_0||=1 \ , \ \forall x \in X_0 \ , \ ||x-x_0||=\left\|x-\frac{x_1-x_2}{||x_1-x_2||}\right\|=\frac{1}{||x_1-x_2||}\left\|||x_1-x_2||x+x_2-x_1\right\|\]
-式中$||x_1-x_2||x+x_2 \in X_0$，故
+式中$||x_1-x_2||x+x_2 \in X_0$，故：
 \[\forall x \in X_0 \ , \ ||x-x_0|| \geq \frac{1}{||x_1-x_2||} \cdot d >\frac{1-\varepsilon}{d} \cdot d=1-\varepsilon\]
-
-\textbf{Q.E.D.}
-
-关于$Riesz$引理有很多可以细嗦的东西，但是我们先来看一幅图直观感受一下。
 \begin{figure}[H]
     \center
     \includegraphics[scale=0.25]{./fig/3.5-1.png}
 \end{figure}
+\end{proof}
 
-对于$d(x_0,X_0)$我们首先应该能想到应该对应于$x_0 \perp X_0$，但是在赋范线性空间我们没办法定义垂直这件事，而$Riesz$引理告诉我们我们能找到一个差不多垂直的元素，当然由于差不多垂直，所以并不能保证$d(x_0,X_0) \geq 1$成立。
-但是如果我们在有限维空间中考虑这件事，由完备性可知确实一定存在一个点满足$d(x_0,X_0) \geq 1$，\textbf{所以还是有限维香啊}。
-我们可以严格描述并证明上面这句话。
-
+对于$d(x_0,X_0)$我们首先应该能想到应该对应于$x_0 \perp X_0$，但是在赋范线性空间我们没办法定义垂直这件事，而 Riesz 引理告诉我们我们能找到一个差不多垂直的元素，当然由于差不多垂直，所以并不能保证$d(x_0,X_0) \geq 1$成立。但是如果我们在有限维空间中考虑这件事，由完备性可知确实一定存在一个点满足$d(x_0,X_0) \geq 1$。
 \begin{proposition}
-    若$X_0$为有限维真闭子空间，则$\exists \, x_0 \in S \quad \text{s.t.} \quad d(x_0,X_0)=1$。
+若$X_0$为有限维真闭子空间，则$\exists \, x_0 \in S$（单位球面）满足$d(x_0,X_0)=1$。
 \end{proposition}
-\textbf{Proof:} 
-\[\forall y_0 \in X/X_0 \ , \ d:=d(y_0,X_0)>0 \ , \ \exists \, x_0 \in X_0 \quad \text{s.t.} \quad d \leq d(t_0,x_n)<d(y_0,x_0)-\frac{1}{n}\]
+\begin{proof}构造点列$\{x_n\}$满足：
+\[\forall y_0 \in X/X_0 \ , \ d:=d(y_0,X_0)>0 \ , \ \exists \, x_0 \in X_0 \quad \text{s.t.} \quad d \leq d(y_0,x_n)<d(y_0,x_0)-\frac{1}{n}\]
 通过上述方式构造出的点列$\{x_n\}$满足$||x_n|| \leq ||x_n-y_0||+||y_0||<+\infty$，是有限维闭子空间上的点列，由有限维赋范线性空间的性质可知$\{x_n\}$列紧，不妨设$x_n \to x_0 \in X_0$，其中$x_0$被称为\textbf{最佳逼近元}。
 \[d \leq d(y_0,x_n)<d(y_0,x_0)-\frac{1}{n} \ (n \to \+\infty) \quad \Rightarrow \quad d(y_0,x_0)=d\]
-取球面上另外一点$x'$满足如下条件可验证$d(x',X_0)=1$。
+取球面上另外一点$x'$满足如下条件可验证$d(x',X_0)=1$：
 \[x'=\frac{y_0-x_0}{||y_0-x_0||} \quad \Rightarrow \quad d(x',X_0)=\mathop \text{inf}\limits_{z \in X_0}\left\|\frac{y_0-x_0}{||y_0-x_0||}-z\right\|=\frac{1}{||y_0-x_0||}\mathop \text{inf}\limits_{z \in X_0}\left\|||y_0-x_0||z+x_0-y_0\right\|=\frac{1}{d} \cdot d=1\]
+注意这里$||y_0-x_0||z+x_0-y_0$构成的新向量依然遍历$X_0$全空间。
+\end{proof}
 
-\textbf{Q.E.D.}
-
-顺便严格定义一下最佳逼近元。
 \begin{definition}[最佳逼近元]
-    设$(X,||\cdot||)$是赋范线性空间，$Y$是$X$的子空间，对$x \in X$，如果
-    \[\exists \, y_0 \in Y \quad \text{s.t.} \quad ||x-y_0||=d(x,Y)=\mathop \text{inf}\limits_{y \, \in Y}||x-y||\]
-    则称$y_0$为$Y$上关于$X$的最佳逼近元。
+设$(X,||\cdot||)$是赋范线性空间，$Y$是$X$的子空间，对$x \in X$，如果
+\[\exists \, y_0 \in Y \quad \text{s.t.} \quad ||x-y_0||=d(x,Y)=\mathop \text{inf}\limits_{y \, \in Y}||x-y||\]
+则称$y_0$为$Y$上关于$X$的最佳逼近元（不唯一）。在一般的情形下(无限维)，最佳逼近元可能不存在。
 \end{definition}
-
-但是在一般的情形下(无限维)，最佳逼近元可能不存在，我们可以看下面一个例子。
-
-\paragraph*{例1} \quad 设$X=\left\{f \in C[0,1]|f(0)=0\right\}$，其中$X_0 \in X$为
+\begin{example}
+\quad 设$X=\left\{f \in C[0,1]|f(0)=0\right\}$，其中$X_0 \subset X$为：
 \[X_0=\left\{f \in X \Big{|} \int_0^1f(x)\dd x=0\right\}\]
-则不存在$f \in S \quad \text{s.t.} \quad d(f,X_0)=1$。\\
-\textbf{Proof:} \quad 采用反证法，假设$\exists \, f \in S \quad \text{s.t.} \quad d(f,X_0)=1$。
-\[f_0 \in X \quad \Rightarrow \quad f_0 \in C[0,1] \ , \ f_0(0)=0 \ , \ ||f_0||=\mathop \text{sup}\limits_{x \in [0,1]}|f(x)|=1 \quad \Rightarrow \quad \left|\int_0^1f_0(x)\dd x\right|<1\]
-另一方面
-\[\forall f \in X/X_0 \ , \ \exists \, a \in \mathbb{R}^1 \quad \text{s.t.} \quad \int_0^1(f_0-af)\dd x=0 \quad (a=\int_0^1f_0(x)\dd x \Big{/} \int_0^1f(x)\dd x)\]
-即$f_0-af \in X_0$，则
+则不存在$f \in S$满足$d(f,X_0)=1$。
+\end{example}
+\begin{proof}
+采用反证法，假设$\exists \, f_0 \in S$使得$d(f_0,X_0)=1$。取$f_0 \in S \subset X$，其范数满足：
+\[||f_0||=\mathop \text{sup}\limits_{x \in [0,1]}|f(x)|=1 \quad \Rightarrow \quad \left|\int_0^1f_0(x)\dd x\right|<1\]
+另一方面对$\forall f \in X/X_0$，存在：
+\[a=\int_0^1f_0(x)\dd x \Bigg{/} \int_0^1f(x)\dd x \quad \Rightarrow \quad \int_0^1(f_0-af)\dd x=0\]
+即$f_0-af \in X_0$，则:
 \[||f_0-(f_0-af)||=|a|||f|| \geq d(f_0,X_0)=1 \quad \Rightarrow \quad \left|\int_0^1f_0(x)\dd x\right|||f|| \geq \left|\int_0^1f(x)\dd x\right|\]
-特别的，我们可以取$f$为一族函数$f_n(x)=x^{1/n}$，则
+特别的，我们可以取$f$为一族函数$f_n(x)=x^{1/n}$，则：
 \[||f_n||=1 \ , \ \left|\int_0^1f_n(x)\dd x\right|=\frac{n}{n+1}\]
-进而
-\[\left|\int_0^1f_0(x)\dd x\right|||f_n|| \geq \left|\int_0^1f_n(x)\dd x\right|=\frac{n}{n+1} \to 1 \quad (n \to +\infty)\]
-得出矛盾。\\
-\textbf{Q.E.D.}
+进而：
+\[\left|\int_0^1f_0(x)\dd x\right|||f_n|| \geq \left|\int_0^1f_n(x)\dd x\right|=\frac{n}{n+1} \to 1\]
+得出矛盾。
+\end{proof}
 
-同时，即使最佳逼近元存在也可能不唯一，再看一个例子。
-
-\paragraph*{例2} \quad $X=\mathbb{R^2} \ , \ ||\mathbf{x}||=||(x_1,x_2)||=\text{max}\left\{|x_1|,|x_2|\right\}$，取$\mathbf{x}_0=(0,1) \ , \ \mathbf{e}_1=(1,0) \ , \ X_0=\text{span}\{\mathbf{e}_1\}$，
-\[\forall \mathbf{y} \in X_0 \ , \ \mathbf{y}=\lambda \mathbf{e}_1=(\lambda,0) \ , \ ||\mathbf{x}_0-\mathbf{y}||\text{max}\left\{|\lambda|,1\right\} \geq 1\]
-则可知$\forall ||\mathbf{y}|| \leq 1$都是最佳逼近元。
-
-下面我们就可以开始证明之前提到过的判定赋范线性空间有限维的定理了。
+\begin{example}
+ \quad $X=\mathbb{R^2} \ , \ ||\mathbf{x}||=||(x_1,x_2)||=\text{max}\left\{|x_1|,|x_2|\right\}$，取$\mathbf{x}_0=(0,1) \ , \ \mathbf{e}_1=(1,0) \ , \ X_0=\text{span}\{\mathbf{e}_1\}$，对$\forall \mathbf{y} \in X_0 \ , \ \mathbf{y}=\lambda \mathbf{e}_1=(\lambda,0) \ , \ ||\mathbf{x}_0-\mathbf{y}||\text{max}\left\{|\lambda|,1\right\} \geq 1$，则可知$\forall ||\mathbf{y}|| \leq 1$都是最佳逼近元。
+\end{example}
 
 \begin{theorem}
-    赋范线性空间$X$为有限维当且仅当$X$中任意有界集都是列紧的。
+赋范线性空间$X$为有限维当且仅当$X$中任意有界集都是列紧的。
 \end{theorem}
-\textbf{Proof:} 一方面，由于$X$与$\mathbb{R}^n$同胚，在$X$上的有界集$E$的像集$T(E)$在$\mathbb{R}^n$有界，而$\mathbb{R}^n$上的有界集$T(E)$列紧，再由同胚可知$X$上的有界集$E$列紧。
+\begin{proof}
+一方面，由于$X$与$\mathbb{R}^n$同胚，在$X$上的有界集$E$的像集$T(E)$在$\mathbb{R}^n$有界，而$\mathbb{R}^n$上的有界集$T(E)$列紧，再由同胚可知$X$上的有界集$E$列紧。
 
-另一方面，采用反证法，假设$X$是无穷维，任取$e_1 \in S=\{x \in X | \, ||x||=1\}$，由$Riesz$引理
+另一方面，采用反证法，假设$X$是无穷维，任取$e_1 \in S=\{x \in X | \, ||x||=1\}$，由 Riesz 引理：
 \[X_1=\text{span}\{e_1\} \ , \ \exists \, e_2 \in S \ , \ d(e_2,X_1)>1-\frac{1}{2}=\frac{1}{2}\]
-进而
+进而：
 \[X_2=\text{span}\{e_1,e_2\} \ , \ e_3 \in S \ , \ d(e_3,X_2)>\frac{1}{2} \quad \Rightarrow \quad d(e_3,e_1)>\frac{1}{2} \ , \ d(e_3,e_2)>\frac{1}{2}\]
-由反证条件，上述操作可以一直做下去，可以得到序列$\{e_n\} \subset X$满足
+由反证条件，上述操作可以一直做下去，可以得到序列$\{e_n\} \subset X$满足：
 \[\forall i,j \in \mathbb{N} \ , \ d(e_i,e_j)>\frac{1}{2} \ , \ ||e_i||=1\]
 由于$X$中任意有界集都是列紧的可知$\exists \, \{e_{n_k}\} \subset \{e_i\}$收敛，故矛盾。
-
-\textbf{Q.E.D.}
+\end{proof}
