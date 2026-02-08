@@ -539,69 +539,92 @@ $X,Y$是赋范线性空间，$T \in \mathscr{B}(X,Y)$，定义$T^*:Y^* \to X^*$�
 \begin{example}
 \quad $(L^p[a,b])^*=L^q[a,b]$其中$1/p+1/q=1 \ , \ p \in [1,+\infty)$，反之$L^{\infty}$的对偶空间严格比$L^1$大。
 \end{example}
-\textbf{Proof}:证明的目标是构造如下等距一一映射
+\begin{proof}
+证明的目标是构造如下等距一一映射：
 \[\Phi:L^q \to (L^p)^* \ , \ g \mapsto \Phi_g \quad \text{s.t.} \quad \forall f \in L^p \ , \ \Phi_g(f)=\int_a^bf(t)g(t) \dd t\]
-线性显然，有界性($h\ddot{o}lder$不等式):
-\[||\Phi_g(f)|| \leq ||f||_{L^p} \cdot ||g||_{L^q} \quad \Rightarrow \quad ||\Phi_g|| \leq ||g||_{L^q}\]
-下证等距即$||\Phi_g||=||g||_{L^q}$，取
-\[f_0=\frac{1}{||g||_{L^q}^{q-1}} \cdot g^{q-1} \cdot \text{sgn}(g) \in L^p \quad (\int_a^b|f_0|^p \dd t=\int_a^b\frac{|g|^{p(q-1)}}{||g||_{L^q}^{p(q-1)}} \dd t=\frac{1}{||g||_{L^q}^q}\int_a^b|g|^q \dd t=1 < +\infty)\]
+线性显然，有界性有 H\"{o}lder 不等式保证：$||\Phi_g(f)|| \leq ||f||_{L^p} \cdot ||g||_{L^q} \quad \Rightarrow \quad ||\Phi_g|| \leq ||g||_{L^q}$。
+\begin{proposition}[$\Phi$是等距映射，即$||\Phi_g||=||g||_{L^q}$]
+取如下$f_0$：
+\[f_0=\frac{1}{||g||_{L^q}^{q-1}} \cdot g^{q-1} \cdot \text{sgn}(g) \in L^p\]
+可以验证$f_0 \in L^p$：
+\[\int_a^b|f_0|^p \dd t=\int_a^b\frac{|g|^{p(q-1)}}{||g||_{L^q}^{p(q-1)}} \dd t=\frac{1}{||g||_{L^q}^q}\int_a^b|g|^q \dd t=1 < +\infty\]
+计算$\Phi$的算子范数：
 \[\Phi_g(f_0)=\int_a^bf_0 \cdot g \, \dd t=\frac{1}{||g||_{L^q}^{q-1}}\int_a^bg^{q-1} \cdot \text{sgn}(g) \cdot g \, \dd t=||g||_{L^q} \quad \Rightarrow \quad ||\Phi_g|| \geq \frac{||\Phi_g(f_0)||}{||f_0||_{L^p}}=||g||_{L^q}\]
-综上所述即证明等距。下证双射，其中单射$(\Phi_{g_1}=\Phi_{g_2} \ \Leftrightarrow \ g_1=g_2)$是好证的:
-\[\forall f_0=(g_1-g_2)^{q-1} \cdot \text{sgn}(g_1-g_2) \in L^p \ , \ \Phi_{g_1}(f_0)-\Phi_{g_2}(f_0)=\int_a^b(g_1-g_2)f_0 \dd t=0\]
-则有
-\[0=\int_a^b(g_1-g_2)f_0 \dd t=\int_a^b(g_1-g_2) \cdot (g_1-g_2)^{q-1} \cdot \text{sgn}(g_1-g_2) \dd t=||g_1-g_2||_{L^q}^q \quad \Leftrightarrow \quad g_1=g_2\]
-
-要证满射即证
+\end{proposition}
+单射$(\Phi_{g_1}=\Phi_{g_2} \ \Leftrightarrow \ g_1=g_2)$也是好证的，对$\forall f_0=(g_1-g_2)^{q-1} \cdot \text{sgn}(g_1-g_2) \in L^p$，当$\Phi_{g_1}=\Phi_{g_2}$时：
+\[0=(\Phi_{g_1}-\Phi_{g_2})f_0=\int_a^b(g_1-g_2)f_0 \dd t=\int_a^b(g_1-g_2) \cdot (g_1-g_2)^{q-1} \cdot \text{sgn}(g_1-g_2) \dd t=||g_1-g_2||_{L^q}^q \quad \Leftrightarrow \quad g_1=g_2\]
+直接证明满射，即：
 \[\forall F \in (L^p)^* \ , \ \exists \, g \in L^q \quad \text{s.t.} \quad F=\Phi_g \quad \text{i.e.} \quad \forall f \in L^p \ , \ F(f)=\Phi_g(f)=\int_a^bg \cdot f \, \dd t\]
-但是直接证明该结论较为困难，我们分三步证明:
-
-\textbf{Step 1}: 先证该结论对简单函数成立，只需证明对特征函数$\chi_s$成立。
+较为困难，分三步进行证明：
+\begin{proposition}
+1. 先证该结论对简单函数（特征函数的线性组合）成立，只需证明对特征函数$\chi_s$成立。
 \[\chi_s=\chi_{[a,s]}(t)=\left\{
     \begin{array}{ll}
         1 & ,t\in[a,s] \\
         0 & ,t\in(s,b]        
     \end{array}
 \right.\]
-即证明存在$g$满足
-\[F(\chi_s)=\int_a^bg(t)\chi(t) \, \dd t=\int_a^sg(t) \, \dd t \quad \Rightarrow \quad g(s)=F'(\chi_s)\]
-那么我们只需要证明$F(\chi_s)$几乎处处可导，又因为几乎处处可导可以由绝对连续推出，故只需证明$F(\chi_s)$绝对连续。
-令$G(s)=F(\chi_s) \ \delta_k=(s_k,t_k) \subset [a,b] \ (k=1,2,\cdots,n)$为$[a,b]$互不相交的分割。记$\varepsilon_k=\text{sgn}\left(F(\chi_{t_k}-\chi_{s_k})\right)$，则
+即证明存在$g$满足：
+\[F(\chi_s)=\int_a^bg(t)\chi(t) \, \dd t=\int_a^sg(t) \, \dd t \quad \Leftrightarrow \quad g(s)=F'(\chi_s)\]
+\end{proposition}
+\begin{definition}[绝对连续函数]
+称定义在区间$[a,b]$上的实值函数$f(x)$为绝对连续函数，若其对$\forall \varepsilon>0 \ , \ \exists \, \delta>0$有$[a,b]$上任意有限个不相交的开区间$(a_k,b_k), \ k=1,2,\cdots,n$，满足：
+\[\sum_{k=1}^n(b_k-a_k)<\delta \quad \Rightarrow \quad \sum_{k=1}^n|f(b_k)-f(a_k)|<\varepsilon\]
+\end{definition}
+\begin{lemma}
+\begin{itemize}
+\item 1. Lipschitz 连续[定义\ref{definition:Lipschitz}]$\quad \Rightarrow \quad$绝对连续$\quad \Rightarrow \quad$一致连续；
+\item 2. 绝对连续函数是有界变差函数，反之有界变差函数是绝对连续的当且仅当零测集的像是零测集；
+\item 3. 绝对连续函数对线性封闭；
+\item 4. 绝对连续函数几乎处处可导，其微分是 Lebesgue 可积函数。
+\end{itemize}
+\end{lemma}
+\begin{remark}
+\quad 对要用到的最后一点进行简单说明：首先绝对连续函数是有界变差函数，直接取开区间为对$[a,b]$的划分：
+\[\delta=\frac{b-a}{n} \ , \ a=t_0<t_1<\cdots<t_n=b \ , \ \delta t=t_{i+1}-t_i=\delta \quad \text{s.t.} \quad \sum_{k=1}^n|f(b_k)-f(a_k)|<\varepsilon<+\infty\]
+然后有界变差函数[定义\ref{bounded variation}]可以表示成两个单调递增函数的差[Jordan分解定理]，单调递增函数几乎处处可导：
+\[f(x) \equiv g(x)-h(x) \ , \ g(x)=\mathop \text{V}\limits_a^x(f)+\frac{1}{2}f(x) \ , \ h(x)=\mathop \text{V}\limits_a^x(f)-\frac{1}{2}f(x)\]
+\end{remark}
+\begin{proof}
+只需要证$F(\chi_s)$几乎处处可导，又因为几乎处处可导可以由绝对连续推出，故只需证明$F(\chi_s)$绝对连续。令$G(s)=F(\chi_s) \ \delta_k=(s_k,t_k) \subset [a,b] \ (k=1,2,\cdots,n)$为$[a,b]$互不相交的分割。记$\varepsilon_k=\text{sgn}\left(F(\chi_{t_k}-\chi_{s_k})\right)$，则：
 \begin{equation*}
-    \begin{aligned}
-        \sum_{k=1}^n|G(t_k)-G(s_k)| & =\sum_{k=1}^n|F(\chi_{t_k})-F(\chi_{s_k})|=\sum_{k=1}^n|F(\chi_{t_k}-\chi_{s_k})|=\sum_{k=1}^nF(\chi_{t_k}-\chi_{s_k}) \cdot \text{sgn}\left(F(\chi_{t_k}-\chi_{s_k})\right) \\
-        & =F\left(\sum_{k=1}^{n}\varepsilon_k(\chi_{t_k}-\chi_{s_k})\right)=F\left(\sum_{k=1}^{n}\varepsilon_k\chi_{[s_k,t_k]}\right) \\
-        & \leq ||F|| \cdot \left\|\sum_{k=1}^n\varepsilon_k\chi_{[s_k,t_k]}\right\|_{L^p} \leq ||F|| \cdot \sum_{k=1}^n\left\|\varepsilon_k\chi_{[s_k,t_k]}\right\|_{L^p}=||F|| \cdot \sum_{k=1}^n|t_k-s_k|
-    \end{aligned}
+\begin{aligned}
+\sum_{k=1}^n|G(t_k)-G(s_k)| & =\sum_{k=1}^n|F(\chi_{t_k})-F(\chi_{s_k})|=\sum_{k=1}^n|F(\chi_{t_k}-\chi_{s_k})|=\sum_{k=1}^nF(\chi_{t_k}-\chi_{s_k}) \cdot \text{sgn}\left(F(\chi_{t_k}-\chi_{s_k})\right) \\
+& =F\left(\sum_{k=1}^{n}\varepsilon_k(\chi_{t_k}-\chi_{s_k})\right)=F\left(\sum_{k=1}^{n}\varepsilon_k\chi_{[s_k,t_k]}\right) \\
+& \leq ||F|| \cdot \left\|\sum_{k=1}^n\varepsilon_k\chi_{[s_k,t_k]}\right\|_{L^p} \leq ||F|| \cdot \sum_{k=1}^n\left\|\varepsilon_k\chi_{[s_k,t_k]}\right\|_{L^p}=||F|| \cdot \sum_{k=1}^n|t_k-s_k|
+\end{aligned}
 \end{equation*}
-可知$F(\chi_s)$绝对连续，即
+可知$F(\chi_s)$绝对连续，即：
 \[\forall \varepsilon>0 \ , \ \exists \, \sum_{k=1}^n|t_k-s_k|<\frac{\varepsilon}{||F||} \quad \text{s.t.} \quad \sum_{k=1}^n|G(t_k)-G(s_k)|<\varepsilon\]
-再由
+再由：
 \[G(s)=G(a)+\int_a^sg(t) \, \dd t=\int_a^sg(t) \, \dd t=\int_a^bg(t)\chi_s(t) \, \dd t=\Phi_g(\chi_s)\]
 即找到了$g$满足条件，由特征函数情形可知，对简单函数(阶梯函数)该结论也成立，即
 \[\forall F \in (L^p)^* \ , \ \exists \, g \in L^q \quad \text{s.t.} \quad \forall \psi(t)=\sum_{k=1}^{n}a_k\chi_{[s_k,t_k]} \in L^p \ , \ F(\psi)=\Phi_g(\psi)=\int_a^bg \cdot \psi \, \dd t\]
-
-\textbf{Step 2}: 再证该结论对有界可测函数成立。\\
-若$f$为有界可测函数，则存在简单函数$\{\psi_n\} \quad \text{s.t.} \quad \psi_n \xrightarrow{a.e.} f$，有$Lebesgue$控制收敛定理可知只要$g \in L^1$，即有
-\[F(f)=F\left(\lim_{n \to \infty}\psi_n\right)=\lim_{n \to \infty}F\left(\psi_n\right)=\lim_{n \to \infty}\Phi_g(\psi_n)=\lim_{n \to \infty}\int_a^b\psi_n(t)g(t) \, \dd t=\int_a^bf(t)g(t) \, \dd t=\Phi_g(f)\]
-下面只需证明找到的$g \in L^q$即可，考虑
+\end{proof}
+\begin{proposition}
+2. 再证该结论对有界可测函数成立。
+\end{proposition}
+\begin{proof}
+若$f$为有界可测函数，则存在简单函数列$\{\psi_n\}$满足$\psi_n \xrightarrow{a.e.} f$，由 Lebesgue 控制收敛定理：$\exists \, g \in L^1$，有：
+\[\Phi_g(f)=\Phi_g\left(\lim_{n \to \infty}\psi_n\right)=\lim_{n \to \infty}\Phi_g(\psi_n)=\lim_{n \to \infty}\int_a^b\psi_n(t)g(t) \, \dd t=\int_a^bf(t)g(t) \, \dd t=\Phi_g(f)\]
+下面只需证明找到的$g \in L^q$即可，考虑：
 \[f=\frac{1}{||g||_{L^q}^{q-1}} \cdot g^{q-1} \cdot \text{sgn}(g) \ , \ f_N=\left\{
     \begin{array}{ll}
         f & ,||f|| \leq N \\ 0 & ,||f||>N
     \end{array}
 \right.\]
-则
-\[|F(f_n)|=|\Phi_g(f_N)|=\frac{1}{||g||_{L^q}^{q-1}}\int_{\{|f| \leq N\}}g^{q-1} \cdot \text{sgn}(g) \cdot g \, \dd t=\frac{1}{||g||_{L^q}^{q-1}}\int_{\{|f| \leq N\}}|g|^q \, \dd t \leq ||F|| \cdot ||f_N||_{L^p}\]
-当$n \to +\infty$时，有
-\[|F(f_n)|=||g||_{L^q} \leq ||F|| \cdot 1 = ||F||\]
-即证$g \in L^q$。
-
-\textbf{Step 3}: 最后证该结论对$\forall f \in L^p$成立。\\
-类似Step 2中的构造，考虑$\forall f \in L^p$，存在一列简单可测函数列$\{f_N\} \quad \text{s.t.} \quad F_n \xrightarrow{L^p} f \ , \ ||f_N|| \leq N$，故
+则：
+\[|\Phi_g(f_N)|=\frac{1}{||g||_{L^q}^{q-1}}\int_{\{|f| \leq N\}}g^{q-1} \cdot \text{sgn}(g) \cdot g \, \dd t=\frac{1}{||g||_{L^q}^{q-1}}\int_{\{|f| \leq N\}}|g|^q \, \dd t \leq ||\Phi_g|| \cdot ||f_N||_{L^p}\]
+当$N \to +\infty$时，$||f_N||=||f||=1$，有$|\Phi_g(f_n)|=||g||_{L^q} \leq ||\Phi_g|| \cdot 1 = ||\Phi_g||$，即证$g \in L^q$。
+\end{proof}
+\begin{proposition}
+3. 最后证该结论对$\forall f \in L^p$成立。
+\end{proposition}
+\begin{proof}
+类似第二步中的构造，考虑$\forall f \in L^p$，存在一列简单可测函数列$\{f_N\} \quad \text{s.t.} \quad F_n \xrightarrow{L^p} f \ , \ ||f_N|| \leq N$，故：
 \[F(f_N-f)=\int_a^b(f_N-f) \cdot g \, \dd t \leq ||f_n-f||_{L^p} \cdot ||g||_{L^q} \to 0 \quad \Rightarrow \quad F(f_N) \to F(f)\]
-
-综述三步所述，我们通过一步构造两步逼近证明了满射。
-
-\textbf{Q.E.D.}
+\end{proof}
+\end{proof}
 
 \begin{example}
 \quad $(l^p[a,b])^*=l^q[a,b]$其中$1/p+1/q=1 \ , \ p \in [1,+\infty)$。
@@ -618,35 +641,38 @@ $X,Y$是赋范线性空间，$T \in \mathscr{B}(X,Y)$，定义$T^*:Y^* \to X^*$�
 \begin{definition}[二次共轭空间]
     设$X$为赋范线性空间，$X^{**}=(X^*)^*$是$X$的二次共轭空间。
 \end{definition}
-联想到负负得正这个我们熟知的在整数上的特性，我们自然会考虑，二次共轭空间是否就是原空间呢？考虑如下映射，称为\textbf{典型映射}：
+联想到负负得正这个我们熟知的在整数上的特性，我们自然会考虑，二次共轭空间是否就是原空间呢？
+\begin{definition}[典型映射]
 \[F:X \to X^{**} \ , \ x \mapsto F_x \quad \text{s.t.} \quad \forall f \in X^* \ , \ F_x(f)=f(x)\]
-验证$F_x \in X^{**}$即验证其有界线性：
+\end{definition}
+\begin{proof}验证$F_x \in X^{**}$即验证其有界线性：
 \[F_x(\alpha f+\beta g)=(\alpha f+\beta g)(x)=\alpha f(x)+\beta g(x)=\alpha F_x(f)+\beta F_x(g)\]
 \[|F_x(f)|=|f(x)| \leq ||f|| \cdot ||x|| \quad \Rightarrow \quad ||F_x|| \leq ||x||\]
-再由$Hahn-Banach$定理：$\exists \, f_0 \quad \text{s.t.} \quad ||f_0||=1 \ , \ f_0(x)=||x||$，则
-\[|F_x(f_0)|=|f_0(x)|=||x|| \quad \Rightarrow \quad ||F_x|| \geq ||x||\]
-综上所述$F$是一个单的等距映射$||F_x||=||x||$，但不一定满。如果$F$是满的那么二次共轭空间在等距的意义下就是原空间，我们将这类空间称之为\textbf{自反空间}。
+再由 Hahn-Banach 定理：$\exists \, f_0 \quad \text{s.t.} \quad ||f_0||=1 \ , \ f_0(x)=||x||$，则$|F_x(f_0)|=|f_0(x)|=||x|| \ \Rightarrow \ ||F_x|| \geq ||x||$。综上所述$F$是一个单的等距映射$||F_x||=||x||$，但不一定满。
+\end{proof}
 \begin{definition}[二次共轭空间]
     设$X$为赋范线性空间，若典型映射$F$是满射则称$X$为自反空间。
 \end{definition}
-可以来看几个自反空间的例子。
 \begin{proposition}
-    1、$L^p \ , \ p \in (1,+\infty)$是自反空间;\\
-    2、$l^p \ , \ p \in (1,+\infty)$是自反空间;\\
-    3、$L^1,L^{\infty},l^1,l^{\infty}$不是自反空间;\\
-    4、$C[a,b]$不是自反空间。
+\begin{itemize}
+    \item 1. $L^p \ , \ p \in (1,+\infty)$是自反空间；
+    \item 2. $l^p \ , \ p \in (1,+\infty)$是自反空间；
+    \item $L^1,L^{\infty},l^1,l^{\infty}$不是自反空间；
+    \item $C[a,b]$不是自反空间。
+\end{itemize}
 \end{proposition}
 
-在引入共轭空间后我们可以新定义一种收敛方式，称为\textbf{弱收敛}。
+在引入共轭空间后我们可以新定义一种收敛方式，称为弱收敛。
 \begin{definition}[弱收敛]
 设$X$为赋范线性空间，$\{x_n\} \subset X$，若$\forall f \in X^* \ , \ \exists \, x_0 \in X, \ , \ f(x_n) \to f(x_0)$则称$\{x_n\}$弱收敛于$x_0$，记为$x_n \xrightarrow{w} x_0$，称$x_0$为$\{x_n\}$的弱极限。
 \end{definition}
-弱收敛有以下性质：
 \begin{lemma}
-1、弱极限存在必唯一；\\
-2、强收敛$\Rightarrow$弱收敛；\\
-3、有限维赋范线性空间是自反空间。
+\begin{itemize}
+    \item 1. 弱极限存在必唯一；
+    \item 2. 强收敛$\Rightarrow$弱收敛；
+    \item 3. 有限维赋范线性空间是自反空间。
+\end{itemize}
 \end{lemma}
 \begin{proof}
-1、设$x_n \xrightarrow{w} x_0, \ x_1$，则$\forall f \in X^* \ , \ f(x_n)\to f(x_0), \ f(x_1)$，由Hahn-Banach定理可知$x_0=x_1$；\\
+1、设$x_n \xrightarrow{w} x_0, \ x_1$，则$\forall f \in X^* \ , \ f(x_n)\to f(x_0), \ f(x_1)$，由Hahn-Banach定理可知$x_0=x_1$；
 \end{proof}

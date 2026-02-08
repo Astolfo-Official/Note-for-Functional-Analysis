@@ -1,11 +1,13 @@
+\begin{definition}[Lipschitz 连续]\label{definition:Lipschitz}
+定义在区域$D$上的函数$f: \ D \to \mathbb{R}^n$，若$\forall x_1,x_2 \in D \ , \ \exists \, L \in \mathbb{R}_+$，满足$||f(x_1)-f(x_2)||<L||x_1-x_2||$，那么称呼函数$f$在区域$D$上 Lipschitz 连续。
+\end{definition}
 回顾常微分方程中的提到的 Picard 定理：
 \begin{proposition}[Picard 定理]
 \begin{equation}\label{eq:dquestion}
 \dv{}{t}x(t)=f(x(t),t), \quad x(t_0)=x_0
 \end{equation}
+如果$f(x(t),t)$在区域$D$上满足 Lipschitz 条件，则$\exists \, \varepsilon > 0$，初值问题在$t \in (t_0-\varepsilon,t_0+\varepsilon)$有唯一解$x(t)$。
 \end{proposition}
-如果$f(x(t),t)$在区域$D$上满足 Lipschitz 条件($|f(x_1,t)-f(x_2,t)| \leq L|x_1-x_2|,L>0$对$\forall t \in D$都成立,其实只要在$t_0$的邻域成立即可)，
-则$\exists \, \varepsilon > 0$，初值问题在$t \in (t_0-\varepsilon,t_0+\varepsilon)$有唯一解$x(t)$。
 
 回顾初等的证法，原初值问题等价于证明积分方程:
 \begin{equation}\label{eq:iquestion}
