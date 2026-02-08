@@ -90,466 +90,455 @@
 \section{有界线性算子空间}
 上一小节中，我们提及有界线性算子全体构成一个赋范线性空间$(\mathscr{B}(X,Y),||\cdot||)$，自然而然我们也会想知道在这样一个赋范线性空间上，元素的收敛性该如何刻画，这对后面讨论空间完备性时至关重要。
 \begin{theorem}
-    点列$\{T_n\} \subset \mathscr{B}(X,Y)$依范数收敛于$T$当且仅当$\{T_n\}$在单位球面$S=\{x \in X| \, ||x||=1\}$一致收敛于$T$。
+点列$\{T_n\} \subset \mathscr{B}(X,Y)$依范数收敛于$T$当且仅当$\{T_n\}$在单位球面$S=\{x \in X| \, ||x||=1\}$一致收敛于$T$。
 \end{theorem} 
-在证明之前，先明确算子空间中的这两种收敛方式，依范数收敛指$||T_n-T|| \to 0$；一致收敛指的是$\forall \varepsilon>0 \ , \ x \in S \ , \ \exists \, N(\varepsilon) \in \mathbb{N} \quad \text{s.t.} \quad n>N \ , \ ||T_n(x)-T(x)||<\varepsilon$。
-与一般赋范线性空间中的同名定义保持一致。
-
-\textbf{Proof}:
+\begin{proof}
 \[||T_n-T|| \to 0 \quad \Rightarrow \quad \forall x \in S \ , \ ||T_n(x)-T(x)|| \leq \mathop \text{sup}\limits_{x \in S}||(T_n-T)x||=||T_n-T||<\varepsilon\]
 \[\forall x \in S \ , \ \exists \, N \in \mathbb{N} \quad \text{s.t.} \quad n>N \ , \ ||T_n(x)-T(x)||<\varepsilon \quad \Rightarrow \quad ||T_n-T||=\mathop \text{sup}\limits_{x \in S}||(T_n-T)x||<\varepsilon\]
+\end{proof}
 
-\textbf{Q.E.D.}
-
-虽然这个定理一眼顶针鉴定为放屁，但既然上课讲了那我还是放进来了。
-
-下面这个定理就没那么显然了，如果我们想知道一个算子空间完备需要什么条件，那么按照定义自然而然地就需要其上的所有柯西列都收敛于其中。
-我们可能会猜想这需要出发空间和到达空间都完备，但如果考虑算子范数的定义，好像跟出发空间没什么太大关系，于是我们进一步猜测只跟到达空间有关系。
-那么到底是不是呢，答案是yes，下面我们来叙述这件事并证明它。
+虽然这个定理一眼顶针，但既然上课讲了那我还是放进来了。下面这个定理就没那么显然了，如果我们想知道一个算子空间完备需要什么条件，那么按照定义自然而然地就需要其上的所有柯西列都收敛于其中。我们可能会猜想这需要出发空间和到达空间都完备，但如果考虑算子范数的定义，好像跟出发空间没什么太大关系，于是我们进一步猜测只跟到达空间有关系。那么到底是不是呢，答案是yes，下面我们来叙述这件事并证明它。
 \begin{theorem}
-    如果$Y$是$Banach$空间，则$\mathscr{B}(X,Y)$也是$Banach$空间。
+如果$Y$是 Banach 空间，则$\mathscr{B}(X,Y)$也是 Banach 空间。
 \end{theorem} 
-\textbf{Proof}:设$\{T_n\}$为$\mathscr{B}(X,Y)$中的柯西列，则有
-\[\forall \varepsilon>0 \ , \ \exists \, N \in \mathbb{N} \quad \text{s.t.} \quad \forall n>N \ , \ p \in \mathbb{N} \ , \ ||T_{n+p}-T_n||<\varepsilon\]
-则
+\begin{proof}
+设$\{T_n\}$为$\mathscr{B}(X,Y)$中的柯西列，即：
+\[\forall \varepsilon>0 \ , \ \exists \, N \in \mathbb{N} \ , \ \forall n>N \ , \ p \in \mathbb{N} \quad \text{s.t.} \quad ||T_{n+p}-T_n||<\varepsilon\]
+则：
 \[\forall x \in X \ , \ ||T_{n+p}(x)-T_n(x)|| \leq ||T_{n+p}-T_n|| \cdot ||x||<\varepsilon||x||\]
-即$\{T_n(x)\}$是$Y$中的柯西列，由完备性知其收敛，设$\forall x \in X \ , \ T_n(x) \to T(x)$，则只需验证$T \in \mathscr{B}(X,Y)$即可：\\
-1、线性
+即$\{T_n(x)\}$是$Y$中的柯西列，由完备性知其收敛，设$\forall x \in X \ , \ T_n(x) \to T(x)$，则只需验证$T \in \mathscr{B}(X,Y)$即可：
+\begin{itemize}
+\item 1. 线性性：
 \[T(\alpha x+\beta y)=\lim_{n \to +\infty}T_n(\alpha x+\beta y)=\alpha\lim_{n \to +\infty}T_nx+\beta\lim_{n \to +\infty}T_ny=\alpha Tx+\beta Ty\]
-2、有界性
+\item 2. 有界性：
 \[\forall x \in X \ , \ ||Tx||=\left\|\lim_{n \to +\infty}T_nx\right\|=\lim_{n \to +\infty}||T_nx||<+\infty \quad \Rightarrow \quad ||Tx|| \leq M||x||\]
 \[||Tx|| \leq ||Tx-T_nx||+||T_nx|| \leq (\varepsilon+M)||X|| \quad \Rightarrow \quad ||T||<\varepsilon+M\]
+\end{itemize}
+\end{proof}
 
-\textbf{Q.E.D.}
-
-上面提到了算子空间中的依范数收敛和一致收敛，下面我们也把逐点收敛定义一下。
-\begin{definition}[(算子空间的)逐点收敛]
-    设$T_n,T \in \mathscr{B}(X,Y)$，若$\forall x \in X \ , \ T_nx \to Tx$则称，$T_n$强收敛(逐点收敛)于$T$，即
-    \[\forall x \in X \ , \ \varepsilon>0 \ , \ \exists \, N(\varepsilon,x) \in \mathbb{N} \quad \text{s.t.} \quad \forall n>N \ , \ ||T_nx-Tx||<\varepsilon\]
+\begin{definition}[算子空间中的收敛]
+设$T_n,T \in \mathscr{B}(X,Y)$：
+\begin{itemize}
+\item 1. 依范数收敛：$||T_n-T|| \to 0$；
+\item 2. 一致收敛：$\forall \varepsilon>0 \ , \ x \in X \ , \ \exists \, N(\varepsilon) \in \mathbb{N} \quad \text{s.t.} \quad \forall n>N \ , \ ||T_n(x)-T(x)||<\varepsilon$；
+\item 3. 逐点收敛：$\forall x \in X \ , \ \varepsilon>0 \ , \ \exists \, N(\varepsilon,x) \in \mathbb{N} \quad \text{s.t.} \quad \forall n>N \ , \ ||T_nx-Tx||<\varepsilon$。
+\end{itemize}
 \end{definition}
-显然，依范数收敛可以推出逐点收敛。下面我们来看个例子：
-\paragraph*{例} \quad $X=l^p \ , \ \forall x=(\xi_1,\xi_2,\cdots,\xi_n,\cdots) \ , \ T_nx:=(\xi_{n+1},\xi_{n+2},\cdots)$，则
-\[\forall x \in l^p \ , \ ||T_nx||=\left(\sum_{k=n}^{+\infty}|\xi_k|^p\right)^{\frac{1}{p}} \to 0\]
-$\Rightarrow \quad T_n$逐点收敛于$0$。\\
-但是$T_n$不依范数收敛于$0$，考虑$x_k=(0,0,\cdots,0,1,0,\cdots) \in S$ ($1$在第$k$位)，则$||T_n(x_n)||=(1,0,\cdots) \leq ||T_n||$。
+显然依范数收敛可以推出逐点收敛。
+\begin{example}
+\quad $X=l^p \ , \ \forall x=(\xi_1,\xi_2,\cdots,\xi_n,\cdots)$定义算子$T_n: \ X \to X \ , \ T_nx:=(\xi_{n+1},\xi_{n+2},\cdots)$，则对$\forall x \in X$：
+\[||T_nx||=\left(\sum_{k=n}^{+\infty}|\xi_k|^p\right)^{\frac{1}{p}} \to 0\]
+即$T_n$逐点收敛于$0$。但是$T_n$不依范数收敛于$0$，考虑$x_k=(0,0,\cdots,0,1,0,\cdots) \in S$ ($1$在第$k$位)，则：
+\[0 < ||T_n(x_n)||=(1,0,\cdots) \leq ||T_n||\]
+\end{example}
 
-\section{$Banach$-$Steinhaus$定理}
-冲本小结开始，我们将逐步介绍泛函中的几个最重要的定理，上一小节中我们初步讨论了算子空间中的收敛性问题，但是在收敛之前，我们也许可能大约应该先看看有界性。
-一般的赋范线性空间中我们已经定义了逐点有界和一致有界，在算子空间中我们同样也能定义这两者，考虑算子空间中的一族算子$\{T_{\alpha}\}_{\alpha \in \Lambda} \subset \mathscr{B}(X,Y)$：
+\section{Banach-Steinhaus 定理}
+\begin{definition}[算子有界性]
+考虑算子空间中的一族算子$\{T_{\alpha}\}_{\alpha \in \Lambda} \subset \mathscr{B}(X,Y)$：
+\begin{itemize}
+\item 1. 一致有界：$\forall x \in X \ , \ \exists \, M>0 \quad \text{s.t.} \quad ||T_{\alpha}x|| \leq M||x||$，可以推出$\exists \, M>0 \quad \text{s.t.} \quad ||T_{\alpha}|| \leq M$；
+\item 2. 逐点有界：$\forall x \in X \ , \ \exists \, M(x)>0 \quad \text{s.t.} \quad ||T_{\alpha}x|| \leq M(x)||x||$。
+\end{itemize}
+\end{definition}
 
-若称$\{T_{\alpha}\}$一致有界，即$\forall x \in X \ , \ \exists \, M>0 \quad \text{s.t.} \quad ||T_{\alpha}x|| \leq M||x|| \quad \Rightarrow \quad \exists \, M>0 \quad \text{s.t.} \quad ||T_{\alpha}|| \leq M$;
-
-若称$\{T_{\alpha}\}$逐点有界，即$\forall x \in X \ , \ \exists \, M(x)>0 \quad \text{s.t.} \quad ||T_{\alpha}x|| \leq M(x)||x||$ or $M(x)$。
-
-显然，在算子空间中一致有界还是强于逐点有界，那么我们自然会思考在什么条件下逐点有界能反推出一致有界，这就是$Banach$-$Steinhaus$定理所回答的问题。
+在算子空间中一致有界还是强于逐点有界，那么我们自然会思考在什么条件下逐点有界能反推出一致有界。
 \begin{theorem}[一致有界定理]
-    $\{T_{\alpha}\}_{\alpha \in \Lambda} \subset \mathscr{B}(X,Y) \ , \ D(T_{\alpha})=X$ ,若$X$是$Banach$空间，则$\{T_{\alpha}\}$一致有界当且仅当$\{T_{\alpha}\}$逐点有界。
+    $\{T_{\alpha}\}_{\alpha \in \Lambda} \subset \mathscr{B}(X,Y) \ , \ D(T_{\alpha})=X$ ,若$X$是 Banach 空间，则$\{T_{\alpha}\}$一致有界当且仅当$\{T_{\alpha}\}$逐点有界。
 \end{theorem} 
-\textbf{Proof}:证明分为两步，先证在某个开集(开球)上成立($Baire$纲定理)，再证在全空间上成立(利用线性)。从一致有界到逐点有界显然，下证逐点有界到一致有界。定义映射
-\[p:X \to \mathbb{R} \ , \ p(x)=\mathop \text{sup}\limits_{\alpha \in \Lambda}||T_{\alpha}x|| \quad \Rightarrow \quad \forall x \in X \ , \ \quad p(x)<+\infty\]
-定义化分集合
-\[M_k=\{x \in X|p(x) \leq k\}=\bigcup_{\alpha \in \Lambda}\{x \in X| \, ||T_{\alpha}x|| \leq k\} \quad (k \in \mathbb{N})\]
-则
+\begin{proof}
+证明分为两步，先证在某个开集(开球)上成立（Baire 纲定理[定理\ref{the:Baire}]），再证在全空间上成立(利用线性)。从一致有界到逐点有界显然，下证逐点有界到一致有界。定义映射：
+\[p:X \to \mathbb{R} \ , \ p(x)=\mathop \text{sup}\limits_{\alpha \in \Lambda}||T_{\alpha}x||\]
+显然有$\forall x \in X \ , \ p(x)<+\infty$。定义集合划分：
+\[M_k=\{x \in X|p(x) \leq k, \ k \in \mathbb{N}\}=\bigcup_{\alpha \in \Lambda}\{x \in X| \, ||T_{\alpha}x|| \leq k, \ k \in \mathbb{N}\}\]
+则显然有：
 \[X=\bigcap_{k=1}^{\infty}M_k\]
-由$Baire$纲定理，$X$是$Banach$空间，为第二纲集，从而存在$k_0 \in \mathbb{N}$使得$M_{k_0}$不是疏集，即
+由 Baire 纲定理，$X$是 Banach 空间，为第二纲集，从而存在$k_0 \in \mathbb{N}$使得$M_{k_0}$不是疏集[定义\ref{definition:sj}]，即：
 \[\exists \, B_r(x_0)=\{x \in X| \, ||x-x_0||<r\} \quad \text{s.t.} \quad B_r(x_0) \subset \overline{M}_k\]
-由$T_{\alpha}$的连续性可知，$[0,k]$的原像$\{x \in X| \, ||T_{\alpha}x|| \leq k\}$是闭集，从而$M_k$也是闭集
+由$T_{\alpha}$的连续性可知，$[0,k]$的原像$\{x \in X| \, ||T_{\alpha}x|| \leq k\}$是闭集，从而$M_k$也是闭集：
 \[B_r(x_0) \subset \overline{M}_k=M_k \quad \Leftrightarrow \quad \forall x \in B_r(x_0) \ , \ p(x)=\mathop \text{sup}\limits_{\alpha \in \Lambda}||T_{\alpha}x|| \leq k\]
-第一步即证，利用线性可以将该结论推广至全空间
+第一步即证，利用线性可以将该结论推广至全空间：
 \[\forall y \in X \ , \ \alpha \in \Lambda \ , \ \exists \, M=\frac{2k}{r} \quad \text{s.t.} \quad ||T_{\alpha}y||=\left\|T_{\alpha}\left(x_0+\frac{r}{||y||}y\right)-T_{\alpha}x_0\right\| \cdot \frac{||y||}{r} \leq \frac{||y||}{r}(k+k)=M||y||\]
-
-\textbf{Q.E.D.}
-
-从上面的证明来看，一致有界定理可以扩展到出发空间是第二纲集，其逆否定理叫共鸣定理。共鸣定理指出了有界线性算子的点点有界等价于一致有界。
+\end{proof}
+一致有界定理可以扩展到出发空间是第二纲集，其逆否定理叫共鸣定理。
 \begin{theorem}[共鸣定理]
-    $\{T_{\alpha}\}_{\alpha \in \Lambda} \subset \mathscr{B}(X,Y) \ , \ D(T_{\alpha})=X$ , $X$是$Banach$空间，若$||T_{\alpha}||=+\infty$则，$\exists \, x \in X \quad \text{s.t.} \quad ||T_{\alpha}x||=+\infty$。
+    $\{T_{\alpha}\}_{\alpha \in \Lambda} \subset \mathscr{B}(X,Y) \ , \ D(T_{\alpha})=X$ , $X$是 Banach 空间，若$||T_{\alpha}||=+\infty$则，$\exists \, x \in X \quad \text{s.t.} \quad ||T_{\alpha}x||=+\infty$。
 \end{theorem} 
-相比于一般的常见赋范线性空间，算子空间的性质不是那么任意直观看出，如果能利用出发空间和到达空间的性质判断算子空间的性质自然是最好的。
-为了回答这个问题，结合上一小节的收敛性和这一小节的有界性，我们介绍$Banach$-$Steinhaus$定理。
-\begin{theorem}[$Banach$-$Steinhaus$定理]\label{BS}
-    $\{T_n\}_{n=1}^{+\infty} \subset \mathscr{B}(X,Y) \ , \ D(T_{\alpha})=X$ ,若$Y$是$Banach$空间，若:\\
-    1、$\{T_n\}$一致有界;\\
-    2、$\{T_n\}$在$X$的一个稠密$G$上逐点收敛($\forall g \in G \ , \ \{T_ng\}$收敛);\\
-    则，$\exists \, T \in \mathscr{B}(X,Y) \quad \text{s.t.} \quad \{T_n\}$逐点收敛于$T$，且
-    \[||T|| \leq \varliminf\limits_{n\to\infty}||T_n||\]
+共鸣定理指出了有界线性算子的点点有界等价于一致有界。相比于一般的常见赋范线性空间，算子空间的性质不是那么任意直观看出，如果能利用出发空间和到达空间的性质判断算子空间的性质自然是最好的。
+\begin{theorem}[Banach-Steinhaus 定理]\label{BS}
+$\{T_n\}_{n=1}^{+\infty} \subset \mathscr{B}(X,Y) \ , \ D(T_{\alpha})=X$ ,若$Y$是 Banach 空间，若：
+\begin{itemize}
+    \item 1. $\{T_n\}$一致有界；
+    \item 2. $\{T_n\}$在$X$的一个稠密子集$G$上逐点收敛($\forall g \in G \ , \ \{T_ng\}$收敛)。
+\end{itemize}
+则$\exists \, T \in \mathscr{B}(X,Y)$满足$\{T_n\}$逐点收敛于$T$，且：
+\[||T|| \leq \varliminf\limits_{n\to\infty}||T_n||\]
 \end{theorem} 
-\textbf{Proof}:由于$G$在$X$上稠密，即$\forall x \in X \ , \ \varepsilon>0\ , \ \exists \, g \in G \quad \text{s.t.} \quad ||x-g||<\varepsilon$，$\exists \, N \in \mathbb{N} \quad \text{s.t.} \quad \forall m>n>N$
+\begin{proof}
+由于$G$在$X$上稠密，即对$\forall x \in X \ , \ \varepsilon>0\ , \ \exists \, g \in G$满足$||x-g||<\varepsilon$。因此$\exists \, N \in \mathbb{N}$当$\forall m>n>N$时：
 \[||T_mx-T_nx|| \leq ||T_mx-T_mg||+||T_mg-T_ng||+||T_ng-T_nx|| \leq \left(||T_m||+||T_n||\right)||x-g||+\varepsilon \leq (2M+1)\varepsilon\]
-即$\{T_nx\}$是$Y$空间中的$Cauchy$列，由$Y$空间完备
+即$\{T_nx\}$是$Y$空间中的柯西列，由$Y$空间完备：
 \[\exists \, y \in Y \quad \text{s.t.} \quad \lim_{n \to \infty}T_nx=y:=Tx\]
-下面只需验证$T$为有界线性算子：\\
-1、线性
+下面只需验证$T$为有界线性算子：
+\begin{itemize}
+\item 1. 线性：
 \[T(\alpha x+\beta y)=\lim_{n \to +\infty}T_n(\alpha x+\beta y)=\alpha\lim_{n \to +\infty}T_nx+\beta\lim_{n \to +\infty}T_ny=\alpha Tx+\beta Ty\]
-2、有界性
+\item 2. 有界性：
 \[||Tx||=\left\|\lim_{n \to +\infty}T_nx\right\|=\varliminf\limits_{n\to\infty}||T_nx|| \leq \varliminf\limits_{n\to\infty}||T_n|| \cdot ||x|| \quad \Rightarrow \quad ||T|| \leq \varliminf\limits_{n\to\infty}||T_n||\]
+其中第一处等号使用了范数的连续性：由 $T_nx\to Tx$ 可得 $||T_nx||\to||Tx||$，因此：
+\[||Tx||=\lim_{n\to\infty}||T_nx||=\varliminf_{n\to\infty}||T_nx||\]
+若极限存在则上下极限存在且等于极限$\varliminf=\lim=\varlimsup$。
+\end{itemize}
+\end{proof}
 
-\textbf{Q.E.D.}
+Banach-Steinhaus 定理告诉我们利用完备到达空间的收敛怎么样推算算子空间的收敛，这无疑是一种极大的方便。同时，该定理也说明了$\mathscr{B}(X,Y)$在强收敛意义下完备。
 
-$Banach$-$Steinhaus$定理告诉我们利用完备到达空间的收敛怎么样推出算子空间的收敛，这无疑是一种极大的方便。
-同时，该定理也说明了$\mathscr{B}(X,Y)$在强收敛意义下完备。下面看几个例子。
-
-\paragraph*{例1(机械求积分公式)} \quad 令$X=C[a,b] \ , \ \forall x \in X$有
-\[\int_a^bx(t)\dd t \approx \sum_{k=1}^nA_kx(t_k) \quad (a \leq t_1<t_2<\cdots<t_k\leq b\text{是}[a,b]\text{的分割})\]
-则下式
-\[\int_a^bx(t)\dd t=\lim_{n \to \infty}\sum_{k=1}^nA_k^{(n)}x(t_k^{(n)}) \quad (\text{其中}A_k^{(n)}\text{只与参数}n\text{有关而与}x(t)\text{无关}) \tag{*}\]
-成立的充要条件为
-\[\mathbf{1.} \ \forall n \in \mathbb{N} \ , \ \exists \, M>0 \quad \text{s.t.} \quad \sum_{k=1}^n\left|A_k^{(n)}\right| \leq M \qquad \mathbf{2.} \ (*)\text{式对} \, C[a,b] \, \text{的一个稠密子集} \, G \, \text{成立}\]
-\textbf{Proof}:构造一列$X=C[a,b]$上的泛函$\{f_n\}$:
+\begin{example}
+\quad 机械求积分公式：令$X=C[a,b] \ , \ \forall x \in X$，存在$[a,b]$的分割$a \leq t_1<t_2<\cdots<t_k\leq b$满足：
+\[\int_a^bx(t)\dd t \approx \sum_{k=1}^nA_kx(t_k)\]
+则下式（其中$A_k^{(n)}$只与参数$n$有关而与$x(t)$无关）：
+\[\int_a^bx(t)\dd t=\lim_{n \to \infty}\sum_{k=1}^nA_k^{(n)}x(t_k^{(n)})\]
+成立的充要条件为：
+\begin{itemize}
+\item 1. 
+\[\forall n \in \mathbb{N} \ , \ \exists \, M>0 \quad \text{s.t.} \quad \sum_{k=1}^n\left|A_k^{(n)}\right| \leq M\]
+\item 2. 上式对$C[a,b]$的一个稠密子集$G$成立。
+\end{itemize}
+\end{example}
+\begin{proof}
+构造一列$X=C[a,b]$上的泛函$\{f_n\}$：
 \[f_n:X \to \mathbb{R} \ , \ f_n(x)=\sum_{k=1}^nA_k^{(n)}x(t_k^{(n)})\]
-
-为了保证$\{f_n\}$强收敛于原积分，必须保证其线性，至此我们只需要验证
+为了保证$\{f_n\}$强收敛于原积分，必须保证其线性，至此我们只需要验证：
 \[||f_n||=\sum_{k=1}^n\left|A_k^{(n)}\right|\]
-即可利用$Banach$-$Steinhaus$定理证明原命题。\\
-一方面
+即可利用 Banach-Steinhaus 定理证明原命题。一方面：
 \[\forall x \in X \ , \ ||f_n(x)||=\left|\sum_{k=1}^nA_k^{(n)}x(t_k^{(n)})\right| \leq ||x||\sum_{k=1}^n\left|A_k^{(n)}\right| \quad \Rightarrow \quad ||f_n|| \leq \sum_{k=1}^n\left|A_k^{(n)}\right|\]
-另一方面
+另一方面：
 \[\exists \, x_0 \in X \ , \ s_0(t_k^{(n)})=\text{sgn}(A_k^{(n)}) \quad \Rightarrow \quad ||x_0||=1 \ , \ ||f_n(x_0)||=\left|\sum_{k=1}^nA_k^{(n)}\text{sgn}(A_k^{(n)})\right|=\sum_{k=1}^n\left|A_k^{(n)}\right| \leq ||f_n||\]
-综上所述
+综上所述：
 \[||f_n||=\sum_{k=1}^n\left|A_k^{(n)}\right|\]
+\end{proof}
 
-\textbf{Q.E.D.}
-
-\paragraph*{例2($Fourier$级数的发散性)} \quad 考虑
+\begin{example}
+\quad Fourier 级数的发散性：
 \[X=C_{2\pi}=\{x \in C[0,2\pi]|x(0)=x(2\pi)\}=\{x \in C(\mathbb{R})|x(t+2\pi)=x(t) \ , \ \forall t \in \mathbb{R}\}\]
-$\forall x \in X$，考察$Fourier$级数
-\[x(t) \sim \frac{a_0}{2}+\sum_{i=1}^{+\infty}(a_k \cos kt+b_k \sin kt):=\lim_{n \to \infty}F_nx(t)\]
-其中c
-\[a_k=\frac{1}{\pi}\int_{-\pi}^{\pi}x(s) \cos ks \dd s \ , \ b_k=\frac{1}{\pi}\int_{-\pi}^{\pi}x(s) \sin ks \dd s\]
-
-这里回顾一下$Dirichlet$条件，他只是判断$Fourier$级数收敛的一个充分条件。
-\begin{theorem}[$Dirichlet$条件]
+$\forall x \in X$，考察 Fourier 级数：
+\[\lim_{n \to \infty}F_n[x(t)]=x(t) \sim \frac{a_0}{2}+\sum_{i=1}^{+\infty}(a_k \cos kt+b_k \sin kt) \ , \ a_k=\frac{1}{\pi}\int_{-\pi}^{\pi}x(s) \cos ks \dd s \ , \ b_k=\frac{1}{\pi}\int_{-\pi}^{\pi}x(s) \sin ks \dd s\]
+\end{example}
+这里回顾一下 Dirichlet 条件，他只是判断 Fourier 级数收敛的一个充分条件。
+\begin{theorem}[Dirichlet 条件]
     若$x \in C_{2\pi}$在$[0,2\pi]$上满足：1、之多有限个第一类间断点；2、至多有限个极值点，则
-    \[\lim_{n \to \infty}F_nx(t)=\left\{
+    \[\lim_{n \to \infty}F_n[x(t)]=\left\{
         \begin{array}{rl}
             x(t) & ,x\text{在}t\text{处连续} \\
             \frac{1}{2}(x(t^-)+x(t^+)) & ,t\text{是}x\text{的第一类间断点}
         \end{array}
     \right.\]
 \end{theorem} 
-下面我们将利用共鸣定理说明不加条件时，$Fourier$级数可能不收敛。定义
-\[f_n:X \to \mathbb{R} \ , \ x(t) \mapsto f_nx(0)=\int_{-\pi}^{\pi}x(s)k_n(s,0) \dd s \quad \text{其中 }k_n(s,t)=\frac{1}{\pi}\left(\frac{1}{2}+\sum_{k=1}^n\cos k(s-t)\right)\]
-可以证明如下两个事实
-\[\mathbf{1.} \ ||f_n||=\int_{-\pi}^{\pi}|k_n(s,0)| \dd s \qquad \mathbf{2.} \ ||f_n|| \to 0\]
-然后由共鸣定理可知
-\[\exists \, x \in X \quad \text{s.t.} \quad |f_nx(0)| \to +\infty\]
+\begin{proof}
+下面我们将利用共鸣定理说明不加条件时，Fourier 级数可能不收敛。定义
+\[f_n:X \to \mathbb{R} \ , \ x(t) \mapsto f_n[x(0)]=\int_{-\pi}^{\pi}x(s)k_n(s,0) \dd s \quad \text{其中 }k_n(s,t)=\frac{1}{\pi}\left(\frac{1}{2}+\sum_{k=1}^n\cos k(s-t)\right)\]
+可以证明：
+\[||f_n||=\int_{-\pi}^{\pi}|k_n(s,0)| \dd s \qquad\]
+且$||f_n|| \to 0$。然后由共鸣定理可知$\exists \, x \in X$使得$|f_n[x(0)]| \to +\infty$。
+\end{proof}
 
 \section{开映射定理与闭图像定理}\label{kb}
-在介绍标题的两个定理之前，我们需要补充一下算子的复合和逆算子的概念。
 \begin{definition}[算子复合(乘法)]
-    设$X,X_1,X_2$是赋范线性空间，$T_1:X \to X_1$，$T_2:X_1 \to X_2$，$R(T_1) \subset D(T_2)$，定义算子复合$T=T_2 \circ T_1=T_2T_1$，
-    \[\forall x \in X \ , \ Tx=(T_2 \circ T_1)x=T_2(T_1x)\]
+设$X,X_1,X_2$是赋范线性空间，$T_1:X \to X_1$，$T_2:X_1 \to X_2$，$R(T_1) \subset D(T_2)$，定义算子复合$T=T_2 \circ T_1=T_2T_1$，若其满足$\forall x \in X \ , \ Tx=(T_2 \circ T_1)x=T_2(T_1x)$。
 \end{definition}
-若$T_1 \in \mathscr{B}(X,X_1) \ , \ T_2 \in \mathscr{B}(X_1,X_2)$，则$T \in \mathscr{B}(X,X_2)$。
+\begin{remark} \quad 
+若$T_1 \in \mathscr{B}(X,X_1) \ , \ T_2 \in \mathscr{B}(X_1,X_2)$，则$T \in \mathscr{B}(X,X_2)$。同时，连续算子的复合得到的还是连续算子：
 \[||Tx||=||T_2(T_1x)|| \leq ||T_2||\cdot||T_1||\cdot||x|| \quad \Rightarrow \quad ||T|| \leq ||T_1||\cdot||T_2||\]
-另一方面，这也说明了连续算子的复合得到的还是连续算子。
+\end{remark}
 
-下面我们可以定义逆算子：
 \begin{definition}[逆算子]
-    设$X,Y$是赋范线性空间，$T_1:X \to Y$，若$\exists \, T_1:Y \to X \quad \text{s.t.} \quad T_1 \circ T=I_X \ , \ T \circ T_1=I_Y$，则称$T$可逆，$T_1$是$T$的逆算子，记$T_1=T^{-1}$。
+设$X,Y$是赋范线性空间，$T_1:X \to Y$，若$\exists \, T_1:Y \to X \quad \text{s.t.} \quad T_1 \circ T=I_X \ , \ T \circ T_1=I_Y$，则称$T$可逆，$T_1$是$T$的逆算子，记$T_1=T^{-1}$。
 \end{definition}
-逆算子有一些显然的性质，比如$T$是线性的则$T^{-1}$也是线性的；算子$T$可逆当且仅当$T$是一一映射；若$T^{-1}$存在则唯一等等。
+\begin{remark} \quad 
+若$T$是线性的则$T^{-1}$也是线性的；算子$T$可逆当且仅当$T$是一一映射；若$T^{-1}$存在则唯一。
+\end{remark}
 
 那么我们会思考如果$T$是有界线性算子，$T^{-1}$是否也是有界,或者说$T^{-1}$是否连续呢?这件事开映射定理及逆算子定理会告诉我们。但是在正式介绍这两个定理之前我们可以从一些比较具体的情况开始逐步推广。
 \begin{theorem}
-    设$T \in \mathscr{B}(X)$是满射，且$\forall x \in X \ , \ \exists \, m>0 \quad \text{s.t.} \quad ||Tx|| \geq m||x||$，则$T$可逆且$T^{-1} \in \mathscr{B}(x)$。
+设$T \in \mathscr{B}(X)$是满射，且$\forall x \in X \ , \ \exists \, m>0 \quad \text{s.t.} \quad ||Tx|| \geq m||x||$，则$T$可逆且$T^{-1} \in \mathscr{B}(x)$。
 \end{theorem} 
-\textbf{Proof}:\\
+\begin{proof}
 $T$是单射：
 \[\forall x_1,x_2 \in X \ , \ ||Tx_1-Tx_2|| \geq m||x_1-x_2|| \ , \ ||Tx_1-Tx_2||=0 \quad \Leftrightarrow \quad ||x_1-x_2||=0\]
 $T^{-1}$有界：
-\[\forall y \in X \ , \ ||T^{-1}Y||:=||x|| \leq m||Tx||=m||y||\]
+\[\forall y \in X \ , \ ||T^{-1}y||=||x|| \leq m||Tx||=m||y||\]
+\end{proof}
 
-\textbf{Q.E.D.} 
 \begin{theorem}
-    设$X$是$Banach$空间，$T \in \mathscr{B}(X) \ , \ ||T||<1$，则算子$I-T$可逆，且
-    \[||(I-T)^{-1}|| \leq \frac{1}{1-||T||}\]
+设$X$是 Banach 空间，$T \in \mathscr{B}(X) \ , \ ||T||<1$，则算子$I-T$可逆，且：
+\[||(I-T)^{-1}|| \leq \frac{1}{1-||T||}\]
 \end{theorem} 
-\textbf{Proof}:设
-\[S_n=\sum_{k=0}^{n-1}T^k \ , \ T^0:=I\]
+\begin{proof}规定$T^0=I$，则算子$T$的部分级数和$S_n$如下定义：
+\[S_n=\sum_{k=0}^{n-1}T^k\]
+因此：
 \[\forall m>n \ , \ ||S_m-S_n||=\left\|\sum_{k=n}^{m-1}T^k\right\| \leq \sum_{k=n}^{m-1}||T^k|| \leq \sum_{k=n}^{m-1}||T||^k=||T||^n \cdot \frac{1-||T||^{m-n}}{1-||T||}<\frac{||T||^n}{1-||T||} \to 0\]
-可知$\{S_n\}$是柯西列，由于$X$是$Banach$空间，故$\{S_n\}$收敛，记其收敛极限为
-\[S:=\sum_{k=0}^{+\infty}T^k\]
-为了证明$S$是$I-T$的逆，我们考虑
-\[S_n \circ (I-T)=(I-T) \circ S_n=I-T^n\]
-\[(I-T) \circ S=S \circ (I-T)=\lim_{n \to +\infty}S_n \circ (I-T)=\lim_{n \to +\infty}(I-T^n)\]
-注意到
-\[\lim_{n \to +\infty}||T^n|| \leq \lim_{n \to +\infty}||T||^n=0 \quad \Rightarrow \quad \lim_{n \to +\infty}T^n=\mathbf{0} \ (\text{零算子})\]
-故
-\[(I-T) \circ S=S \circ (I-T)=I \quad \Rightarrow \quad S=(I-T)^{-1}\]
+可知$\{S_n\}$是柯西列，由于$X$是 Banach 空间，故$\{S_n\}$收敛，记其收敛极限为：
+\[S=\lim_{n\to\infty}S_n=\lim_{n\to\infty}\sum_{k=0}^nT^k=\sum_{k=0}^{+\infty}T^k\]
+为了证明$S$是$I-T$的逆，我们考虑：
+\[S_n \circ (I-T)=(I-T) \circ S_n=I-T^n \quad \Rightarrow \quad (I-T) \circ S=S \circ (I-T)=\lim_{n \to +\infty}S_n \circ (I-T)=\lim_{n \to +\infty}(I-T^n)\]
+注意到：
+\[\lim_{n \to +\infty}||T^n|| \leq \lim_{n \to +\infty}||T||^n=0 \quad \Rightarrow \quad \lim_{n \to +\infty}T^n=\mathbf{0} \ (\text{零算子}) \quad \Rightarrow \quad S=(I-T)^{-1}\]
 \[||(I-T)^{-1}||=||S||=\left\|\lim_{n \to +\infty}S_n\right\|=\left\|\lim_{n \to +\infty}\sum_{k=0}^{n-1}T^k\right\| \leq \lim_{n \to +\infty}\sum_{k=0}^{n-1}||T||^k=\lim_{n \to +\infty}\frac{1-||T||^n}{1-||T||}=\frac{1}{1-||T||}\]
-
-\textbf{Q.E.D.}
-
-上述定理向我们展示了恒同算子加上一个小的扰动($||T||<1$)时依然可逆，那我们自然会考虑这件事是否对任意可逆算子成立。
+\end{proof}
+上述定理展示了恒同算子加上一个小的扰动($||T||<1$)时依然可逆，那这件事是否对任意可逆算子成立呢？
 \begin{theorem}
-    设$X$是$Banach$空间，$T \in \mathscr{B}(X)$，$T^{-1} \in \mathscr{B}(X)$可逆，若
-    \[\Delta T \in \mathscr{B}(X) \ , \ ||\Delta T||<\frac{1}{||T^{-1}||} \ , \ S:=T+\Delta T \in \mathscr{B}(X) \ \text{可逆且} \ S^{-1}=\sum_{k=0}^{+\infty}(-1)^k(T^{-1}\Delta T)^kT^{-1}\]
+设$X$是 Banach 空间，$T, \ T^{-1} \in \mathscr{B}(X)$可逆，若：
+\[\exists \, \Delta T \in \mathscr{B}(X) \ , \ ||\Delta T||<\frac{1}{||T^{-1}||} \ , \ S:=T+\Delta T \in \mathscr{B}(X) \ \text{可逆且} \ S^{-1}=\sum_{k=0}^{+\infty}(-1)^k(T^{-1}\Delta T)^kT^{-1}\]
 \end{theorem} 
-\textbf{Proof}:设
-\[S=T+\Delta T=T \circ (I+T^{-1}\Delta T) \ , \ ||T^{-1}\Delta T|| \leq ||T^{-1}|| \cdot ||\Delta T||<1\]
-由上一定理知$I+T^{-1}\Delta T$可逆，且
+\begin{proof}$S=T+\Delta T=T \circ (I+T^{-1}\Delta T) \ , \ ||T^{-1}\Delta T|| \leq ||T^{-1}|| \cdot ||\Delta T||<1$，由上一定理知$I+T^{-1}\Delta T$可逆，且：
 \[(I+T^{-1}\Delta T)^{-1}=\sum_{k=0}^{+\infty}(-T^{-1}\Delta T)^k \quad \Rightarrow \quad S^{-1}=\sum_{k=0}^{+\infty}(-1)^k(T^{-1}\Delta T)^kT^{-1}\]
-\textbf{Q.E.D.}
-
-上述定理中提及的$T,T^{-1} \in \mathscr{B}(X)$的这类算子称为正则算子，$Banach$空间到$Banach$空间的正则算子构成的集合为开集。
-
-经过上述铺垫我们现在可以介绍开映射定理了。
-\begin{theorem}[开映射定理]
-    设$X,X_1$是$Banach$空间，$T \in \mathscr{B}(X,X_1) \ , \ TX=X_1$，则$T$是开映射。
+\end{proof}
+\begin{remark} \quad 
+$T,T^{-1} \in \mathscr{B}(X)$的这类算子称为正则算子，Banach 空间到 Banach 空间的正则算子构成的集合为开集。
+\end{remark}
+\begin{definition}[开映射]
+定义映射$T: \ X \to Y$，对任意开集$U \subset X$，其像$TU \subset Y$也是开集，则称$T$为开映射。
+\end{definition}
+\begin{theorem}[开映射定理]\label{theorem:kys}
+设$X,X_1$是 Banach 空间，$T \in \mathscr{B}(X,X_1) \ , \ TX=X_1$，则$T$是开映射。
 \end{theorem} 
-在证明该定理前，我们需要先介绍一下开映射以及考虑一下是否能简化证明流程。开映射顾名思义是指将开集映为开集，即$\forall y \in TX \ , \ \exists \, \delta>0 \quad \text{s.t.} \quad B_1(y,\delta) \subset TU$，由线性可知只需要对零点证明该定理即可。
-\[\forall y=Tx \in TU \ , \ \exists \, \varepsilon>0 \ \text{s.t.} \ B(x,\varepsilon) \subset U \ \Rightarrow \ \exists \, \delta>0 \ , \ TB(x,\varepsilon)=T(x+\varepsilon B(0,1)) \supset Tx+B_1(0,\delta)=B_1(y,\delta)\]
+\begin{proof}
+由线性可知只需要对零点证明该定理成立：对$\forall y=Tx \ , \ \exists \, \varepsilon>0$和开球$B_{\varepsilon}^X(x) \subset U$，在$TU$中$\exists \, \delta>0$使得开球$B_{\delta}^Y(y)$包含像$TB_{\varepsilon}^X(x)=Tx+\varepsilon TB_1^X(0) \subset B_{\delta}^Y(y)=y+\delta B_1^Y(0)$。分两步证明$T(0)$是$TB(0,1)$的内点：
+\begin{proposition}
+$T\overline{B^X_1(0)}$在某个$B^Y_{\delta}(0)$中稠密。
+\end{proposition}
+\begin{proof}
+由于$T$是满射，即$TX=X_1$，且$X_1$是全空间：
+\[X=\bigcup_{k=1}^{\infty}\overline{B^X_k(0)} \quad \Rightarrow \quad X_1 \subseteq \bigcup_{k=1}^{\infty}T\overline{B^X_k(0)} \quad \Rightarrow \quad X_1=\bigcup_{k=1}^{\infty}T\overline{B^X_k(0)}\]
+由于$X_1$是 Banach 空间，为第二纲集[定理\ref{the:Baire}]，故存在某个开球$B_{r_0}^Y(y_0) \subset T\overline{B_{k_0}^X(0)}$。对$\forall y \in B_{r_0}^Y(0)$，可以构造$y_1=y_0+y, \ y_2=y_0-y \in B_{r_0}^Y(y_0)$，显然$y=(y_1-y_2)/2$。同时在原像中，对$\forall \varepsilon>0 \ , \ \exists \, x_1,x_2 \in \overline{B^X_k(0)}$使得$||Tx_1-y_1||<\varepsilon \ , \ ||Tx_2-y_2||<\varepsilon$。所以$\exists \, x=(x_1-x_2)/2 \in \overline{B^X_k(0)}$满足：
+\[||Tx-y||=\left\|T\left(\frac{x_1-x_2}{2}\right)-\frac{y_1-y_2}{2}\right\|<\varepsilon\]
+即$T\overline{B_{k_0}^X(0)}$在$B_{r_0}^Y(0)$中稠密，从而由线性对$\forall \varepsilon>0 \ , \ T\overline{B^X_{\varepsilon}(0)}$在$B_{\delta\varepsilon}^Y(0)$中稠密，其中$\delta=r_0/k_0$，可取$\varepsilon=1$。
+\end{proof}
+\begin{proposition}\label{proposition:Step2}
+$T\overline{B_1^X(0)} \supset B_{\delta/2}^Y(0)$
+\end{proposition}
+\begin{proof}
+由上一小节可知：$T\overline{B^X_{1/2}(0)}$在$B^Y_{\delta/2}(0)$中稠密，则：
+\[\forall y \in B^Y_{\delta/2}(0) \ , \ \exists \, x_1 \in B^X_{1/2}(0) \quad \text{s.t.} \quad ||y-Tx_1||<\frac{\delta}{2^2} \quad \Rightarrow \quad \exists \, y_1=y-Tx_1 \in B^Y_{\delta/2^2}(0)\]
+归纳可得：
+\[\exists \, \{x_n\} \subset B_1^X(0) \ , \ ||x_n|| \leq \frac{1}{x^n} \ , \ \left\|y-T\left(\sum_{k=1}^nx_k\right)\right\|<\frac{\delta}{2^{n+1}}\]
+定义部分和$S_n$：
+\[S_n=\sum_{k=1}^nx_k \ , \ m>n>N \ , \ ||S_m-S_n||=\left\|\sum_{k=n+1}^mx_k\right\| \leq \sum_{k=n+1}^m||x_k||<\frac{1}{2^{n+1}} \to 0\]
+可知$\{S_n\}$是 Cauchy 列，在完备空间$X$中收敛，记为$S$，则：
+\[||y-TS||=\left\|y-T\lim_{n \to +\infty}\sum_{k=1}^nx_k\right\| \leq \lim_{n \to +\infty}\left\|y-T\sum_{k=1}^nx_k\right\|=0\]
 
+综上所述，$TB_1^{X}(0) \supset T\overline{B_{1/2}^X(0)} \supset B^Y_{\delta/4}(0)$，即对$x=0 \in B_1^{X}(0)$我们能找到$y=Tx=0 \in TB_1^{X}(0)$是$TB_1^{X}(0)$内点。结合之前的分析，定理得证。
+\end{proof}
 \begin{figure}[H]
     \center
     \includegraphics[scale=0.3]{./fig/4.4-1.png}
 \end{figure}
-
-\textbf{Proof}:分两步证明$T0$是$TB(0,1)$的内点。
-
-\textbf{Step 1. }证明$T\overline{B(0,1)}$在某个$B_1(0,\delta)$中稠密。
-
-由于$T$是满射，即$TX=X_1$，且$X_1$是全空间
-\[X=\bigcup_{k=1}^{\infty}\overline{B(0,k)} \quad \Rightarrow \quad X_1 \subseteq \bigcup_{k=1}^{\infty}T\overline{B(0,k)} \quad \Rightarrow \quad X_1=\bigcup_{k=1}^{\infty}T\overline{B(0,k)}\]
-
-由于$X_1$是$Banach$空间，为第二纲集，故存在某个开球$B_1(y_0,r_0) \subset T\overline{B(0,K_0)}$。
-\[\forall y \in B_1(0,r_1) \ , \ y=\frac{1}{2}[(y_0+y)-(y_0-y)]:=\frac{1}{2}(y_1-y_2) \ , \ y_1,y_2 \in B_1(y_0,r_0)\]
-\[\forall \varepsilon>0 \ , \ y_1,y_2 \in B_1(y_0,r_0) \ , \ \exists \, x_1,x_2 \in \overline{B(0,k_0)} \quad \text{s.t.} \quad ||Tx_1-y_1||<\varepsilon \ , \ ||Tx_2-y_2||<\varepsilon\]
-\[\forall \varepsilon>0 \ , \ y=\frac{y_1-y_2}{2} \in B_1(0,r_1) \ , \ \exists \, x=\frac{x_1-x_2}{2} \in \overline{B(0,k_0)} \quad \text{s.t.} \quad ||Tx-y||=\left\|T\left(\frac{x_1-x_2}{2}\right)-\frac{1}{2}(y_1-y_2)\right\|<\varepsilon\]
-即$T\overline{B(0,k_0)}$在$B_1(0,r_0)$中稠密，从而$\forall \varepsilon>0 \ , \ T\overline{B(0,\varepsilon)}$在$B_1(0,\delta\varepsilon)$中稠密，其中$\delta=r_0/k_0$，可取$\varepsilon=1$。
-
-\textbf{Step 2. }证明$T\overline{B(0,1)} \supset B_1(0,\delta/2)$。
-
-由$T\overline{B(0,1/2)}$在$B_1(0,\delta/2)$中稠密，可知
-\[\forall y \in B_1(0,\frac{\delta}{2}) \ , \ \exists \, x_1 \in B(0,\frac{1}{2}) \quad \text{s.t.} \quad ||y-Tx_1||<\frac{\delta}{2^2} \quad \Leftrightarrow \quad y_1:=y-Tx_1 \in B_1(0,\frac{\delta}{2^2})\]
-以此类推可得
-\[\exists \, \{x_n\} \subset B(0,1) \ , \ ||x_n|| \leq \frac{1}{x^n} \ , \ \left\|y-T\left(\sum_{k=1}^nx_k\right)\right\|<\frac{\delta}{2^{n+1}}\]
-\[S_n:=\sum_{k=1}^nx_k \ , \ m>n>N \ , \ ||S_m-S_n||=\left\|\sum_{k=n+1}^mx_k\right\| \leq \sum_{k=n+1}^m||x_k||<\frac{1}{2^{n+1}} \to 0\]
-$\{S_n\}$是$Cauchy$列，在完备空间$X$中收敛，记为$S$，则
-\[||y-TS||=\left\|y-T\lim_{n \to +\infty}\sum_{k=1}^nx_k\right\| \leq \lim_{n \to +\infty}\left\|y-T\sum_{k=1}^nx_k\right\|=0\]
-命题即证。
-
-综上所述，有
-\[TB(0,1) \supset T\overline{B(0,\frac{1}{2})} \supset B_1(0,\frac{\delta}{4})\]
-
-即对$x=0 \in B(0,1)$我们能找到$y=Tx=0 \in TB(0,1)$是$TB(0,1)$内点。结合之前的分析，定理得证。
-
-\textbf{Q.E.D.}
+\end{proof}
 
 完成上面这么一个大工程，我们现在终于能回答一开提及的关于逆算子性质的问题了。
 \begin{theorem}[逆算子定理]
-    设$X,X_1$是$Banach$空间，$T \in \mathscr{B}(X,X_1)$是一一映射(保证开映射)，$TX=X_1$，则$T^{-1} \in \mathscr{B}(X_1,X)$。
+设$X,X_1$是 Banach 空间，$T \in \mathscr{B}(X,X_1)$是一一映射(保证开映射)，$TX=X_1$，则$T^{-1} \in \mathscr{B}(X_1,X)$。
 \end{theorem} 
-\textbf{Proof}:由开映射定理中的Step 2可知
-\[T\overline{B(0,1)} \supset B_1(0,\frac{\delta}{2}) \quad \Rightarrow \quad \forall z \in X_1 \ , \  \frac{z\delta}{4||z||} \in B_1(0,\frac{\delta}{2}) \ , \ \exists ! \, T^{-1}\left(\frac{z\delta}{4||z||}\right) \in \overline{B(0,1)}\]
-\[\left\|T^{-1}\left(\frac{z\delta}{4||z||}\right)\right\| \leq ||T^{-1}|| \cdot \left\|\frac{z\delta}{4||z||}\right\| \leq 1 \quad \Rightarrow \quad \frac{||T^{-1}z||}{||z||} \leq \frac{4}{\delta} \quad \Rightarrow \quad ||T^{-1}|| \leq \frac{4}{\delta}\]
-
-\textbf{Q.E.D.}
+\begin{proof}
+由开映射定理[定理\ref{theorem:kys}]中的命题\ref{proposition:Step2}可知：
+\[T\overline{B_1^{X}(0)} \supset B_{\delta/2}^Y(0) \quad \Rightarrow \quad \forall z \in X_1 \ , \  \frac{z\delta}{4||z||} \in B_{\delta/2}^Y(0) \ , \ \exists ! \, T^{-1}\left(\frac{z\delta}{4||z||}\right) \in \overline{B_1^{X}(0)}\]
+\[\Rightarrow \quad \left\|T^{-1}\left(\frac{z\delta}{4||z||}\right)\right\| \leq ||T^{-1}|| \cdot \left\|\frac{z\delta}{4||z||}\right\| \leq 1 \quad \Rightarrow \quad \frac{||T^{-1}z||}{||z||} \leq \frac{4}{\delta} \quad \Rightarrow \quad ||T^{-1}|| \leq \frac{4}{\delta}\]
+\end{proof}
 
 开映射定理和逆算子定理最重要的一点是得到了$T^{-1}$的连续的条件，该性质可以保证方程$Tx=y$解的稳定性。由逆算子定理我们还有个推论。
 \begin{proposition}
-    若线性空间$X$上有两个范数$||\cdot||_1,||\cdot||_2$，使得$(X,||\cdot||_1),(X,||\cdot||_2)$都是$Banach$空间，且$||\cdot||_1$强于$||\cdot||_2$，则$||\cdot||_1$与$||\cdot||_2$等价。
+    若线性空间$X$上有两个范数$||\cdot||_1,||\cdot||_2$，使得$(X,||\cdot||_1),(X,||\cdot||_2)$都是 Banach 空间，且$||\cdot||_1$强于$||\cdot||_2$，则$||\cdot||_1$与$||\cdot||_2$等价。
 \end{proposition}
-\textbf{Proof}:定义映射$I:(X,||\cdot||_1) \to (X,||\cdot||_2) \ , \ x \mapsto x$。
+\begin{proof}
+定义映射$I:(X,||\cdot||_1) \to (X,||\cdot||_2) \ , \ x \mapsto x$。
 显然$I$是可逆算子，且由$||Ix||_2=||x||_2 \leq \alpha ||x||_1$可知$I$有界。
 由逆算子定理，$I^{-1}:(X,||\cdot||_2) \to (X,||\cdot||_1) \ , \ x \mapsto x$，有$||Ix||_1=||x||_1 \leq \beta ||x||_2$，原命题得证。
+\end{proof}
 
-\textbf{Q.E.D.}
-
-本小结最后我们将介绍闭图像定理，首先先定义一下什么是图像。
 \begin{definition}[图像，闭图像]
-    设$T:X \to Y$是映射，称$G(T)=\{(x,Tx)|x \in X \times Y\}:=\{(x,Tx)|x \in X ,y \in Y\}$为$T$的图像。\\
-    若$G(T)$是$X \times Y$中的闭集，则称$T$为闭算子，即
-    \[\forall \{(x_n,y_n)\} \subset G(T) \ , \ x_n \to x \in X \ , \ y_n \to y \in Y \ , \ (x,y) \in G(T)\]
+设$T:X \to Y$是映射，称$G(T)=\{(x,Tx)|x \in X \times Y\}:=\{(x,Tx)|x \in X ,y \in Y\}$为$T$的图像。若$G(T)$是$X \times Y$中的闭集，则称$T$为闭算子，即:
+\[\forall \{(x_n,y_n)\} \subset G(T) \ , \ x_n \to x \in X \ , \ y_n \to y \in Y \ , \ (x,y) \in G(T)\]
 \end{definition}
 \begin{theorem}[闭图像定理]
-    设$X,Y$是$Banach$空间，若$T:X \to Y$是闭线性算子且$D(T)$是比线性子空间，则$T$是有界的。
+设$X,Y$是 Banach 空间，若$T:X \to Y$是闭线性算子且$D(T)$是闭线性子空间，则$T$是有界的。
 \end{theorem} 
-
-闭图像定理告诉我们如果$T$为闭算子，且其定义域$D(T)$是闭的，那么$T$就是连续的。因为证明一个算子为闭算子比证明它为线性有界算子更容易，所以闭图像定理给出了一个证明连续（有界）线性算子的方法。
-
-\textbf{Proof}:由于$T$是闭算子，故$G(T)=\{(x,Tx)|x \in D(T)\}$是$X \times Y$的闭线性子空间，从而$G(T)$是$Banach$空间，考虑算子$p:G(T) \to D(T) \ , \ (x,Tx) \mapsto x$，易知$p$良定义且为一一映射，且满足线性，且$p$有界
+\begin{remark}
+\quad 闭图像定理告诉我们如果$T$为闭算子，且其定义域$D(T)$是闭的，那么$T$就是连续的。因为证明一个算子为闭算子比证明它为线性有界算子更容易，所以闭图像定理给出了一个证明连续（有界）线性算子的方法。
+\end{remark}
+\begin{proof}
+由于$T$是闭算子，故$G(T)=\{(x,Tx)|x \in D(T)\}$是$X \times Y$的闭线性子空间，从而$G(T)$是 Banach 空间[定理\ref{theorem:zkj}]，考虑算子$p:G(T) \to D(T) \ , \ (x,Tx) \mapsto x$，易知$p$良定义且为一一映射，且满足线性，且$p$有界：
 \[||p(x,Tx)||=||x||_X \leq ||(x,Tx)||_{X \times Y} \leq ||x||_X + ||Tx||_Y\]
-由逆算子定理$\exists \, p^{-1}:D(T) \to G(T) \ , \ x \mapsto (x,Tx)$有界，即
+由逆算子定理$\exists \, p^{-1}:D(T) \to G(T) \ , \ x \mapsto (x,Tx)$有界，即：
 \[||p^{-1}x||=||(x,Tx)||_{X \times Y}=||x||_X + ||Tx||_Y \leq \alpha ||x||_X \quad \Rightarrow \quad ||Tx||_Y \leq \beta ||x||_X\]
+\end{proof}
 
-\textbf{Q.E.D.}
-
-考虑$X,Y$是$Banach$空间，$T \in \mathscr{B}(X,Y)$，如果$D(T)$是闭的，则$G(T)$是闭的
+\begin{proposition}
+考虑$X,Y$是 Banach 空间，$T \in \mathscr{B}(X,Y)$，如果$D(T)$是闭的，则$G(T)$是闭的：
 \[\forall\{(x_n,y_n)\} \subset G(T) \ , \ x_n \to x \in D(T) \ , \ y_n=Tx_n \to Tx=y \in T(D(T)) \quad \Rightarrow \quad (x,y) \in G(T)\]
-若$D(T)$不是闭的，可以考虑如下延拓
+若$D(T)$不是闭的，可以考虑如下延拓：
 \[x_n \to x \in \overline{D(T)} \ , \ \overline{T}:\overline{D(T)} \to Y \ , \ x \mapsto T\overline{x}=\lim_{n \to \infty}Tx_n\]
-
-一般来说闭算子不一定有界($X,Y$是$Banach$空间)，因为$D(T)$不一定是闭子空间，如
+\end{proposition}
+\begin{example} \quad 一般来说闭算子不一定有界($X,Y$是 Banach 空间)，因为$D(T)$不一定是闭子空间。如：
 \[X=C[0,1] \ , \ T=\dv{t} \ , \ D(T)=C^1[0,1]\]
-这里，$D(T)$不是闭的，$T$是闭算子，设$x_n \to x \ , \ y_n=Tx_n=x_n' \to y$，则:
+这里，$D(T)$不是闭的，$T$是闭算子，设$x_n \to x \ , \ y_n=Tx_n=x_n' \to y$，则：
 \[x_n(t)-x_n(0)=\int_0^tx_n'(s) \dd s \quad \Rightarrow \quad x(t)-x(0)=\int_0^ty(s) \dd s\]
-即，$D(T)$中任意收敛于自身的点列在$T[D(T)]$中也收敛于自身，但是$T$不为有界算子，因为存在反例如
+即，$D(T)$中任意收敛于自身的点列在$T[D(T)]$中也收敛于自身，但是$T$不为有界算子，因为存在反例如：
 \[\lim_{n \to \infty}T(\sin nx)=+\infty\]
+\end{example}
 
-\section{$Hahn$-$Banach$定理}
-在回答完算子的逆的存在性和其连续性等之后，我们可能会考虑算子空间的数量，更具体点，如果我们给定一个赋范线性空间$X$，其上的有界线性泛函全体$\mathscr{B}(X,\mathbb{K}) \ (\mathbb{K}=\mathbb{R}/\mathbb{C} \ , \ X\text{是}\mathbb{K}\text{上的线性空间})$的数量有多少，结构又如何？
+\section{Hahn-Banach 定理}
+在回答完算子的逆的存在性和其连续性等之后，我们可能会考虑算子空间的数量，更具体点，如果我们给定一个赋范线性空间$X$，其上的有界线性泛函全体$\mathscr{B}(X,\mathbb{K}) \ (\mathbb{K}=\mathbb{R}/\mathbb{C} \ , \ X\text{是}\mathbb{K}\text{上的线性空间})$的数量有多少，结构又如何？当$X$为有限维时，那么但很简单，$\mathscr{B}(X,\mathbb{K})$与$X$同构，那么在无限维的时候我们又该如何回答这个问题呢？这将是 Hahn-Banach 定理要回答的问题。
 
-当$X$为有限维时，那么但很简单，$\mathscr{B}(X,\mathbb{K})$与$X$同构，那么在无限维的时候我们又该如何回答这个问题呢？这将是$Hahn$-$Banach$定理要回答的问题。
-
-$Hahn$-$Banach$定理告诉我们，在线性赋范空间中，我们可以定义“足够多”的不同的线性泛函。
+Hahn-Banach 定理告诉我们，在线性赋范空间中，我们可以定义“足够多”的不同的线性泛函。
 它的思路是：如果我们能把子空间上的线性泛函$M$延拓到全空间$X$上不就可以辣？因为我们很容易找个子空间构建个线性泛函，如果这些子空间的线性泛函能够全都延拓到全空间，那不就说明全空间上可以有“足够多”的线性泛函辣！
-感觉有点涩（
-\begin{theorem}[$Hahn$-$Banach$定理]\label{HB}
-    设$M$是$X$的线性子空间，$f \in \mathscr{B}(M,\mathbb{K})=M^*$，则$f$可线性保范延拓至整个空间，即
-    \[\exists \, F \in \mathscr{B}(M,\mathbb{K})=X^* \quad \text{s.t.} \quad \forall x \in M \ , \ F|_M=f \ , \ ||F||_X=||f||_M\]
+\begin{theorem}[Hahn-Banach 定理]\label{HB}
+设$M$是$X$的线性子空间，$f \in \mathscr{B}(M,\mathbb{K})=M^*$，则$f$可线性保范延拓至整个空间，即：
+\[\exists \, F \in \mathscr{B}(M,\mathbb{K})=X^* \quad \text{s.t.} \quad \forall x \in M \ , \ F|_M=f \ , \ ||F||_X=||f||_M\]
 \end{theorem} 
-该定理的证明分为两步:1、证明$\mathbb{K}=\mathbb{R}$情形；2、证明$\mathbb{K}=\mathbb{C}$情形。但再此之前，我们需要一个强大的武器$Zorn$引理。
-有限维任意证明，我们自然而然会想到从有限维借助数学归纳法推广到无穷维，但是如果无穷维是不可数的该怎么办呢，$Zorn$引理告诉我们，使用超限归纳法照样推！
+该定理的证明分为两步：1、证明$\mathbb{K}=\mathbb{R}$情形；2、证明$\mathbb{K}=\mathbb{C}$情形。但再此之前，我们需要一个强大的武器 Zorn 引理。有限维任意证明，我们自然而然会想到从有限维借助数学归纳法推广到无穷维，但是如果无穷维是不可数的该怎么办呢，Zorn 引理告诉我们，使用超限归纳法照样推！
 \begin{definition}[偏序(半序)关系]
-    设集合$S$中的一个二元关系$\prec \, :S \times S \to S$，若其满足:\\
-    1、自反性$x \prec x$;\\
-    2、传递性$\forall x,y,z \in S \ , \ x \prec y \ , \ y \prec z \quad \Rightarrow \quad x \prec z$;\\
-    3、反对称性$x \prec y \ , \ y \prec x \quad \Rightarrow \quad x=y$;\\
-    则称$\prec$为一个偏序(半序)关系，$(S,\prec)$称为一个偏序集。若$\mathscr{A} \subset S$满足$\forall x,y \in \mathscr{A} \ , \ x \prec y$或$y \prec x$，则称$\mathscr{A}$是$S$的全序子集。
+设集合$S$中的一个二元关系$\prec \, :S \times S \to S$，若其满足：
+\begin{itemize}
+    \item 1. 自反性$x \prec x$；
+    \item 2. 传递性$\forall x,y,z \in S \ , \ x \prec y \ , \ y \prec z \quad \Rightarrow \quad x \prec z$；
+    \item 3. 反对称性$x \prec y \ , \ y \prec x \quad \Rightarrow \quad x=y$；
+\end{itemize}
+则称$\prec$为一个偏序(半序)关系，$(S,\prec)$称为一个偏序集。若$\mathscr{A} \subset S$满足$\forall x,y \in \mathscr{A} \ , \ x \prec y$或$y \prec x$，则称$\mathscr{A}$是$S$的全序子集。
 \end{definition}
-\paragraph*{例} \quad $(\mathbb{R},\leq)$是全序集，$(2^X,\subseteq)$是偏序集。
+\begin{example}
+\quad $(\mathbb{R},\leq)$是全序集，$(2^X,\subseteq)$是偏序集。
+\end{example}
 \begin{definition}[上界]
-    对$\mathscr{A} \subset S$，若$\exists \, \beta \in S \quad \text{s.t.} \quad \forall \alpha \in S \ , \ \alpha \prec \beta$则称$\beta$是$\mathscr{A}$的上界。
+对$\mathscr{A} \subset S$，若$\exists \, \beta \in S \quad \text{s.t.} \quad \forall \alpha \in S \ , \ \alpha \prec \beta$则称$\beta$是$\mathscr{A}$的上界。
 \end{definition}
 \begin{definition}[极大元]
-    $\exists \, \beta \in S \quad \text{s.t.} \quad \forall \alpha \in S \ , \ \beta \prec \alpha$都有$\alpha=\beta$则称$\beta$是$S$的极大元。
+$\exists \, \beta \in S \quad \text{s.t.} \quad \forall \alpha \in S \ , \ \beta \prec \alpha$都有$\alpha=\beta$则称$\beta$是$S$的极大元。
 \end{definition}
-\begin{theorem}[$Zorn$引理]\label{Zorn}
-    若$S$中的任意全序子集都有上界，则$S$中必然存在(至少一个)极大元。
+\begin{theorem}[Zorn 引理]\label{Zorn}
+若$S$中的任意全序子集都有上界，则$S$中必然存在(至少一个)极大元。
 \end{theorem} 
-$Zorn$引理与选择公理等价，这里就不证明了，超出了本书的范围(才不是因为我懒(逃
-
-实空间的$Hahn$-$Banach$定理可以被转换为次可加函数版本，这样处理起来更方便，那么什么是次可加函数呢？
+Zorn 引理与选择公理等价。方便证明起见使用次可加函数重新表述实空间的 Hahn-Banach 定理。
 \begin{definition}[次可加函数]
-    若$p:X \to \mathbb{R}$满足：\\
-    1、$\forall x,y \in X \ , \ p(x+y) \leq p(x) + p(y)$; 
-    2、$\forall x \in X \ , \ t \in \mathbb{R}^+ \ , \ p(tx)=tp(x)$;\\
-    则称$p$为次可加函数。
+若$p:X \to \mathbb{R}$满足：
+\begin{itemize}
+\item 1. $\forall x,y \in X \ , \ p(x+y) \leq p(x) + p(y)$；
+\item 2. $\forall x \in X \ , \ t \in \mathbb{R}^+ \ , \ p(tx)=tp(x)$；
+\end{itemize}
+则称$p$为次可加函数。
 \end{definition}
-\paragraph*{例} \quad 若$X=\mathbb{R} \ , \ a,b \in \mathbb{R} \ , \ a>b$，可定义次可加函数$p(x)$:
+\begin{example}
+\quad 若$X=\mathbb{R} \ , \ a,b \in \mathbb{R} \ , \ a>b$，可定义次可加函数$p(x)$：
 \[p(x)=\left\{\begin{array}{ll}
     ax & ,x \geq 0 \\
     bx & ,x<0    
 \end{array}\right.\]
 按照次可加函数的定义可以知道次可加函数都是凸函数，且$p(0)=0$。
-
-次可加函数版本的实空间$Hahn$-$Banach$定理叙述如下：
-\begin{theorem}[$Hahn$-$Banach$定理，$\mathbb{K}=\mathbb{R}$]
-    设$M$是$X$的实线性子空间，$p:X \to \mathbb{R}$是次可加函数，$f \in \mathscr{B}(M,\mathbb{R})=M^*$，且$\forall x \in M \ , \ f(x) \leq p(x)$则存在线性延拓$F \in \mathscr{B}(M,\mathbb{R})=X^*$满足$F|_M=f \ , \ \forall x \in X \ , \ F(x) \leq p(x)$。
+\end{example}
+\begin{theorem}[Hahn-Banach 定理，$\mathbb{K}=\mathbb{R}$]\label{theorem:ckjhb}
+    设$M$是$X$的实线性子空间，$p:X \to \mathbb{R}$是次可加函数，$f \in \mathscr{B}(M,\mathbb{R})=M^*$，且对$\forall x \in M \ , \ f(x) \leq p(x)$。则存在线性延拓$F \in \mathscr{B}(M,\mathbb{R})=X^*$满足$F|_M=f$，且对$\forall x \in X \ , \ F(x) \leq p(x)$。
 \end{theorem} 
-在证明定理4.16之前需要声明该定理可以推出上面我们介绍的实空间情形的$Hahn$-$Banach$定理。\\
-\textbf{Proof of Theorem 4.16 to Theorem 4.14}:
-
+\begin{remark}
+\quad 若 Hahn-Banach 定理在实数域上成立，自然而然地，复数情形下我们会将其考虑分解$f \in \mathscr{B}(M,\mathbb{C}) \ , \ f(x)=\phi(x)+i\psi(x)$和$f(ix)=\phi(ix)+i\psi(ix)$，联立可得$\phi(x)=\psi(ix) \ , \ \psi(x)=-\phi(ix)$，即$f(x)=\phi(x)-i\phi(ix)$，由实空间的情形可知，存在一个$\phi$的实线性延拓$\Phi$使得满足条件的$f$的线性延拓$F(X)=\Phi(x)-i\Phi(ix)$存在。
+\end{remark}
+\begin{proof}分三步证明该定理：
+\begin{proposition}
+定理\ref{theorem:ckjhb}可以推出定理\ref{HB}。
+\end{proposition}
+\begin{proof}
 设$||f||_M=\alpha>0$，定义$p:X \to \mathbb{R} \ , \ x \mapsto \alpha||x||$，容易验证$p(x)$为次可加函数且$|f(x)| \leq ||f||_M||x||=p(x)$。
-根据定理4.16$\exists \, F \in X^* \quad \text{s.t.} \quad F|_M=f \ , \ \forall x \in X \ , \ F(x) \leq p(x)=\alpha ||x||$，即$||F||_X \leq \alpha$。
-又因为
-\[||F||_X=\sup_{||x||=1 \ , \ x \in X}|Fx| \geq \sup_{||x||=1 \ , \ x \in M}|Fx|=||f||_M=\alpha\]
-
-故$||F||_X=||f||_M$。\\
-\textbf{Q.E.D.}
-
-下面我们可以开始正式证明定理4.16了。\\
-\textbf{Proof of Theorem 4.16}:
-
-\textbf{Claim}: $\forall x_1 \in X/M$定义$M_1=\{x+tx_1 \in X|x \in M \ , \ t \in \mathbb{R}\}$则存在线性延拓
-\[\exists \, F_1 \in \mathscr{B}(M,\mathbb{R}) \quad \text{s.t.} \quad F_1|_M=f \ , \ \forall x \in M_1 \ , \ F_1(x) \leq p(x)\]
-
-\textbf{Proof of Claim}：因为
-\[\forall y_1,y_2 \in M \ , \ f(y_1)+f(y_2)=f(y_1+y_2) \leq p(y_1+y_2) \leq p(y_1-x_1) + p(y_2+x_1)\]
-\[\Rightarrow \quad f(y_1)-p(y_1-x_1) \leq p(y_2+x_1)-f(y_2)\]
-
-记$\beta=F_1(x_1)$，则$F_1(x+tx_1)=F_1(x)+tF(x_1)=f(x)+t\beta \leq p(x+tx_1)$
-\[\Rightarrow \quad \left\{
+根据定理\ref{theorem:ckjhb}，$\exists \, F \in X^*$满足$F|_M=f \ , \ \forall x \in X \ , \ F(x) \leq p(x)=\alpha ||x||$，即$||F||_X \leq \alpha$。
+又因为：
+\[||F||_X=\sup_{||x||=1 \ , \ x \in X}|Fx| \geq \sup_{||x||=1 \ , \ x \in M}|Fx|=||f||_M=\alpha \quad \Rightarrow \quad ||F||_X=||f||_M\]
+\end{proof}
+\begin{proposition}\label{proposition:1d}
+对$\forall x_1 \in X/M$定义$M_1=\{x+tx_1 \in X|x \in M \ , \ t \in \mathbb{R}\}$，则存在线性延拓：
+\[\exists \, F_1 \in \mathscr{B}(M_1,\mathbb{R}) \quad \text{s.t.} \quad F_1|_M=f \ , \ \forall x \in M_1 \ , \ F_1(x) \leq p(x)\]
+\end{proposition}
+\begin{proof}对$\forall x_1 \in X/M \ , \ y_1,y_2 \in M$有$f(y_1)+f(y_2)=f(y_1+y_2) \leq p(y_1+y_2) \leq p(y_1-x_1) + p(y_2+x_1)$，从而有$f(y_1)-p(y_1-x_1) \leq p(y_2+x_1)-f(y_2)$。依题意有$F_1(x+tx_1)=F_1(x)+tF_1(x_1) \leq p(x+tx_1)$，故$F_1(x_1)$满足：
+\[\left\{
 \begin{array}{ll}
-    \beta \leq p(x/t+x_1)-f(x/t) & ,t \geq 0 \\
-    \beta \geq f(x/t)-p(x/t-x_1) & ,t < 0
+    F_1(x_1) \leq p(x/t+x_1)-f(x/t) & ,t \geq 0 \\
+    F_1(x_1) \geq f(x/t)-p(x/t-x_1) & ,t < 0
 \end{array}
 \right.\]
-
-即$\forall y_1,y_2 \in M \ , \ f(y_1)-p(y_1-x_1) \leq \beta \leq p(y_2+x_1)-f(y_2)$，故只需取
-\[\beta \in \left[\sup_{y_1 \in M}f(y_1)-p(y_1-x_1),\inf_{y_2 \in M}p(y_2+x_1)-f(y_2)\right]\]
-
+故只需取：
+\[F_1(x_1) \in \left[\sup_{y_1 \in M}f(y_1)-p(y_1-x_1),\inf_{y_2 \in M}p(y_2+x_1)-f(y_2)\right]\]
 即可找到满足要求的$F_1$。
+\end{proof}
+\begin{proposition}
+使用超限归纳法将命题\ref{proposition:1d}推广到任意维度。
+\end{proposition}
+\begin{proof}
+考虑集合$S=\{F|F\text{是}f\text{满足定理要求的线性延拓}\}$，定义偏序$\prec$，若$F_1,F_2 \in S \ , \ F_1 \prec F_2$则$D(F_1) \subseteq D(F_2) \ , \ F_2|_{D(F_1)}=F_1$，容易证明$(S,\prec)$是偏序集。下面验证$(S,\prec)$中任意全序子集$\mathscr{F}$都有上界。
 
-\textbf{Q.E.D.}
-
-使用超限归纳法，考虑集合$S=\{F|F\text{是}f\text{满足定理要求的线性延拓}\}$，定义偏序$\prec$，若$F_1,F_2 \in S \ , \ F_1 \prec F_2$则$D(F_1) \subseteq D(F_2) \ , \ F_2|_{D(F_1)}=F_1$，容易证明$(S,\prec)$是偏序集。
-下面验证满足$Zorn$引理的条件，即$(S,\prec)$中任意全序子集$\mathscr{F}$都有上界:
-
-定义$\Phi:D \to \mathbb{R}$满足$F \in \mathscr{F} \ , \ x \in D(F)$有$\Phi(x)=F(x)$，记
+定义$\Phi:D \to \mathbb{R}$满足$F \in \mathscr{F} \ , \ x \in D(F)$有$\Phi(x)=F(x)$，记：
 \[D=\bigcup_{F \in \mathscr{F}}D(F)\]
-
-则$\forall F \in \mathscr{F}$有$D(F) \subset D \ , \ \Phi|_{D(F)}=F$，即$F \prec \Phi$，$\Phi$为$\mathscr{F}$的上界。
-
-进而由$Zorn$引理可知$S$中有极大元$\Phi (D(\Phi)=X)$。\\
-\textbf{Q.E.D.}
-
-自然而然地，复数情形下我们会将其考虑分解$f \in \mathscr{B}(M,\mathbb{C}) \ , \ f(x)=\phi(x)+i\psi(x)$和$f(ix)=\phi(ix)+i\psi(ix)$，联立可得$\phi(x)=\psi(ix) \ , \ \psi(x)=-\phi(ix)$，即$f(x)=\phi(x)-i\phi(ix)$，由实空间的情形可知，存在一个$\phi$的实线性延拓$\Phi$使得满足条件的$f$的线性延拓$F(X)=\Phi(x)-i\Phi(ix)$存在。
-
-$Hahn$-$Banach$定理有许多有用的推论，接下来我们会介绍一部分。
+则$\forall F \in \mathscr{F}$有$D(F) \subset D \ , \ \Phi|_{D(F)}=F$，即$F \prec \Phi$，$\Phi$为$\mathscr{F}$的上界。进而由 Zorn 引理可知$S$中有极大元$\Phi$，其定义域为$D(\Phi)=X$。
+\end{proof}
+\end{proof}
+\begin{remark}
+\quad 需要注意的是 Hahn-Banach 定理只证明了延拓的存在性，但不保证唯一。
+\end{remark}
+Hahn-Banach 定理有许多有用的推论。
 \begin{proposition}
-    赋范线性空间$X$上$\forall x_0 \in X \ , \ x_0 \neq 0 \ , \ \exists \, f \in X^* \quad \text{s.t.} \quad ||f||=1 \ , \ f(x_0)=||x_0||$。
+赋范线性空间$X$上$\forall x_0 \in X \ , \ x_0 \neq 0 \ , \ \exists \, f \in X^* \quad \text{s.t.} \quad ||f||=1 \ , \ f(x_0)=||x_0||$。
 \end{proposition}
-\textbf{Proof}：令$M=\{\lambda x_0|\lambda \in \mathbb{K}\} \subset X \ , \ f_0:M \to \mathbb{K} \ , \ \lambda x_0 \mapsto |\lambda|\cdot||x_0||$，则
-\[|f(\lambda x_0)|=\sup_{\lambda \in \mathbb{K}}\frac{|\lambda|\cdot||x_0||}{||\lambda x_0||}=1 \quad \Rightarrow \quad ||f_0||_M=1\]
-
-再由$Hahn$-$Banach$定理即证。
-
-\textbf{Q.E.D.}
+\begin{proof}
+令$M=\{\lambda x_0|\lambda \in \mathbb{K}\} \subset X \ , \ f_0:M \to \mathbb{K} \ , \ \lambda x_0 \mapsto |\lambda|\cdot||x_0||$，显然当$\lambda=1$时$f(x_0)=||x_0||$，则：
+\[||f_0||_M=\sup_{\lambda \in \mathbb{K}}\frac{|\lambda|\cdot||x_0||}{||\lambda x_0||}=1\]
+再由 Hahn-Banach 定理，$\exists \, f \in X^* \ , \ \eval{f}_{M}=f_0 \ , \ ||f||_X=||f_0||_M=1$，满足题设。
+\end{proof}
 \begin{proposition}
-    赋范线性空间$X$上$\forall x_1,x_2 \in X \ , \ x_1 \neq x_2 \ , \ \exists \, f \in X^* \quad \text{s.t.} \quad ||f||=1 \ , \ f(x_1) \neq f(x_2)$。
+赋范线性空间$X$上$\forall x_1,x_2 \in X \ , \ x_1 \neq x_2 \ , \ \exists \, f \in X^* \quad \text{s.t.} \quad ||f||=1 \ , \ f(x_1) \neq f(x_2)$。
 \end{proposition}
+\begin{proof}
 令$x_0=x_1-x_2 \neq 0$，则由推论1，$f(x_0)=f(x_1-f_2)=f(x_1)-f(x_2) \neq 0$。
+\end{proof}
+\begin{remark}
+\quad 我们可以用一个有界线性泛函去区分两个点的不同性质。
+\end{remark}
 
-可以看到我们可以用一个有界线性泛函去区分两个点的不同性质。
 \begin{proposition}
-    $X$是赋范线性空间$M \subset X$是线性子空间，$x_0 \in X$满足
-    \[d(x_0,M)=\inf_{x \in M}||x-x_0||>0\]
-    则$\exists \, f \in X^* \quad \text{s.t.} \quad x \in M \ , \ ||f||=1 \ , \ f(x_0)=d \ , \ f|_M=0$。
+$X$是赋范线性空间$M \subset X$是线性子空间，$x_0 \in X$满足：
+\[d(x_0,M)=\inf_{x \in M}||x-x_0||>0\]
+则$\exists \, f \in X^* \quad \text{s.t.} \quad x \in M \ , \ ||f||=1 \ , \ f(x_0)=d \ , \ f|_M=0$。
 \end{proposition}
-\textbf{Proof}：令$M=\{x+tx_0|t \in \mathbb{K} \ , \ x \in M\}$，定义$f:M \to \mathbb{K} \ , \ x+tx_0 \mapsto td$，则一方面
+\begin{proof}
+令$M=\{x+tx_0|t \in \mathbb{K} \ , \ x \in M\}$，定义$f:M \to \mathbb{K} \ , \ x+tx_0 \mapsto td$，则一方面：
 \[|f(x+tx_0)|=|t|d \leq |t| \cdot \left\|\frac{x}{t}+x_0\right\|=||x+tx_0|| \quad \Rightarrow \quad ||f|| \leq 1\]
-
-另一方面$\exists \{x_n\} \subset M \ , \ ||x_n -x_0|| \to d \ (n \to \infty) \ ,$
+另一方面$\exists \{x_n\} \subset M \ , \ ||x_n -x_0|| \to d \ (n \to \infty)$：
 \[|f(x_n-x_0)|=|f(x_n)-f(x_0)|=|f(x_0)|=d \leq ||f|| \cdot ||x_n-x_0|| \to ||f||d \quad \Rightarrow \quad ||f|| \geq 1\]
+综上所述，$||f||=1$，再由 Hahn-Banach 定理即证。
+\end{proof}
 
-结合上文可知$||f||=1$，再由$Hahn$-$Banach$定理即证。
-
-\textbf{Q.E.D.}
-
-需要注意的是$Hahn$-$Banach$定理只证明了延拓的存在性，但不保证唯一。
 \section{对偶空间和共轭算子}
-上文提到了泛函，俺就不得不提到与泛函相关的对偶空间。
 \begin{definition}[对偶空间]
-    $X^*=\mathscr{B}(X,\mathbb{K})$称为$X$的对偶空间。
+$X^*=\mathscr{B}(X,\mathbb{K})$称为$X$的对偶空间。
 \end{definition}
-对偶空间一定是$Banach$空间。
+\begin{remark}
+\quad 对偶空间一定是 Banach 空间。
+\end{remark}
 \begin{definition}[共轭算子]
-    $X,Y$是赋范线性空间，$T \in \mathscr{B}(X,Y)$，定义$T^*:Y^* \to X^*$满足
-    \[\forall f \in Y^* \ , \ x \in X \ , \ (T^*f)x=f(Tx)\]
-    则称$T^*$为共轭算子。
+$X,Y$是赋范线性空间，$T \in \mathscr{B}(X,Y)$，定义$T^*:Y^* \to X^*$满足$\forall f \in Y^* \ , \ x \in X \ , \ (T^*f)x=f(Tx)$，则称$T^*$为共轭算子。
 \end{definition}
-共轭算子具有以下性质：
-\begin{theorem}
-    1、$T \in \mathscr{B}(X,Y) \ , \ T^* \in \mathscr{B}(Y^*,X^*)$则$||T^*||=||T||$;\\
-    2、$\forall \alpha \in \mathbb{K} \ , \ (\alpha T)^*=\alpha T^*$;\\
-    3、$(T_1+T_2)^*=T_1^*+T_2^*$;\\
-    4、$(T_1T_2)^*=T_2^*T_1^*$;\\
-    5、若$T$有有界逆$T^{-1}$，则$T^*$也有有界逆且$(T^*)^{-1}=(T^{-1})^*$。\\
-    或者考虑映射$*:\mathscr{B}(X,Y) \to \mathscr{B}(Y^*,X^*)$，则1:*是有界等距映射，2\&3:线性，4:乘法，5:与逆可交换。
-\end{theorem} 
-看几个例子。
-\begin{proposition}
-    1、$X=(\mathbb{R}^n,||\cdot||) \ , \ X^*=X$;\\
-    2、$(L^p[a,b])^*=L^q[a,b]$其中$1/p+1/q=1 \ , \ p \in [1,+\infty)$，反之$L^{\infty}$的对偶空间严格比$L^1$大;\\
-    3、$(l^p[a,b])^*=l^q[a,b]$其中$1/p+1/q=1 \ , \ p \in [1,+\infty)$;\\
-    4、$(C[a,b])^*=V_0[a,b]:=\{v \in V[a,b] \, | \, v(a)=0 \ , \ v(t+0)=v(t) \ , \ \forall t \in [a,b]\}$，其中$V[a,b]$是$[a,b]$上有界变差函数全体;\\
-    5、记收敛数列空间为$c$，则$c^*=l^1$。
-\end{proposition}
-对第一个例子，分别记$X,X^*$的一组对偶基$\{e_i\}_{i=1}^n \ , \ \{f_i\}_{i=1}^n$，即$f_i(e_j)=\delta_{ij}$，构造$e_i \to f_i$即得$X$与$X^*$之间存在一个等距一一映射，即证。
-我们可以来证明第二个例子$(1<p<+\infty)$，其他例子留待读者自证。
-
+\begin{lemma}
+\begin{itemize}
+\item 1. $T \in \mathscr{B}(X,Y) \ , \ T^* \in \mathscr{B}(Y^*,X^*)$则$||T^*||=||T||$；
+\item 2. $\forall \alpha \in \mathbb{K} \ , \ (\alpha T)^*=\alpha T^*$；
+\item 3. $(T_1+T_2)^*=T_1^*+T_2^*$；
+\item 4. $(T_1T_2)^*=T_2^*T_1^*$；
+\item 5. 若$T$有有界逆$T^{-1}$，则$T^*$也有有界逆且$(T^*)^{-1}=(T^{-1})^*$。
+\end{itemize}
+或者考虑映射$*:\mathscr{B}(X,Y) \to \mathscr{B}(Y^*,X^*)$，则1:*是有界等距映射，2\&3:线性，4:乘法，5:与逆可交换。
+\end{lemma} 
+\begin{example}
+\quad $X=(\mathbb{R}^n,||\cdot||) \ , \ X^*=X$。
+\end{example}
+\begin{proof}
+分别记$X,X^*$的一组对偶基$\{e_i\}_{i=1}^n \ , \ \{f_i\}_{i=1}^n$，即$f_i(e_j)=\delta_{ij}$，构造$e_i \to f_i$即得$X$与$X^*$之间存在一个等距一一映射，即证。
+\end{proof}
+\begin{example}
+\quad $(L^p[a,b])^*=L^q[a,b]$其中$1/p+1/q=1 \ , \ p \in [1,+\infty)$，反之$L^{\infty}$的对偶空间严格比$L^1$大。
+\end{example}
 \textbf{Proof}:证明的目标是构造如下等距一一映射
 \[\Phi:L^q \to (L^p)^* \ , \ g \mapsto \Phi_g \quad \text{s.t.} \quad \forall f \in L^p \ , \ \Phi_g(f)=\int_a^bf(t)g(t) \dd t\]
 线性显然，有界性($h\ddot{o}lder$不等式):
@@ -613,6 +602,17 @@ $Hahn$-$Banach$定理有许多有用的推论，接下来我们会介绍一部�
 综述三步所述，我们通过一步构造两步逼近证明了满射。
 
 \textbf{Q.E.D.}
+
+\begin{example}
+\quad $(l^p[a,b])^*=l^q[a,b]$其中$1/p+1/q=1 \ , \ p \in [1,+\infty)$。
+\end{example}
+\begin{example}
+\quad $(C[a,b])^*=V_0[a,b]:=\{v \in V[a,b] \, | \, v(a)=0 \ , \ v(t+0)=v(t) \ , \ \forall t \in [a,b]\}$，其中$V[a,b]$是$[a,b]$上有界变差函数全体。
+\end{example}
+\begin{example}
+\quad 记收敛数列空间为$c$，则$c^*=l^1$。
+\end{example}
+
 \section{自反性与弱收敛}
 考虑共轭空间的共轭空间，定义为
 \begin{definition}[二次共轭空间]

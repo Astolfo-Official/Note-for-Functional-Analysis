@@ -1,10 +1,10 @@
-回顾常微分方程中的提到的$Picard$定理:
-
-\paragraph*{$Picard$定理} \quad 对初值问题
+回顾常微分方程中的提到的 Picard 定理：
+\begin{proposition}[Picard 定理]
 \begin{equation}\label{eq:dquestion}
 \dv{}{t}x(t)=f(x(t),t), \quad x(t_0)=x_0
 \end{equation}
-如果$f(x(t),t)$在区域$D$上满足$Lipschitz$条件($|f(x_1,t)-f(x_2,t)| \leq L|x_1-x_2|,L>0$对$\forall t \in D$都成立,其实只要在$t_0$的邻域成立即可)，
+\end{proposition}
+如果$f(x(t),t)$在区域$D$上满足 Lipschitz 条件($|f(x_1,t)-f(x_2,t)| \leq L|x_1-x_2|,L>0$对$\forall t \in D$都成立,其实只要在$t_0$的邻域成立即可)，
 则$\exists \, \varepsilon > 0$，初值问题在$t \in (t_0-\varepsilon,t_0+\varepsilon)$有唯一解$x(t)$。
 
 回顾初等的证法，原初值问题等价于证明积分方程:
@@ -57,10 +57,10 @@ x_{n+1}(t)&=x_0+\int_{t_0}^tf(x_n(s),s)\dd s
 \[d(x(t),y(t))={\mathop {\text{sup}}\limits_{t \in (t_0-\varepsilon,t_0+\varepsilon)}} |x(t)-y(t)|\]
 则：
 \[d(T[x(t)],T[y(t)])={\mathop {\text{sup}}\limits_{t \in (t_0-\varepsilon,t_0+\varepsilon)}} \left|\int_{t_0}^tf(x(s),s)\dd s-\int_{t_0}^tf(y(s),s)\dd s \right| \leq L\varepsilon d(x(t),y(t))\]
-当取$L\varepsilon < 1$时，我们得到一个压缩映射，由$Banach$不动点定理即证明完毕：
+当取$L\varepsilon < 1$时，我们得到一个压缩映射，由 Banach 不动点定理即证明完毕：
 \[d(T[x(t)],T[y(t)]) < d(x(t),y(t))\]
 
-很显然上述只能叫说明，我们并没有定义一个$Banach$不动点定理适用的距离空间出来。不过也足以说明在泛函分析中我们比较感兴趣的两个对象：函数空间和函数空间上的映射。
+很显然上述只能叫说明，我们并没有定义一个 Banach 不动点定理适用的距离空间出来。不过也足以说明在泛函分析中我们比较感兴趣的两个对象：函数空间和函数空间上的映射。
 在上述的说明中，我们通过距离这个几何概念诱导出了这个函数空间的拓扑结构，当然除此之外还有许多其他的拓扑结构也值得讨论，我们在泛函分析中一般默认讨论的函数空间的代数结构是无穷维线性空间。
 
 还有一个值得思考的问题，我们在初等的证明中使用了柯西收敛定理，那么，在函数空间中柯西列一定收敛吗?

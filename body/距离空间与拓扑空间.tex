@@ -387,7 +387,7 @@ $A$可数，$D$不可数，且有$D \subset l^{\infty} \subset \bigcup_{a \in A}
 设$(X,d)$是完备距离空间，则
 \begin{itemize}
     \item 1. 闭球套定理；
-    \item 2. $Baire$纲定理。
+    \item 2. Baire 纲定理。
 \end{itemize}
 \end{theorem}
 \begin{theorem}[闭球套定理]
@@ -400,8 +400,8 @@ $A$可数，$D$不可数，且有$D \subset l^{\infty} \subset \bigcup_{a \in A}
 所以球心列$\{x_i\}$是柯西列，完备的距离空间内所有柯西列都收敛，即存在$x \in X$使得$d(x_i,x) \to 0$。假设存在另外一个极限点$y \in X$使得$d(x_i,y) \to 0$，那么由三角不等式$d(x,y) \leq d(x,x_i)+d(x_i,y) \rightarrow 0$可知$x=y$。
 \end{proof}
 
-在介绍$Baire$定理之前，我们需要介绍一些定义：
-\begin{definition}[疏集]
+在介绍 Baire 定理之前，我们需要介绍一些定义：
+\begin{definition}[疏集]\label{definition:sj}
     设$E \subset X$，若$\overline{E}$不包含任何开球，则称$E$为疏集。
 \end{definition}
 \begin{example}
@@ -414,7 +414,7 @@ $A$可数，$D$不可数，且有$D \subset l^{\infty} \subset \bigcup_{a \in A}
 \begin{example}
  \quad $\mathbb{Q}$是第一纲集，$\mathbb{R}$是第二纲集。
 \end{example}
-\begin{theorem}[$Baire$定理] \label{the:Baire}
+\begin{theorem}[Baire 定理]\label{the:Baire}
     完备距离空间一定是第二纲集。
 \end{theorem}
 \begin{proof}
@@ -567,7 +567,7 @@ d(\vec{\xi},\vec{\eta}) & =|T(\vec{\xi})-T(\vec{\eta})|=|A(\vec{\xi}-\vec{\eta})
 后续证明略。
 \end{proof}
 
-\begin{example} \quad 证明：当$\lambda$足够小时$Fredholm$积分方程有唯一解。
+\begin{example} \quad 证明：当$\lambda$足够小时 Fredholm 积分方程有唯一解。
 \[x(t)=\psi(t)+\lambda\int_a^bK(t,s)x(s)\dd s \ , \ K(t,s) \in C[a,b] \times [a,b] \ , \ \psi(t) \in C[a,b]\]
 \end{example}
 \begin{proof}设$X=C[a,b]$（完备的），对$x(t),y(t) \in X$，定义距离
@@ -583,7 +583,7 @@ d(\vec{\xi},\vec{\eta}) & =|T(\vec{\xi})-T(\vec{\eta})|=|A(\vec{\xi}-\vec{\eta})
 后续证明略。
 \end{proof}
 
-\begin{example} \quad 证明：$Volterra$积分方程有唯一解。
+\begin{example} \quad 证明：Volterra 积分方程有唯一解。
 \[x(t)=\psi(t)+\lambda\int_a^tK(t,s)x(s)\dd s \ , \ K(t,s) \in C(([a,b] \times [a,b])\cap\{s<=t\}) \ , \ \psi(t) \in C[a,b]\]
 \end{example}
 \begin{proof}定义映射$T:C[a,b] \to C[a,b]$：

@@ -152,7 +152,7 @@ $$|x_m(a)-x_n(a)|+\mathop \text{sup}\limits_p \sum |x_m(t_{i+1})-x_n(t_{i+1})-x_
 若部分和有极限$S_n \to S$，则称级数存在极限。
 \end{definition}
 \begin{theorem}
-\[(X,||\cdot||) \ \text{是$Banach$空间，若级数} \ \sum_{n=1}^{\infty}||x_n|| \ \text{收敛，则} \ \sum_{n=1}^{\infty}x_n \ \text{收敛且} \ \left\| \sum_{n=1}^{\infty}x_n \right\| \leq \sum_{n=1}^{\infty}||x_n||\]
+\[(X,||\cdot||) \ \text{是 Banach 空间，若级数} \ \sum_{n=1}^{\infty}||x_n|| \ \text{收敛，则} \ \sum_{n=1}^{\infty}x_n \ \text{收敛且} \ \left\| \sum_{n=1}^{\infty}x_n \right\| \leq \sum_{n=1}^{\infty}||x_n||\]
 \end{theorem}
 \begin{proof}
 部分和的模长
@@ -386,7 +386,7 @@ $p=1$时，显然；$p>1$时，有
 \begin{definition}[赋范线性空间的子空间]
 设$(X,||\cdot||)$是赋范线性空间，$X_1$是$X$的子空间，若$(X_1,||\cdot||)$是赋范线性空间，则称$(X_1,||\cdot||)$是$(X,||\cdot||)$的一个子空间。
 \end{definition}
-\begin{theorem}
+\begin{theorem}\label{theorem:zkj}
 \begin{itemize}
     \item 1. 赋范线性空间的完备子空间是 Banach 空间；
     \item 2. Banach 间的闭子空间是 Banach 空间。
@@ -405,7 +405,7 @@ $p=1$时，显然；$p>1$时，有
 
 我们知道，赋范线性空间是一个距离空间，距离空间是可以完备化的，那么我们自然就会去思考，这样完备化得到的距离空间还是不是赋范线性空间呢？为此我们需要验证其线性结构(加法，数乘)以及范数。
 \begin{theorem}
-    设$(X,||\cdot||)$是不完备的赋范线性空间，它作为距离空间有完备化$\tilde{X}$,可以证明$\tilde{X}$是$Banach$空间。
+    设$(X,||\cdot||)$是不完备的赋范线性空间，它作为距离空间有完备化$\tilde{X}$,可以证明$\tilde{X}$是 Banach 空间。
 \end{theorem}
 \begin{proof}
 设$\tilde{x}=[\{x_n\}] \in \tilde{X}$是$X$中柯西列的等价类。
