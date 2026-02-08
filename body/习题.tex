@@ -1,107 +1,122 @@
 \section{距离空间与拓扑空间习题}
-\paragraph*{1.}证明:任意开集的并为开集。\\
-\textbf{Proof:}设$\Lambda$为指标集，$A_{\lambda} \ (\lambda \in \Lambda)$为开集。
+\begin{example}
+\quad 证明：任意开集的并为开集。
+\end{example}
+\begin{proof}
+设$\Lambda$为指标集，$A_{\lambda} \ (\lambda \in \Lambda)$为开集：
 \[\forall x \in \bigcup_{\lambda \in \Lambda}A_{\lambda} \ \Rightarrow \ x \in A_{\lambda_i} \ \Rightarrow \ B_{\varepsilon}(x) \subset A_{\lambda_i} \subset \bigcup_{\lambda \in \Lambda}A_{\lambda}\]
-\textbf{Q.E.D.}
+\end{proof}
 
-\paragraph*{2.}证明:在$(X,d)$中，$\overline{A}=A \ \Leftrightarrow \ A^c$是开集\\
-Proof ($\overline{A}=A \ \Rightarrow \ A^c$是开集):
+\begin{example}
+\quad 证明：在$(X,d)$中，$\overline{A}=A \ \Leftrightarrow \ A^c$是开集。
+\end{example}
+\begin{proof}充分性：$\overline{A}=A \ \Rightarrow \ A^c$是开集：
 \[\forall x \in A^c \ \Rightarrow \ \exists \, B_{\varepsilon}(x) \cap A=\varnothing \ \Leftrightarrow \ B_{\varepsilon}(x) \subset A^c \ \Rightarrow \ A^c\text{是开集}\]
-Proof ($A^c$是开集$ \ \Rightarrow \ \overline{A}=A$):
+必要性：$A^c$是开集$ \ \Rightarrow \ \overline{A}=A$：
 \[\forall x \in A^c \ \Rightarrow \ \exists \, B_{\varepsilon}(x) \subset A^c \ \Leftrightarrow \ B_{\varepsilon}(x) \cap A=\varnothing \ \Rightarrow \ A\text{的所有接触点都在$A$中} \ \Rightarrow \ \overline{A}=A\]
-\textbf{Q.E.D.}
+\end{proof}
 
-\paragraph*{3.}
+\begin{example}
+\quad 证明$D$是距离空间且$\ x_n(t) \xrightarrow{d} x(t) \ \Leftrightarrow \ x_n(t) \rightrightarrows x(t)\text{且}x_n'(t) \rightrightarrows x'(t)$。
 \[D=C^1[0,1]=\{x(t),x'(t) \in C[0,1]\} \quad d(x,y)=\mathop \text{sup}\limits_{t \in [0,1]}|x(t)-y(y)|+\mathop \text{sup}\limits_{t \in [0,1]}|x'(t)-y'(y)|\]
+\end{example}
 
-证明:(1)$\ D$是距离空间; \quad (2)$\ x_n(t) \xrightarrow{d} x(t) \ \Leftrightarrow \ x_n(t) \rightrightarrows x(t)\text{且}x_n'(t) \rightrightarrows x'(t)$\\
-\textbf{Proof:}这是好证的。
+\begin{example}
+\quad 设$d$是距离，证明$d/(1+d)$也是距离。
+\end{example}
 
-\paragraph*{4.}
-\[\text{证明}: \ d\text{是距离} \ \Rightarrow \ \frac{d}{1+d}\text{是距离}\]
-\textbf{Proof:}这是好证的。
+\begin{example}
+\quad 证明$d(x,y)=0$时$x=y$在如下空间中成立：
+\[X=\{f(z)\text{在}|z|<1\text{上解析},\text{在}|z| \leq 1\text{上连续}\} \ , \ d(x,y)=\mathop \text{sup}\limits_{|z|=1}|x(z)-y(z)|\]
+\end{example}
+\begin{proof}
+当$|z|=1$时这是好证的。当$|z|<1$时，利用极值原理或柯西积分公式(以后者为例)：
+\[f(z):=x(z)-y(z) \ , \ \forall z_0 \in |z|<1 \ , \ f(z_0)=\int\limits_{|z|=1}\frac{f(z)}{z-z_0}\dd z=\int\limits_{|z|=1}\frac{x(z)-y(z)}{z-z_0}\dd z=0\]
+\end{proof}
 
-\paragraph*{5.}
-\[X=\{f(z)\text{在}|z|<1\text{上解析},\text{在}|z| \leq 1\text{上连续}\} \qquad d(x,y)=\mathop \text{sup}\limits_{|z|=1}|x(z)-y(z)|\]
-证明:$\ d(x,y)=0$时有$x=y$
-\textbf{Proof:}当$|z|=1$时这是好证的。\\
-当$|z|<1$时，利用\textbf{极值原理}或\textbf{柯西积分公式}(以后者为例):
-\[f(z):=x(z)-y(z) \quad \forall z_0 \in |z|<1 \ , \ f(z_0)=\int\limits_{|z|=1}\frac{f(z)}{z-z_0}\dd z=\int\limits_{|z|=1}\frac{x(z)-y(z)}{z-z_0}\dd z=0\]
-\textbf{Q.E.D.}
-
-\paragraph*{6.}考虑如下距离空间,下面这个例子告诉我们在距离空间中小球可能包含大球，但大球不能太大:
+\begin{example}
+\quad 考虑如下距离空间,下面这个例子告诉我们在距离空间中小球可能包含大球，但大球不能太大：
 \begin{figure}[htbp]
     \center
     \includegraphics[scale=0.2]{./fig/ex-1.png}
 \end{figure}
 \[B_4(a)=\{a,b,c,d\} \subset B_3(c)=\{a,b,c,d,e\}\]
-证明:若$B_7(a) \subset B_3(b)$则$B_7(a)=B_3(b)$。\\
-\textbf{Proof:}
-\[\forall x \in B_3(b) \ , \ d(x,a) \leq d(x,b)+d(b,a)<3+3=6<7 \ \Rightarrow \ x \in B_7(a)\]
-\textbf{Q.E.D.}
+证明:若$B_7(a) \subset B_3(b)$则$B_7(a)=B_3(b)$。
+\end{example}
+\begin{proof}
+$\forall x \in B_3(b) \ , \ d(x,a) \leq d(x,b)+d(b,a)<3+3=6<7 \ \Rightarrow \ x \in B_7(a)$
+\end{proof}
 
-\paragraph*{7.}$(X,d)$是距离空间，$A \subset X$，令$f(x)=\mathop \text{inf}\limits_{y \in A}d(x,y)$，证明$f(x)$连续。\\
-\textbf{Proof:}
-\[\forall x_1,x_2 \in X \ , \ y \in A \ , \ d(x_1,x_2) \leq d(x_1,y)+d(y,x_2)\]
-取下极限
+\begin{example}
+\quad $(X,d)$是距离空间，$A \subset X$，令$f(x)=\mathop \text{inf}\limits_{y \in A}d(x,y)$，证明$f(x)$连续。
+\end{example}
+\begin{proof}
+已知三角不等式：$\forall x_1,x_2 \in X \ , \ y \in A \ , \ d(x_1,x_2) \leq d(x_1,y)+d(y,x_2)$，两侧对$y$取下极限：
 \[f(x_1) \leq d(x_1,x_2)+f(x_2) \ \Leftrightarrow \ f(x_1)-f(x_2) \leq d(x_1,x_2)\]
-同理
+同理有：
 \[f(x_2)-f(x_1) \leq d(x_1,x_2)\]
+因此：
 \[\Rightarrow \ |f(x_1)-f(x_2)| \leq d(x_1,x_2) \to 0\]
+即：
 \[\forall \varepsilon>0 \ , \ d(x_1,x_2)<\delta=\varepsilon \quad \text{s.t.} \quad |f(x_1)-f(x_2)|<\varepsilon\]
-\textbf{Q.E.D.}
+\end{proof}
 
-\paragraph*{8.}证明$C^1[0,1]$是完备距离空间。\\
-\textbf{Proof:}设$\{x_n(t)\}$是$C^1[0,1]$中的柯西列。
+\begin{example}
+\quad 证明$C^1[0,1]$是完备距离空间。
+\end{example}
+\begin{proof}
+设$\{x_n(t)\}$是$C^1[0,1]$中的柯西列，$C^1[0,1]$上定义的距离为：
 \[d(x_n(t),x_m(t))=\mathop \text{sup}\limits_{t \in [0,1]}|x_n(t)-x_m(t)|+\mathop \text{sup}\limits_{t \in [0,1]}|x_n'(t)-x_m'(t)|\]
-由$C[0,1]$的完备性可知，我们只需要证明$\{x_n'(t)\}$是$C[0,1]$中的柯西列，即$x_n'(t) \rightrightarrows h(t) \in C[0,1]$。只需证
-\[x_n(t) \rightrightarrows x(0)+\int_0^th(s)\dd s \qquad x(0)=\lim_{n \to \infty}x_n(0)\]
-验证：
-\[\left|x_n(t)-x(0)-\int_0^th(s)\dd s\right| \leq \left|x_n(0)+\int_0^tx_n'(s)\dd s-x(0)-\int_0^th(s)\dd s\right| \quad \text{微积分基本定理}\]
-\[\leq \left|x_n(0)-x(0)\right|+\int_0^t|x_n'(s)-h(s)|\dd s \leq \left|x_n(0)-x(0)\right|+\mathop \text{sup}\limits_{t \in [0,1]}|x_n'(t)-h(t)| \to 0 \quad (n \to \infty)\]
-且上述极限的取值与$t \in [0,1]$无关，故为一致收敛，原命题得证。\\
-\textbf{Q.E.D.}
+由$C[0,1]$的完备性可知，我们只需要证明$\{x_n'(t)\}$是$C[0,1]$中的柯西列，即$x_n'(t) \rightrightarrows h(t) \in C[0,1]$。只需证：
+\[x_n(t) \rightrightarrows x(0)+\int_0^th(s)\dd s \ , \ x(0)=\lim_{n \to \infty}x_n(0)\]
+验证，利用微积分基本定理：
+\[\begin{aligned}
+\left|x_n(t)-x(0)-\int_0^th(s)\dd s\right| &\leq \left|x_n(0)+\int_0^tx_n'(s)\dd s-x(0)-\int_0^th(s)\dd s\right|\\
+&\leq \left|x_n(0)-x(0)\right|+\int_0^t|x_n'(s)-h(s)|\dd s\\
+&\leq \left|x_n(0)-x(0)\right|+\mathop \text{sup}\limits_{t \in [0,1]}|x_n'(t)-h(t)| \to 0
+\end{aligned}\]
+且上述极限的取值与$t \in [0,1]$无关，故为一致收敛，原命题得证。
+\end{proof}
 
-\paragraph*{8.}证明:闭球套定理成立的距离空间是完备距离空间。\\
-\textbf{Proof:}原命题等价于设$(X,d)$中任一套闭球套$(r_n \to 0)$都有非空交，那么$(X,d)$完备。\\
-设$\{x_n\}$是$X$中的柯西列，由它构造闭球套:
+\begin{example}
+\quad 证明：闭球套定理成立的距离空间是完备距离空间。
+\end{example}
+\begin{proof}
+原命题等价于设$(X,d)$中任一套闭球套$(r_n \to 0)$都有非空交，那么$(X,d)$完备。设$\{x_n\}$是$X$中的柯西列，由它构造闭球套：
 \[\forall k \in \mathbb{Z}_+ \ , \ \exists \, n_k>0 \quad \text{s.t.} \quad m,n \geq n_k \ , \ d(x_m,x_n)<\frac{1}{2^k} \ \Rightarrow \ x_n \in B_{\frac{1}{2^{k+1}}}(x_{n_k})\]
-\[\Rightarrow \ \exists \, \{x_{n_k}\} \ (k=1,2,\cdots) \quad \text{s.t.} \quad \overline{B}_{\frac{1}{2^{k+1}}}(x_{n_{k+1}}) \subset \overline{B}_{\frac{1}{2^k}}(x_{n_k})\]
-\[\text{由题设} \exists \,! \, x \in \bigcap_{k=1}^{\infty}\overline{B}_{\frac{1}{2^k}}(x_{n_k}) \ , \ d(x_{n_k},x) \to 0 \ (n \to \infty) \ \Rightarrow \ d(x_n,x) \to 0 \ (n \to \infty)\]
-(柯西列+收敛子列$\ \Rightarrow \ $柯西列收敛)\\
-\textbf{Q.E.D.}
+因此存在点列$\{x_{n_k}\}$构造的闭球满足：
+\[\overline{B_{\frac{1}{2^{k+1}}}(x_{n_{k+1}})} \subset \overline{B_{\frac{1}{2^k}}(x_{n_k})}\]
+当且仅当：
+\[\exists \,! \, x \in \bigcap_{k=1}^{\infty}\overline{B}_{\frac{1}{2^k}}(x_{n_k})\]
+子列$\{x_{n_k}\}$才能收敛$d(x_{n_k},x) \to 0$。由于柯西利的子列收敛，故原柯西列也收敛。
+\end{proof}
 
-\paragraph*{9.}设$(X,d)$完备，$\tilde{f}$为$X$上的一族连续函数，满足
-\[\tilde{f}=\{F(x)|\forall x \in X \ , \exists \, M_x>0 \quad \text{s.t.} \quad |F(x)| \leq M_x\}\]
-
-证明:$\exists \, M>0 \ , \ \exists \, U\text{(开集)} \in X \quad \text{s.t.} \quad \forall x \in U \ , \ F \in \tilde{f} \ , \ |F(x)| \leq M$\\
-Proof($Baire$定理应用):设$E_n=\{x|x \in X \ , \ |F(x)| \leq n \ , \ F \in \tilde{f}\}$
-\[\text{由题设} \forall x \in X \ , \ x \in E_{[M_x]+1} \ \Rightarrow \ X \subset \bigcup_{n=1}^{\infty}E_n \ \left(or \ X=\bigcup_{n=1}^{\infty}E_n \right)\]
-$(X,d)$完备,由$Baire$定理，至少存在一个$M$使得$E_M$不是疏集，即存在一个开集$U \subset \overline{E}_M$
-\[\forall x \in U \ , \ \exists \, \{x_n\} \subset E_M \ , \ x_n \to x \ (n \to \infty)\]
-由连续性可知
+\begin{example}
+\quad 设$(X,d)$完备，$\tilde{f}$为$X$上的一族连续函数，满足$\tilde{f}=\{F(x)|\forall x \in X \ , \exists \, M_x>0 \quad \text{s.t.} \quad |F(x)| \leq M_x\}$。证明：$\exists \, M>0 \ , \ \exists \, U\text{(开集)} \in X \quad \text{s.t.} \quad \forall x \in U \ , \ F \in \tilde{f} \ , \ |F(x)| \leq M$。
+\end{example}
+\begin{proof}
+Baire 定理应用：设$E_n=\{x|x \in X \ , \ |F(x)| \leq n \ , \ F \in \tilde{f}\}$，因此对：
+\[\forall x \in X \ , \ x \in E_{[M_x]+1} \quad \Rightarrow \quad X \subset \bigcup_{n=1}^{\infty}E_n \ \left(or \ X=\bigcup_{n=1}^{\infty}E_n \right)\]
+由于$(X,d)$完备,由 Baire 定理，至少存在一个$M$使得$E_M$不是疏集，即存在一个开集$U \subset \overline{E}_M$，对$\forall x \in U \ , \ \exists \, \{x_n\} \subset E_M$使得$x_n \to x$。由连续性可知：
 \[|F(x)|=\lim_{n \to \infty}|F(x_n)| \leq M \ , \ \forall F \in \tilde{f}\]
-\textbf{Q.E.D.}
+\end{proof}
 
-\paragraph*{10.}在距离空间中证明:连续$\ \Leftrightarrow \ $开集的原像是开集。\\
-Proof($\ \Rightarrow \ $):设$f:X \to Y$是连续映射，设$G \subset Y$是任一开集，要证$f^{-1}(G)$是$X$中的开集。
-\[\forall x_0 \in f^{-1}(G) \ , \ f(x_0) \in G \ \Rightarrow \ \exists \, \varepsilon>0 \quad \text{s.t.} \quad B_{\varepsilon}(f(x_0)) \subset G\]
-$f$是连续映射:
-\[\exists \, \delta>0 \quad \text{s.t.} \quad d(y,x_0)<\delta \ , \ d_Y(f(y),f(x_0))<\varepsilon \ \Rightarrow \ f(B_{\delta}(x_0)) \subset B_{\varepsilon}(f(x_0)) \subset G\]
-\[\Rightarrow \ B_{\delta}(x_0) \subset f^{-1}(G) \ \Leftrightarrow \ x_0\text{是}f^{-1}(G)\text{的内点，由}x_0\text{的任意性可得}f^{-1}(G)\text{是开集}\]
+\begin{example}
+在距离空间中证明：连续$\ \Leftrightarrow \ $开集的原像是开集。
+\end{example}
+\begin{proof}
+充分性：设$f:X \to Y$是连续映射，设$G \subset Y$是任一开集，要证$f^{-1}(G)$是$X$中的开集。即证对$\forall x_0 \in f^{-1}(G) \ , \  \exists \, \varepsilon>0$使得$B_{\varepsilon}(f(x_0)) \subset G$。由于$f$是连续映射，即$\forall y \in f^{-1}(G) \ , \  \exists \, \delta>0$使得当$d(y,x_0)<\delta$时有$d_Y(f(y),f(x_0))<\varepsilon$，这也即$f(B_{\delta}(x_0)) \subset B_{\varepsilon}(f(x_0)) \subset G$。因此$B_{\delta}(x_0) \subset f^{-1}(G)$，即$x_0$是$f^{-1}(G)$的内点，由$x_0$的任意性可知$f^{-1}(G)$是开集。
+
+必要性：设$f:X \to Y$满足开集的原像是开集，则对$\forall x_0 \in X \ , \ \exists \, \varepsilon>0$有开球$B_{\varepsilon}(f(x_0))$是$Y$中的开集，因此$f^{-1}(B_{\varepsilon}(f(x_0)))$是$X$中的开集，且$x_0 \in f^{-1}(B_{\varepsilon}(f(x_0)))$是内点。因此$\exists \, \delta>0$使得$f(B_{\delta}(x_0)) \subset B_{\varepsilon}(f(x_0))$，可知$f$在$x_0$处连续。由$x_0$任意性可得$f$在$X$上连续。
 \begin{figure}[htbp]
     \center
     \includegraphics[scale=0.2]{./fig/ex-2.png}
 \end{figure}
-Proof($\ \Leftarrow \ $):设$f:X \to Y$满足开集的原像是开集，则$\forall x_0 \in X \ , \ \exists \, \varepsilon>0 \ , \ B_{\varepsilon}(f(x_0))$是$Y$中的开集。
-\[\Rightarrow \ f^{-1}(B_{\varepsilon}(f(x_0)))\text{是$X$中的开集}, \ x_0 \in f^{-1}(B_{\varepsilon}(f(x_0)))\text{是内点}\]
-\[\exists \, \delta>0 \ , \ f(B_{\delta}(x_0)) \subset B_{\varepsilon}(f(x_0)) \ \Rightarrow \ f\text{在}x_0\text{连续}\]
-由$x_0$任意性可得$f$在$X$上连续。
 \begin{figure}[htbp]
     \center
     \includegraphics[scale=0.2]{./fig/ex-3.png}
 \end{figure}
-\textbf{Q.E.D.}
+\end{proof}
 
 \paragraph*{11.}举例说明在压缩映射中(1)完备性不可少; \ (2)$d(Tx,Ty)<d(x,y) \ \forall x \neq y$是不充分的。
 \[(1) \quad R-\{0\} \to R-\{0\} \quad x \mapsto \frac{1}{2}x \ \text{无不动点。}\]
