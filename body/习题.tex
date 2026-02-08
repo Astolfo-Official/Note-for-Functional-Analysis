@@ -1,4 +1,4 @@
-\section{距离空间与拓扑空间习题}
+\section*{距离空间与拓扑空间习题}
 \begin{example}
 \quad 证明：任意开集的并为开集。
 \end{example}
@@ -146,128 +146,129 @@ Baire 定理应用：设$E_n=\{x|x \in X \ , \ |F(x)| \leq n \ , \ F \in \tilde{
 \begin{example}
 \quad $(t_0,s_0) \in \mathbb{R}^2 \ , \ f(t,s)$在$(t_0,s_0)$的邻域$N$中连续，满足$s_0=f(t_0,s_0)$。同时$\partial_sf(t,s)$在邻域$N$中存在且在$(t_0,s_0)$连续，且$\partial_sf(t_0,s_0)=0$。证明当$\exists \, \delta>0 \ , \ t \in [t_0-\delta,t_0+\delta] \ , \ x(t) \in C[t_0-\delta,t_0+\delta]$时，方程$x(t)=f(t,x(t)) \ , \ x(t_0)=s_0$有唯一解。
 \end{example}
-
-Solve:我们的思路是构造压缩映射$Tx=f(t,x(t))$来解决初值问题的证明：
-\[d(Tx,Ty)=\mathop \text{sup}\limits_t|f(t,x)-f(t,y)|=\mathop \text{sup}\limits_t|f_x(t,\xi(t))||x-y| \leq \mathop \text{sup}\limits_t|f_x(t,\xi(t))|d(x,y)\]
-\textbf{Proof:}
-\[f_s(t,s) \in C(N) \ , \ f(t_0,s_0)=0 \ \Rightarrow \ \exists \, \delta>0 \quad \text{s.t.} \quad |t-t_0|,|s-s_0| \leq \delta \ , \ |f_s(t,s)|=\theta < 1\]
-令
+\begin{proof}
+由$\partial_sf(t,s) \in C(N)$且$\partial_sf(t_0,s_0)=0$，即$\exists \, \delta>0$，当$|t-t_0| \ ,\ |s-s_0| \leq \delta$时，有$|\partial_s(t,s)|=\theta < 1$。令：
 \[X=\{x(t) \in C[t_0-\delta,t_0+\delta] \ , \ x(t_0)=s_0 \ , \ \mathop \text{sup}\limits_{t \in [t_0-\delta,t_0+\delta]}|x(t)-s_0| \leq \frac{\delta}{2}\}\]
-(极限不保严格不等号，所以上式最后一项取闭保持闭性)\\
-\textbf{Claim} $X$是完备的\\
-(\textbf{Proof:}$C[t_0-\delta,t_0+\delta]$是完备的，所以有
-\[\forall \{x_n(t)\} \subset C[t_0-\delta,t_0+\delta] \ , \ \exists \, X_{\infty}(t) \quad \text{s.t.} \quad x_n(t) \rightrightarrows x_{\infty}(t)\]
-\[\Rightarrow \ x_{\infty}(t_0)=\lim_{n \to \infty}X_n(t_0)=\lim_{n \to \infty}s_0=s_0\]
-故$X$完备。\\
-\textbf{Q.E.D.})\\
-定义$T:X \to X \ : \ T(x(t))=f(t,x(t))$，下面验证定义良好(满足初值条件以及像在原空间中):
-\[\text{1、} \ T(x(t_0))=f(t_0,x(t_0))=f(t_0,s_0)=s_0=x(t_0)\]
-\[\text{2、} \ \mathop \text{sup}\limits_{t \in [t_0-\delta,t_0+\delta]}|T(x(t))-s_0|=\mathop \text{sup}\limits_{t \in [t_0-\delta,t_0+\delta]}|f(t,x(t))-s_0|=\mathop \text{sup}\limits_{t \in [t_0-\delta,t_0+\delta]}|f_s(t,\xi(t))||x-s_0| \leq \frac{\delta}{2}\]
-\[\Rightarrow \ T(x(t)) \in X\]
-\[d(Tx,Ty)=\mathop \text{sup}\limits_{t \in [t_0-\delta,t_0+\delta]}|f(t,x(t))-f(t,y(t))|=\mathop \text{sup}\limits_{t \in [t_0-\delta,t_0+\delta]}|f_s(t,\xi(t))||x(t)-y(t)| \leq \theta d(x,y)\]
-$T$是压缩映射
-\[\exists \, ! \, x(t) \in X \quad \text{s.t.} \quad x(t)=f(t,x(t))\]
-\textbf{Q.E.D.}
+由$C[t_0-\delta,t_0+\delta]$完备，所以对$\forall \{x_n(t)\} \subset X \ , \ \exists \, x_{\infty}(t) \in C[t_0-\delta,t_0+\delta]$使得$x_n(t) \rightrightarrows x_{\infty}(t)$，且：
+\[x_{\infty}(t_0)=\lim_{n\to\infty}x_n(t_0)=\lim_{n\to\infty}s_0=s_0 \ , \ \forall n \in \mathbb{N}_+ \ , \ |x_n(t)-s_0| \leq \frac{\delta}{2} \quad \Rightarrow \quad |x(t)-s_0|=\lim_{n\to\infty}|x_n(t)-s_0|\leq \frac{\delta}{2}\]
+上述结论（极限不保严格不等号，所以定义时取闭保持闭性）对$\forall t \in [t_0-\delta,t_0+\delta]$都成立，不等式两侧取上界：
+\[\mathop \text{sup}\limits_{t \in [t_0-\delta,t_0+\delta]}|x(t)-s_0| \leq \frac{\delta}{2}\]
+即$x \in X$。因此$X$是闭子空间，由完备闭子空间也是完备的[定理\ref{theorem:zkj}]知$X$是完备的。
 
-\paragraph*{14.}证明:全有界集$A$的有限$\varepsilon$-网可取为$A$的子集。\\
-这题主要用到了以下事实:
-\[d(x,y)<r \ \Leftrightarrow \ x \in B_r(y) \ \Rightarrow \ B_r(y) \subset B_{2r}(x)\]
+定义$T: \ X \to X \ , \ T(x(t))=f(t,x(t))$，验证良定义（满足初值条件以及像在原空间中）：
+\begin{itemize}
+\item 1. $T(x(t_0))=f(t_0,x(t_0))=f(t_0,s_0)=s_0=x(t_0)$；
+\item 2. $\forall x \in X \ , \ T(x(t)) \in X$：
+\[\mathop \text{sup}\limits_{t \in [t_0-\delta,t_0+\delta]}|T(x(t))-s_0|=\mathop \text{sup}\limits_{t \in [t_0-\delta,t_0+\delta]}|f(t,x(t))-s_0|=\mathop \text{sup}\limits_{t \in [t_0-\delta,t_0+\delta]}|f_s(t,\xi(t))||x-s_0| \leq \frac{\delta}{2}\]
+\end{itemize}
+计算范数$d(Tx,Ty)$：
+\[d(Tx,Ty)=\mathop \text{sup}\limits_{t \in [t_0-\delta,t_0+\delta]}|f(t,x(t))-f(t,y(t))|=\mathop \text{sup}\limits_{t \in [t_0-\delta,t_0+\delta]}|f_s(t,\xi(t))||x(t)-y(t)| \leq \theta d(x,y)\]
+因此$T$是压缩映射，由压缩映射定理可知$\exists \, ! \, x(t) \in X$满足$x(t)=f(t,x(t))$。
+\end{proof}
+
+\begin{example}
+\quad 证明：全有界集$A$的有限$\varepsilon$-网可取为$A$的子集。
+\end{example}
+\begin{proof}
+对$\forall \varepsilon>0$，存在$A$的有限$\varepsilon/2$-网$N=\{x_1,x_2,\cdots,x_k\}$，若$B_{\varepsilon/2}(x_i) \cap A =\varnothing$，则可把$x_i$从$N$中去掉。不妨设对每个$x_i \in N$都满足$B_{\varepsilon/2}(x_i) \cap A \neq \varnothing$，取$y_i \in B_{\varepsilon/2}(x_i) \cap A$，显然有$B_{\varepsilon/2}(x_i) \subset B_{\varepsilon}(y_i)$。因此$\{y_1,y_2,\cdots,y_k\} \subset A$为$A$的有限$\varepsilon$-网。
 \begin{figure}[htbp]
     \center
     \includegraphics[scale=0.2]{./fig/ex-4.png}
 \end{figure}
-\textbf{Proof:}
-\[\forall \varepsilon>0 \ , \ \exists \, A\text{有限}\frac{\varepsilon}{2}\text{-网} \ , \ N=\{x_1,x_2,\cdots,x_k\} \ , \ \text{若}B_{\frac{\varepsilon}{2}}(x_i) \cap A =\varnothing \ , \ \text{则可以把$x_i$从$N$中去掉}\]
-\[\text{不妨设对每个} \ x_i \in N \ , \ B_{\frac{\varepsilon}{2}}(x_i) \cap A \neq \varnothing \ , \ \text{取} \ y_i \in B_{\frac{\varepsilon}{2}}(x_i) \cap A \ \Rightarrow \ B_{\frac{\varepsilon}{2}}(x_i) \subset B_{\varepsilon}(y_i)\]
-\[\Rightarrow \ \tilde{N}=\{y_1,y_2,\cdots,y_k\}\text{为$A$的有限$\varepsilon$-网且} \ \tilde{N} \subset A\]
-\textbf{Q.E.D.}
+\end{proof}
 
-\paragraph*{15.}证明:$ \ C^1[0,1]$中的有界集$A$是$C[0,1]$中的相对紧集。
+\begin{example}
+\quad 证明：$C^1[0,1]$中的有界集$A$是$C[0,1]$中的相对紧集。
+\end{example}
 \begin{definition}[相对紧集]
-    若集合$M$的闭包$\overline{M}$在空间中是紧集，则称$M$是相对紧集。
+若集合$M$的闭包$\overline{M}$在空间中是紧集，则称$M$是相对紧集。
 \end{definition}
-$C[0,1]$是距离空间，故$C[0,1]$中的紧集是列紧的闭集，$\overline{A}$是闭集，故只需证明$\overline{A}$是列紧的。显然接下来我们是要利用$Arzela$定理分三步证明:
+\begin{proof}
+$C[0,1]$是距离空间，故$C[0,1]$中的紧集是列紧的闭集，$\overline{A}$是闭集，故只需证明$\overline{A}$是列紧的。分三步证明：
+\begin{proposition}
+1. $A$在距离空间$C[0,1]$中有界(即一致有界)。
+\end{proposition}
+\begin{proof}
+由$A$在$C^1[0,1]$中有界，可得对$\forall x(t) \in A \ , \ \exists \, K>0$满足$d_C(x(t),0) \leq d_{C^1}(x(t),0) \leq K$，命题得证。
+\end{proof}
+\begin{proposition}
+2. $A$等度连续。
+\end{proposition}
+\begin{proof}
+利用中值定理对$\forall \varepsilon>0 \ , \ x(t) \in A \ , \ t_1,t_2 \in [0,1]$满足$|x(t_1)-x(t_2)|=|x'(\xi)||t_1-t_2| \leq K|t_1-t_2|$，取$|t_1-t_2|<\varepsilon/K$即得$|x(t_1)-x(t_2)|<\varepsilon$，$A$等度连续得证。
+\end{proof}
+由上述两命题以及 Arzela-Ascoli 定理[定理\ref{the:AA}]可以得$A$是列紧的。
+\begin{proposition}
+列紧集的闭包还是列紧的。
+\end{proposition}
+\begin{proof}
+任取$\overline{A}$中的柯西列$\{x_n(t)\}$，由闭包的性质，对$\forall x_n(t) \in \overline{A} \ , \ \exists \, y_n(t) \in A$满足$d_C(x_n(t),y_n(t))<1/n$。因为$A$是列紧的，所以$\exists \, n_k$使得$y_{n_k}(t) \to y(t)$，则：
+\[d_C(x_{n_k}(t),y(t)) \leq d_C(x_{n_k}(t),y_{n_k}(t))+d_C(y_{n_k}(t),y(t))\leq \frac{1}{n_k}+d_C(y_{n_k}(t),y(t)) \to 0\]
+即证$\overline{A}$列紧。
+\end{proof}
+\end{proof}
 
-1、$A$在距离空间$C[0,1]$中有界(即一致有界); \ 2、$A$等度连续 ;\\
-由1、2以及$Arzela$定理可以证明$A$是列紧的；
+\begin{example}
+\quad $X$是紧距离空间，$T:X \to X$是连续映射，对$\forall x \neq y$满足$d(Tx,Ty)<d(x,y)$。证明：$T$存在唯一不动点。
+\end{example}
+\begin{remark}
+\quad 需要注意的是这里$T$不一定是压缩映射，如取$X=[0,1]$，定义映射$T:X \to X$：
+\[x \mapsto Tx=\frac{x}{1+x}\]
+则对$\forall x \neq y \in [0,1]$：
+\[|Tx-Ty|=\left|\frac{x}{1+x}-\frac{y}{1+y}\right|=\frac{|x-y|}{|1+x||1+y|}<|x-y|\]
+显然上述映射$T$有唯一不动点$T(0)=0$。
+\end{remark}
+\begin{proof}
+定义$f(x)=d(x,Tx)$，易证，$f$在$X$上连续，故由于$X$是紧集可知$f$有最小值，设$x_0$是$f$的极小值点。若$f(x_0)>0$，则$f(x_0) \leq d(Tx_0,T^2X_0)<d(x_0,Tx_0)=f(x_0)$，得出矛盾，故$f(x_0)=0$即$Tx_0=x_0$是不动点。若$\exists \, y_0$使得$Ty_0=y_0$且$y_0 \neq x_0$，则$0<d(x_0,y_0)=d(Tx_0,Ty_0)<d(x_0,y_0)$，得出矛盾，因此不动点唯一。
+\end{proof}
 
-3、证明列紧集的闭包还是列紧的。\\
-\textbf{Proof:}\\
-\textbf{1.}
-\[A\text{在}C^1[0,1]\text{中有界} \ \Rightarrow \ \exists \, K>0 \ , \ \forall x(t) \in A \quad \text{s.t.} \quad d_{C^1}(x(t),0) \leq K\]
-\[\Rightarrow \ d_C(x(t),0) \leq d_{C^1}(x(t),0) \leq K \ \Rightarrow \ \text{$A$在距离空间$C[0,1]$中有界}\]
-\textbf{2.}
-\[\forall \varepsilon>0 \ , \ x(t) \in A \ , \ \exists \, t_1,t_2 \in [0,1] \quad \text{s.t.} \quad |x(t_1)-x(t_2)|=|x'(\xi)||t_1-t_2| \leq K|t_1-t_2|\]
-\[\text{取} \ |t_1-t_2|<\frac{\varepsilon}{K} \ \Rightarrow \ |x(t_1)-x(t_2)|<\varepsilon\]
-由1、2以及$Arzela$定理可得，$A$是列紧的；
-\textbf{3.}
-\[\text{任取}\{x_n(t)\}_{n=1}^{\infty} \subset \overline{A} \ \Rightarrow \ \forall x_n(t) \in \overline{A} \ , \ \exists \, y_n(t) \in A \quad \text{s.t.} \quad d_C(x_n(t),y_n(t))<\frac{1}{n}\]
-因为$A$是列紧的:
-\[\exists \, n_k \quad \text{s.t.} \quad y_{n_k}(t) \to y(t) \ (k \to \infty)\]
-\[d_C(x_{n_k}(t),y(t)) \leq d_C(x_{n_k}(t),y_{n_k}(t))+d_C(y_{n_k}(t),y_{n_k}(t))\]
-\[\leq \frac{1}{n_k}+d_C(y_{n_k}(t),y_{n_k}(t)) \to 0 \ (k \to \infty) \ \Rightarrow \ \overline{A}\text{列紧}\]
-\textbf{Q.E.D.}
+\section*{赋范线性空间习题}
+\begin{example}
+\quad 证明：Banach 空间$c_0=\{x=\{\xi_k\}|\xi_k\to0\} \ , \ ||x||=\mathop \text{sup}\limits_{k}|\xi_k|$可分。
+\end{example}
+\begin{proof}构造$A=\{r=\{r_k\}|r_k \in \mathbb{Q} \ , \ \exists \, n>0 \ , \ \forall k>n \ , \ r_k=0\}$，显然$A \subset c_0$。依题意，对$\forall \varepsilon>0 \ , \ x=\{\xi_k\} \in c_0 \ , \ \exists \, N>0$当$\forall n \geq N$满足$|\xi_n|<\varepsilon$。显然$\exists \, r=(r_1,r_2,\cdots,r_N,0,0,\cdots) \in A$满足：
+\[||x-r||=\mathop \text{sup}\limits_{k \in \mathbb{N}_+}|r_k-\xi_k| \leq \text{max}\left\{\mathop \text{sup}\limits_{k \leq N}|r_k-\xi_k| \ , \ \varepsilon\right\}\leq\varepsilon\]
+因为$\text{card}(A)=\text{card}(\mathbb{Q})$，故$c_0$是可分的。
+\end{proof}
 
-\paragraph*{16.}$X$是紧距离空间，$T:X \to X$是连续映射，满足$d(Tx,Ty)<d(x,y) \ \forall x \neq y$。\\
-证明:$T$存在唯一不动点。
-
-需要注意的是这里$T$不是一定压缩映射:\\
-\textbf{例}
-\[X=[0,1] \qquad Tx=\frac{x}{1+x}\]
-\[|Tx-Ty|=\left|\frac{x}{1+x}-\frac{y}{1+y}\right|=\frac{|x-y|}{|1+x||1+y|}<|x-y| \quad (\forall x \neq y \in [0,1])\]
-$T$有唯一不动点$T0=0$\\
-\textbf{Proof:} 定义$f(x)=d(x,Tx)$，容易证明，$f$在$X$上连续，故由于$X$是紧集可知$f$有最小值，设$x_0$是$f$的极小值点。
-\[\text{if} \ f(x_0)>0 \ \text{then} \ f(x_0) \leq d(Tx_0,T^2X_0)<d(x_0,Tx_0)=f(x_0)\]
-矛盾，故$f(x_0)=0 \ \Rightarrow \ Tx_0=x_0$是不动点。\\
-若$\exists \, y_0 \quad \text{s.t.} \quad Ty_0=y_0$，若$y_0 \neq x_0$，则
-\[0<d(x_0,y_0)=d(Tx_0,Ty_0)<d(x_0,y_0)\]
-矛盾，所有$y_0=x_0$，不动点唯一。\\
-\textbf{Q.E.D.}
-
-\section{赋范线性空间习题}
-\paragraph*{17.}证明$Banach$空间$c_0$可分。
-\[c_0=\{x=\{\xi_k\}_{k=1}^{\infty}|\lim_{k \to \infty}\xi_k=0\} \qquad ||x||=\mathop \text{sup}\limits_{k}|\xi_k|\]
-\textbf{Proof:}\\
-\[\text{由} \ \lim_{k \to \infty}\xi_k=0 \ \text{可知，我们可以构造下列序列组成$c_0$的子集} \ c_0'=\{x'=(\xi_i,\xi_2,\cdots,\xi_k,0,0,\cdots)\}\]
-令$A=\{r=\{r_k\}_{k=1}^{\infty}|r_k \in \mathbb{Q} \ , \ \exists \, n>0 \ , \ \forall j>n \ , \ r_j=0\}$
-\[\forall \varepsilon>0 \ , \ x=\{\xi_k\}_{k=1}^{\infty} \in c_0 \ , \ \lim_{k \to \infty}\xi_k=0 \ \Rightarrow \ \exists \, N>0 \ , \ \forall n \geq N \quad \text{s.t.} \quad |\xi_n|<\varepsilon\]
-\[\exists \, r=(r_1,r_2,\cdots,r_N,0,0,\cdots) \in A \quad \text{s.t.} \quad ||x-r||=\mathop \text{sup}\limits_{k \in \mathbb{N}_+}|r_k-\xi_k| \leq \text{max}\left\{\mathop \text{sup}\limits_{k \in \mathbb{N}_+}|r_k-\xi_k| \ , \ \varepsilon\right\}<\varepsilon\]
-因为
-\[A=\bigcup_{k=1}^N\mathbb{Q} \qquad \text{card}(c_0')=\text{card}(A)=\text{card}(\mathbb{Q})\]
-故$c_0$是可分的。\\
-\textbf{Q.E.D.}
-
-\paragraph*{18.}证明离散形式的$H\ddot{o}lder$不等式
-\[\sum_{i=1}^n|x_iy_i| \leq \left(\sum_{i=1}^n|x_i|^p\right)^{\frac{1}{p}}\left(\sum_{i=1}^n|y_i|^q\right)^{\frac{1}{q}} \quad (p,q>0 \ , \ \frac{1}{p}+\frac{1}{q}=1 \ , \ x_i,y_i \in \mathbb{R} \ \text{or} \ \mathbb{C})\]
-和$Minkowski$不等式
-\[\left(\sum_{i=1}^n|x_i+y_i|^p\right)^{\frac{1}{p}} \leq \left(\sum_{i=1}^n|x_i|^p\right)^{\frac{1}{p}}+\left(\sum_{i=1}^n|y_i|^p\right)^{\frac{1}{p}} \quad (p \geq 1 \ , \ x_i,y_i \in \mathbb{R} \ \text{or} \ \mathbb{C})\]
-Proof($H\ddot{o}lder$不等式):设
-\[A=\left(\sum_{i=1}^n|x_i|^p\right)^{\frac{1}{p}} \qquad B=\left(\sum_{i=1}^n|y_i|^q\right)^{\frac{1}{q}}\]
-由$Young$不等式:
-\[\frac{|x_i| \cdot |y_i|}{A \cdot B} \leq \frac{1}{p}\frac{|x_i|^p}{A^p}+\frac{1}{q}\frac{|y_i|^q}{B^q} \ \Rightarrow \ \frac{1}{A \cdot B}\sum_{i=1}^n|x_iy_i| \leq \frac{1}{pA^p}\sum_{i=1}^n|x_i|^p+\frac{1}{qB^q}\sum_{i=1}^n|y_i|^q=1\]
-\[\Rightarrow \ \sum_{i=1}^n|x_iy_i| \leq A \cdot B=\left(\sum_{i=1}^n|x_i|^p\right)^{\frac{1}{p}} \cdot \left(\sum_{i=1}^n|y_i|^q\right)^{\frac{1}{q}}\]
-\textbf{Q.E.D.}\\
-Proof($Minkowski$不等式):
-\[\sum_{i=1}^n|x_i+y_i|^p=\sum_{i=1}^n|x_i+y_i||x_i+y_i|^{p-1} \leq \sum_{i=1}^n|x_i||x_i+y_i|^{p-1}+\sum_{i=1}^n|y_i||x_i+y_i|^{p-1}\]
-\[\leq \left(\sum_{i=1}^n|x_i|^p\right)^{\frac{1}{p}}\left(\sum_{i=1}^n|x_i+y_i|^{q(p-1)}\right)^{\frac{1}{q}}+\left(\sum_{i=1}^n|y_i|^p\right)^{\frac{1}{p}}\left(\sum_{i=1}^n|x_i+y_i|^{q(p-1)}\right)^{\frac{1}{q}}\]
-\[\frac{1}{p}+\frac{1}{q}=1 \ \Leftrightarrow \ p=(p-1)q\]
-\[\leq \left(\sum_{i=1}^n|x_i|^p\right)^{\frac{1}{p}}\left(\sum_{i=1}^n|x_i+y_i|^{p}\right)^{1-\frac{1}{p}}+\left(\sum_{i=1}^n|y_i|^p\right)^{\frac{1}{p}}\left(\sum_{i=1}^n|x_i+y_i|^{p}\right)^{1-\frac{1}{p}}\]
+\begin{example}
+\quad 设$x_i,y_i \in \mathbb{K} \ , \ p,q>0$，证明离散形式的 H\"{o}lder 不等式：
+\[\frac{1}{p}+\frac{1}{q}=1 \ , \ \sum_{i=1}^n|x_iy_i| \leq \left(\sum_{i=1}^n|x_i|^p\right)^{\frac{1}{p}}\left(\sum_{i=1}^n|y_i|^q\right)^{\frac{1}{q}}\]
+和 Minkowski 不等式：
+\[p \geq 1 \ , \ \left(\sum_{i=1}^n|x_i+y_i|^p\right)^{\frac{1}{p}} \leq \left(\sum_{i=1}^n|x_i|^p\right)^{\frac{1}{p}}+\left(\sum_{i=1}^n|y_i|^p\right)^{\frac{1}{p}}\]
+\end{example}
+\begin{proof}
+记
+\[A=\left(\sum_{i=1}^n|x_i|^p\right)^{\frac{1}{p}} \ , \ B=\left(\sum_{i=1}^n|y_i|^q\right)^{\frac{1}{q}}\]
+由 Young 不等式[定理\ref{theorem:young}]
+\[\frac{|x_i| \cdot |y_i|}{A \cdot B} \leq \frac{1}{p}\frac{|x_i|^p}{A^p}+\frac{1}{q}\frac{|y_i|^q}{B^q} \quad \Rightarrow \quad \frac{1}{A \cdot B}\sum_{i=1}^n|x_iy_i| \leq \frac{1}{pA^p}\sum_{i=1}^n|x_i|^p+\frac{1}{qB^q}\sum_{i=1}^n|y_i|^q=1\]
+\[\Rightarrow \quad \sum_{i=1}^n|x_iy_i| \leq A \cdot B=\left(\sum_{i=1}^n|x_i|^p\right)^{\frac{1}{p}} \cdot \left(\sum_{i=1}^n|y_i|^q\right)^{\frac{1}{q}}\]
+离散形式的 H\"{o}lder 不等式即证。下证离散形式的 Minkowski 不等式，易知$1/p+1/q=1 \ \Leftrightarrow \ p=(p-1)q$：
+\[\begin{aligned}
+\sum_{i=1}^n|x_i+y_i|^p&=\sum_{i=1}^n|x_i+y_i||x_i+y_i|^{p-1} \leq \sum_{i=1}^n|x_i||x_i+y_i|^{p-1}+\sum_{i=1}^n|y_i||x_i+y_i|^{p-1}\\
+&\leq \left(\sum_{i=1}^n|x_i|^p\right)^{\frac{1}{p}}\left(\sum_{i=1}^n|x_i+y_i|^{q(p-1)}\right)^{\frac{1}{q}}+\left(\sum_{i=1}^n|y_i|^p\right)^{\frac{1}{p}}\left(\sum_{i=1}^n|x_i+y_i|^{q(p-1)}\right)^{\frac{1}{q}}\\
+&\leq \left(\sum_{i=1}^n|x_i|^p\right)^{\frac{1}{p}}\left(\sum_{i=1}^n|x_i+y_i|^{p}\right)^{1-\frac{1}{p}}+\left(\sum_{i=1}^n|y_i|^p\right)^{\frac{1}{p}}\left(\sum_{i=1}^n|x_i+y_i|^{p}\right)^{1-\frac{1}{p}}\\
+\end{aligned}\]
 \[\Rightarrow \ \left(\sum_{i=1}^n|x_i+y_i|^p\right) \cdot \left(\sum_{i=1}^n|x_i+y_i|^{p}\right)^{\frac{1}{p}-1} \leq \left(\sum_{i=1}^n|x_i|^p\right)^{\frac{1}{p}}+\left(\sum_{i=1}^n|y_i|^p\right)^{\frac{1}{p}}\]
 \[\Leftrightarrow \ \left(\sum_{i=1}^n|x_i+y_i|^{p}\right)^{\frac{1}{p}} \leq \left(\sum_{i=1}^n|x_i|^p\right)^{\frac{1}{p}}+\left(\sum_{i=1}^n|y_i|^p\right)^{\frac{1}{p}}\]
-\textbf{Q.E.D.}
-
-\paragraph*{19.}设$m(E)<+\infty \ , \ f \in L^{\infty}(E)$，证明:
+离散形式的 Minkowski 不等式即证。
+\end{proof}
+\newpage
+\begin{example}
+\quad 设$m(E)<+\infty \ , \ f \in L^{\infty}(E)$，证明：
 \[\lim_{p \to \infty}||f||_{L^p}=||f||_{L^{\infty}}\]
-\textbf{Proof:}
+\end{example}
+\begin{proof}利用 H\"{o}lder 不等式估计$L^p$范数的上界：
 \[||f||_{L^p(E)}=\left(\int_E|f|^p\dd t\right)^{\frac{1}{p}}=\left(\int_{E/E_0}|f|^p\dd t\right)^{\frac{1}{p}} \leq \left(m(E) \cdot ||f||^p_{L^{\infty}(E)}\right)^{\frac{1}{p}}=m(E)^{\frac{1}{p}}||f||^p_{L^{\infty}(E)}\]
+对上式两侧取极限：
 \[\lim_{p \to \infty}||f||_{L^p(E)} \leq \lim_{p \to \infty}m(E)^{\frac{1}{p}}||f||^p_{L^{\infty}(E)}=||f||^p_{L^{\infty}(E)}\]
-另一方面，我们令$\forall \varepsilon>0 \ , \ m(|f| \geq M-\varepsilon)=\delta>0 \ \text{where} \ M:=||f||_{L^{\infty}(E)}$
+另一方面，我们令$M=||f||_{L^{\infty}(E)}$，其满足对$\forall \varepsilon>0 \ , \ m(|f| \geq M-\varepsilon)=\delta>0$，都有：
 \[||f||_{L^p(E)}=\left(\int_E|f|^p\dd t\right)^{\frac{1}{p}}=\left(\int_{f \geq M-\varepsilon}|f|^p\dd t+\int_{f<M-\varepsilon}|f|^p\dd t\right)^{\frac{1}{p}}\]
-\[\geq \left(\int_{|f| \geq M-\varepsilon}|M-\varepsilon|^p\dd t+\int_{|f|<M-\varepsilon}|f|^p\dd t\right)^{\frac{1}{p}} \geq |M_\varepsilon|\delta^{\frac{1}{p}}\]
+\[\geq \left(\int_{|f| \geq M-\varepsilon}|M-\varepsilon|^p\dd t+\int_{|f|<M-\varepsilon}|f|^p\dd t\right)^{\frac{1}{p}} \geq |M-\varepsilon|\delta^{\frac{1}{p}}\]
 由$\varepsilon$的任意性:
-\[\lim_{p \to \infty}||f||_{L^p(E)} \geq \lim_{p \to \infty} |M_\varepsilon|\delta^{\frac{1}{p}}=||f||_{L^{\infty}(E)}\]
-综上所述，有
+\[\lim_{p \to \infty}||f||_{L^p(E)} \geq \lim_{p \to \infty} |M-\varepsilon|\delta^{\frac{1}{p}}=||f||_{L^{\infty}(E)}\]
+综上所述，有：
 \[\lim_{p \to \infty}||f||_{L^p}=||f||_{L^{\infty}}\]
-\textbf{Q.E.D.}
+\end{proof}
 
-\section{有界线性算子习题}
+\section*{有界线性算子习题}

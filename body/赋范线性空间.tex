@@ -198,7 +198,7 @@ $B_r(0)=\{x|x \in X \ ,||x||<r\}$，设$x,y \in B_r(0) \ , \ t \in (0,1)$，则�
 
 \section{$L^p$空间} \label{lp}
 \begin{definition}[$L^p$空间]
-设$E$是$\mathbb{R}$上的可测集。$L^p$空间定义为
+设$E$是$\mathbb{R}$上的可测集。$L^p$空间定义为：
 \[L^p(E)=\left\{x(t) \ \text{可测} \ , \ \int_E|x(t)|^p<+\infty\right\}\]
 这里$x(t)$是等价类，为方便书写取一代表元，这里$x(t) \sim y(t)$当且仅当$x(t)=y(t) \quad a.e.$，定义范数：
 \[||x(t)||_{L^p(E)}=\left(\int_E|x(t)|^p\dd t\right)^{\frac{1}{p}}\]
@@ -212,7 +212,7 @@ $B_r(0)=\{x|x \in X \ ,||x||<r\}$，设$x,y \in B_r(0) \ , \ t \in (0,1)$，则�
 \item 3. 三角不等式：Minkowski 不等式（要证明 Minkowski 不等式，我们需要一些其他的基础不等式）
 \end{itemize}
 \end{proof}
-\begin{theorem}[Young 不等式]
+\begin{theorem}[Young 不等式]\label{theorem:young}
     \[\text{若} \forall p,q>0 \ \text{满足} \ \frac{1}{p}+\frac{1}{q}=1 \ \text{，则对} \ \forall a,b>0 \ \text{都有} \ |ab| \leq \frac{|a|^p}{p}+\frac{|b|^q}{q}\]
 \end{theorem}
 \begin{proof}
@@ -343,7 +343,7 @@ $p=1$时，显然；$p>1$时，有
 \end{definition}
 
 \begin{proposition}[$L^{\infty}(E)$空间的性质]
-限定$m(E)<+\infty$，则$\forall x(t) \in L^{\infty}(E) \ , \ x(t) \in L^p(E) \ (p \geq 1)$，反之则不然，这也即：
+限定$m(E)<+\infty$，则$\forall x(t) \in L^{\infty}(E)$有$x(t) \in L^p(E) \ (p \geq 1)$，反之则不然，这也即：
 \[L^{\infty}(E) \subset \bigcap_{p \geq p_0}L^{p}(E) \ (\forall p_0 \geq 1)\]
 但需要注意
 \[L^{\infty}(E) \neq \bigcap_{p \geq p_0}L^{p}(E) \ (\forall p_0 \geq 1)\]

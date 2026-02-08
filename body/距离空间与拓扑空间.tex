@@ -357,12 +357,12 @@ $A$可数，$D$不可数，且有$D \subset l^{\infty} \subset \bigcup_{a \in A}
 \[\forall k \in \mathbb{Z}_+ \ , \ \exists \, n_k>0 \quad \text{s.t.} \quad n,m>n_k \ , \ d(x_n,x_m)<\frac{1}{2^k}, \ (\text{取 }n_{k+1}>n_{k}, \ k\in\mathbb{Z}_+)\]
 可以证明子列$\{x_{n_k}(t)\}$有界，考虑距离的平方：
 \[\int_0^1|x_{n_k}|^2\dd t=\int_0^1|x_{n_1}+\sum_{i=2}^k(x_{n_i}-x_{n_{i-1}})|^2\dd t \leq \int_0^1|x_{n_1}|^2\dd t+\sum_{i=2}^k\int_0^1|x_{n_i}-x_{n_{i-1}}|^2\dd t=\int_0^1|x_{n_1}|^2\dd t+\sum_{i=2}^k\frac{1}{4^i}<+\infty\]
-\begin{theorem}[$Fatou$引理]
+\begin{theorem}[Fatou 引理]
     设$(S,\Sigma,\mu)$是测度空间，$\{f_n(x)\}$是测度空间上的实值非负可测函数列，则
     \[\int_E\varliminf_{n \to \infty}f_n(x)\dd x \leq \varliminf_{n \to \infty}\int_Ef_n(x)\dd x\]
     其中函数极限是在逐点收敛的意义上的极限，函数取值和积分可以是无穷大。
 \end{theorem}
-记子列$\{x_{n_k}(t)\}$的极限点为$x_{n_{\infty}}$，由$Fatou$引理可证明极限点也在$L^2$中：
+记子列$\{x_{n_k}(t)\}$的极限点为$x_{n_{\infty}}$，由 Fatou 引理可证明极限点也在$L^2$中：
 \[\int_0^1|x_{n_{\infty}}|^2\dd t=\int_0^1\varliminf_{k \to \infty}|x_{n_1}+\sum_{i=2}^k(x_{n_i}-x_{n_{i-1}})|^2\dd t \leq \varliminf_{k \to \infty}\int_0^1|x_{n_1}+\sum_{i=2}^k(x_{n_i}-x_{n_{i-1}})|^2\dd t=\varliminf_{k \to \infty}\int_0^1|x_{n_k}|^2\dd t<+\infty\]
 存在收敛子列$\{x_{n_k}(t)\}$可知柯西列$\{x_n(t)\}$收敛，记其收敛于$x_{\infty}(t)$。类似地，柯西列$\{x_n(t)\}$在$L^1$中也收敛：
 \[\int_0^1|x_{n_{\infty}}|\dd t=\int_0^1\varliminf_{k \to \infty}|x_{n_1}+\sum_{i=2}^k(x_{n_i}-x_{n_{i-1}})|\dd t \leq \varliminf_{k \to \infty}\int_0^1|x_{n_1}+\sum_{i=2}^k(x_{n_i}-x_{n_{i-1}})|\dd t=\varliminf_{k \to \infty}\int_0^1|x_{n_k}|\dd t<+\infty\]
