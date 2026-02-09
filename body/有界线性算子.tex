@@ -766,7 +766,7 @@ $X,Y$是赋范线性空间，$T \in \mathscr{B}(X,Y)$，定义$T^*:Y^* \to X^*$�
 \quad $X^*$上的弱收敛：$f_n \xrightarrow{w} f_0 \in X^*$，则$\forall F \in (X^*)^*$有$F(f_n) \to F(f_0)$。由嵌入$F \ :X \hookrightarrow X^{**} \ , \ x \mapsto \hat{x}$知$X^*$上的弱$*$收敛是$\forall x \in X \ , \ f_n(x)=\hat{x}(f_n) \to \hat{x}(f_0)=f_0(x)$。因为$X \subset X^{**}$，所以$f_n \xrightarrow{w} f_0 \in X^* \ \Rightarrow \ f_n \xrightarrow{w^*} f_0  \in X^*$，当$X$自反时两者等价。
 \end{remark}
 
-\begin{theorem}
+\begin{theorem}\label{theorem:kfrxlj}
 设$X$赋范线性空间$X$是可分的，则$X^*$中的有界集弱$*$列紧。
 \end{theorem}
 \begin{proof}
@@ -786,3 +786,16 @@ $X,Y$是赋范线性空间，$T \in \mathscr{B}(X,Y)$，定义$T^*:Y^* \to X^*$�
 \begin{remark}
 \quad 自反空间一定是 Banach 空间[定理\ref{theorem:wb}]。
 \end{remark}
+\begin{proof}先引述三个引理：
+\begin{proposition}[1. 若$X^*$可分，则$X$可分]
+由$X^*$可分，即存在可数稠密子集$\{f_n\} \subset X^*$，令$g_n=f_n/||f_n||$，则$\{g_n\}$是$S^*=\{f \in X^*| \ ||f||=1\}$上到可数稠密子集。由于$||g_n||=1$[定义\ref{definition:szfs}]，则$\exists \, \{x_n\} \subset X$满足$||x_n||=1$使得对$\forall n \in \mathbb{N}_+$都有$g_n(x_n)>1/2$。令$X_0=\text{span}\{x_n\}$，显然$X_0$可分。采用反证法证明$X_0=X$，如若不然，则$\exists \, x_0 \in X-X_0$，由 Hahn-Banach 定理[定理\ref{HB}]，$\exists \, f_0 \in X^*$使得$||f_0||=1$且$\eval{f_0}_{X_0}=0$，即$f_0 \in S$。而此时：
+\[\forall n \in \mathbb{N}_+ \ , \ ||f_0-g_n||=\sup_{x \in S}|f_0(x)-g_n(x)| \geq |f_0(x_n)-g_n(x_n)|>\frac{1}{2}\]
+这与$\{f_n\}$在$X^*$中稠密矛盾，命题得证。
+\end{proposition}
+\begin{proposition}[2. 若$X$自反可分，则$X$中对有界集是弱列紧的]
+因为$X$自反可分，即$X^{**}=X=(X^*)^*$可分，由上一引理可知$X^*$可分。由定理\ref{theorem:kfrxlj}，$X^{**}$中的有界集是弱$*$列紧的，即$\forall \{F_n\} \subset X^{**}$若有界，则$\exists \, \{F_{n_k}\} \subset \{F_n\}$满足$F_{n_k} \xrightarrow{w^*} F_0 \in X^{**}$。由自反性，上述结论等价于$\forall \{x_n\} \subset X$若有界，则$\exists \, \{x_{n_k}\} \subset \{x_n\}$满足$x_{n_k} \xrightarrow{w^*} \hat{x}_0 \in X$，即$X$中的有界集是弱$*$列紧的，自反空间中弱$*$列紧等价于弱列紧，命题得证。
+\end{proposition}
+\begin{proposition}[3. 自反空间的闭子空间也自反]
+设$X$自反，$X_0 \subset X$是闭子空间，只需证明子空间嵌入映射$\Lambda: \ X_0 \to X_0^{**}$是满射，即$\forall z_0 \in X_0^{**} \ , \ \exists \, x_0 \in X_0$满足$z_0=\hat{x}_0$，也即对$\forall f_0 \in X_0^*$都有$z_0(f_0)=\hat{x}_0(f_0)=f_0(x_0)$。
+\end{proposition}
+\end{proof}
