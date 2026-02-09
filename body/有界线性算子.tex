@@ -786,16 +786,21 @@ $X,Y$是赋范线性空间，$T \in \mathscr{B}(X,Y)$，定义$T^*:Y^* \to X^*$�
 \begin{remark}
 \quad 自反空间一定是 Banach 空间[定理\ref{theorem:wb}]。
 \end{remark}
-\begin{proof}先引述三个引理：
-\begin{proposition}[1. 若$X^*$可分，则$X$可分]
+\begin{proposition}[1. 若$X^*$可分，则$X$可分]\label{proposition:1}
 由$X^*$可分，即存在可数稠密子集$\{f_n\} \subset X^*$，令$g_n=f_n/||f_n||$，则$\{g_n\}$是$S^*=\{f \in X^*| \ ||f||=1\}$上到可数稠密子集。由于$||g_n||=1$[定义\ref{definition:szfs}]，则$\exists \, \{x_n\} \subset X$满足$||x_n||=1$使得对$\forall n \in \mathbb{N}_+$都有$g_n(x_n)>1/2$。令$X_0=\text{span}\{x_n\}$，显然$X_0$可分。采用反证法证明$X_0=X$，如若不然，则$\exists \, x_0 \in X-X_0$，由 Hahn-Banach 定理[定理\ref{HB}]，$\exists \, f_0 \in X^*$使得$||f_0||=1$且$\eval{f_0}_{X_0}=0$，即$f_0 \in S$。而此时：
 \[\forall n \in \mathbb{N}_+ \ , \ ||f_0-g_n||=\sup_{x \in S}|f_0(x)-g_n(x)| \geq |f_0(x_n)-g_n(x_n)|>\frac{1}{2}\]
 这与$\{f_n\}$在$X^*$中稠密矛盾，命题得证。
 \end{proposition}
-\begin{proposition}[2. 若$X$自反可分，则$X$中对有界集是弱列紧的]
-因为$X$自反可分，即$X^{**}=X=(X^*)^*$可分，由上一引理可知$X^*$可分。由定理\ref{theorem:kfrxlj}，$X^{**}$中的有界集是弱$*$列紧的，即$\forall \{F_n\} \subset X^{**}$若有界，则$\exists \, \{F_{n_k}\} \subset \{F_n\}$满足$F_{n_k} \xrightarrow{w^*} F_0 \in X^{**}$。由自反性，上述结论等价于$\forall \{x_n\} \subset X$若有界，则$\exists \, \{x_{n_k}\} \subset \{x_n\}$满足$x_{n_k} \xrightarrow{w^*} \hat{x}_0 \in X$，即$X$中的有界集是弱$*$列紧的，自反空间中弱$*$列紧等价于弱列紧，命题得证。
+\begin{proposition}[2. 若$X$自反可分，则$X$中对有界集是弱列紧的]\label{proposition:2}
+因为$X$自反可分，即$X^{**}=X=(X^*)^*$可分，由命题\ref{proposition:1}可知$X^*$可分。由定理\ref{theorem:kfrxlj}，$X^{**}$中的有界集是弱$*$列紧的，即$\forall \{F_n\} \subset X^{**}$若有界，则$\exists \, \{F_{n_k}\} \subset \{F_n\}$满足$F_{n_k} \xrightarrow{w^*} F_0 \in X^{**}$。由自反性，上述结论等价于$\forall \{x_n\} \subset X$若有界，则$\exists \, \{x_{n_k}\} \subset \{x_n\}$满足$x_{n_k} \xrightarrow{w^*} \hat{x}_0 \in X$，即$X$中的有界集是弱$*$列紧的，自反空间中弱$*$列紧等价于弱列紧，命题得证。
 \end{proposition}
-\begin{proposition}[3. 自反空间的闭子空间也自反]
-设$X$自反，$X_0 \subset X$是闭子空间，只需证明子空间嵌入映射$\Lambda: \ X_0 \to X_0^{**}$是满射，即$\forall z_0 \in X_0^{**} \ , \ \exists \, x_0 \in X_0$满足$z_0=\hat{x}_0$，也即对$\forall f_0 \in X_0^*$都有$z_0(f_0)=\hat{x}_0(f_0)=f_0(x_0)$。
+\begin{proposition}[3. 自反空间的闭子空间也自反]\label{proposition:3}
+设$X$自反，$X_0 \subset X$是闭子空间，只需证明子空间嵌入映射$\Lambda: \ X_0 \to X_0^{**}$是满射，即$\forall z_0 \in X_0^{**} \ , \ \exists \, x_0 \in X_0$满足$z_0=\hat{x}_0$，也即对$\forall f_0 \in X_0^*$都有$z_0(f_0)=\hat{x}_0(f_0)=f_0(x_0)$。考虑限制映射$T: \ X^* \to X_0^* \ , \ f \mapsto Tf=\eval{f}_{X_0}$，显然$T \in \mathscr{B}(X^*,X_0^*)$，其共轭算子为$T^* \in \mathscr{B}(X_0^{**},X^{**})$。对$\forall z_0 \in X_0^{**}$，令$z=T^*z_0 \in X^{**}$，由$X$自反，可知$\exists \, x \in X$满足$z=\hat{x}$。采用反证法证明$x \in X_0$，如若不然，即$x \in X-X_0$，由 Hahn-Banach 定理[定理\ref{HB}]，$\exists \, f_0(x)=d(x,X_0) \in X^*$满足$\eval{f_0}_{X_0}=0$，此时有$Tf_0=\mathbf{0}$是零算子：
+\[\forall z_0 \in X_0^{**} \ , \ 0=z_0(Tf_0)=T^*(z_0)f_0=z(f_0)=\hat{x}(f_0)=f_0(x)>0\]
+得出矛盾，命题得证。
 \end{proposition}
+\begin{proof}
+必要性显然，下证充分性对任意自反空间$X$中的有界子列$\{x_n\}$，令$X_0=\overline{\text{span}\{x_n\}}$，显然$X_0$是$X$的闭子空间，由命题\ref{proposition:3}可知$X_0$自反，进而由命题\ref{proposition:2}可知$\exists \, \{x_{n_k}\} \subset \{x_n\}$弱收敛，即$\forall f_0 \in X_0^*$都有$f_0(x_{n_k}) \to f_0(x_0)$。对$\forall f \in X^*$都可以找到$f_0$看作是其在$X_0^*$上对限制，即$f_0=\eval{f}_{X_0}$，因此有$f_0(x_{n_k})=\eval{f}_{X_0}(x_{n_k}) \to \eval{f}_{X_0}(x_0)=f_0(x_0)$，即$\{x_{n_k}\}$在$X$上弱收敛于$x_0$。
 \end{proof}
+
+\section{紧算子}
