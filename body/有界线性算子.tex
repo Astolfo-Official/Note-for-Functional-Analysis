@@ -45,11 +45,11 @@
 \end{theorem}
 \begin{proof}
 \begin{itemize}
-\item 1. 充分性显然，下证必要性：设$T$在$x_0 \in X$连续，即$x_n \to x \ \Rightarrow \ Tx_n \to Tx$，则有：
+\item 1. 必要性显然，下证充分性：设$T$在$x_0 \in X$连续，即$x_n \to x \ \Rightarrow \ Tx_n \to Tx$，则有：
 \[Tx_n-Tx=T(x_n-x+y)-Ty \to 0 \quad (\forall y \in X)\]
-\item 2. 充分性：由上一条知只需证明在一点处连续，不妨取为原点，取收敛于原点的点列$\{x_n\}$，由有界性：
+\item 2. 必要性：由上一条知只需证明在一点处连续，不妨取为原点，取收敛于原点的点列$\{x_n\}$，由有界性：
 \[||Tx_n|| \leq M||x_n|| \to 0 \quad \Rightarrow \quad Tx_n \to 0 \quad \Leftrightarrow \quad Tx_n-T(0) \to 0\]
-必要性采用反证法：设$T$连续但是无界，$\forall n \in \mathbb{N} \ , \ \exists \, x_n \in X$满足$||Tx_n||>n||x_n||$，令：
+充分性采用反证法：设$T$连续但是无界，$\forall n \in \mathbb{N} \ , \ \exists \, x_n \in X$满足$||Tx_n||>n||x_n||$，令：
 \[y_n=\frac{x_n}{n||x_n||} \ , \ ||y_n||=\frac{||x_n||}{n||x_n||}=\frac{1}{n} \to 0 \quad \Rightarrow \quad y_n \to 0\]
 由线性性可知$T(0)=0$，而
 \[||Ty_n-T(0)||=||Ty_n||=\left\|\frac{Tx_n}{n||x_n||}\right\|>1\]
@@ -98,7 +98,7 @@
 \end{proof}
 
 虽然这个定理一眼顶针，但既然上课讲了那我还是放进来了。下面这个定理就没那么显然了，如果我们想知道一个算子空间完备需要什么条件，那么按照定义自然而然地就需要其上的所有柯西列都收敛于其中。我们可能会猜想这需要出发空间和到达空间都完备，但如果考虑算子范数的定义，好像跟出发空间没什么太大关系，于是我们进一步猜测只跟到达空间有关系。那么到底是不是呢，答案是yes，下面我们来叙述这件事并证明它。
-\begin{theorem}
+\begin{theorem}\label{theorem:wb}
 如果$Y$是 Banach 空间，则$\mathscr{B}(X,Y)$也是 Banach 空间。
 \end{theorem} 
 \begin{proof}
@@ -119,7 +119,7 @@
 \begin{definition}[算子空间中的收敛]
 设$T_n,T \in \mathscr{B}(X,Y)$：
 \begin{itemize}
-\item 1. 依范数收敛：$||T_n-T|| \to 0$；
+\item 1. 依范数收敛（强收敛）：$||T_n-T|| \to 0$；
 \item 2. 一致收敛：$\forall \varepsilon>0 \ , \ x \in X \ , \ \exists \, N(\varepsilon) \in \mathbb{N} \quad \text{s.t.} \quad \forall n>N \ , \ ||T_n(x)-T(x)||<\varepsilon$；
 \item 3. 逐点收敛：$\forall x \in X \ , \ \varepsilon>0 \ , \ \exists \, N(\varepsilon,x) \in \mathbb{N} \quad \text{s.t.} \quad \forall n>N \ , \ ||T_nx-Tx||<\varepsilon$。
 \end{itemize}
@@ -416,7 +416,7 @@ $\exists \, \beta \in S \quad \text{s.t.} \quad \forall \alpha \in S \ , \ \beta
 \begin{theorem}[Zorn 引理]\label{Zorn}
 若$S$中的任意全序子集都有上界，则$S$中必然存在(至少一个)极大元。
 \end{theorem} 
-Zorn 引理与选择公理等价。方便证明起见使用次可加函数重新表述实空间的 Hahn-Banach 定理。
+\href{https://zh.wikipedia.org/wiki/%E4%BD%90%E6%81%A9%E5%BC%95%E7%90%86}{Zorn 引理}与选择公理等价。方便证明起见使用次可加函数重新表述实空间的 Hahn-Banach 定理。
 \begin{definition}[次可加函数]
 若$p:X \to \mathbb{R}$满足：
 \begin{itemize}
@@ -487,7 +487,7 @@ Hahn-Banach 定理有许多有用的推论。
 \[||f_0||_M=\sup_{\lambda \in \mathbb{K}}\frac{|\lambda|\cdot||x_0||}{||\lambda x_0||}=1\]
 再由 Hahn-Banach 定理，$\exists \, f \in X^* \ , \ \eval{f}_{M}=f_0 \ , \ ||f||_X=||f_0||_M=1$，满足题设。
 \end{proof}
-\begin{proposition}
+\begin{proposition}\label{proposition:hb2}
 赋范线性空间$X$上$\forall x_1,x_2 \in X \ , \ x_1 \neq x_2 \ , \ \exists \, f \in X^* \quad \text{s.t.} \quad ||f||=1 \ , \ f(x_1) \neq f(x_2)$。
 \end{proposition}
 \begin{proof}
@@ -515,7 +515,7 @@ $X$是赋范线性空间$M \subset X$是线性子空间，$x_0 \in X$满足：
 $X^*=\mathscr{B}(X,\mathbb{K})$称为$X$的对偶空间。
 \end{definition}
 \begin{remark}
-\quad 对偶空间一定是 Banach 空间。
+\quad 对偶空间一定是 Banach 空间[定理\ref{theorem:wb}]。
 \end{remark}
 \begin{definition}[共轭算子]
 $X,Y$是赋范线性空间，$T \in \mathscr{B}(X,Y)$，定义$T^*:Y^* \to X^*$满足$\forall f \in Y^* \ , \ x \in X \ , \ (T^*f)x=f(Tx)$，则称$T^*$为共轭算子。
@@ -536,7 +536,7 @@ $X,Y$是赋范线性空间，$T \in \mathscr{B}(X,Y)$，定义$T^*:Y^* \to X^*$�
 \begin{proof}
 分别记$X,X^*$的一组对偶基$\{e_i\}_{i=1}^n \ , \ \{f_i\}_{i=1}^n$，即$f_i(e_j)=\delta_{ij}$，构造$e_i \to f_i$即得$X$与$X^*$之间存在一个等距一一映射，即证。
 \end{proof}
-\begin{example}
+\begin{example}\label{example:Lp}
 \quad $(L^p[a,b])^*=L^q[a,b]$其中$1/p+1/q=1 \ , \ p \in [1,+\infty)$，反之$L^{\infty}$的对偶空间严格比$L^1$大。
 \end{example}
 \begin{proof}
@@ -582,7 +582,7 @@ $X,Y$是赋范线性空间，$T \in \mathscr{B}(X,Y)$，定义$T^*:Y^* \to X^*$�
 \begin{remark}
 \quad 对要用到的最后一点进行简单说明：首先绝对连续函数是有界变差函数，直接取开区间为对$[a,b]$的划分：
 \[\delta=\frac{b-a}{n} \ , \ a=t_0<t_1<\cdots<t_n=b \ , \ \delta t=t_{i+1}-t_i=\delta \quad \text{s.t.} \quad \sum_{k=1}^n|f(b_k)-f(a_k)|<\varepsilon<+\infty\]
-然后有界变差函数[定义\ref{bounded variation}]可以表示成两个单调递增函数的差[Jordan分解定理]，单调递增函数几乎处处可导：
+然后有界变差函数[定义\ref{bounded variation}]可以表示成两个单调递增函数的差[\href{https://math.fandom.com/zh/wiki/%E6%9C%89%E7%95%8C%E5%8F%98%E5%B7%AE%E5%87%BD%E6%95%B0}{Jordan 分解定理}]，单调递增函数几乎处处可导：
 \[f(x) \equiv g(x)-h(x) \ , \ g(x)=\mathop \text{V}\limits_a^x(f)+\frac{1}{2}f(x) \ , \ h(x)=\mathop \text{V}\limits_a^x(f)-\frac{1}{2}f(x)\]
 \end{remark}
 \begin{proof}
@@ -637,7 +637,7 @@ $X,Y$是赋范线性空间，$T \in \mathscr{B}(X,Y)$，定义$T^*:Y^* \to X^*$�
 \end{example}
 
 \section{自反性与弱收敛}
-考虑共轭空间的共轭空间，定义为
+考虑共轭空间的共轭空间，定义为：
 \begin{definition}[二次共轭空间]
     设$X$为赋范线性空间，$X^{**}=(X^*)^*$是$X$的二次共轭空间。
 \end{definition}
@@ -664,15 +664,125 @@ $X,Y$是赋范线性空间，$T \in \mathscr{B}(X,Y)$，定义$T^*:Y^* \to X^*$�
 
 在引入共轭空间后我们可以新定义一种收敛方式，称为弱收敛。
 \begin{definition}[弱收敛]
-设$X$为赋范线性空间，$\{x_n\} \subset X$，若$\forall f \in X^* \ , \ \exists \, x_0 \in X, \ , \ f(x_n) \to f(x_0)$则称$\{x_n\}$弱收敛于$x_0$，记为$x_n \xrightarrow{w} x_0$，称$x_0$为$\{x_n\}$的弱极限。
+设$X$为赋范线性空间，$\{x_n\} \subset X$，若$\forall f \in X^* \ , \ \exists \, x_0 \in X$使得$f(x_n) \to f(x_0)$则称$\{x_n\}$弱收敛于$x_0$，记为$x_n \xrightarrow{w} x_0$，称$x_0$为$\{x_n\}$的弱极限。
 \end{definition}
 \begin{lemma}
 \begin{itemize}
     \item 1. 弱极限存在必唯一；
-    \item 2. 强收敛$\Rightarrow$弱收敛；
-    \item 3. 有限维赋范线性空间是自反空间。
+    \item 2. 依范数收敛（强收敛$ \ \Rightarrow \ $弱收敛；
+    \item 3. 弱收敛$ \ \nRightarrow \ $依范数收敛（强收敛）；
+    \item 4. 有限维赋范线性空间是自反空间。
 \end{itemize}
 \end{lemma}
 \begin{proof}
-1、设$x_n \xrightarrow{w} x_0, \ x_1$，则$\forall f \in X^* \ , \ f(x_n)\to f(x_0), \ f(x_1)$，由Hahn-Banach定理可知$x_0=x_1$；
+\begin{itemize}
+\item 1. 设$x_n \xrightarrow{w} x_0, \ x_1$，且$x_0 \neq x_1$，则$\forall f \in X^* \ , \ f(x_n)\to f(x_0), \ f(x_1)$，由任意性可知$f(x_0)=f(x_1)$，由Hahn-Banach定理[推论\ref{proposition:hb2}]可知$\exists \, f_0 \in x^*$使得$f_0(x_0) \neq f_0(x_1)$，得出矛盾，故$x_0=x_1$；
+\item 2. $||x_n-x_0|| \to 0$，则对$\forall x \in x^*$，都有$|f(x_n)-f(x_0)|=|f(x_n-x_0)| \leq ||f||\cdot||x_n-x_0|| \to 0$；
+\item 3. 举例：定义点列$\{x_n=(0,\cdots,0,1,0,\cdots)\} \subset l^2$（第$n$位为$1$）对$\forall f \in (l^2)^* \mathop{\cong}\limits^{\Phi}l^2 \ , \ \exists \, y=\{\xi_n\}\in l^2$满足$f(x_n)=\Phi_y(x_n)=\sum x_{n,i}\xi_i=\xi_n \to 0$，即$x_n \xrightarrow{w} x_0$，但是对$\forall m \neq n$都有$||x_n-x_m||=\sqrt{2}>0$；
+\item 4. 显然，参考定理\ref{the:B}，使用两次同构即证。
+\end{itemize}
 \end{proof}
+
+\begin{theorem}
+设$X$是赋范线性空间，则$X$的单位球在弱收敛意义下是闭的（弱闭）。
+\end{theorem}
+\begin{remark} \quad
+这里仅作为证明思路。考虑嵌入$X \hookrightarrow X^{**} \ , \ x \mapsto \hat{x}$，显然这是典型映射，该映射等距。若$x_n \xrightarrow{w} x_0 \in X$，等价于$X^{**}$中的逐点收敛$\hat{x}_n \to \hat{x}_0 \in X^{**}$，即$\forall f\in X^* \ , \ f(x_n)=\hat{x}_n(f) \to \hat{x}_0(f)=f(x_0) \ \Rightarrow \ ||\hat{x}_n-\hat{x}_0||\to0$。即$\{\hat{x}_n\}$在$X^{**}=\mathscr{B}(X^*,\mathbb{K})$上以算子范数收敛。由 Banach-Steinhaus 定理[定理\ref{BS}]可知，其充要条件为：
+\begin{itemize}
+\item 1. $||\hat{x}_n||_{X^{**}}=||x_n||_X$一致有界；
+\item 2. $\hat{x}_n$在$X^*$的一个稠密子集$G$上逐点收敛，即$\forall g \in G \ , \ \hat{x}_n(g)=g(x_n)\to g(x_0)=\hat{x}_0(g)$。
+\end{itemize}
+\end{remark}
+
+\begin{theorem}
+设$X=C[a,b]$，则$x_n \xrightarrow{w} x_0 \in X$当且仅当$\{||x_n||\}$有界，且对$\forall t \in [a,b]$都有$x_n(t) \to x_0(t)$。
+\end{theorem}
+\begin{proof}
+必要性：由 Banach-Steinhaus 定理[定理\ref{BS}]可知$\{||x_n||\}$一致有界，对$\forall t \in [a,b]$令$f_t: \ X \to \mathbb{K} \ , \ x \mapsto x(t)$，易证$f_t$是有界$|f_t(x)|=|x(t)|\leq||x|| \ \Rightarrow \ ||f|| \leq 1$，线性显然，因此$f_t \in X^*$，从而由$x_n \xrightarrow{w} x_0 \in X$可知$f_t(x_n)=x_n(t) \to x_0(t)=f_t(x_0)$。
+
+充分性：$\forall f \in X^*=(C[a,b])^*\cong V_0[a,b]=\{v \in V[a,b]|v(a)=0 \ , \ v(t+0)=v(t)\} \ , \ \exists \, v \in V_0[a,b]$满足 Riemann–Stieltjes 积分：
+\[f(x)=\int_a^bx(t)\dd{v(t)}\]
+要证明$x_n \xrightarrow{w} x_0 \in X$，即证明：
+\[f(x_n)=\int_a^bx_n(t)\dd{v(t)} \to \int_a^bx_0(t)\dd{v(t)}=f(x_0)\]
+由 Lebesgue 控制收敛定理即证[定理\ref{theorem:kzsl}]。
+\end{proof}
+
+\begin{theorem}
+设$X=L^p[a,b] \ , \ p\in(1,+\infty)$，则$x_n \xrightarrow{w} x_0 \in X$当且仅当$\{||x_n||\}$有界，且对$\forall t \in [a,b]$都有：
+\[\int_a^tx_n(s)\dd{s} \to \int_a^tx_0(s)\dd{s}\]
+\end{theorem}
+\begin{proof}
+必要性：由 Banach-Steinhaus 定理[定理\ref{BS}]知$\{||x_n||\}$一致有界。在上文[例题\ref{example:Lp}]中已经证明$(L^p[a,b])^*=L^q[a,b] \ , \ 1/p+1/q=1$，因此对$\forall f \in (L^p[a,b])^* \ , \ \exists \, g \in L^q[a,b]$满足对$\forall f \in L^p[a,b]$：
+\[F_g(f)=\int_a^bf(t)g(t)\dd{t}\]
+考虑$g$为特征函数：
+\[g=\chi_t(x)=\left\{\begin{array}{rl}
+1, & x \in [a,t] \\ 0, & x \in (t,b]
+\end{array}\right. 
+\in L^{\infty} \subset L^q\]
+\[F_{\chi_t}(x_n)=\int_a^bx_n(s)\chi_t(s)\dd{s}=\int_a^tx_n(s)\dd{s} \to \int_a^tx_0(s)\dd{s}=\int_a^bx_0(s)\chi_t(s)\dd{s}=F_{\chi_t}(x_0)\]
+充分性：依题意得，显然有$F_{\chi_t} \in (L^p[a,b])^*$以及$L^p[a,b]$中的柯西列$\{x_n\}$和点$x_0$，满足：
+\[F_{\chi_t}(x_n)=\int_a^bx_n(s)\chi_t(s)\dd{s}=\int_a^tx_n(s)\dd{s} \to \int_a^tx_0(s)\dd{s}=\int_a^bx_0(s)\chi_t(s)\dd{s}=F_{\chi_t}(x_0)\]
+因此可以将上述结论推广到简单函数，又因简单函数在$L^p$中稠密，由 Banach-Steinhaus 定理[定理\ref{BS}]证毕。
+\[\psi(s)=\sum_{i=1}^k\alpha_i\chi_{t_i}(s) \quad \Rightarrow \quad F_{\psi}(x_n) \to F_{\psi}(x_0)\]
+\end{proof}
+
+\begin{theorem}[Schur 定理]
+在$l^1$空间中弱收敛等价于（依算子范数收敛）强收敛。
+\end{theorem}
+\begin{remark}
+\quad $l^1$的弱收敛可以看成是每一个$x_n$中的第$k$位$x_{n,k}$都收敛到$x_{0,k}$。
+\end{remark}
+\begin{proof}
+充分性显然，只需要证明必要性，令$y_n=x_n-x_0$，则$y_n \xrightarrow{w} 0$，使用反证法，假设$||y_n|| \nrightarrow 0$，由 Banach-Steinhaus 定理[定理\ref{BS}]可知$\{||y_n||\}$一致有界，且由\href{https://math.fandom.com/zh/wiki/Bolzano-Weierstrass_%E5%AE%9A%E7%90%86}{聚点原理}，$\exists \, \alpha>0$和子列$\{y_{n_k}\}$满足$||y_{n_k}||\to\alpha>0$。用$y_n/||y_n||$代替$y_n$，则此时$||y_n||=1$。因为$(l^1)^*=l^{\infty}$，即对$\forall f \in (l^1)^* \ , \ \exists z=\{\eta_k\} \in l^{\infty}$满足当$\forall y=\{\xi_k\}\in l^1$时，有：
+\[f(y)=\sum_{k=1}^{\infty}\xi_k\eta_k\]
+考虑$z=\{0,\cdots,0,1,0,\cdots\}$（第$k$位为$1$），则对$\forall k \in \mathbb{N}_+$都有$f_z(y_n)=\xi_{n,k} \to \xi_{0,k}=f_z(0)=0$。
+\begin{proposition}
+对$\forall s \in \mathbb{N_+} \ , \ \exists \, 1=n_1<n_2<\cdots \ , \ 0=p_0<p_1<\cdots$，使得$\{y_n\}$满足：
+\[\sum_{k=1}^{p_{s-1}}|\xi_{n_s,k}|<\frac{1}{4} \quad , \quad \sum_{k=p_{s-1}+1}^{p_s}|\xi_{n_s,k}|>\frac{3}{4}\]
+\begin{proof}
+取$n_1=1$，此时有：
+\[\sum_{k=1}^{\infty}|\xi_{n_1,k}|=||x_{n_1}||=1\]
+显然存在指标$p_1>0$使得：
+\[\sum_{k=1}^{p_1}|\xi_{n_1,k}|>\frac{3}{4}\]
+假设以及选取了$1=n_1<n_2<\cdots<n_j \ , \ 0=p_0<p_1<\cdots<p_j$，使得命题成立，由$\xi_{n,k} \to \xi_{0,k}=0$，可知当$n$足够大时，每个$|\xi_{n,k}|$可任意小，因此$\exists \, n_{j+1}>n_j$，使得：
+\[\sum_{k=1}^{p_j}|\xi_{n_{j+1},k}|<\frac{1}{4} \quad \Rightarrow \quad \sum_{k=p_j+1}^{\infty}|\xi_{n_{j+1},k}|=\sum_{k=1}^{\infty}|\xi_{n_{j+1},k}|-\sum_{k=1}^{p_j}|\xi_{n_{j+1},k}|>1-\frac{1}{4}=\frac{3}{4}\]
+因此：
+\[\exists \, p_{j+1}>p_j \quad \text{s.t.} \quad \sum_{k=p_j+1}^{p_{j+1}}|\xi_{n_{j+1},k}|>\frac{3}{4}\]
+由数学归纳法上述，命题对$\forall s \in \mathbb{N_+} \ , \ \exists \, 1=n_1<n_2<\cdots \ , \ 0=p_0<p_1<\cdots$都成立。
+\end{proof}
+\end{proposition}
+考虑$z=\{\eta_k\} \in l^{\infty}$满足当$p_s<k\leq p_{s+1}$时$\eta_k=\text{sgn}\xi_{n_s,k}$，则：
+\[\begin{aligned}
+|f(y)|&=|z \cdot y|=\left|\sum_{k=p_s+1}^{p_{s+1}}\xi_{n_s,k}\cdot\text{sgn}\xi_{n_s,k}+\text{else terms}\right|=\left|\sum_{k=p_s+1}^{p_{s+1}}|\xi_{n_s,k}|+\text{else terms}\right|\\
+&\geq\left|\sum_{k=p_s+1}^{p_{s+1}}|\xi_{n_s,k}|-\sum_{k=1}^{p_s}|\xi_{n_s,k}\cdot\eta_k|-\sum_{k=p_{s+1}}^{\infty}|\xi_{n_s,k}\cdot\eta_k|\right|\\
+&=\left|2\sum_{k=p_s+1}^{p_{s+1}}|\xi_{n_s,k}|-\sum_{k=1}^{\infty}|\xi_{n_s,k}\cdot\eta_k|\right|>\left|2\cdot\frac{3}{4}-1\right|=\frac{1}{2} \nrightarrow 0
+\end{aligned}\]
+\end{proof}
+
+\begin{definition}[弱$*$收敛]
+设$X$是赋范线性空间，$\{f_n\} \subset X^*$，若$\forall x \in X \ , \ \exists \, f_0 \in X^*$使得$f_n(x) \to f_0(x)$，则称$\{f_n\}$弱$*$收敛于$f_0$，记为$f_n \xrightarrow{w^*} f_0$。
+\end{definition}
+\begin{remark}
+\quad $X^*$上的弱收敛：$f_n \xrightarrow{w} f_0 \in X^*$，则$\forall F \in (X^*)^*$有$F(f_n) \to F(f_0)$。由嵌入$F \ :X \hookrightarrow X^{**} \ , \ x \mapsto \hat{x}$知$X^*$上的弱$*$收敛是$\forall x \in X \ , \ f_n(x)=\hat{x}(f_n) \to \hat{x}(f_0)=f_0(x)$。因为$X \subset X^{**}$，所以$f_n \xrightarrow{w} f_0 \in X^* \ \Rightarrow \ f_n \xrightarrow{w^*} f_0  \in X^*$，当$X$自反时两者等价。
+\end{remark}
+
+\begin{theorem}
+设$X$赋范线性空间$X$是可分的，则$X^*$中的有界集弱$*$列紧。
+\end{theorem}
+\begin{proof}
+设$\{f_n\}$是$X^*$中的有界点列，$\{x_m\}$是$X$中的可数稠密子集，因此对$\forall m \in \mathbb{N}$都有$\{f_n(x_m)\}$是有界数列：$|f_n(x_m)|\leq||f_n||\cdot||x_m||<\infty$。由\href{https://math.fandom.com/zh/wiki/Bolzano-Weierstrass_%E5%AE%9A%E7%90%86}{聚点原理}，$\{f_n(x_m)\}$有收敛子列，对$m=1$取$\{f_n\}$的子列$\{f_n^{(1)}\}$使得$\{f_n^{(1)}(x_1)\}$收敛，对$m=2$取$\{f_n^{(1)}\}$的子列$\{f_n^{(2)}\}$使得$\{f_n^{(2)}(x_2)\}$收敛，以此类推。最终可以取对角列$\{f_n^{(n)}\}$，仍记为$\{f_n\}$，在$G=\{x_m\}$上收敛，由稠密性，对$\forall x \in X \ , \ \varepsilon>0 \ , \exists \, \delta>0 \ , \ x_m \in G$满足$||x-x_m||<\delta$，使得：
+\[\begin{aligned}
+|f_{n+p}(x)-f_n(x)|&\leq|f_{n+p}(x)-f_{n+p}(x_m)|+|f_{n+p}(x_m)-f_n(x_m)|+|f_n(x_m)-f_n(x)|\\
+&<||f_{n+p}||\cdot||x-x_m||+\varepsilon+||f_n||\cdot||x-x_m||<3\varepsilon
+\end{aligned}\]
+即$\forall x \in X \ , \ f_n(x) \to f_0(x) \in X^*$（$X^*$完备[定理\ref{theorem:wb}]），即$\{f_n\}$在弱$*$意义下有收敛子列，即弱$*$列紧。
+\end{proof}
+\begin{remark}
+\quad 可分不是必要的[\href{https://math.fandom.com/zh/wiki/Banach-Alaoglu-Bourbaki_%E5%AE%9A%E7%90%86}{Banach-Alaoglu-Bourbaki 定理}]。
+\end{remark}
+\begin{theorem}
+自反空间$X$的有界集是弱列紧的当且仅当$\forall \{x_n\} \subset X$若有界，则存在子列$\{x_{n_k}\}$满足$x_{n_k} \xrightarrow{w} x_0 \in X$。
+\end{theorem}
+\begin{remark}
+\quad 自反空间一定是 Banach 空间[定理\ref{theorem:wb}]。
+\end{remark}

@@ -257,7 +257,7 @@ $A$的全部接触点构成的集合称为$A$的闭包，记作$\overline{A}$。
  \quad $C[a,b]$是可分的
 \end{example}
 \begin{proof}利用 Weierstrass 定理
-\begin{theorem}[Weierstrass 定理]
+\begin{theorem}[Weierstrass 定理]\label{theorem:Weierstrass}
     设$f(x)$是$[a,b]$上的连续函数，那么存在一列多项式$\{P_n(x)\}$，使得
     \[P_n(x) \rightrightarrows f(x), \ (n \rightarrow \infty)\]
 \end{theorem}
@@ -366,7 +366,7 @@ $A$可数，$D$不可数，且有$D \subset l^{\infty} \subset \bigcup_{a \in A}
 \[\int_0^1|x_{n_{\infty}}|^2\dd t=\int_0^1\varliminf_{k \to \infty}|x_{n_1}+\sum_{i=2}^k(x_{n_i}-x_{n_{i-1}})|^2\dd t \leq \varliminf_{k \to \infty}\int_0^1|x_{n_1}+\sum_{i=2}^k(x_{n_i}-x_{n_{i-1}})|^2\dd t=\varliminf_{k \to \infty}\int_0^1|x_{n_k}|^2\dd t<+\infty\]
 存在收敛子列$\{x_{n_k}(t)\}$可知柯西列$\{x_n(t)\}$收敛，记其收敛于$x_{\infty}(t)$。类似地，柯西列$\{x_n(t)\}$在$L^1$中也收敛：
 \[\int_0^1|x_{n_{\infty}}|\dd t=\int_0^1\varliminf_{k \to \infty}|x_{n_1}+\sum_{i=2}^k(x_{n_i}-x_{n_{i-1}})|\dd t \leq \varliminf_{k \to \infty}\int_0^1|x_{n_1}+\sum_{i=2}^k(x_{n_i}-x_{n_{i-1}})|\dd t=\varliminf_{k \to \infty}\int_0^1|x_{n_k}|\dd t<+\infty\]
-\begin{theorem}[控制收敛定理]
+\begin{theorem}[控制收敛定理]\label{theorem:kzsl}
 设$(X,\mathscr{F},\mu)$是测度空间，$\{f_n\}$是测度空间上的可测函数列，在$X$中逐点收敛或几乎处处（逐点）收敛于可测函数$f$，且存在$L^1$函数$g$使得对任意$n$都有$|f_n|\leq g$，则有$f \in L^1$，且
 \[\lim_{n \to \infty}\int_X f_n\dd\mu = \int_X \lim_{n \to \infty}f_n\dd\mu = \int_X f\dd\mu\]
 且$\{f_n\}$在$L^1$范数意义下收敛于$f$，即
@@ -842,7 +842,7 @@ $(X,d)$是距离空间，$A \subset X$，对$\forall \varepsilon>0 \ , \ \exists
 完备距离空间中的子集是紧集当且仅当它是全有界闭集。
 \end{theorem}
 \begin{proof}
-由定理\ref{theorem:jlj}和引理\ref{lemma:qyjkf}可知充分性显然，下证必要性，只需证明完备距离空间中全有界集是列紧的。设$A$全有界，$\{x_n\} \subset A$，存在$A$的有限$1$-网$N_1$，满足$\exists \, x \in N_1$，$B_1(x) \cap \{x_n\}$包含无数多个点，取其中一个记为$x_{n_1}$，显然$B_1(x) \cap A$也是全有界的，存在$B_1(x) \cap A$的有限$1/2$-网$N_2$，同上可得新的点$x_{n_2}$，由归纳得，存在点列$\{x_{n_k}\}$，满足$d(x_{n_k},x_{n_{k+m}})<2^{-k}$，进而可知$\{x_{n_k}\}$是柯西列。由完备性，$\exists \, x \in A$使得$x_{n_k} \to x$。
+由定理\ref{theorem:jlj}和引理\ref{lemma:qyjkf}可知必要性显然，下证充分性，只需证明完备距离空间中全有界集是列紧的。设$A$全有界，$\{x_n\} \subset A$，存在$A$的有限$1$-网$N_1$，满足$\exists \, x \in N_1$，$B_1(x) \cap \{x_n\}$包含无数多个点，取其中一个记为$x_{n_1}$，显然$B_1(x) \cap A$也是全有界的，存在$B_1(x) \cap A$的有限$1/2$-网$N_2$，同上可得新的点$x_{n_2}$，由归纳得，存在点列$\{x_{n_k}\}$，满足$d(x_{n_k},x_{n_{k+m}})<2^{-k}$，进而可知$\{x_{n_k}\}$是柯西列。由完备性，$\exists \, x \in A$使得$x_{n_k} \to x$。
 \end{proof}
 
 \begin{figure}[htbp]
@@ -870,7 +870,7 @@ $|x(t_1)-x(t_2)|=|x'(\xi)||t_1-t_2| \leq M|t_1-t_2| \quad \xi \in (t_1,t_2) \ : 
     $C[a,b]$的子集是列紧的当且仅当它是一致有界且等度连续的。
 \end{theorem}
 \begin{proof}
-首先证明充分性：由引理\ref{lemma:qyjkf}知，列紧必定（全）有界，对$\forall \varepsilon>0$，存在$A$的有限$\varepsilon/3$-网$N$满足$\forall x_i \in N \ , \ \exists \,\delta_i \ , \ t_1,t_2 \in [a,b] \ , \ |t_1-t_2|<\delta_i $有$|x(t_1)-x(t_2)|<\varepsilon$，取$\delta=\min\{\delta_i\}$，则$\exists \, i$满足$x(t) \subset B_{\varepsilon/3}(x_i(t))$，当$|t_1-t_2|<\delta \ , \ \forall x(t) \in A$时，有
+首先证明必要性：由引理\ref{lemma:qyjkf}知，列紧必定（全）有界，对$\forall \varepsilon>0$，存在$A$的有限$\varepsilon/3$-网$N$满足$\forall x_i \in N \ , \ \exists \,\delta_i \ , \ t_1,t_2 \in [a,b] \ , \ |t_1-t_2|<\delta_i $有$|x(t_1)-x(t_2)|<\varepsilon$，取$\delta=\min\{\delta_i\}$，则$\exists \, i$满足$x(t) \subset B_{\varepsilon/3}(x_i(t))$，当$|t_1-t_2|<\delta \ , \ \forall x(t) \in A$时，有
 \[|x(t_1)-x(t_2)| \leq |x(t_1)-x_i(t_1)|+|x_i(t_1)-x_i(t_2)|+|x_i(t_2)-x(t_2)|<\frac{\varepsilon}{3}+\frac{\varepsilon}{3}+\frac{\varepsilon}{3}=\varepsilon\]
 等度连续得证。
 
@@ -879,7 +879,7 @@ $|x(t_1)-x(t_2)|=|x'(\xi)||t_1-t_2| \leq M|t_1-t_2| \quad \xi \in (t_1,t_2) \ : 
     \includegraphics[scale=0.3]{./fig/2.2.3-2.png}
 \end{figure}
 
-下证必要性。由于$C[a,b]$完备，故只需证明$C[a,b]$全有界。由一致有界条件$\exists \, k>0 \ , \ \forall x(t) \in A \ , \ t \in [a,b]$满足$|x(t)|<k$以及等度连续条件$\forall \varepsilon>0 \ , \ \exists \, \delta>0 \ , \ |t_1-t_2|<\delta \ , \ \forall x(t) \in A$有$|x(t_1)-x(t_2)|<\varepsilon$，对函数族的定义域和值域做划分。取$[-k,k]$划分$\{y_0,y_1,\cdots,y_n\}:y_0=-k \ , \ y_n=k \ , \ 0<y_{i+1}-y_i<\varepsilon/5$，取$[a,b]$划分$\{t_0,t_1,\cdots,t_m\}:t_0=a \ , \ t_m=b \ , \ 0<y_{i+1}-y_i<\delta$。按如下规则绘制函数：若$x(t_i) \in [y_k,y_{k+1}]$，则令$f(t_i)=y_k$，其余部分用直线连接，则$\forall t \in [a,b] \ , \ \exists \, t_i$满足当$t \in [t_i,t_{i+1}]$时有：
+下证充分性。由于$C[a,b]$完备，故只需证明$C[a,b]$全有界。由一致有界条件$\exists \, k>0 \ , \ \forall x(t) \in A \ , \ t \in [a,b]$满足$|x(t)|<k$以及等度连续条件$\forall \varepsilon>0 \ , \ \exists \, \delta>0 \ , \ |t_1-t_2|<\delta \ , \ \forall x(t) \in A$有$|x(t_1)-x(t_2)|<\varepsilon$，对函数族的定义域和值域做划分。取$[-k,k]$划分$\{y_0,y_1,\cdots,y_n\}:y_0=-k \ , \ y_n=k \ , \ 0<y_{i+1}-y_i<\varepsilon/5$，取$[a,b]$划分$\{t_0,t_1,\cdots,t_m\}:t_0=a \ , \ t_m=b \ , \ 0<y_{i+1}-y_i<\delta$。按如下规则绘制函数：若$x(t_i) \in [y_k,y_{k+1}]$，则令$f(t_i)=y_k$，其余部分用直线连接，则$\forall t \in [a,b] \ , \ \exists \, t_i$满足当$t \in [t_i,t_{i+1}]$时有：
 \begin{equation*}
 \begin{aligned}
 |x(t)-f(t)| &\leq |x(t)-x(t_i)|+|x(t_i)-f(t_i)|+|f(t_i)-f(t)|\\

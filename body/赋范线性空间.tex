@@ -307,7 +307,7 @@ $p=1$时，显然；$p>1$时，有
 &\leq \left( \ \int\limits_{E \cap \{x_n(t) \neq y(t)\}}(n+2n)^p\dd t\right)^{\frac{1}{p}} \leq \left(\left(\frac{\varepsilon}{3}\right)^p \cdot \frac{1}{(3n)^p} \cdot (3n)^p\right)^{\frac{1}{p}}=\frac{\varepsilon}{3}
 \end{aligned}
 \end{equation*}
-由 Weierstrass 定理，存在有理系数多项式$P(t)$使得
+由 Weierstrass 定理[定理\ref{theorem:Weierstrass}]，存在有理系数多项式$P(t)$使得
 \[\mathop \text{sup}\limits_{t \in [a,b]}|P(t)-y(t)|<\frac{\varepsilon}{3m(E)^{\frac{1}{p}}} \quad \Rightarrow \quad ||P(t)-y(t)||_{L^p(E)}=\left(\int_E|P(t)-y(t)|^p\dd t\right)^{\frac{1}{p}} \leq \left(m(E) \cdot \frac{\varepsilon^p}{3^pm(E)}\right)^{\frac{1}{p}}=\frac{\varepsilon}{3}\]
 由三角不等式
 \[||P(t)-x(t)||_{L^p(E)} \leq ||P(t)-y(t)||_{L^p(E)}+||y(t)-x_n(t)||_{L^p(E)}+||x_n(t)-x(t)||_{L^p(E)}<\varepsilon\]
@@ -543,8 +543,8 @@ Banach 空间$X$有 Schauder 基，则$X$可分。
 \begin{theorem}
 $||\cdot||_2$比$||\cdot||_1$强$ \quad \Leftrightarrow \quad \forall \{x_n\} \subset X \ , \ \text{if} \ ||x_n||_2 \to 0 \ , \ ||x_n||_1 \to 0$
 \end{theorem}
-\begin{proof}充分性：由范数强弱性可知，$\exists \, c>0$满足$0 \leq ||x_n||_1 \leq c||x_n||_2 \to 0$，可以推出$||x_n||_1 \to 0$。\\
-必要性：采用反证法，如若不然，则对$\forall k \in \mathbb{N} \ , \ \exists \, x_k \in X$满足$||x_k||_1>k||x_n||_2$。\\
+\begin{proof}必要性：由范数强弱性可知，$\exists \, c>0$满足$0 \leq ||x_n||_1 \leq c||x_n||_2 \to 0$，可以推出$||x_n||_1 \to 0$。\\
+充分性：采用反证法，如若不然，则对$\forall k \in \mathbb{N} \ , \ \exists \, x_k \in X$满足$||x_k||_1>k||x_n||_2$。\\
 令：
 \[y=\frac{x_k}{||x_k||_1}\]
 则有：

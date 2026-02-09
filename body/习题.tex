@@ -10,9 +10,9 @@
 \begin{example}
 \quad 证明：在$(X,d)$中，$\overline{A}=A \ \Leftrightarrow \ A^c$是开集。
 \end{example}
-\begin{proof}充分性：$\overline{A}=A \ \Rightarrow \ A^c$是开集：
+\begin{proof}必要性：$\overline{A}=A \ \Rightarrow \ A^c$是开集：
 \[\forall x \in A^c \ \Rightarrow \ \exists \, B_{\varepsilon}(x) \cap A=\varnothing \ \Leftrightarrow \ B_{\varepsilon}(x) \subset A^c \ \Rightarrow \ A^c\text{是开集}\]
-必要性：$A^c$是开集$ \ \Rightarrow \ \overline{A}=A$：
+充分性：$A^c$是开集$ \ \Rightarrow \ \overline{A}=A$：
 \[\forall x \in A^c \ \Rightarrow \ \exists \, B_{\varepsilon}(x) \subset A^c \ \Leftrightarrow \ B_{\varepsilon}(x) \cap A=\varnothing \ \Rightarrow \ A\text{的所有接触点都在$A$中} \ \Rightarrow \ \overline{A}=A\]
 \end{proof}
 
@@ -105,13 +105,13 @@ Baire 定理应用：设$E_n=\{x|x \in X \ , \ |F(x)| \leq n \ , \ F \in \tilde{
 在距离空间中证明：连续$\ \Leftrightarrow \ $开集的原像是开集。
 \end{example}
 \begin{proof}
-充分性：设$f:X \to Y$是连续映射，设$G \subset Y$是任一开集，要证$f^{-1}(G)$是$X$中的开集。即证对$\forall x_0 \in f^{-1}(G) \ , \  \exists \, \varepsilon>0$使得$B_{\varepsilon}(f(x_0)) \subset G$。由于$f$是连续映射，即$\forall y \in f^{-1}(G) \ , \  \exists \, \delta>0$使得当$d(y,x_0)<\delta$时有$d_Y(f(y),f(x_0))<\varepsilon$，这也即$f(B_{\delta}(x_0)) \subset B_{\varepsilon}(f(x_0)) \subset G$。因此$B_{\delta}(x_0) \subset f^{-1}(G)$，即$x_0$是$f^{-1}(G)$的内点，由$x_0$的任意性可知$f^{-1}(G)$是开集。
+必要性：设$f:X \to Y$是连续映射，设$G \subset Y$是任一开集，要证$f^{-1}(G)$是$X$中的开集。即证对$\forall x_0 \in f^{-1}(G) \ , \  \exists \, \varepsilon>0$使得$B_{\varepsilon}(f(x_0)) \subset G$。由于$f$是连续映射，即$\forall y \in f^{-1}(G) \ , \  \exists \, \delta>0$使得当$d(y,x_0)<\delta$时有$d_Y(f(y),f(x_0))<\varepsilon$，这也即$f(B_{\delta}(x_0)) \subset B_{\varepsilon}(f(x_0)) \subset G$。因此$B_{\delta}(x_0) \subset f^{-1}(G)$，即$x_0$是$f^{-1}(G)$的内点，由$x_0$的任意性可知$f^{-1}(G)$是开集。
 \begin{figure}[htbp]
     \center
     \includegraphics[scale=0.14]{./fig/ex-2.png}
 \end{figure}
 
-必要性：设$f:X \to Y$满足开集的原像是开集，则对$\forall x_0 \in X \ , \ \exists \, \varepsilon>0$有开球$B_{\varepsilon}(f(x_0))$是$Y$中的开集，因此$f^{-1}(B_{\varepsilon}(f(x_0)))$是$X$中的开集，且$x_0 \in f^{-1}(B_{\varepsilon}(f(x_0)))$是内点。因此$\exists \, \delta>0$使得$f(B_{\delta}(x_0)) \subset B_{\varepsilon}(f(x_0))$，可知$f$在$x_0$处连续。由$x_0$任意性可得$f$在$X$上连续。
+充分性：设$f:X \to Y$满足开集的原像是开集，则对$\forall x_0 \in X \ , \ \exists \, \varepsilon>0$有开球$B_{\varepsilon}(f(x_0))$是$Y$中的开集，因此$f^{-1}(B_{\varepsilon}(f(x_0)))$是$X$中的开集，且$x_0 \in f^{-1}(B_{\varepsilon}(f(x_0)))$是内点。因此$\exists \, \delta>0$使得$f(B_{\delta}(x_0)) \subset B_{\varepsilon}(f(x_0))$，可知$f$在$x_0$处连续。由$x_0$任意性可得$f$在$X$上连续。
 \begin{figure}[htbp]
     \center
     \includegraphics[scale=0.14]{./fig/ex-3.png}
