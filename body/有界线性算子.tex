@@ -3,8 +3,7 @@
     \item 开映射定理与闭图像定理~\ref{kb}
     \item Hahn-Banach 定理~\ref{HB}
     \item 对偶空间和共轭算子~\ref{dual}
-    \item 自反性与弱收敛~\ref{selfback}
-    \item 紧算子~\ref{tight}
+    \item 自反性，弱收敛与弱*收敛~\ref{selfback}
 \end{introduction}
 \section{有界线性算子}\label{BX}
 在正式介绍赋范线性空间的有界线性算子之前，我们可以回忆一下有限维的情形，设$X,Y$为有限维空间，根据上一小节的描述，我们不妨假设$X=\mathbb{R}^m,Y=\mathbb{R}^n$，考虑线性变换$L:\mathbb{R}^m \to \mathbb{R}^n$，选取基底$\{e_i\}_{i=1}^m \subset X , \ \{f_j\}_{j=1}^n \subset Y$，线性变换$L$在基底上有如下关系：
@@ -649,16 +648,16 @@ $X,Y$是赋范线性空间，$T \in \mathscr{B}(X,Y)$，定义$T^*:Y^* \to X^*$�
 \begin{definition}[二次共轭空间]
     设$X$为赋范线性空间，若典型映射$F$是满射则称$X$为自反空间。
 \end{definition}
+\begin{remark}
+\quad 自反空间一定是 Banach 空间[定理\ref{theorem:wb}]。
+\end{remark}
 \begin{proposition}
 \begin{itemize}
-    \item 1. $L^p \ , \ p \in (1,+\infty)$是自反空间；
-    \item 2. $l^p \ , \ p \in (1,+\infty)$是自反空间；
-    \item $L^1,L^{\infty},l^1,l^{\infty}$不是自反空间；
-    \item $C[a,b]$不是自反空间。
+    \item 1. $L^p \ , \ l^p \ , \ p \in (1,+\infty)$是自反空间；
+    \item 2. $L^1,L^{\infty},l^1,l^{\infty}$不是自反空间；
+    \item 3. $C[a,b]$不是自反空间。
 \end{itemize}
 \end{proposition}
-
-在引入共轭空间后我们可以新定义一种收敛方式，称为弱收敛。
 \begin{definition}[弱收敛]
 设$X$为赋范线性空间，$\{x_n\} \subset X$，若$\forall f \in X^* \ , \ \exists \, x_0 \in X$使得$f(x_n) \to f(x_0)$则称$\{x_n\}$弱收敛于$x_0$，记为$x_n \xrightarrow{w} x_0$，称$x_0$为$\{x_n\}$的弱极限。
 \end{definition}
@@ -729,16 +728,12 @@ $X,Y$是赋范线性空间，$T \in \mathscr{B}(X,Y)$，定义$T^*:Y^* \to X^*$�
 \quad $l^1$的弱收敛可以看成是每一个$x_n$中的第$k$位$x_{n,k}$都收敛到$x_{0,k}$。
 \end{remark}
 \begin{proof}
-充分性显然，只需要证明必要性，令$y_n=x_n-x_0$，则$y_n \xrightarrow{w} 0$，使用反证法，假设$||y_n|| \nrightarrow 0$，由 Banach-Steinhaus 定理[定理\ref{BS}]可知$\{||y_n||\}$一致有界，且由\href{https://math.fandom.com/zh/wiki/Bolzano-Weierstrass_%E5%AE%9A%E7%90%86}{聚点原理}，$\exists \, \alpha>0$和子列$\{y_{n_k}\}$满足$||y_{n_k}||\to\alpha>0$。用$y_n/||y_n||$代替$y_n$，则此时$||y_n||=1$。因为$(l^1)^*=l^{\infty}$，即对$\forall f \in (l^1)^* \ , \ \exists z=\{\eta_k\} \in l^{\infty}$满足当$\forall y=\{\xi_k\}\in l^1$时，有：
-\[f(y)=\sum_{k=1}^{\infty}\xi_k\eta_k\]
-考虑$z=\{0,\cdots,0,1,0,\cdots\}$（第$k$位为$1$），则对$\forall k \in \mathbb{N}_+$都有$f_z(y_n)=\xi_{n,k} \to \xi_{0,k}=f_z(0)=0$。
+充分性显然，只需要证明必要性，令$y_n=x_n-x_0$，则$y_n \xrightarrow{w} 0$，使用反证法，假设$||y_n|| \nrightarrow 0$，由 Banach-Steinhaus 定理[定理\ref{BS}]可知$\{||y_n||\}$一致有界，且由\href{https://math.fandom.com/zh/wiki/Bolzano-Weierstrass_%E5%AE%9A%E7%90%86}{聚点原理}，$\exists \, \alpha>0$和子列$\{y_{n_k}\}$满足$||y_{n_k}||\to\alpha>0$。用$y_n/||y_n||$代替$y_n$，则此时$||y_n||=1$。因为$(l^1)^*=l^{\infty}$，即对$\forall f \in (l^1)^* \ , \ \exists z=\{\eta_k\} \in l^{\infty}$满足当$\forall y=\{\xi_k\}\in l^1$时，有$f(y)=\sum\xi_k\eta_k$。考虑$z=\{0,\cdots,0,1,0,\cdots\}$（第$k$位为$1$），则对$\forall k \in \mathbb{N}_+$都有$f_z(y_n)=\xi_{n,k} \to \xi_{0,k}=f_z(0)=0$。
 \begin{proposition}
 对$\forall s \in \mathbb{N_+} \ , \ \exists \, 1=n_1<n_2<\cdots \ , \ 0=p_0<p_1<\cdots$，使得$\{y_n\}$满足：
 \[\sum_{k=1}^{p_{s-1}}|\xi_{n_s,k}|<\frac{1}{4} \quad , \quad \sum_{k=p_{s-1}+1}^{p_s}|\xi_{n_s,k}|>\frac{3}{4}\]
 \begin{proof}
-取$n_1=1$，此时有：
-\[\sum_{k=1}^{\infty}|\xi_{n_1,k}|=||x_{n_1}||=1\]
-显然存在指标$p_1>0$使得：
+取$n_1=1$，此时有$||x_{n_1}||=1$，显然存在指标$p_1>0$使得：
 \[\sum_{k=1}^{p_1}|\xi_{n_1,k}|>\frac{3}{4}\]
 假设以及选取了$1=n_1<n_2<\cdots<n_j \ , \ 0=p_0<p_1<\cdots<p_j$，使得命题成立，由$\xi_{n,k} \to \xi_{0,k}=0$，可知当$n$足够大时，每个$|\xi_{n,k}|$可任意小，因此$\exists \, n_{j+1}>n_j$，使得：
 \[\sum_{k=1}^{p_j}|\xi_{n_{j+1},k}|<\frac{1}{4} \quad \Rightarrow \quad \sum_{k=p_j+1}^{\infty}|\xi_{n_{j+1},k}|=\sum_{k=1}^{\infty}|\xi_{n_{j+1},k}|-\sum_{k=1}^{p_j}|\xi_{n_{j+1},k}|>1-\frac{1}{4}=\frac{3}{4}\]
@@ -779,9 +774,6 @@ $X,Y$是赋范线性空间，$T \in \mathscr{B}(X,Y)$，定义$T^*:Y^* \to X^*$�
 \begin{theorem}
 自反空间$X$的有界集是弱列紧的当且仅当$\forall \{x_n\} \subset X$若有界，则存在子列$\{x_{n_k}\}$满足$x_{n_k} \xrightarrow{w} x_0 \in X$。
 \end{theorem}
-\begin{remark}
-\quad 自反空间一定是 Banach 空间[定理\ref{theorem:wb}]。
-\end{remark}
 \begin{proposition}[1. 若$X^*$可分，则$X$可分]\label{proposition:1}
 由$X^*$可分，即存在可数稠密子集$\{f_n\} \subset X^*$，令$g_n=f_n/||f_n||$，则$\{g_n\}$是$S^*=\{f \in X^*| \ ||f||=1\}$上到可数稠密子集。由于$||g_n||=1$[定义\ref{definition:szfs}]，则$\exists \, \{x_n\} \subset X$满足$||x_n||=1$使得对$\forall n \in \mathbb{N}_+$都有$g_n(x_n)>1/2$。令$X_0=\text{span}\{x_n\}$，显然$X_0$可分。采用反证法证明$X_0=X$，如若不然，则$\exists \, x_0 \in X-X_0$，由 Hahn-Banach 定理[定理\ref{HB}]，$\exists \, f_0 \in X^*$使得$||f_0||=1$且$\eval{f_0}_{X_0}=0$，即$f_0 \in S$。而此时：
 \[\forall n \in \mathbb{N}_+ \ , \ ||f_0-g_n||=\sup_{x \in S}|f_0(x)-g_n(x)| \geq |f_0(x_n)-g_n(x_n)|>\frac{1}{2}\]
@@ -798,5 +790,3 @@ $X,Y$是赋范线性空间，$T \in \mathscr{B}(X,Y)$，定义$T^*:Y^* \to X^*$�
 \begin{proof}
 必要性显然，下证充分性对任意自反空间$X$中的有界子列$\{x_n\}$，令$X_0=\overline{\text{span}\{x_n\}}$，显然$X_0$是$X$的闭子空间，由命题\ref{proposition:3}可知$X_0$自反，进而由命题\ref{proposition:2}可知$\exists \, \{x_{n_k}\} \subset \{x_n\}$弱收敛，即$\forall f_0 \in X_0^*$都有$f_0(x_{n_k}) \to f_0(x_0)$。对$\forall f \in X^*$都可以找到$f_0$看作是其在$X_0^*$上对限制，即$f_0=\eval{f}_{X_0}$，因此有$f_0(x_{n_k})=\eval{f}_{X_0}(x_{n_k}) \to \eval{f}_{X_0}(x_0)=f_0(x_0)$，即$\{x_{n_k}\}$在$X$上弱收敛于$x_0$。
 \end{proof}
-
-\section{紧算子}\label{tight}
