@@ -117,17 +117,60 @@ $\forall \lambda \in \mathbb{K} \ , \ x,y \in H \ , \ 0 \leq (x+\lambda y,x+\lam
 由上一定理可知$\exists \, x_0 \in M$满足$||x-x_0||=d(x,M)=d>0$，采用反证法证明存在性，假设$\exists z \in M$满足$(x-x_0,z)=\alpha \neq 0$，令$\lambda \in \mathbb{R}$，则有$||x-x_0+\lambda z||^2=||x-x_0||^2+\lambda^2||z||^2+2\lambda(x-x_0,z)=d^2+\lambda^2||z||^2+2\lambda\alpha$，易知存在$\lambda$使得$||x-x_0+\lambda z||^2 \leq d^2$，矛盾。下证唯一性，假设$\exists x_1 \in M$满足$x_1 \neq x_0 \ , \ ||x-x_1||=d$，则有：
 \[||x_0-x_1||^2=||(x_0-x)-(x_1-x)||^2=2||x_0-x||^2+2||x_1-x||^2-4\left\|\frac{x_1+x_2}{2}-x\right\|^2\leq 2d^2+2d^2-4d^2=0\]
 \end{proof}
+
 \begin{definition}[正交投影，正交分解]
 称通过定理\ref{theorem:zjfj}找到的$x_0$为$x$在$M$上的正交投影；令$y=x-x_0$，称$x=x_0+y \in M \oplus M^{\perp}$为正交分解。
 \end{definition}
-\begin{proposition}[线性空间的正交分解]\label{proposition:zjfj}
-设$X$是赋范线性空间，$M \subset X$是闭凸子空间，若$\forall x \in X \ , \ \exists \, x_0 \in M \ , \ y \in M^{\perp}$满足$x=x_0+y$，记为$H=M \oplus M^{\perp}$。
-\end{proposition}
-\begin{theorem}
-设$X$是赋范线性空间，则命题\ref{proposition:zjfj}成立当且仅当$X$与一个 Hilbert 空间同构。
-\end{theorem}
+
 \begin{definition}
-设$X$是赋范线性空间，$M \subset X$是闭子空间
+设$X$是赋范线性空间，$M \subset X$是闭子空间，若$\exists \, N \subset X$是闭子空间，满足$X=M \oplus N$，则称$M$是可补的。特别的如果$N=M^{\perp}$，则称$X=M \oplus N=M \oplus M^{\perp}$为集合的正交分解。
 \end{definition}
+
+\begin{theorem}
+设$X$是赋范线性空间，则集合的正交分解成立当且仅当$X$与一个 Hilbert 空间同构。
+\end{theorem}
+
+\begin{definition}[正交集/系]
+设$X$是内积空间，$\mathscr{E}=\{e_{\alpha} \in X\ | \ \forall \alpha,\beta \in  \Lambda \ , \ (e_{\alpha},e_{\beta})=\delta_{\alpha\beta}\} \subset X$，则称$\mathscr{E}$是$X$中的正交集；若$||e_{\alpha}||=1$，则称$\mathscr{E}$是$X$中的标准正交集。若$\mathscr{E}^{\perp}=\{0\}$，则称$\mathscr{E}$是完备的。
+\end{definition}
+在内积空间上找到正交集是容易的，那么能找到所有的正交集吗？以及确认正交集的元素有多少？
+
+\begin{theorem}[Gram-Schmidt 正交化]
+设$X$是内积空间，$\{x_k\}_{k=1}^n \subset X$，则$\exists \, \{e_k\}_{k=1}^n \subset \mathscr{E}$是标准正交集，且$\text{span}\{x_k\}=\text{span}\{e_k\}$：
+\[e_1=\frac{x_1}{||x_1||} \quad , \quad e_k=\left(x_k-\sum_{i=1}^{k-1}(x_k,e_i)e_i\right)\Bigg{/}\left\|x_k-\sum_{i=1}^{k-1}(x_k,e_i)e_i\right\| \quad (k \geq 2)\]
+\end{theorem}
+\begin{remark}
+\quad Gram-Schmidt 正交化可以拓展到可数维。
+\end{remark}
+
+\begin{theorem}
+任意内积空间都存在完备正交集。
+\end{theorem}
+\begin{proof}
+设$X$为内积空间的正交集组成的集合，则$\subseteq$构成$X$中的一个偏序关系，$X$中的任意全序子集都有上界，即所有元素的并。由 Zorn 引理[定理\ref{Zorn}]，$X$存在极大元$\mathscr{E}_0$。采用反证法证明$\mathscr{E}_0$的完备性，如若不然，则$\exists \, x_0 \in \mathscr{E}_0^{\perp}$且$x_0 \neq 0$，那么$\mathscr{E}_1=\mathscr{E}_0\cap\{0\} \supseteq \mathscr{E}_0$，与$\mathscr{E}_0$是极大元矛盾。
+\end{proof}
+\begin{remark}
+\quad 做一个区分，标准正交集和标准正交基是不一样的，标准正交基指的是$\{e_{\alpha}\}$可以张成全空间$X=\text{span}\{e_{\alpha}\}$。
+\end{remark}
+
+\begin{example}
+\quad $\mathbb{R}^n \ , \ \mathscr{E}=\{e_k=(0,\cdots,0,1,0,\cdots,0)\}$（第$k$位为1）
+\end{example}
+\begin{example}
+\quad $l^2 \ , \ \mathscr{E}=\{f_k=(0,\cdots,0,1,0,\cdots)\}$（第$k$位为1）
+\end{example}
+\begin{example}
+\quad $L^2_{\mathbb{C}[0,2\pi]}$：
+\[\mathscr{E}=\left\{e_n(t)=\frac{1}{\sqrt{2\pi}}e^{int} \ , \ n \in \mathbb{Z}\right\} \quad , \quad (e_n,e_m)=\frac{1}{2\pi}\int_0^{2\pi}e^{int}e^{-imt}\dd{t}=\delta_{mn}\]
+\end{example}
+以上这三个例子中标准正交集同样也是标准正交基。不可分的 Hilbert 空间不存在完备的可数正交集。
+\begin{example}
+\quad 扩充的$l^2$：$H=\{f: \ \mathbb{R} \to \mathbb{R} | \ f\text{只在至多可数个点不为0，且}\sum_{x \in \mathbb{R}}|f(x)|^2<\infty\}$（就一数列求和）
+\end{example}
+
+\begin{theorem}[Bessel 不等式]
+设$\mathscr{E}=\{e_{\alpha \ | \ \alpha \in \Lambda}\}$是 Hilbert 空间$H$中的标准正交基，则对$\forall x \in H$，有：
+\[\sum_{\alpha \in \Lambda}|(x,e_{\alpha})|^2 \leq ||x||^2 \quad , \quad \left\|x-\sum_{\alpha \in \Lambda}(x,e_{\alpha})e_{\alpha}\right\|=||x||^2-\sum_{\alpha \in \Lambda}|(x,e_{\alpha})|^2\]
+\end{theorem}
 
 \section{希尔伯特空间上的算子}\label{xebtsz}
