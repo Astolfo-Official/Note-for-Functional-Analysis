@@ -1,16 +1,103 @@
 \begin{introduction}
     \item 内积空间~\ref{nj}
+    \item 正交性与正交集~\ref{zj}
 \end{introduction}
 \section{内积空间}\label{nj}
-\begin{definition}[内积]
+\begin{definition}[内积和内积空间]
 令$H$为一个线性空间，定义二元映射$(\cdot,\cdot): \ H \times H \to \mathbb{K}$，若对$\forall x,y \in H \ , \ \alpha,\beta \in \mathbb{K}$都满足：
 \begin{itemize}
     \item 1. 非负性：$(x,x) \geq 0$且$(x,x)=0$当且仅当$x=0$；
-    \item 2. 对称性：$(x,y)=(y,x)$；
+    \item 2. 对称性：$(x,y)=(y,x)^*$；
     \item 3. 双线性：$(\alpha x + \beta y,z)=\alpha(x,z)+\beta(y,z) \ , \ (z,\alpha x + \beta y)=\alpha^*(z,x)+\beta^*(z,y)$；
 \end{itemize}
-则称$(\cdot,\cdot)$是$H$上对内积。
+则称$(\cdot,\cdot)$是$H$上对内积。称$(H,(\cdot,\cdot))$为内积空间。
 \end{definition}
 \begin{theorem}[Cauchy–Schwarz 不等式]
 $\forall x,y \in H \ , \ |(x,y)|^2 \leq (x,x)\cdot(y,y)$
+\end{theorem}
+\begin{proof}
+$\forall \lambda \in \mathbb{K} \ , \ x,y \in H \ , \ 0 \leq (x+\lambda y,x+\lambda y)=(x,x)+\lambda(y,x)+\lambda^*(x,y)+\lambda\lambda^*(y,y)$，对$y=0$，上式显然成立，对$y>0$，可以取$\lambda=-(x,y)/(y,y)$，则上式子可以写成：
+\[(x,x)-\frac{(y,x)(x,y)}{(y,y)}-\frac{(y,x)(x,y)}{(y,y)}+\frac{(y,x)(x,y)}{(y,y)}\geq0 \quad \Leftrightarrow \quad |(x,y)|^2 \leq (x,x)\cdot(y,y)\]
+\end{proof}
+
+\begin{definition}[Hilbert 空间]
+在内积空间$(H,(\cdot,\cdot))$上可以定义范数$||x||=\sqrt{(x,x)}$，称为由内积诱导的范数，易证$(H,||\cdot||)$是赋范线性空间，若$(H,||\cdot||)$完备，则称为 Hilbert 空间。
+\end{definition}
+\begin{proposition}[内积的连续性]
+若$x_n \to x \ , \ y_n \to y$依范数收敛，则$(x_n,y_n) \to (x,y)$。
+\end{proposition}
+\begin{proof}
+\[\begin{aligned}
+|(x_n,y_n)-(x,y)|&=|(x_n,y_n)-(x,y_n)+(x,y_n)-(x,y)|=|(x_n-x,y_n)+(x,y_n-y)|\\
+& \leq |(x_n-x,y_n)|+|(x,y_n-y)| \leq ||x_n-x||\cdot||y_n|| + ||x||\cdot||y_n-y|| \to 0
+\end{aligned}\]
+\end{proof}
+
+\begin{example}
+\quad 在$l^2$上定义内积$(x,y)$：
+\[l^2=\left\{x=\{\xi_i\} \ \Bigg{|} \ \xi_i \in \mathbb{C} \ , \ \sum_{i=1}^{\infty}|\xi_i|^2<+\infty\right\} \ , \ (x,y)=\sum_{i=1}^{\infty}\xi_i\eta_i^* \ , \ (\forall x=\{\xi_i\}, \ y=\{\eta_i\} \in H)\]
+\end{example}
+\begin{proof}
+只需验证$(x,y)<\infty \ , \ \forall x,y \in l^2$：
+\[(x,y)=\sum_{i=1}^{\infty}\xi_i\eta_i \leq \sum_{i=1}^{\infty}|\xi_i\eta_i| \leq \sqrt{\sum_{i=1}^{\infty}|\xi_i|^2}\cdot\sqrt{\sum_{i=1}^{\infty}|\eta_i|^2}=||x||_{l^2}\cdot||y||_{l^2}<\infty\]
+\end{proof}
+
+\begin{example}
+\quad $L^2[a,b]$。
+\end{example}
+\begin{proof}
+\[\forall x,y \in L^2 \ , \ (x,y)=\int_a^bx(t)y^*(t)\dd{t} \leq \left(\int_a^b|x(t)|^2\dd{t}\right)^{\frac{1}{2}}\cdot\left(\int_a^b|y(t)|^2\dd{t}\right)^{\frac{1}{2}}<\infty\]
+\end{proof}
+
+范数总能通过内积诱导出，那内积是否都能从范数诱导出呢？
+\begin{theorem}
+设$H$是$\mathbb{K}$上的内积空间，若范数满足平行四边形性质：$\forall x,y \in H \ , \ ||x+y||^2+||x-y||^2=2||x||^2+2||y||^2$，则可以通过极化恒等式通过范数定义内积，对$\forall x,y \in H$：
+\begin{itemize}
+\item 1. $\mathbb{K}=\mathbb{R} \ , \ (x,y)_{\mathbb{R}}=(||x+y||^2-||x-y||^2)/4$；
+\item 2. $\mathbb{K}=\mathbb{C} \ , \ (x,y)_{\mathbb{C}}=(||x+y||^2-||x-y||^2+i||x+iy||^2-i||x-iy||^2)/4=(x,y)_{\mathbb{R}}+i(x,iy)_{\mathbb{R}}$。
+\end{itemize}
+\end{theorem}
+
+\begin{example}
+\quad $C^k[a,b]$都不是 Hilbert 空间。
+\end{example}
+
+\begin{example}
+\quad $L^p[a,b]$是 Hilbert 空间当且仅当$p=2$。
+\end{example}
+\begin{proof}
+取：
+\[x(t)=\left\{\begin{array}{cl}
+(\frac{2}{b-a})^{\frac{1}{p}} & , \ t\in[a,\frac{a+b}{2}]\\
+0 & , \ t\in(\frac{a+b}{2},b]
+\end{array}\right. \ , \ y(t)=\left\{\begin{array}{cl}
+0 & , \ t\in[a,\frac{a+b}{2}]\\
+(\frac{2}{b-a})^{\frac{1}{p}} & , \ t\in(\frac{a+b}{2},b]
+\end{array}\right.\]
+显然$||x||_{L^p}=||y||_{L^p}=1$，而$||x+y||_{L^p}=||x+y||_{L^p}=2^{\frac{1}{p}}$，当且仅当$p=2$满足平行四边形性质。
+\end{proof}
+
+\section{正交性与正交集}\label{zj}
+\begin{definition}[正交]
+设$(H,(\cdot,\cdot))$是内积空间，则对$\forall x,y \in H-\{0\}$可以定义夹角$\theta\in[0,\pi]$满足：
+\[\cos\theta=\frac{(x,y)}{||x||\cdot||y||}\in[-1,1]\]
+若$(x,y)=0$，即$\theta=\pi/2$，则称$x$与$y$正交，记为$x \perp y$。
+\end{definition}
+\begin{itemize}
+\item 若$M \subset H$，$\exists \, x \in H-M$对$\forall y \in M$都有$(x,y)=0$，则称$x$与$M$正交，记为$x \perp M$；
+\item 若$M,N \subset H$，对$\forall x \in N \ , \ y \in M$都有$(x,y)=0$，则称$N$与$M$正交，记为$N \perp M$；
+\item 若$M \subset H$，可以定义$M$的正交补$M^{\perp}=\{x \in H|x \perp M\}$，正交补$M^{\perp}$是闭线性子空间。
+\end{itemize}
+
+\begin{proposition}
+设$M \subset H \ , \ \overline{M}=H$，则$M^{\perp}=\{0\}$。
+\end{proposition}
+\begin{proof}
+设$x \in H \ , \ x \perp M$，由$\overline{M}=H$，可知$\exists \, \{x_n\} \subset M$使得$x_n \to x$，因此：
+\[(x,x)=\lim_{n \to \infty}(x_n,x)=0 \quad \Rightarrow \quad x=0\]
+\end{proof}
+
+\begin{theorem}
+设$H$是 Hilbert 空间，$M \subset H$是闭的凸子集，则对$\forall x \in H \ , \ \exists \, x_0 \in M$有：
+\[||x-x_0||=d(x,M)=\inf_{y \in M}||x-y||\]
 \end{theorem}
