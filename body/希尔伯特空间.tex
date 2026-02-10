@@ -143,7 +143,7 @@ $\forall \lambda \in \mathbb{K} \ , \ x,y \in H \ , \ 0 \leq (x+\lambda y,x+\lam
 \quad Gram-Schmidt 正交化可以拓展到可数维。
 \end{remark}
 
-\begin{theorem}
+\begin{theorem}\label{theorem:wbzjj}
 任意内积空间都存在完备正交集。
 \end{theorem}
 \begin{proof}
@@ -168,9 +168,56 @@ $\forall \lambda \in \mathbb{K} \ , \ x,y \in H \ , \ 0 \leq (x+\lambda y,x+\lam
 \quad 扩充的$l^2$：$H=\{f: \ \mathbb{R} \to \mathbb{R} | \ f\text{只在至多可数个点不为0，且}\sum_{x \in \mathbb{R}}|f(x)|^2<\infty\}$（就一数列求和）
 \end{example}
 
-\begin{theorem}[Bessel 不等式]
-设$\mathscr{E}=\{e_{\alpha \ | \ \alpha \in \Lambda}\}$是 Hilbert 空间$H$中的标准正交基，则对$\forall x \in H$，有：
-\[\sum_{\alpha \in \Lambda}|(x,e_{\alpha})|^2 \leq ||x||^2 \quad , \quad \left\|x-\sum_{\alpha \in \Lambda}(x,e_{\alpha})e_{\alpha}\right\|=||x||^2-\sum_{\alpha \in \Lambda}|(x,e_{\alpha})|^2\]
-\end{theorem}
+\begin{definition}[标准正交基]
+称$\{e_{\alpha} \ | \ \alpha \in \Lambda\} \subset H$是 Hilbert 空间$H$中的标准正交基，若对$\forall x \in H$，满足：
+\[x=\sum_{\alpha \in \Lambda}(x,e_{\alpha})e_{\alpha}\]
+\end{definition}
 
+\begin{theorem}[Bessel 不等式]
+设$\mathscr{E}=\{e_{\alpha} \ | \ \alpha \in \Lambda\}$是 Hilbert 空间$H$中的标准正交基，则对$\forall x \in H$，有：
+\[\sum_{\alpha \in \Lambda}|(x,e_{\alpha})|^2 \leq ||x||^2 \quad \text{且} \quad \left\|x-\sum_{\alpha \in \Lambda}(x,e_{\alpha})e_{\alpha}\right\|^2=||x||^2-\sum_{\alpha \in \Lambda}|(x,e_{\alpha})|^2\]
+\end{theorem}
+\begin{proof}
+仅证明实数情况，复数类似。取$\mathscr{E}_n=\{e_1,\cdots,e_n\} \subset \mathscr{E}$是有限集，则：
+\[\left\|x-\sum_{k=1}^n(x,e_k)e_k\right\|^2=||x||^2-2\sum_{k=1}^n|(x,e_k)|^2+\left\|\sum_{k=1}^n(x,e_k)e_k\right\|^2=||x||^2-\sum_{k=1}^n|(x,e_k)|^2 \geq 0\]
+对$\forall m \in \mathbb{N}_+$考虑满足$(x,e_k)>1/m$的项，带入上式子可知至多只有$[m^2||x||]+1$个$k$使得$(x,e_k)>1/m$。取$m \to \infty$，可知只有至多可数个$e_k$使得$(x,e_k)>0$。因此对上式子取极限$n \to \infty$，即证原不等式成立：
+\[\left\|x-\sum_{k=1}^{\infty}(x,e_k)e_k\right\|^2=||x||^2-\sum_{k=1}^{\infty}|(x,e_k)|^2 \geq 0 \quad \Leftrightarrow \quad \left\|x-\sum_{\alpha \in \Lambda}(x,e_{\alpha})e_{\alpha}\right\|^2=||x||^2-\sum_{\alpha \in \Lambda}|(x,e_{\alpha})|^2 \geq 0\]
+\end{proof}
+
+\begin{theorem}\label{theorem:3eq}
+设$\mathscr{E}=\{e_{\alpha} \ | \ \alpha \in \Lambda\}$是 Hilbert 空间$H$中的标准正交集，则以下三个命题等价：
+\begin{itemize}
+    \item 1. $\mathscr{E}$是$H$的标准正交基；
+    \item 2. $\mathscr{E}$是完备的；
+    \item 3. Parseval 等式成立：
+\[\forall x \in H \ , \ ||x||^2=\sum_{\alpha \in \Lambda}|(x,e_{\alpha})|^2\]
+\end{itemize}
+\end{theorem}
+\begin{proof}
+命题1和3显然等价，只需证命题1和2等价。\\
+必要性：设$\exists \, x_0 \in \mathscr{E}^{\perp}$，在标准正交基下显然有$(x_0,e_{\alpha})=0$，因此在标准正交基下展开$x_0$：
+\[x_0=\sum_{\alpha \in \Lambda}(x_0,e_{\alpha})e_{\alpha}=\sum_{\alpha \in \Lambda}0\cdot e_{\alpha}=0\]
+充分性：对$\forall x \in H$，令：
+\[y=x-\sum_{\alpha \in \Lambda}(x,e_{\alpha})e_{\alpha} \quad \Rightarrow \quad (y,e_{\beta})=(x,e_{\beta})-\sum_{\alpha \in \Lambda}(x,e_{\alpha})(e_{\alpha},e_{\beta})=(x,e_{\beta})-(x,e_{\beta})=0 \quad \Rightarrow \quad x=\sum_{\alpha \in \Lambda}(x,e_{\alpha})e_{\alpha}\]
+且$y \in \mathscr{E}^{\perp}$，因此命题1和2等价得证。
+\end{proof}
+
+\begin{theorem}
+Hilbert 空间$H$可分当且仅当存在至多可数的标准正交基。
+\end{theorem}
+\begin{proof}
+必要性：由于$H$可分，所以$\exists \, \{y_n\}_{n=1}^{\infty} \subset H$满足$\overline{\text{span}\{y_n\}} \supseteq H$，对$\{y_n\}$做 Gram-Schmidt 正交化，即构造了$H$的至多可数标准正交集，由\ref{theorem:3eq}可知$H$有完备的至多可数的标准正交基。
+
+充分性：设$\mathscr{E}=\{e_k \ | \ k \in F \subseteq \mathbb{N}_+\} \subset H$是至多可数的标准正交基。定义$\text{span}\{e_k\}_{k \in F} \subset H$上的一列有理柯西列$\{q_n=\sum_{k \in F}q_{n,k}e_k\}$，对$\forall x \in H \ , \ \varepsilon>0 \ , \ k \in F \ , \ \exists \, N>0 \ , \ n>N$有$q_{n,k}$满足$|(x,e_k)-q_{n,k}|<\varepsilon/|F|$：
+\[||x-q_n||=\left\|x-\sum_{k \in F}q_{n,k}e_k\right\|=\left\|\sum_{k \in F}(x,e_k)e_k-\sum_{k \in F}q_{n,k}e_k\right\| \leq \sum_{k \in F}|(x,e_k)-q_{n,k}|<\varepsilon\]
+即对$\forall x \in H$都存在可数集合$\text{span}\{e_k\}_{k \in F}$中都一个列柯西列$q_n \to x$，即 Hilbert 空间$H$可分。
+\end{proof}
+
+\begin{theorem}
+无穷维可分 Hilbert 空间都与$l^2$同构。
+\end{theorem}
+\begin{proof}
+由上一定理，无穷维可分 Hilbert 空间存在一个可数的标准正交基$\mathscr{E}=\{e_k \ | \ k \in \mathbb{N}_+\} \subset H$，记$l^2$的标准正交基为$\{f_k \ | \ k \in \mathbb{N}_+\}$，定义映射$\Phi: \ H \to l^2$，把$H$中的元素映射为$l^2$中的元素：
+\[x=\sum_{k=1}^{\infty}(x,e_k)_He_k \quad \mapsto \quad \sum_{k=1}^{\infty}(x,f_k)_{l^2}f_k\]
+\end{proof}
 \section{希尔伯特空间上的算子}\label{xebtsz}
