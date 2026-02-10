@@ -1,6 +1,7 @@
 \begin{introduction}
     \item 内积空间~\ref{nj}
     \item 正交性与正交集~\ref{zj}
+    \item 希尔伯特空间上的算子~\ref{xebtsz}
 \end{introduction}
 \section{内积空间}\label{nj}
 \begin{definition}[内积和内积空间]
@@ -24,14 +25,12 @@ $\forall \lambda \in \mathbb{K} \ , \ x,y \in H \ , \ 0 \leq (x+\lambda y,x+\lam
 在内积空间$(H,(\cdot,\cdot))$上可以定义范数$||x||=\sqrt{(x,x)}$，称为由内积诱导的范数，易证$(H,||\cdot||)$是赋范线性空间，若$(H,||\cdot||)$完备，则称为 Hilbert 空间。
 \end{definition}
 \begin{proposition}[内积的连续性]
-若$x_n \to x \ , \ y_n \to y$依范数收敛，则$(x_n,y_n) \to (x,y)$。
-\end{proposition}
-\begin{proof}
+若$x_n \to x \ , \ y_n \to y$依范数收敛，则$(x_n,y_n) \to (x,y)$：
 \[\begin{aligned}
 |(x_n,y_n)-(x,y)|&=|(x_n,y_n)-(x,y_n)+(x,y_n)-(x,y)|=|(x_n-x,y_n)+(x,y_n-y)|\\
 & \leq |(x_n-x,y_n)|+|(x,y_n-y)| \leq ||x_n-x||\cdot||y_n|| + ||x||\cdot||y_n-y|| \to 0
 \end{aligned}\]
-\end{proof}
+\end{proposition}
 
 \begin{example}
 \quad 在$l^2$上定义内积$(x,y)$：
@@ -98,7 +97,37 @@ $\forall \lambda \in \mathbb{K} \ , \ x,y \in H \ , \ 0 \leq (x+\lambda y,x+\lam
 \end{proof}
 
 \begin{theorem}
-设$H$是 Hilbert 空间，$M \subset H$是闭的凸子集，则对$\forall x \in H \ , \ \exists \, x_0 \in M$有：
+设$H$是 Hilbert 空间，$M \subset H$是闭的凸子空间，则对$\forall x \in H \ , \ \exists \, x_0 \in M$有：
 \[||x-x_0||=d(x,M)=\inf_{y \in M}||x-y||\]
 \end{theorem}
+\begin{proof}
+若$x \in M$，取$x_0=x$即证。若$x \notin M$，则有$d(x,M)=d>0$。由下确界的性质，$\exists \, \{x_n\} \subset M$使得$||x_n-x|| \to d$且$||x_n-x||>d$，由$M$是完备闭子空间，只需证明$\{x_n\}$是柯西列，考虑足够大的$m,n>0$：
+\[\begin{aligned}
+||x_n-x_m||^2&=||(x_n-x)-(x_m-x)||^2=2||x_n-x||^2+2||x_m||^2-||x_n+x_m-2x||^2\\
+&=2||x_n-x||^2+2||x_m-x||^2-4\left\|\frac{x_n+x_m}{2}-x\right\|^2
+\leq 2||x_n-x||^2+2||x_m-x||^2-4d^2 \to 0
+\end{aligned}\]
+上述利用了凸性$x_n,x_m \in M \ \Rightarrow \ (x_n+x_m)/2 \in M$，因此$\{x_n\}$是柯西列，且$x_n \to x_0 \in M \ , \ ||x_n-x|| \to d$。
+\end{proof}
 
+\begin{theorem}\label{theorem:zjfj}
+设$H$是 Hilbert 空间，$M \subset H$是闭凸子空间，则对$\forall x \in H \ , \ \exists \, ! \, x_0 \in M$满足$(x-x_0) \perp M$。
+\end{theorem}
+\begin{proof}
+由上一定理可知$\exists \, x_0 \in M$满足$||x-x_0||=d(x,M)=d>0$，采用反证法证明存在性，假设$\exists z \in M$满足$(x-x_0,z)=\alpha \neq 0$，令$\lambda \in \mathbb{R}$，则有$||x-x_0+\lambda z||^2=||x-x_0||^2+\lambda^2||z||^2+2\lambda(x-x_0,z)=d^2+\lambda^2||z||^2+2\lambda\alpha$，易知存在$\lambda$使得$||x-x_0+\lambda z||^2 \leq d^2$，矛盾。下证唯一性，假设$\exists x_1 \in M$满足$x_1 \neq x_0 \ , \ ||x-x_1||=d$，则有：
+\[||x_0-x_1||^2=||(x_0-x)-(x_1-x)||^2=2||x_0-x||^2+2||x_1-x||^2-4\left\|\frac{x_1+x_2}{2}-x\right\|^2\leq 2d^2+2d^2-4d^2=0\]
+\end{proof}
+\begin{definition}[正交投影，正交分解]
+称通过定理\ref{theorem:zjfj}找到的$x_0$为$x$在$M$上的正交投影；令$y=x-x_0$，称$x=x_0+y \in M \oplus M^{\perp}$为正交分解。
+\end{definition}
+\begin{proposition}[线性空间的正交分解]\label{proposition:zjfj}
+设$X$是赋范线性空间，$M \subset X$是闭凸子空间，若$\forall x \in X \ , \ \exists \, x_0 \in M \ , \ y \in M^{\perp}$满足$x=x_0+y$，记为$H=M \oplus M^{\perp}$。
+\end{proposition}
+\begin{theorem}
+设$X$是赋范线性空间，则命题\ref{proposition:zjfj}成立当且仅当$X$与一个 Hilbert 空间同构。
+\end{theorem}
+\begin{definition}
+设$X$是赋范线性空间，$M \subset X$是闭子空间
+\end{definition}
+
+\section{希尔伯特空间上的算子}\label{xebtsz}
