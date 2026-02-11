@@ -238,3 +238,30 @@ Hilbert 空间$H$可分当且仅当存在至多可数的标准正交基。
 
 \section{希尔伯特空间上的算子}\label{xebtsz}
 有了内积结构后对赋范线性空间中的有界算子有什么影响？这里只考虑到达空间为$\mathbb{R}$的情况。
+
+设$H=\mathbb{R}^n \ , \ f \in H^*$则对$\forall x \in \mathbb{R}^n, \ \exists \, ! \, a \in \mathbb{R}^n$满足$f(x)=(x,a)=a_1x_1+a_2x_2+\cdots+a_nx_n$。定义零空间（核）$\ker f=\{x \in H|f(x)=0\}$，由于$f$是$H^*$中的有界线性泛函，即把向量映射称数，因此$\dim \operatorname{Im}{f}=\dim \mathbb{R}=1$，因此$\dim\ker f=n-1$。因此$f$对应的向量$a$可以看做核的法向量。同时这也表明有限维情况下，线性泛函的作用实际上相当于内积。
+
+\begin{theorem}[Riesz 表示定理]
+设$H$是 Hilbert 空间，则对$\forall f \in H^* \ , \ \exists \, ! \, x_f \in H$满足对$\forall x \in H$都有$f(x)=(x,x_f)$。
+\end{theorem}
+\begin{proof}
+取核$\ker f=\{x \in H|f(x)=0\} \subset H$，显然$\ker f$是闭子空间。$f=0$时定理显然成立，考虑$f \neq 0$，则$(\ker f)^{\perp} \neq \{0\}$，取$x_0,y \in (\ker f)^{\perp}$，显然$f(x_0),f(y) \neq 0$，记$\lambda=f(y)/f(x_0) \in \mathbb{R}$，由线性$y-\lambda x_0 \in (\ker f)^{\perp}$。而$f(y-\lambda x_0)=f(y)-\lambda f(x_0)=0$，即$y-\lambda x \in \ker f \cap (\ker f)^{\perp}={0}$，因此$\dim (\ker f)^{\perp}=1$。由于$y-\lambda x \in \ker f$：
+\[(y-\lambda x_0,x_0)=\left(y-\frac{f(y)}{f(x_0)}x_0,x_0\right)=(y,x_0)-\frac{f(y)}{f(x_0)}(x_0,x_0)=0 \quad \Rightarrow \quad f(y)=\frac{f(x_0)}{||x_0||^2}(y,x_0)=\left(y,\frac{\overline{f(x_0)}}{||x_0||^2}x_0\right)\]
+对$\forall x \in H$，可做正交分解$x=x_1+x_2 \ , \ x_1 \in \ker f \ , \ x_2 \in (\ker f)^{\perp}$，设$\exists \, x_0 \in (\ker f)^{\perp}$，取：
+\[x_f=\frac{\overline{f(x_0)}}{||x_0||^2}x_0 \quad \Rightarrow \quad f(x)=f(x_2)=\left(x_2,\frac{\overline{f(x_0)}}{||x_0||^2}x_0\right)=(x,x_f)\]
+即证存在性。对唯一性，假设$(x,x_f)=(x,x_f')$，则$(x,x_f-x_f')=0$，由$x$的任意性，可知$x_f=x_f'$。
+\end{proof}
+\begin{remark}
+\quad 上述证明表明，存在一一映射$\Phi: \ H^* \to H  \ , \ f \mapsto x_f$，因此有$H \cong H^* \cong H^{**}$。
+\end{remark}
+
+\begin{example}
+\quad Laplace 方程的弱解。设$\Omega \subset \mathbb{R}^n$是有界开区域（连通开集），对$\forall f \in L^2(\Omega)$，考虑方程：
+\begin{equation}\label{eq:Laplace}
+\left\{\begin{array}{rl}
+-\Delta u = f, & x \in \Omega \\
+u = 0, & x \in \partial\Omega \\
+\end{array}\right.
+\end{equation}
+证明方程\eqref{eq:Laplace}存在唯一弱解。
+\end{example}
