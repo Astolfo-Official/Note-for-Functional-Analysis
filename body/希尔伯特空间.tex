@@ -173,7 +173,7 @@ $\forall \lambda \in \mathbb{K} \ , \ x,y \in H \ , \ 0 \leq (x+\lambda y,x+\lam
 \[x=\sum_{\alpha \in \Lambda}(x,e_{\alpha})e_{\alpha}\]
 \end{definition}
 
-\begin{theorem}[Bessel 不等式]
+\begin{theorem}[Bessel 不等式]\label{theorem:Bessel}
 设$\mathscr{E}=\{e_{\alpha} \ | \ \alpha \in \Lambda\}$是 Hilbert 空间$H$中的标准正交基，则对$\forall x \in H$，有：
 \[\sum_{\alpha \in \Lambda}|(x,e_{\alpha})|^2 \leq ||x||^2 \quad \text{且} \quad \left\|x-\sum_{\alpha \in \Lambda}(x,e_{\alpha})e_{\alpha}\right\|^2=||x||^2-\sum_{\alpha \in \Lambda}|(x,e_{\alpha})|^2\]
 \end{theorem}
@@ -216,8 +216,25 @@ Hilbert 空间$H$可分当且仅当存在至多可数的标准正交基。
 \begin{theorem}
 无穷维可分 Hilbert 空间都与$l^2$同构。
 \end{theorem}
+\begin{remark}
+\quad 如果是有限维则同构于$\mathbb{K}^n$，类似定理\ref{the:B}的证明。
+\end{remark}
 \begin{proof}
 由上一定理，无穷维可分 Hilbert 空间存在一个可数的标准正交基$\mathscr{E}=\{e_k \ | \ k \in \mathbb{N}_+\} \subset H$，记$l^2$的标准正交基为$\{f_k \ | \ k \in \mathbb{N}_+\}$，定义映射$\Phi: \ H \to l^2$，把$H$中的元素映射为$l^2$中的元素：
-\[x=\sum_{k=1}^{\infty}(x,e_k)_He_k \quad \mapsto \quad \sum_{k=1}^{\infty}(x,f_k)_{l^2}f_k\]
+\[x=\sum_{k=1}^{\infty}(x,e_k)e_k \quad \mapsto \quad \{(x,e_k)\}_{k=1}^{\infty}\]
+易证$\Phi$线性且单射，且把$H$中的标准正交基一一映射到$l^2$的标准正交基$e_k \to \{0,\cdots,0,1,0,\cdots\}$（第$k$为1）。考虑 Parseval 等式，对$\forall x \in H$都有：
+\[||x||^2_H=\sum_{k=1}^{\infty}|(x,e_k)|^2=||\Phi(x)||^2_{l^2}\]
+即对任意$l^2$的元素都对应$H$中的元素$x$，最后验证保内积，$\forall x,y \in H$：
+\[(x,y)_H=\left(\sum_{k=1}^{\infty}(x,e_k)e_k,\sum_{k=1}^{\infty}(y,e_k)e_k\right)=\sum_{k=1}^{\infty}(x,e_k)(e_k,y)=(\Phi(x),\Phi(y))_{l^2}\]
 \end{proof}
+
+\begin{proposition}[Riemann-Lebesgue 引理]
+若$\{e_n\}_{n=1}^{\infty}$是 Hilbert 空间$H$的标准正交集，则$(x,e_n) \to 0$。
+\end{proposition}
+\begin{remark}
+\quad 这是 Bessel 不等式[定理\ref{theorem:Bessel}]的推论，在证明 Bessel 不等式时我们已经证明了。例如，$H=L^2[0,2\pi] \ , \ \forall f \in H$：
+\[\lim_{n \to \infty}\int_0^{2\pi}f(t)e^{-int}\dd{t}=0\]
+\end{remark}
+
 \section{希尔伯特空间上的算子}\label{xebtsz}
+有了内积结构后对赋范线性空间中的有界算子有什么影响？这里只考虑到达空间为$\mathbb{R}$的情况。
