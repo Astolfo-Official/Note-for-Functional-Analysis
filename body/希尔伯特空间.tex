@@ -241,7 +241,7 @@ Hilbert 空间$H$可分当且仅当存在至多可数的标准正交基。
 
 设$H=\mathbb{R}^n \ , \ f \in H^*$则对$\forall x \in \mathbb{R}^n, \ \exists \, ! \, a \in \mathbb{R}^n$满足$f(x)=(x,a)=a_1x_1+a_2x_2+\cdots+a_nx_n$。定义零空间（核）$\ker f=\{x \in H|f(x)=0\}$，由于$f$是$H^*$中的有界线性泛函，即把向量映射称数，因此$\dim \operatorname{Im}{f}=\dim \mathbb{R}=1$，因此$\dim\ker f=n-1$。因此$f$对应的向量$a$可以看做核的法向量。同时这也表明有限维情况下，线性泛函的作用实际上相当于内积。
 
-\begin{theorem}[Riesz 表示定理]
+\begin{theorem}[Riesz 表示定理]\label{theorem:rieszbs}
 设$H$是 Hilbert 空间，则对$\forall f \in H^* \ , \ \exists \, ! \, x_f \in H$满足对$\forall x \in H$都有$f(x)=(x,x_f)$。
 \end{theorem}
 \begin{proof}
@@ -264,4 +264,69 @@ u = 0, & x \in \partial\Omega \\
 \end{array}\right.
 \end{equation}
 证明方程\eqref{eq:Laplace}存在唯一弱解。
+\end{example}
+
+\begin{definition}[局部可积函数]
+设$\Omega \subseteq \mathbb{R}^n$是一个非空开集。称可测函数 $f: \ \Omega \to \mathbb{K}$是局部可积的，如果对于任意紧子集 $K \subset \Omega$，有：
+\[\int_K |f(x)| \, \dd{x} < \infty\]
+上述积分是 Lebesgue 积分，所有在 $\Omega$ 上局部可积的函数构成的集合记作 $L^1_{\text{loc}}(\Omega)$。显然$L^1(\Omega) \subset L^1_{\text{loc}}(\Omega)$。
+\end{definition}
+
+\begin{definition}[具有紧支集的光滑函数]
+设$\Omega \subseteq \mathbb{R}^n$是一个非空开集。函数$f \in C^\infty(\Omega)$称为具有紧支集的光滑函数，若其支集，定义为：
+\[\operatorname{supp} f := \overline{\{ x \in \Omega : f(x) \neq 0 \}}\]
+是$\Omega$内的紧子集。所有这样的函数构成的集合记作$C_{\rm{c}}^{\infty}(\Omega)$或$\mathcal{D}(\Omega)$。
+\end{definition}
+
+\begin{definition}[弱导数]
+对$\alpha = (\alpha_1,\dots,\alpha_n) \in \mathbb{N}^n$，定义长度 $|\alpha| = \alpha_1+\cdots+\alpha_n$，以及偏导数算子：
+\[D^\alpha = \frac{\partial^{|\alpha|}}{\partial x_1^{\alpha_1} \cdots \partial x_n^{\alpha_n}}\]
+设$u, v \in L^1_{\text{loc}}(\Omega)$，若对任意测试函数$\varphi \in C_c^\infty(\Omega)$都有：
+\[\int_{\Omega} u \, D^\alpha \varphi \, \dd{x} = (-1)^{|\alpha|} \int_{\Omega} v \, \varphi \, \dd{x}\]
+则称 $v$ 是 $u$ 的一个 $\alpha$ 阶弱导数（或分布导数），记作 $v = D^\alpha u$。
+\end{definition}
+
+\begin{definition}[Sobolev 空间 $W^{k,p}(\Omega)$]
+定义 Sobolev 空间$W^{k,p}(\Omega)= \left\{ u \in L^p(\Omega) \ | \  
+\forall\, |\alpha| \le k, \ p \in [1,+\infty), \ D^\alpha u \in L^p(\Omega)\right\}$，其中 $D^\alpha u$ 是 $u$ 的 $\alpha$ 阶弱导数。对于 $\forall u \in W^{k,p}(\Omega)$，定义其范数如下：
+\begin{itemize}
+\item 若 $1 \le p < \infty$：
+\[\|u\|_{W^{k,p}(\Omega)}=\left( \sum_{|\alpha| \le k} \|D^\alpha u\|_{L^p(\Omega)}^p \right)^{1/p}\]
+\item 若 $p = \infty$：
+\[\|u\|_{W^{k,\infty}(\Omega)}=\max_{|\alpha| \le k} \|D^\alpha u\|_{L^\infty(\Omega)}\]
+\end{itemize}
+$(W^{k,p}(\Omega),\|\cdot\|_{W^{k,p}(\Omega)})$ 是 Banach 空间。常记$W^{k,2}(\Omega)$为$H^k(\Omega)$，定义内积：
+\[(u,v)_{H^k(\Omega)} = \sum_{|\alpha| \le k} \int_{\Omega} D^\alpha u \, \overline{D^\alpha v} \, \dd{x}\]
+$(H^k(\Omega),(\cdot,\cdot)_{H^k(\Omega)})$是 Hilbert 空间，显然$C_{\rm{c}}^{\infty}(\Omega) \subset H^k(\Omega)$，记$H_0^k(\Omega)$为$C_{\rm{c}}^{\infty}(\Omega)$在$H^k(\Omega)$内的闭包。
+\end{definition}
+\begin{remark}
+\quad 验证$(\cdot,\cdot)_{H^k(\Omega)}$是内积，线性和对称性显然，正定性需要用到 Poincar\'{e} 不等式（取$p=2$，记$D^1=D$）。
+\end{remark}
+
+\begin{theorem}[Poincar\'{e} 不等式]\label{theorem:Poincare}
+设$1\leq p<\infty$且$\Omega\subset\mathbb{R}^n$为有界区域，则对$\forall u\in W_0^{1,p}(U)$存在正常数$C=C(p,\Omega)$使得：
+\[\|u\|_{p,U}\leq C\|Du\|_{p,U}\]
+\end{theorem}
+
+\begin{definition}[弱解]
+称$u \in H_0^1(\Omega)$是方程\eqref{eq:Laplace}的弱解，若其对$\forall v  \in H_0^1(\Omega)$都满足：
+\[\int_{\Omega}(-\Delta u) \cdot \nabla v \dd{x}=\int_{\Omega}\nabla u \cdot \nabla v \dd{x}=\int_{\Omega} f \cdot v \dd{x}\]
+\end{definition}
+
+\begin{proof}
+考虑泛函$F: \ H_0^1(\Omega) \to \mathbb{R} \ , \ v \mapsto \int_{\Omega}f \cdot v \dd{x}$，显然线性，利用Poincar\'{e} 不等式[定理\ref{theorem:Poincare}]验证有界性：
+\[|F(v)|=\left|\int_{\Omega}f \cdot v \dd{x}\right| \leq ||f||_{L^2(\Omega)} \cdot ||v||_{L^2(\Omega)} \leq C||f||_{L^2(\Omega)} \cdot ||Dv||_{H_0^1(\Omega)}<\infty\]
+由 Riesz 表示定理[定理\ref{theorem:rieszbs}]，$\exists \, ! \, u \in H_0^1(\Omega)$满足$F(v)=(u,v)_{H_0^1(\Omega)}$，即对$\forall v \in H_0^1(\Omega)$都满足：
+\[\int_{\Omega} f \cdot v \dd{x}=\int_{\Omega}\nabla u \cdot \nabla v \dd{x}=\int_{\Omega}(-\Delta u) \cdot \nabla v \dd{x}\]
+\end{proof}
+
+\begin{example}
+\quad 散度型椭圆方程的解。设$\Omega \subset \mathbb{R}^n$是有界开区域（连通开集），对$\forall f \in L^2(\Omega)$，考虑方程：
+\begin{equation}\label{eq:sdxtyfc}
+\left\{\begin{array}{rl}
+Lu =-\sum_{i,j=1}^{n}\partial_i(a_{ij}(x)\partial_ju)=f, & x \in \Omega \\
+u = 0, & x \in \partial\Omega \\
+\end{array}\right.
+\end{equation}
+证明方程\eqref{eq:sdxtyfc}存在唯一弱解。
 \end{example}
