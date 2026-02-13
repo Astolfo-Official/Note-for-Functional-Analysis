@@ -316,8 +316,8 @@ $(H^k(\Omega),(\cdot,\cdot)_{H^k(\Omega)})$是 Hilbert 空间，显然$C_{\rm{c}
 \begin{proof}
 考虑泛函$F: \ H_0^1(\Omega) \to \mathbb{R} \ , \ v \mapsto \int_{\Omega}f \cdot v \dd{x}$，显然线性，利用Poincar\'{e} 不等式[定理\ref{theorem:Poincare}]验证有界性：
 \[|F(v)|=\left|\int_{\Omega}f \cdot v \dd{x}\right| \leq ||f||_{L^2(\Omega)} \cdot ||v||_{L^2(\Omega)} \leq C||f||_{L^2(\Omega)} \cdot ||Dv||_{H_0^1(\Omega)}<\infty\]
-由 Riesz 表示定理[定理\ref{theorem:rieszbs}]，$\exists \, ! \, u \in H_0^1(\Omega)$满足$F(v)=(u,v)_{H_0^1(\Omega)}$，即对$\forall v \in H_0^1(\Omega)$都满足：
-\[\int_{\Omega} f \cdot v \dd{x}=\int_{\Omega}\nabla u \cdot \nabla v \dd{x}=\int_{\Omega}(-\Delta u) \cdot \nabla v \dd{x}\]
+由 Riesz 表示定理[定理\ref{theorem:rieszbs}]，对$\forall v \in H_0^1(\Omega)$，都$\exists \, ! \, u \in H_0^1(\Omega)$满足$F(v)=(u,v)_{H_0^1(\Omega)}$，即：
+\[\int_{\Omega} f \cdot v \dd{x}=\int_{\Omega}\nabla u \cdot \nabla v \dd{x}=\int_{\Omega}(-\Delta u) \cdot v \dd{x}\]
 \end{proof}
 
 \begin{example}
@@ -330,3 +330,27 @@ u = 0, & x \in \partial\Omega \\
 \end{equation}
 证明方程\eqref{eq:sdxtyfc}存在唯一弱解。
 \end{example}
+\begin{theorem}[Lax-Milgram 定理]
+设$H$是实 Hilbert 空间，定义映射$a: \ H \times H \to \mathbb{R} \ , \ (u,v) \mapsto a(u,v)$，满足：
+\begin{itemize}
+    \item 1. $a$是有界双线性的；
+    \item 2. $a$是强制的，即对$\forall x \in H \ , \ \exists \, \delta>0$满足$a(x,x) \geq \delta||x||^2$；
+\end{itemize}
+则对$\forall x,y \in H \ , \ \exists \, ! \, T \in \mathscr{B}(H)$满足$a(x,y)=(x,Ty)$，其范数满足：
+\[||T||=\sup_{u,v \in H}\frac{|a(u,v)|}{||u||\cdot||v||}\]
+且$T$可逆，同时$T^{-1} \in \mathscr{B}(H)$且其范数满足$||T^{-1}||\leq \delta^{-1}$。
+\end{theorem}
+\begin{proof}
+对$\forall u \in H$，定义映射$f_u: \ H \to \mathbb{R} \ , \ v \mapsto a(u,v)$，显然其是有界线性泛函。由 Riesz 表示定理[定理\ref{theorem:rieszbs}]，$\exists \, ! \, z=x_{f_{u}} \in H$满足$f_u(v)=(v,z)$，记$z=Tu$，$T$的线性显然，下证有界性：
+\[||Tu||=\frac{|(Tu,Tu)|}{||Tu||}\leq\sup_{v \in H}\frac{|(v,Tu)|}{||v||}\leq\sup_{v \in H}\frac{||v||\cdot||Tu||}{||v||}=||Tu|| \quad \Rightarrow \quad ||T||=\sup_{u \in H}\frac{||Tu||}{||u||}=\sup_{u,v \in H}\frac{|a(u,v)|}{||u||\cdot||v||}\]
+\begin{proposition}[$T$是单射]
+设$\exists \, u_1,u_2 \in H$满足$Tu_1=Tu_2$，则有$a(v,u_1-u_2)=(v,Tu_1-Tu_2)=0$，取$v=u_1-u_2$，由强制性$\exists \, \delta>0$，满足$0=a(u_1-u_2,u_1-u_2) \geq \delta ||u_1-u_2||^2$，即$u_1=u_2$。
+\end{proposition}
+满射的证明分两步：1. 先证明值域$R(T)$是闭的；2. 再证明$R(T)=H \ \Leftrightarrow \ R(T)^{\perp}$。
+\begin{proposition}[$T$是满射]
+对$\forall w=Tu \in \overline{R(T)}$，取柯西列$\{u_n\} \subset H$，满足$Tu_n \to w$。由强制性，$\forall m,n>0 \ , \ \exists \, \delta>0$，使得：
+\[\delta||u_m-u_n||^2 \leq a(u_m-u_n,u_m-u_n)=(u_m-u_n,T(u_m-u_n)) \leq ||u_m-u_n||\cdot||Tu_m-Tu_n||\]
+即$||u_m-u_n|| \leq \delta^{-1}||Tu_m-Tu_n|| \to 0$。因此$\{u_n\}$是$H$中的柯西列，取$u_n \to u \in H$，有$T$算子的连续性可知$w=Tu \in R(T)$，即$R(T)$是闭的。对$\forall x \in R(T)^{\perp}$都有$\forall u \in H \ , \ (x,Tu)=0$，特别地取$u=x$，则$\exists \, \delta>0 \ , \ 0=(x,Tx)=a(x,x) \geq \delta ||x||^2 \ \Rightarrow \ x=0$，即$R(T)^{\perp}=\{0\}$，因此$R(T)=H$。
+\end{proposition}
+因此$T$可逆，且由强制性，对$\forall u \in H \ , \ \exists \, \delta>0$满足$\delta||u||^2\leq a(u,u)=(u,Tu) \leq ||u||\cdot||Tu|| \ \Rightarrow \ \delta||x|| \leq ||Tu||$。故由定理\ref{theorem:nys}保证$T^{-1}\in \mathscr{B}(H)$，令$u=T^{-1}w$，则有$\delta||T^{-1}w|| \leq ||w|| \ \Rightarrow \ ||T^{-1}||\leq \delta^{-1}$。
+\end{proof}
