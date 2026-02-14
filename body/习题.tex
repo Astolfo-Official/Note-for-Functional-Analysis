@@ -272,3 +272,31 @@ $C[0,1]$是距离空间，故$C[0,1]$中的紧集是列紧的闭集，$\overline
 \end{proof}
 
 \section*{有界线性算子习题}
+\begin{example}
+\quad 设$f$是$[a,b]$上的可测函数，且对$\forall g \in L^p[a,b] \ , \ p\in(1,+\infty)$都有$f \cdot g \in L^1[a,b]$，求证$f \in L^q[a,b]$，其中$1/p+1/q=1$。
+\end{example}
+\begin{proof}
+定义映射$F$，对$\forall g \in L^p$，都有$F: \ L^p \to \mathbb{R}$：
+\[F(g)=\int_a^bf \cdot g\dd{x}\]
+显然$F$是有界线性泛函。对$\forall N \in \mathbb{N}_+$，定义新函数$f_N(x)$和对应的映射$F_N(x)$：
+\[f_N(x)=\left\{\begin{array}{rl}
+f(x), & |f(x)| \leq N \\ 0, & |f(x)|>N
+\end{array}\right. \quad , \quad F_N(x)=\int_a^bf_N \cdot g \dd{x}\]
+显然$\{F_N\}$逐点收敛至$F$。对$\forall g \in L^p[a,b]$，记$|F(g)|$的最大值为$C$，当$N \to \infty$时，有：
+\[|F_N(g)|=\left|\int_a^b f_N \cdot g \dd{x}\right|=\left|\int_a^b f \cdot g \dd{x}-\int_{\{|f(x)|>N\}} f \cdot g \dd{x}\right|\leq\left|\int_a^b f \cdot g \dd{x}\right|+\left|\int_{\{|f(x)|>N\}} f \cdot g \dd{x}\right| \leq C+1<+\infty\]
+进而可知$||F_N||\leq C+1<+\infty$，即$\{F_N\}$一致有界。由 Banach-Steinhaus 定理[定理\ref{BS}]得$||F_N-F|| \to 0$且：
+\[||F||\leq \liminf_{N\to\infty}||F_N||\]
+只需验证$||F_N||=||f_N||_{L^q}$，然后取$N \to \infty$即证。一方面：
+\[|F_N(g)|=\left|\int_a^b f_N \cdot g \dd{x}\right|\leq||f_N||_{L^q}\cdot||g||_{L^p} \quad \Rightarrow \quad ||F_N|| \leq ||f_N||_{L^q}\]
+另一方面，容易验证可取$g=(f_N)^{q-1}\cdot\text{sgn}f_N \in L^p$：
+\[|F_N(g)|=\int_a^b |f_N|^q \dd{x}=||f_N||^q_{L^q} \leq ||F_N||\cdot||g||_{L^p}=||F_N||\cdot||f_N||^{q-1}_{L^q} \quad \Rightarrow \quad ||F_N|| \geq ||f_N||_{L^q}\]
+综上所述$||F_N||=||f_N||_{L^q}$，原命题得证。
+\end{proof}
+
+\begin{example}
+\quad 设$X$是赋范线性空间，$X_0 \subset X$是闭子空间，证明对$\forall x \in X$都有：
+\[d(x,X_0)=\sup\{|f(x) \ | \ f \in X^*, \ ||f||=1, \ f|_{X_0}=0\}\]
+\end{example}
+\begin{proof}
+tbd
+\end{proof}
