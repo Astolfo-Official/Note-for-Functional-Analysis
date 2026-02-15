@@ -382,3 +382,19 @@ u = 0, & x \in \partial\Omega \\
 \begin{proof}
 因为$\ker T=\{x \in H \ | \ T(x)=0\}$，$R(T)=\{Tx \in TH \equiv H \ | \ \forall x \in H-\{0\}\}$，考虑共轭算子$T^*$，其值域$R(T^*)=\{T^*y \ | \ \forall y \in H-\{0\}\}=\{x \in H \ | \ T(x) \neq 0\}$，因此有$(\ker T)^{\perp} = R(T^*)$或$R(T)^{\perp}=\ker T^*$。由于$T$是自共轭算子，进而有$(\ker T)^{\perp}=R(T^*)=R(T)$。
 \end{proof}
+
+\begin{definition}[有穷秩算子]
+设$X,Y$是赋范线性空间，$T\in\mathscr{B}(X,Y)$，若$T$的像$R(T)$是有限维的，则称$T$为有穷秩算子，有穷秩算子全体记为$\mathscr{F}(X,Y)$。
+\end{definition}
+在紧算子部分[章节\ref{jsz}]提到如果算子$T$的像$R(T)$是有限维的，则其是紧算子，即$\mathscr{F}(X,Y) \subset \mathscr{C}(X,Y)$，且$\overline{\mathscr{F}(X,Y)} \subset \overline{\mathscr{C}(X,Y)}$。那么$\overline{\mathscr{F}(X,Y)}=\mathscr{C}(X,Y)$是否成立呢？一般不成立，但如果$Y$是 Hilbert 空间则成立。
+\begin{theorem}
+设$X$是赋范线性空间，$Y$是 Hilbert 空间，则$\overline{\mathscr{F}(X,Y)}=\mathscr{C}(X,Y)$。
+\end{theorem}
+\begin{proof}
+设$T \in \mathscr{C}(X,Y)$，因此$X$中的单位球$B_x$在$Y$中的像$\overline{T(B_x)}$是紧集，因此其完全有界，故对$\forall \varepsilon>0$都$\exists \, \{y_1,\cdots,y_n\} \subset \overline{T(B_x)}$是$\overline{T(B_x)}$的$\varepsilon/2$-网。显然$E_{\varepsilon}=\text{span}\{y_1,\cdots,y_n\}$是闭的，定义正交投影算子$p_{\varepsilon}: \ Y \to E_{\varepsilon}$，易知$p_{\varepsilon}$满足对$i=1,2,\cdots,n$有$p_{\varepsilon}y_i=y_i$，且易证其范数$||p_{\varepsilon}||=1$。记$T_{\varepsilon}=p_{\varepsilon} \circ T$，则对$\forall x \in B_x$，都满足：
+\[\begin{aligned}
+||T_{\varepsilon}x-Tx|| & \leq ||T_{\varepsilon}x-y_i||+||Tx-y_i||=||p_{\varepsilon}(Tx-y_i)||+||Tx-y_i||\\
+& \leq ||p_{\varepsilon}||\cdot||Tx-y_i||+||Tx-y_i||=||Tx-y_i||+||Tx-y_i||<\frac{\varepsilon}{2}+\frac{\varepsilon}{2}=\varepsilon
+\end{aligned}\]
+即对$\forall T \in \mathscr{C}(X,Y)$都存在一个$\overline{\mathscr{F}(X,Y)}$中都算子列$\{T_{\varepsilon}\}$使得$||T_{\varepsilon}x-Tx|| \to 0$。
+\end{proof}
