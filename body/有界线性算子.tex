@@ -815,5 +815,12 @@ $X,Y$是赋范线性空间，$T \in \mathscr{B}(X,Y)$，定义$T^*:Y^* \to X^*$�
 则$T$是紧算子。
 \end{example}
 \begin{proof}
-由 Arzela-Ascoli 定理[定理\ref{the:AA}]
+取$\{x_n\} \subset C[a,b]$是有界集，设对$\forall n \in \mathbb{N}_+$都有$||x_n|| \leq M$，则：
+\[||Tx_n||=\sup_{t \in [a,b]}\left|\int_a^bk(s,t)x_n(s)\dd{s}\right| \leq |b-a|\cdot\sup_{s,t \in [a,b]}|k(s,t)|\cdot M\]
+可知$\{Tx_n\}$一致有界，同时对$\forall \varepsilon>0 \ , \ n \in \mathbb{N}_+$都$\exists \, \delta>0$满足$|t_1-t_2|<\delta$时：
+\[\begin{aligned}
+|Tx_n(t_1)-Tx_n(t_2)|&=\left|\int_a^b(k(s,t_1)-k(s,t_2))x_n(s)\dd{s}\right| \leq |b-a|\cdot\sup_{s \in [a,b]}|k(s,t_1)-k(s,t_2)|\cdot M\\
+&\leq |b-a|\cdot\sup_{s,t \in [a,b]}|k(s,t)|\cdot|t_1-t_2|\cdot M<\varepsilon
+\end{aligned}\]
+因此可知$\{Tx_n\}$等度连续，进而由 Arzela-Ascoli 定理[定理\ref{the:AA}]可知$\{Tx_n\}$在$C[a,b]$中列紧。
 \end{proof}
