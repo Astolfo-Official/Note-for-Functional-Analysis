@@ -9,7 +9,7 @@
     \item Arzela-Ascoli定理~\ref{the:AA}
   \end{introduction}
 \section{距离空间 Metric Space}
-\subsection{定义及举例}
+\subsection{距离空间的定义及性质}
 事实上，我们可以通过定义距离这个几何上的概念很好地定义收敛和连续这两个我们关心的分析上的概念。
 例如，在欧氏空间$\mathbb{R}^n=\{\overrightarrow{x}=(x_1,x_2,\cdots,x_n)|x_i \in \mathbb{R} \ (i=1,2,\cdots,n)\}$上，我们定义距离：
 \[d(\overrightarrow{x},\overrightarrow{y})=\sqrt{\sum_{i=1}^n\left|x_i-y_i\right|^2}\]
@@ -38,10 +38,12 @@ $X$是一个非空集合,$d$是一个定义在$X \times X$上的函数，满足�
 \begin{proof}
 前两个性质显然成立，主要证第三条，由三角不等式恒成立：
 \[\left|x(t)-y(t)\right| \leq \left|x(t)-z(t)\right|+\left|z(t)-y(t)\right|\]
-两边取上确界即证毕：
-\[\mathop{\text{sup}}\limits_{t \in [a,b]}\left|x(t)-y(t)\right| \leq \mathop{\text{sup}}\limits_{t \in [a,b]}\left|x(t)-z(t)\right|+\mathop{\text{sup}}\limits_{t \in [a,b]}\left|z(t)-y(t)\right| \quad \Leftrightarrow \quad d(x,y) \leq d(x,z)+d(z,y)\]
+两边取上确界：
+\[\mathop{\text{sup}}\limits_{t \in [a,b]}\left|x(t)-y(t)\right| \leq \mathop{\text{sup}}\limits_{t \in [a,b]}\left|x(t)-z(t)\right|+\mathop{\text{sup}}\limits_{t \in [a,b]}\left|z(t)-y(t)\right|\]
+即$d(x,y) \leq d(x,z)+d(z,y)$，证闭。
 \end{proof}
 
+\newpage
 \begin{example} \quad 空间$s=\{x=\{\xi_i\}_{i=1}^{+\infty} \ , \ \xi_i \in \mathbb{R}\}$（$x,y,z$对应的分量符号$\xi,\eta,\psi$），定义距离
 \[d(x,y)=\sum_{i=1}^{+\infty}\frac{1}{2^i}\frac{|\xi_i-\eta_i|}{1+|\xi_i-\eta_i|}\]
 \end{example}
@@ -80,8 +82,7 @@ $X$是一个非空集合,$d$是一个定义在$X \times X$上的函数，满足�
 原不等式即证。欧氏空间是距离空间也可类似证明。
 \end{proof}
 
-\subsection{距离空间的性质}
-在上一小节我们介绍了距离空间以及距离的概念，我们可以很自然地引入一般度量意义下的收敛。
+介绍了距离空间以及距离的概念，我们可以很自然地引入一般度量意义下的收敛。
 \begin{proposition}
 \begin{itemize}
 \item 1. 距离空间$(X,d)$上的收敛：我们称$x_n$收敛于$x$，当其满足
@@ -300,6 +301,7 @@ $A$可数，$D$不可数，且有$D \subset l^{\infty} \subset \bigcup_{a \in A}
 \end{figure}
 \end{proof}
 
+\newpage
 \subsection{距离空间的完备性}\label{complete}
 \begin{definition}[柯西列]
     设$(X,d)$是距离空间,若$X$中的点列$\{x_n\}_{n=1}^{\infty}$满足：
@@ -632,6 +634,7 @@ f(x,0)=\phi(x)
 利用热核存在一个全局最大值，可以估计$d(T(f_1(x,t)),T(f_2(x,t)))$的上界，从而证明该映射是压缩映射。
 \end{proof}
 
+\newpage
 \section{拓扑空间 Topological Space} \label{topo}
 \subsection{真·拓扑空间不完全简介}
 在距离空间中，我们是通过距离这个概念引入了开球、开集等集合概念与距离空间中的收敛这个概念，由开球和开集进而导出连续性、紧性；由收敛性我们给出完备性的概念。
@@ -763,7 +766,7 @@ $T_2$公理又称为 Hausdorff 性质，距离空间是满足$T_4$公理的，�
     \includegraphics[scale=0.2]{./fig/2.2.2-1.png}
 \end{figure}
 
-
+\newpage
 \subsection{刻画距离空间上的紧集} \label{compact}
 \begin{definition}[距离空间中的紧集]
     $(X,d)$为距离空间，$A \subset X$，任一$A$的开球覆盖$\{B_{r_{\lambda}}(x_{\lambda})\}$，必有一有限子覆盖$\{B_{r_{\lambda_i}}(x_{\lambda_i})\}$，则称$A$是$X$中的紧集。
@@ -874,7 +877,7 @@ $|x(t_1)-x(t_2)|=|x'(\xi)||t_1-t_2| \leq M|t_1-t_2| \quad \xi \in (t_1,t_2) \ : 
 
 \begin{figure}[htbp]
     \center
-    \includegraphics[scale=0.3]{./fig/2.2.3-2.png}
+    \includegraphics[scale=0.35]{./fig/2.2.3-2.png}
 \end{figure}
 
 下证充分性。由于$C[a,b]$完备，故只需证明$C[a,b]$全有界。由一致有界条件$\exists \, k>0 \ , \ \forall x(t) \in A \ , \ t \in [a,b]$满足$|x(t)|<k$以及等度连续条件$\forall \varepsilon>0 \ , \ \exists \, \delta>0 \ , \ |t_1-t_2|<\delta \ , \ \forall x(t) \in A$有$|x(t_1)-x(t_2)|<\varepsilon$，对函数族的定义域和值域做划分。取$[-k,k]$划分$\{y_0,y_1,\cdots,y_n\}:y_0=-k \ , \ y_n=k \ , \ 0<y_{i+1}-y_i<\varepsilon/5$，取$[a,b]$划分$\{t_0,t_1,\cdots,t_m\}:t_0=a \ , \ t_m=b \ , \ 0<y_{i+1}-y_i<\delta$。按如下规则绘制函数：若$x(t_i) \in [y_k,y_{k+1}]$，则令$f(t_i)=y_k$，其余部分用直线连接，则$\forall t \in [a,b] \ , \ \exists \, t_i$满足当$t \in [t_i,t_{i+1}]$时有：

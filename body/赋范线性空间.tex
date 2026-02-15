@@ -7,8 +7,7 @@
     \item 有限维赋范线性空间~\ref{the:B}
     \item Riesz 引理~\ref{Riesz}
   \end{introduction}
-\section{赋范线性空间概述}
-\subsection{范数，赋范线性空间，Banach 空间} \label{Banach}
+\section{赋范线性空间概述——范数，赋范线性空间，Banach 空间}\label{Banach}
 在泛函分析中我们大多处理的都是线性空间。无穷维线性空间区别于有限维线性空间，一些在有限维线性空间中成立的事情在无穷维线性空间中不一定成立：例如，单位闭球在有限维线性空间中是紧致的但在无穷维线性空间中不一定紧致，这点在上一章的讨论中有证明。
 
 在线性代数中，我们定义过$\mathbb{R}^n$上(有限维线性空间)的模长：
@@ -118,9 +117,10 @@ $$|x_m(a)-x_n(a)|+\mathop \text{sup}\limits_p \sum |x_m(t_{i+1})-x_n(t_{i+1})-x_
 即$\forall \varepsilon>0 \ , \ \exists \, N>0$满足$n>N \ , \ ||x_n(t)-x(t)||<3\varepsilon$即是$x_n \to x$。
 \end{proof}
 
-\subsection{赋范线性空间的基本性质}
+\vspace{1cm}
+下面介绍一些赋范线性空间的基本性质。如在赋范线性空间中我们可以定义连续：
 \begin{theorem}
-    设$(X,||\cdot||)$是线性赋范空间，则：
+    设$(X,||\cdot||)$是赋范线性空间，则：
     \begin{itemize}
         \item 1. 范数是连续函数，即$x_n \to x \ \Rightarrow \ ||x_n|| \to ||x|| \ (n \to \infty)$
         \item 2. 线性运算是连续映射：
@@ -259,6 +259,7 @@ $p=1$时，显然；$p>1$时，有
 \[\Leftrightarrow \ \left(\int_E|x(t)+y(t)|^{p}\dd t\right)^{\frac{1}{p}} \leq \left(\int_E|x(t)|^p\dd t\right)^{\frac{1}{p}}+\left(\int_E|y(t)|^p\dd t\right)^{\frac{1}{p}}\]
 \end{proof}
 
+\newpage
 \section{$L^p$空间的性质}
 \begin{theorem}[Riesz-Fischer 定理]\label{theorem:rf}
     $L^p(E) \ (p \geq 1)$是$Banach$空间。\footnote{这里我们指定$E$是$\mathbb{R}$上的可测集，因为说明这种情况比较简单(懒}
@@ -381,6 +382,7 @@ $p=1$时，显然；$p>1$时，有
 可以证明$l^p \ , \ l^{\infty}$是 Banach 空间。
 \end{definition}
 
+\newpage
 \section{赋范线性空间的其他性质}
 \subsection{赋范线性空间的子空间与完备化}
 \begin{definition}[赋范线性空间的子空间]
@@ -428,6 +430,7 @@ $$\forall \varepsilon>0 \ , \ \exists \, N>0 \ , \ \forall n \geq N \ , \ \left|
 \end{itemize}
 \end{proof}
 
+\newpage
 \subsection{商空间与乘积空间}
 \begin{definition}[有限维商空间]
 $V$是定义在数域$\mathbb{K}$上的一个有限维向量空间，$V$的商空间$V/A=\{\tilde{x}=x+A\}$，其中$\tilde{x}$是一个等价类，等价关系$\sim$定义如下：$x \sim y$当且仅当$x-y \in A$。进一步定义商映射$\pi:V \to V/A \ , \ x \mapsto \tilde{x}$，显然商映射线性且满的。
@@ -554,6 +557,7 @@ $||\cdot||_2$比$||\cdot||_1$强$ \quad \Leftrightarrow \quad \forall \{x_n\} \s
 但是$||y_k||_1=1$，推出矛盾，故原命题成立。
 \end{proof}
 
+\newpage
 \section{有限维赋范线性空间}
 我们常常戏称希尔伯特空间是大号欧氏空间，是因为两者具有类似的空间结构和内积定义，加之可数和有限其实没多大差别。
 但是在更一般的距离空间中，如果我们还想获得和欧氏空间类似的性质时，我们对空间的要求可以预料到会有相应的提高。
