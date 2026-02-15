@@ -290,13 +290,103 @@ f(x), & |f(x)| \leq N \\ 0, & |f(x)|>N
 \[|F_N(g)|=\left|\int_a^b f_N \cdot g \dd{x}\right|\leq||f_N||_{L^q}\cdot||g||_{L^p} \quad \Rightarrow \quad ||F_N|| \leq ||f_N||_{L^q}\]
 另一方面，容易验证可取$g=(f_N)^{q-1}\cdot\text{sgn}f_N \in L^p$：
 \[|F_N(g)|=\int_a^b |f_N|^q \dd{x}=||f_N||^q_{L^q} \leq ||F_N||\cdot||g||_{L^p}=||F_N||\cdot||f_N||^{q-1}_{L^q} \quad \Rightarrow \quad ||F_N|| \geq ||f_N||_{L^q}\]
-综上所述$||F_N||=||f_N||_{L^q}$，原命题得证。
+综上所述，$||F_N||=||f_N||_{L^q}$，原命题得证。
+\end{proof}
+\newpage
+
+\begin{example}
+\quad 设$H$是 Hilbert 空间，$M \subset X \ , \ f \in M^*$，证明存在$f$的线性延拓$F$使得$||F||=||f||$。
+\end{example}
+\begin{proof}
+做$H$的正交分解$H=M \oplus M^{\perp}$，令$p: \ H \to M$是正交投影算子，即对$\forall x \in H \ , \ \exists \, x_1 \in M \ , \ x_2 \in M^{\perp}$，满足$x=x_1+x_2$，且$p(x)=x_1$，容易验证$||p||=1$。定义泛函$F: \ H \to \mathbb{R} \ , \ x \mapsto f \circ p(x)$，易知$F$是$f$的线性延拓。因此$||F||\geq||f||$。另一方面，$||F||=||f \circ p|| \leq ||f|| \cdot ||p||=||f||$，因此$||F||=||f||$。
 \end{proof}
 
 \begin{example}
 \quad 设$X$是赋范线性空间，$X_0 \subset X$是闭子空间，证明对$\forall x \in X$都有：
-\[d(x,X_0)=\sup\{|f(x) \ | \ f \in X^*, \ ||f||=1, \ f|_{X_0}=0\}\]
+\[d(x,X_0)=\sup\{|f(x) \ | \ \forall f \in X^*, \ ||f||=1, \ f|_{X_0}=0\}\]
 \end{example}
 \begin{proof}
-tbd
+若$x \in X_0$命题显然成立，现在考虑$\forall x \in X-X_0$。由$X_0 \subset X$是闭子空间，因此$\exists \, \{x_n\} \subset X_0$满足$||x_n-x|| \geq d(x,X_0)$且$||x_n-x|| \to d(x,X_0)$，一方面，令$F^*=\{f \in X^* \ | \ ||f||=1 \ , \ f|_{X_0}=0\}$，对$\forall f \in F^*$都有$|f(x)|=|f(x-x_n)|\leq||f||\cdot||x_n-x||=||x_n-x||$，取极限$n \to \infty$，可得$\sup\limits_{f \in F^*}|f(x)|\leq d(x,X_0)$。
+
+另一方面，考虑闭子空间线性延拓$X_1=\{x_0+\lambda x|x_0 \in X_0 \ , \ \lambda \in \mathbb{K}\}$，定义$f_1: \ X_1 \to \mathbb{R} \ , \ x \mapsto \lambda d(x,X_0)$，显然$f_1|_{X_0}=0$。其范数：
+ \[||f_1||=\sup_{t \in X_1}\frac{|f(t)|}{||t||}=\sup_{t \in X_1}\frac{|\lambda|d(x,X_0)}{|\lambda|\cdot||x+\frac{x_0}{\lambda}||}=\sup_{t' \in X_1}\frac{d(x,X_0)}{||t'||} \quad , \quad t':=x+\frac{x_0}{\lambda}\]
+ 又因为：
+ \[||t'||=\left\|x+\frac{x_0}{\lambda}\right\|\geq\inf_{y \in X_0}\left\|x+y\right\|=d(x,X_0)\]
+ 由上确界的性质可知$||f_1||=1$，即$f_1 \in F^*$，由 Hahn-Banach 定理[定理\ref{HB}]可将$f_1$延拓到全空间$X$上。
+\end{proof}
+
+\begin{example}
+\quad 设$X$是赋范线性空间，且对$X^*$单位球壳$S=\{f \in X^* \ | \ ||f||=1\}$上的任意柯西列$\{f_n\}$都弱$*$收敛到$f_0 \in S$，证明$S$是弱$*$闭的。
+\end{example}
+\begin{proof}
+即证明对任意$S$上的柯西列$\{f_n\}$都满足$f_n \xrightarrow{w^*} f_0 \in S$。显然$\{f_n\}$一致有界，且对$\forall x \in X$都有$f_n(x) \to f_0(x)$，即逐点收敛，因此由 Banach-Steinhaus 定理[定理\ref{BS}]得$||f_n-f|| \to 0$且：
+\[||f||\leq \liminf_{n\to\infty}||f_n||=1\]
+即$||f||=1$，因此$f \in S$，原命题得证。
+\end{proof}
+
+\section*{希尔伯特空间习题}
+\begin{example}
+\quad 在 Hilbert 空间$H=L^2[0,1]$中找出$M_1=\{\text{全体多项式}\}$和$M_2=\{\text{常数项为0的多项式}\}$的正交补。
+\end{example}
+\begin{proof}
+因为$\overline{M_1}=H$，因此$M_1^{\perp}=\{0\}$。对$\forall f \in M_2 \ , \ \exists g \in M_1$满足$f=xg$。因此对$\forall u \in M_2^{\perp}$，都有：
+\[(u,f)=(u,xg)=\int_0^1u(x) \cdot xg(x)\dd{x}=\int_0^1xu(x) \cdot g(x)\dd{x}=(xu,g)=0\]
+即$xu \in M_1^{\perp}$，即$xu=0$，因此$u=0$，即$M_2^{\perp}=\{0\}$。
+\end{proof}
+
+\begin{example}
+\quad 设$M$是 Hilbert 空间$H$的闭子空间，$\{e_n\}$和$\{f_n\}$分别是$M$和$M^{\perp}$的标准正交基，证明$\{e_n\}\cup\{f_n\}$是$H$的标准正交基。
+\end{example}
+\begin{proof}
+易知$H=M \oplus M^{\perp}$，设对$\forall x \in H$都存在$\exists \, x_1 \in M_1 \ , \ x_2 \in M_2$满足$x=x_1+x_2$即：
+\[x_1=\sum_{\alpha}f_{\alpha}e_{\alpha} \ , \ x_2=\sum_{\beta}g_{\beta}e_{\beta} \quad \Rightarrow \quad x=\sum_{\alpha}f_{\alpha}e_{\alpha}+\sum_{\beta}g_{\beta}e_{\beta}\]
+故$\{e_n\}\cup\{f_n\}$是标准正交基，且完备，故是标准正交基。
+\end{proof}
+
+\begin{example}
+\quad 设$H$是 Hilbert 空间，$T\in\mathscr{B}(H)$是$H$上的自共轭有界线性算子，且$T$的像空间$R(T)=TH$是有限维的，证明存在有限个线性无关的元素$\{y_1,y_2,\cdots,y_n\} \subset H$使得对$x \in H$都有：
+\[T(x)=\sum_{i=1}^n(x,y_i)y_i\]
+\end{example}
+\begin{remark}
+\quad 若$T$不是自共轭的，取$H=\text{span}\{e_1,e_2\}$且$e_1 \perp e_2$，令$Te_1=e_2 \ , \ Te_2=0$，即$TH$是一维的。则存在$y \in H$使得$Te_1=(e_1,y)y=e_2$，即$y \propto e_2$，因此$Te_1\propto (e_1,e_2)e_2=0$。
+\end{remark}
+\begin{theorem}\label{theorem:djm}
+设 $V$ 是有限维线性空间，$f: V \to V$ 是线性算子。若 $f$ 是单射，则 $f$ 是满射。
+\end{theorem}
+\begin{proof}
+由于 $f$ 是单射，$\ker(f) = \{0\}$。由维数公式$\dim V = \dim \ker(f) + \dim R(f)$，得 $\dim R(f) = \dim V$。又 $R(f) \subseteq V$，故 $R(f) = V$，即 $f$ 是满射，因此 $f$ 是双射。
+\end{proof}
+\begin{proof}
+首先证明一个有限维的特殊情况，然后推广到一般情况，由于有限维的 Hilbert 空间同构与$\mathbb{K}^n$，因此直接取$H=\mathbb{K}^n$，算子$T: \ \mathbb{K}^n \to \mathbb{K}^n$是自共轭的，且是双射。因此存在算子$T$的特征值$\{\lambda_1,\lambda_2,\cdots,\lambda_n\}$与标准正交的特征向量$\{e_1,e_2,\cdots,e_n\}$使得对$i=1,2,\cdots,n$都有$Te_i=\lambda_ie_i$。因此对$\forall x \in H$，取$y_i=\sqrt{\lambda_i}e_i$，都满足：
+\[x=\sum_{i=1}^n\alpha_ie_i \quad \Rightarrow \quad Tx=\sum_{i=1}^n\alpha_iTe_i=\sum_{i=1}^n\alpha_i\lambda_ie_i=\sum_{i=1}^n(x,\lambda_ie_i)e_i:=\sum_{i=1}^n(x,y_i)y_i\]
+对一般情况，由定理\ref{theorem:zgeker}可知对任意一个自共轭算子$T\in\mathscr{B}(H)$都可做以下正交分解$H=\ker T \oplus R(T)$。定义正交投影算子$p: \ H \to R(T)$和$T_1=T|_{R(T)}: \ R(T) \to R(T)$，显然$T_1$是单射，由定理\ref{theorem:djm}知$T_1$是双射。因此对$\forall x \in H \ , \ \exists \, x_1 \in \ker T \ , \ x_2 \in R(T)$都有$x=x_1+x_2$，即$Tx=T_1 \circ p(x)=T_1(x_2)$，由上面的特殊情况可知：
+\[\forall x \in H \ , \ \exists \, \{y_1,y_2,\cdots,y_n\} \subset H \quad \text{s.t.} \quad Tx=T_1(x_2)=\sum_{i=1}^n(x,y_i)y_i\]
+\end{proof}
+
+\begin{example}
+\quad 设$H$是 Hilbert 空间，证明$\{x_n\} \subset H$强收敛于$x_0 \in H$等价于弱收敛。
+\end{example}
+\begin{proof}
+由 Riesz 表示定理[定理\ref{theorem:rieszbs}]可知， Hilbert 空间的弱收敛等价于对$\forall y \in H$都有$(x_n,y) \to (x_0,y)$。对必要性，对$\forall y \in H$，由 Cauchy–Schwarz 不等式[定理\ref{theorem:Cauchy–Schwarz}]：
+\[|(x_n,y)-(x_0,y)|=|(x_n-x_0,y)|\leq||x_n-x_0||\cdot||y|| \to 0\]
+即强收敛推出弱收敛。考虑充分性，由弱收敛可知，取$y=x_0$：
+\[|(x_n,x_0)-(x_0,x_0)|=|(x_n-x_0,x_0)|=(x_n,x_0)-||x_0||^2 \to 0\]
+再取$y=x_n$：
+\[|(x_n,x_n)-(x_0,x_n)|=|(x_n-x_0,x_n)|=||x_n||^2-(x_0,x_n) \to 0\]
+最后计算范数$||x_n-x_0||^2$：
+\[||x_n-x_0||^2=|(x_n-x_0,x_n-x_0)|=|(x_n-x_0,x_n)-(x_n-x_0,x_0)| \leq |(x_n-x_0,x_0)|+|(x_n-x_0,x_n)| \to 0\]
+即弱收敛推出强收敛，因此原命题得证。
+\end{proof}
+
+\begin{example}
+\quad 设$H$是 Hilbert 空间，$f_1,f_2 \in H^*$满足$f_1,f_2 \neq 0$且$\ker f_1 \subset \ker f_2$。证明对$\forall x \in H$都$\exists \, \alpha \in \mathbb{R}$满足$f_1(x)/f_2(x)=\alpha$。
+\end{example}
+\begin{theorem}\label{theorem:1d}
+设$H$是 Hilbert 空间，$f \in H^*$满足$f \neq 0$，则$(\ker f)^{\perp} \cong \mathbb{R}$。
+\end{theorem}
+\begin{proof}
+因为$f \neq 0$，则$(\ker f)^{\perp} \neq \{0\}$，任取$x_0,y \in (\ker f)^{\perp}$，显然$f(x_0),f(y) \neq 0$，记$\lambda=f(y)/f(x_0) \in \mathbb{R}$，由线性$y-\lambda x_0 \in (\ker f)^{\perp}$。而$f(y-\lambda x_0)=f(y)-\lambda f(x_0)=0$，即$y-\lambda x_0 \in \ker f \cap (\ker f)^{\perp}={0}$，因此$y/x_0=\lambda$，即$(\ker f)^{\perp}$中的元素都线性相关，可知$\dim (\ker f)^{\perp}=1$，因此可以构造同构使得$(\ker f)^{\perp} \cong \mathbb{R}$。
+\end{proof}
+\begin{proof}
+由$\ker f_1 \subset \ker f_2$可知$(\ker f_1)^{\perp} \supset (\ker f_2)^{\perp}$，但由定理\ref{theorem:1d}可知$(\ker f_1)^{\perp},(\ker f_2)^{\perp}$都同构与$\mathbb{R}$，因此$(\ker f_1)^{\perp}=(\ker f_2)^{\perp}$。由 Riesz 表示定理[定理\ref{theorem:rieszbs}]可知，$\exists \, x_1,x_2 \in (\ker f_1)^{\perp}=(\ker f_2)^{\perp}$满足$x_1/x_2=\alpha\in\mathbb{R}$满足$f(x_1)=(x,x_1) \ , \ f(x_2)=(x,x_2)$，因此$f(x_1)/f(x_2)=\alpha$。
 \end{proof}

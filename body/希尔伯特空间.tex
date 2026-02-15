@@ -13,7 +13,7 @@
 \end{itemize}
 则称$(\cdot,\cdot)$是$H$上对内积。称$(H,(\cdot,\cdot))$为内积空间。
 \end{definition}
-\begin{theorem}[Cauchy–Schwarz 不等式]
+\begin{theorem}[Cauchy–Schwarz 不等式]\label{theorem:Cauchy–Schwarz}
 $\forall x,y \in H \ , \ |(x,y)|^2 \leq (x,x)\cdot(y,y)$
 \end{theorem}
 \begin{proof}
@@ -245,7 +245,7 @@ Hilbert 空间$H$可分当且仅当存在至多可数的标准正交基。
 设$H$是 Hilbert 空间，则对$\forall f \in H^* \ , \ \exists \, ! \, x_f \in H$满足对$\forall x \in H$都有$f(x)=(x,x_f)$。
 \end{theorem}
 \begin{proof}
-取核$\ker f=\{x \in H|f(x)=0\} \subset H$，显然$\ker f$是闭子空间。$f=0$时定理显然成立，考虑$f \neq 0$，则$(\ker f)^{\perp} \neq \{0\}$，取$x_0,y \in (\ker f)^{\perp}$，显然$f(x_0),f(y) \neq 0$，记$\lambda=f(y)/f(x_0) \in \mathbb{R}$，由线性$y-\lambda x_0 \in (\ker f)^{\perp}$。而$f(y-\lambda x_0)=f(y)-\lambda f(x_0)=0$，即$y-\lambda x \in \ker f \cap (\ker f)^{\perp}={0}$，因此$\dim (\ker f)^{\perp}=1$。由于$y-\lambda x \in \ker f$：
+取核$\ker f=\{x \in H|f(x)=0\} \subset H$，显然$\ker f$是闭子空间。$f=0$时定理显然成立，考虑$f \neq 0$，则$(\ker f)^{\perp} \neq \{0\}$，取$x_0,y \in (\ker f)^{\perp}$，显然$f(x_0),f(y) \neq 0$，记$\lambda=f(y)/f(x_0) \in \mathbb{R}$，由线性$y-\lambda x_0 \in (\ker f)^{\perp}$。而$f(y-\lambda x_0)=f(y)-\lambda f(x_0)=0$，即$y-\lambda x_0 \in \ker f \cap (\ker f)^{\perp}={0}$，因此$\dim (\ker f)^{\perp}=1$。由于$y-\lambda x \in \ker f$：
 \[(y-\lambda x_0,x_0)=\left(y-\frac{f(y)}{f(x_0)}x_0,x_0\right)=(y,x_0)-\frac{f(y)}{f(x_0)}(x_0,x_0)=0 \quad \Rightarrow \quad f(y)=\frac{f(x_0)}{||x_0||^2}(y,x_0)=\left(y,\frac{\overline{f(x_0)}}{||x_0||^2}x_0\right)\]
 对$\forall x \in H$，可做正交分解$x=x_1+x_2 \ , \ x_1 \in \ker f \ , \ x_2 \in (\ker f)^{\perp}$，设$\exists \, x_0 \in (\ker f)^{\perp}$，取：
 \[x_f=\frac{\overline{f(x_0)}}{||x_0||^2}x_0 \quad \Rightarrow \quad f(x)=f(x_2)=\left(x_2,\frac{\overline{f(x_0)}}{||x_0||^2}x_0\right)=(x,x_f)\]
@@ -375,3 +375,10 @@ u = 0, & x \in \partial\Omega \\
     \item 4. $A$的对应不同特征值的特征向量正交。
 \end{itemize}
 \end{proposition}
+
+\begin{theorem}\label{theorem:zgeker}
+设$H$是 Hilbert 空间，若$T\in\mathscr{B}(H)$是自共轭算子，则$(\ker T)^{\perp}=R(T)$。
+\end{theorem}
+\begin{proof}
+因为$\ker T=\{x \in H \ | \ T(x)=0\}$，$R(T)=\{Tx \in TH \equiv H \ | \ \forall x \in H-\{0\}\}$，考虑共轭算子$T^*$，其值域$R(T^*)=\{T^*y \ | \ \forall y \in H-\{0\}\}=\{x \in H \ | \ T(x) \neq 0\}$，因此有$(\ker T)^{\perp} = R(T^*)$或$R(T)^{\perp}=\ker T^*$。由于$T$是自共轭算子，进而有$(\ker T)^{\perp}=R(T^*)=R(T)$。
+\end{proof}

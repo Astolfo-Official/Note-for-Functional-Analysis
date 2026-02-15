@@ -474,25 +474,25 @@ $\exists \, \beta \in S \quad \text{s.t.} \quad \forall \alpha \in S \ , \ \beta
 \quad 需要注意的是 Hahn-Banach 定理只证明了延拓的存在性，但不保证唯一。
 \end{remark}
 Hahn-Banach 定理有许多有用的推论。
-\begin{proposition}
+\begin{proposition}\label{proposition:hb1}
 赋范线性空间$X$上$\forall x_0 \in X \ , \ x_0 \neq 0 \ , \ \exists \, f \in X^* \quad \text{s.t.} \quad ||f||=1 \ , \ f(x_0)=||x_0||$。
 \end{proposition}
 \begin{proof}
 令$M=\{\lambda x_0|\lambda \in \mathbb{K}\} \subset X \ , \ f_0:M \to \mathbb{K} \ , \ \lambda x_0 \mapsto |\lambda|\cdot||x_0||$，显然当$\lambda=1$时$f(x_0)=||x_0||$，则：
 \[||f_0||_M=\sup_{\lambda \in \mathbb{K}}\frac{|\lambda|\cdot||x_0||}{||\lambda x_0||}=1\]
-再由 Hahn-Banach 定理，$\exists \, f \in X^* \ , \ \eval{f}_{M}=f_0 \ , \ ||f||_X=||f_0||_M=1$，满足题设。
+再由 Hahn-Banach 定理[定理\ref{HB}]，$\exists \, f \in X^* \ , \ \eval{f}_{M}=f_0 \ , \ ||f||_X=||f_0||_M=1$，满足题设。
 \end{proof}
 \begin{proposition}\label{proposition:hb2}
 赋范线性空间$X$上$\forall x_1,x_2 \in X \ , \ x_1 \neq x_2 \ , \ \exists \, f \in X^* \quad \text{s.t.} \quad ||f||=1 \ , \ f(x_1) \neq f(x_2)$。
 \end{proposition}
 \begin{proof}
-令$x_0=x_1-x_2 \neq 0$，则由推论1，$f(x_0)=f(x_1-f_2)=f(x_1)-f(x_2) \neq 0$。
+令$x_0=x_1-x_2 \neq 0$，则由推论\ref{proposition:hb1}，$f(x_0)=f(x_1-f_2)=f(x_1)-f(x_2) \neq 0$。
 \end{proof}
 \begin{remark}
 \quad 我们可以用一个有界线性泛函去区分两个点的不同性质。
 \end{remark}
 
-\begin{proposition}
+\begin{proposition}\label{proposition:hb3}
 $X$是赋范线性空间$M \subset X$是线性子空间，$x_0 \in X$满足：
 \[d(x_0,M)=\inf_{x \in M}||x-x_0||>0\]
 则$\exists \, f \in X^* \quad \text{s.t.} \quad x \in M \ , \ ||f||=1 \ , \ f(x_0)=d \ , \ f|_M=0$。
@@ -502,7 +502,7 @@ $X$是赋范线性空间$M \subset X$是线性子空间，$x_0 \in X$满足：
 \[|f(x+tx_0)|=|t|d \leq |t| \cdot \left\|\frac{x}{t}+x_0\right\|=||x+tx_0|| \quad \Rightarrow \quad ||f|| \leq 1\]
 另一方面$\exists \{x_n\} \subset M \ , \ ||x_n -x_0|| \to d \ (n \to \infty)$：
 \[|f(x_n-x_0)|=|f(x_n)-f(x_0)|=|f(x_0)|=d \leq ||f|| \cdot ||x_n-x_0|| \to ||f||d \quad \Rightarrow \quad ||f|| \geq 1\]
-综上所述，$||f||=1$，再由 Hahn-Banach 定理即证。
+综上所述，$||f||=1$，再由 Hahn-Banach 定理[定理\ref{HB}]即证。
 \end{proof}
 
 \section{对偶空间和共轭算子}\label{dual}
@@ -671,7 +671,7 @@ $X,Y$是赋范线性空间，$T \in \mathscr{B}(X,Y)$，定义$T^*:Y^* \to X^*$�
 \end{lemma}
 \begin{proof}
 \begin{itemize}
-\item 1. 设$x_n \xrightarrow{w} x_0, \ x_1$，且$x_0 \neq x_1$，则$\forall f \in X^* \ , \ f(x_n)\to f(x_0), \ f(x_1)$，由任意性可知$f(x_0)=f(x_1)$，由Hahn-Banach定理[推论\ref{proposition:hb2}]可知$\exists \, f_0 \in x^*$使得$f_0(x_0) \neq f_0(x_1)$，得出矛盾，故$x_0=x_1$；
+\item 1. 设$x_n \xrightarrow{w} x_0, \ x_1$，且$x_0 \neq x_1$，则$\forall f \in X^* \ , \ f(x_n)\to f(x_0), \ f(x_1)$，由任意性可知$f(x_0)=f(x_1)$，由 Hahn-Banach 定理[推论\ref{proposition:hb2}]可知$\exists \, f_0 \in x^*$使得$f_0(x_0) \neq f_0(x_1)$，得出矛盾，故$x_0=x_1$；
 \item 2. $||x_n-x_0|| \to 0$，则对$\forall x \in x^*$，都有$|f(x_n)-f(x_0)|=|f(x_n-x_0)| \leq ||f||\cdot||x_n-x_0|| \to 0$；
 \item 3. 举例：定义点列$\{x_n=(0,\cdots,0,1,0,\cdots)\} \subset l^2$（第$n$位为$1$）对$\forall f \in (l^2)^* \mathop{\cong}\limits^{\Phi}l^2 \ , \ \exists \, y=\{\xi_n\}\in l^2$满足$f(x_n)=\Phi_y(x_n)=\sum x_{n,i}\xi_i=\xi_n \to 0$，即$x_n \xrightarrow{w} x_0$，但是对$\forall m \neq n$都有$||x_n-x_m||=\sqrt{2}>0$；
 \item 4. 显然，参考定理\ref{the:B}，使用两次同构即证。
