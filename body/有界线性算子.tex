@@ -663,7 +663,7 @@ $X,Y$是赋范线性空间，$T \in \mathscr{B}(X,Y)$，定义$T^*:Y^* \to X^*$�
 \begin{definition}[弱收敛]
 设$X$为赋范线性空间，$\{x_n\} \subset X$，若$\forall f \in X^* \ , \ \exists \, x_0 \in X$使得$f(x_n) \to f(x_0)$则称$\{x_n\}$弱收敛于$x_0$，记为$x_n \xrightarrow{w} x_0$，称$x_0$为$\{x_n\}$的弱极限。
 \end{definition}
-\begin{lemma}
+\begin{lemma}\label{lemma:rsl}
 \begin{itemize}
     \item 1. 弱极限存在必唯一；
     \item 2. 依范数收敛（强收敛$ \ \Rightarrow \ $弱收敛；
@@ -798,9 +798,9 @@ $X,Y$是赋范线性空间，$T \in \mathscr{B}(X,Y)$，定义$T^*:Y^* \to X^*$�
 \begin{definition}[紧算子]\label{definition:jsz}
 设$X,Y$是赋范线性空间，$T\in\mathscr{B}(X,Y)$，若$T$满足以下四个互相等价的条件：
 \begin{itemize}
-    \item 1. 把$X$中的有界集$M$映成$Y$中的列紧集$TM$；
-    \item 2. 把$X$中的有界集$M$映成$Y$中的$TM$，且$\overline{TM}$是紧集；
-    \item 3. 若$\{x_n\} \subset X$有界，则$\{Tx_n\} \subset Y$有收敛子列；
+    \item 1. 把$X$中的任意有界集$M$映成$Y$中的列紧集$TM$；
+    \item 2. 把$X$中的任意有界集$M$映成$Y$中的$TM$，且$\overline{TM}$是紧集；
+    \item 3. 若$\forall \{x_n\} \subset X$有界，则$\{Tx_n\} \subset Y$有收敛子列；
     \item 4. $X$中的单位球$B_x$在$Y$中像$TB_x$是列紧集$ \ \Leftrightarrow \ $者$\overline{TB_x}$是紧集；
 \end{itemize}
 则称$T$为紧算子。紧算子全体记为$\mathscr{C}(X,Y)$。
@@ -823,4 +823,61 @@ $X,Y$是赋范线性空间，$T \in \mathscr{B}(X,Y)$，定义$T^*:Y^* \to X^*$�
 &\leq |b-a|\cdot\sup_{s,t \in [a,b]}|k(s,t)|\cdot|t_1-t_2|\cdot M<\varepsilon
 \end{aligned}\]
 因此可知$\{Tx_n\}$等度连续，进而由 Arzela-Ascoli 定理[定理\ref{the:AA}]可知$\{Tx_n\}$在$C[a,b]$中列紧。
+\end{proof}
+
+\begin{theorem}
+设$T \in \mathscr{C}(X,Y)$，若$x_n \xrightarrow{w} x_0 \in X$，则$Tx_n \xrightarrow{s} Tx_0 \in Y$。
+\end{theorem}
+\begin{proof}
+对$\forall g \in Y^*$都有$g \circ T \in X^*$，因此$g(Tx_n)=(g \circ T)x_n \to (g \circ T)x_0=g(Tx_0)$，即$Tx_n \xrightarrow{w} Tx_0 \in Y$。其次$\{x_n\}$有界且$T$是紧算子，因此$\{Tx_n\}$列紧有收敛子列，记为$Tx_{n_k} \xrightarrow{s} y_0 \in Y$，可以推出$Tx_{n_k} \xrightarrow{w} y_0 \in Y$。由弱极限唯一[引理\ref{lemma:rsl}]可知$y_0=Tx_0$，因此$\{Tx_n\}$有收敛子列$Tx_{n_k} \xrightarrow{s} Tx_0$，故$Tx_n \xrightarrow{s} Tx_0 \in Y$。
+\end{proof}
+
+\begin{theorem}\label{theorem:szfh}
+设$T \in \mathscr{C}(X)$，$S \in \mathscr{B}(X)$，则$T \circ S, \ S \circ T \in \mathscr{C}(X)$。
+\end{theorem}
+\begin{proof}
+设$X$中点有界集$M$，因此$SM$在$X$中有界，进而$T(SM)=(T \circ S)M$在$X$中列紧；另一方面$TM$在$X$中列紧，因为$S$是有界线性算子，因此$S$连续，连续保持紧性，进而$S(TM)=(S \circ T)M$在$X$中列紧。
+\end{proof}
+\begin{theorem}\label{theorem:sclx}
+$\mathscr{C}(X) \subset \mathscr{B}(X)$是双侧理想，即$\forall T \in \mathscr{C}(X) \ , \ S,U \in \mathscr{B}(X)$都有$S \circ T \circ U \in \mathscr{C}(X)$。
+\end{theorem}
+\begin{remark}
+\quad 定理\ref{theorem:sclx}的证明与定理\ref{theorem:szfh}一致。此外定理\ref{theorem:sclx}还有推论，若$X$是无穷维赋范线性空间，则$T \in \mathscr{C}(X,Y)$不存在有界逆。若$T^{-1}$存在且有界，则恒同算子$I=T \circ T^{-1} \in \mathscr{C}(X)$。
+\end{remark}
+
+\begin{theorem}
+设$Y$是完备的，则$\mathscr{C}(X,Y) \subset \mathscr{B}(X,Y)$是闭子空间。
+\end{theorem}
+\begin{remark}
+\quad 即证对$\forall \{T_n\} \subset \mathscr{C}(X,Y)$都$\exists \, T \in \mathscr{B}(X,Y)$满足$||T_n-T||\to0$，则$T \in \mathscr{C}(X,Y)$。
+\end{remark}
+\begin{proof}
+证法一：设$\{x_n\} \subset X$有界，由$T_n$是紧算子，可知对$n \in \mathbb{N}_+$都有$\{T_nx_m\}$列紧，取$\{x_m\}$的子列$\{x_m^{(1)}\}$使得$\{T_1x_m^{(1)}\}$收敛，再取$\{x_m^{(1)}\}$的子列$\{x_m^{(2)}\}$使得$\{T_2x_m^{(2)}\}$收敛，如此操作可得对$\forall k \in \mathbb{N}_+$都有$\{x_m^{(k)}\}$使得对$\forall i \in \mathbb{N}_+$且$i \leq k$都满足$\{T_ix_m^{(k)}\}$收敛。取“对角列”$\{x_m^{(m)}\}$，易证对$\forall n \in \mathbb{N}_+$都有$\{T_nx_m^{(m)}\}$收敛。最后计算：
+\[\begin{aligned}
+\left\|Tx_m^{(m)}-Tx_n^{(n)}\right\| &\leq \left\|Tx_m^{(m)}-T_kx_m^{(m)}\right\|+\left\|T_kx_m^{(m)}-T_kx_n^{(n)}\right\|+\left\|T_kx_n^{(n)}-Tx_n^{(n)}\right\|\\
+&\leq \left\|T-T_k\right\|\cdot\left(||x_m^{(m)}||+||x_n^{(n)}||\right)+\left\|T_kx_m^{(m)}-T_kx_n^{(n)}\right\| \to 0
+\end{aligned}\]
+由$Y$完备可知$\{Tx_m^{(m)}\}$收敛，因此$T \in \mathscr{C}(X,Y)$。
+\end{proof}
+\begin{proof}
+证法二：取$X$中的单位球$B_x$，因为$Y$完备，由定理\ref{theorem:ybljqyj}和线性[定义\ref{definition:jsz}第四条]可知，只需证明$TB_x$完全有界。已知$T_nB_x$完全有界，故对$\forall \varepsilon>0$都存在有限$\varepsilon$-网$N_n(\varepsilon)=\{T_nx_1,T_nx_2,\cdots,T_nx_k\} \subset T_nB_x$。同时已知$||T_n-T|| \to 0$，即$\exists N>0$对$n >N$满足$||T_n-T||<\varepsilon$。进而可知对$\forall Tx \in TB_x$都有：
+\[\begin{aligned}
+||Tx-Tx_k||&\leq||Tx-T_nx||+||T_nx-T_nx_k||+||T_nx_k-Tx_k||\\
+&\leq ||T-T_n||\cdot\left(||x||+||x_k||\right)+||T_nx-T_nx_k||<\varepsilon\cdot2+\varepsilon=3\varepsilon
+\end{aligned}\]
+即$N_n(\varepsilon)$是$TB_x$的有限$3\varepsilon$-网，因此$TB_x$完全有界，$T \in \mathscr{C}(X,Y)$。
+\end{proof}
+
+\begin{definition}[连续函数空间]
+设$M$是距离空间$X$的一个紧集，定义连续函数空间$C(M)=\{\text{从}M \to \mathbb{R}\text{连续函数全体}\}$和其上的距离：
+\[\forall u,v \in C(M) \quad , \quad d(u,v)=\max_{x \in M}|u(x)-v(x)|\]
+\end{definition}
+\begin{remark}
+\quad $(C(M),d)$是完备的。
+\end{remark}
+\begin{theorem}[一般的 Arzela-Ascoli 定理]
+设$M$是距离空间$X$的一个紧集，则函数族$\mathscr{F} \subset C(M)$列紧当且仅当$\mathscr{F}$一致有界且等度连续。
+\end{theorem}
+\begin{proof}
+因为$(C(M),d)$完备，由定理\ref{theorem:ybljqyj}可知只需证明$\mathscr{F}$完全有界等价于$\mathscr{F}$一致有界且等度连续。
 \end{proof}
