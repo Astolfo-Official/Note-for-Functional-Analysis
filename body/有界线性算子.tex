@@ -879,5 +879,15 @@ $\mathscr{C}(X) \subset \mathscr{B}(X)$是双侧理想，即$\forall T \in \math
 设$M$是距离空间$X$的一个紧集，则函数族$\mathscr{F} \subset C(M)$列紧当且仅当$\mathscr{F}$一致有界且等度连续。
 \end{theorem}
 \begin{proof}
-因为$(C(M),d)$完备，由定理\ref{theorem:ybljqyj}可知只需证明$\mathscr{F}$完全有界等价于$\mathscr{F}$一致有界且等度连续。
+因为$(C(M),d)$完备，由定理\ref{theorem:ybljqyj}可知只需证明$\mathscr{F}$完全有界等价于$\mathscr{F}$一致有界且等度连续。先证必要性，由$\mathscr{F}$全有界可知对$\forall \varepsilon>0$，存在有限$\varepsilon$-网$N_{\varepsilon}=\{f_1,f_2,\cdots,f_n\} \subset \mathscr{F}$满足对$\forall f \in \mathscr{F}$都$\exists \, f_k \in N_{\varepsilon}$使得$d(f,f_k)<\varepsilon$。因此$|f(x)|\leq |f(x)-f_k(x)|+|f_k(x)|<\varepsilon+\max\{||f_1||,||f_2||,\cdots,||f_n||\}\cdot||x||<M$，即$\mathscr{F}$一致有界。再有$\{f_1,f_2,\cdots,f_n\}$都是紧集$M$上的连续函数，因此对$\forall \varepsilon>0$都$\exists \, \delta>0$使得当$||x-x'||<\delta$时有$|f_k(x)-f_k(x')|<\varepsilon$。因此对$\forall f \in \mathscr{F}$都有：
+\[|f(x)-f(x')|\leq|f(x)-f_k(x)|+|f_k(x)-f_k(x')|+|f_k(x')-f(x')|\leq 2d(f,f_k)+\varepsilon<3\varepsilon\]
+即$\mathscr{F}$等度连续，因此必要性得证。
+
+下证充分性：因为$M$是紧集，所以存在有限$\varepsilon$-网$N_{\varepsilon}=\{x_1,x_2,\cdots,x_n\} \subset M$，构造映射$T: \ \mathscr{F} \to \mathbb{R}^n \ , \ f \mapsto (f(x_1),f(x_2),\cdots,f(x_n))$，由一致有界可知$T\mathscr{F}$是有界集：
+\[\forall f \in \mathscr{F} \quad , \quad \sqrt{\sum_{i=1}^nf^2(x_i)} \leq \sqrt{n}\max_{x \in M}|f(x)| \leq \sqrt{n}M\]
+因此列紧，也即$T\mathscr{F}$完全有界，因此对$\forall \varepsilon>0$都存在有限$\varepsilon$-网$N_{\varepsilon}^T=\{Tf_1,Tf_2,\cdots,Tf_m\} \subset T\mathscr{F}$。更近一步：
+\[\forall f \in \mathscr{F} \quad , \quad d(Tf,Tf_i)=\sqrt{\sum_{i=1}^n[f(x_i)-f_k(x_i)]^2}<\varepsilon \quad \Rightarrow \quad |f(x_i)-f_k(x_i)|<\varepsilon \quad i=1,2,\cdots,n\]
+由上式和等度连续可知$\{f_1,f_2,\cdots,f_m\}$是$\mathscr{F}$的有限$3\varepsilon$-网，对$\forall f \in \mathscr{F}$都$\exists \, \delta>0 $取$x'\in N_{\varepsilon}$满足$||x-x'||<\delta$：
+\[|f(x)-f_k(x)|\leq|f(x)-f(x')|+|f(x')-f_k(x')|+|f_k(x')-f_k(x)|<3\varepsilon\]
+即$\mathscr{F}$完全有界。
 \end{proof}
