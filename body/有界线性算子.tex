@@ -138,7 +138,7 @@
 \end{definition}
 
 在算子空间中一致有界还是强于逐点有界，那么我们自然会思考在什么条件下逐点有界能反推出一致有界。
-\begin{theorem}[一致有界定理]
+\begin{theorem}[一致有界定理]\label{theorem:yzyjdl}
     $\{T_{\alpha}\}_{\alpha \in \Lambda} \subset \mathscr{B}(X,Y) \ , \ D(T_{\alpha})=X$ ,若$X$是 Banach 空间，则$\{T_{\alpha}\}$一致有界当且仅当$\{T_{\alpha}\}$逐点有界。
 \end{theorem} 
 \begin{proof}
@@ -773,7 +773,7 @@ $X,Y$是赋范线性空间，$T \in \mathscr{B}(X,Y)$，定义$T^*:Y^* \to X^*$�
 \begin{remark}
 \quad 可分不是必要的[\href{https://math.fandom.com/zh/wiki/Banach-Alaoglu-Bourbaki_%E5%AE%9A%E7%90%86}{Banach-Alaoglu-Bourbaki 定理}]。
 \end{remark}
-\begin{theorem}
+\begin{theorem}\label{theorem:zfyjrlj}
 自反空间$X$的有界集是弱列紧的当且仅当$\forall \{x_n\} \subset X$若有界，则存在子列$\{x_{n_k}\}$满足$x_{n_k} \xrightarrow{w} x_0 \in X$。
 \end{theorem}
 \begin{proposition}[1. 若$X^*$可分，则$X$可分]\label{proposition:1}
@@ -826,26 +826,6 @@ $X,Y$是赋范线性空间，$T \in \mathscr{B}(X,Y)$，定义$T^*:Y^* \to X^*$�
 \end{proof}
 
 \begin{theorem}
-设$T \in \mathscr{C}(X,Y)$，若$x_n \xrightarrow{w} x_0 \in X$，则$Tx_n \xrightarrow{s} Tx_0 \in Y$。
-\end{theorem}
-\begin{proof}
-对$\forall g \in Y^*$都有$g \circ T \in X^*$，因此$g(Tx_n)=(g \circ T)x_n \to (g \circ T)x_0=g(Tx_0)$，即$Tx_n \xrightarrow{w} Tx_0 \in Y$。其次$\{x_n\}$有界且$T$是紧算子，因此$\{Tx_n\}$列紧有收敛子列，记为$Tx_{n_k} \xrightarrow{s} y_0 \in Y$，可以推出$Tx_{n_k} \xrightarrow{w} y_0 \in Y$。由弱极限唯一[引理\ref{lemma:rsl}]可知$y_0=Tx_0$，因此$\{Tx_n\}$有收敛子列$Tx_{n_k} \xrightarrow{s} Tx_0$，故$Tx_n \xrightarrow{s} Tx_0 \in Y$。
-\end{proof}
-
-\begin{theorem}\label{theorem:szfh}
-设$T \in \mathscr{C}(X)$，$S \in \mathscr{B}(X)$，则$T \circ S, \ S \circ T \in \mathscr{C}(X)$。
-\end{theorem}
-\begin{proof}
-设$X$中点有界集$M$，因此$SM$在$X$中有界，进而$T(SM)=(T \circ S)M$在$X$中列紧；另一方面$TM$在$X$中列紧，因为$S$是有界线性算子，因此$S$连续，连续保持紧性，进而$S(TM)=(S \circ T)M$在$X$中列紧。
-\end{proof}
-\begin{theorem}\label{theorem:sclx}
-$\mathscr{C}(X) \subset \mathscr{B}(X)$是双侧理想，即$\forall T \in \mathscr{C}(X) \ , \ S,U \in \mathscr{B}(X)$都有$S \circ T \circ U \in \mathscr{C}(X)$。
-\end{theorem}
-\begin{remark}
-\quad 定理\ref{theorem:sclx}的证明与定理\ref{theorem:szfh}一致。此外定理\ref{theorem:sclx}还有推论，若$X$是无穷维赋范线性空间，则$T \in \mathscr{C}(X,Y)$不存在有界逆。若$T^{-1}$存在且有界，则恒同算子$I=T \circ T^{-1} \in \mathscr{C}(X)$。
-\end{remark}
-
-\begin{theorem}
 设$Y$是完备的，则$\mathscr{C}(X,Y) \subset \mathscr{B}(X,Y)$是闭子空间。
 \end{theorem}
 \begin{remark}
@@ -868,14 +848,52 @@ $\mathscr{C}(X) \subset \mathscr{B}(X)$是双侧理想，即$\forall T \in \math
 即$N_n(\varepsilon)$是$TB_x$的有限$3\varepsilon$-网，因此$TB_x$完全有界，$T \in \mathscr{C}(X,Y)$。
 \end{proof}
 
+\begin{definition}[全连续]
+设算子$T \in \mathscr{B}(X,Y)$是全连续的，若其满足对$\forall x_n \xrightarrow{w} x_0 \in X$，都有$Tx_n \xrightarrow{s} Tx_0 \in Y$
+\end{definition}
+\begin{theorem}
+设$T \in \mathscr{C}(X,Y)$则$T$全连续；反之若$X$自反，则全连续的算子$T \in \mathscr{C}(X,Y)$。
+\end{theorem}
+\begin{proof}
+对第一个论断，通过构造映射$c: \ X \to X^{**} \ , \ x \mapsto \overline{x}$，然后利用一致有界定理[定理\ref{theorem:yzyjdl}]可知$\{x_n\}$有界。对$\forall g \in Y^*$都有$g \circ T \in X^*$，因此$g(Tx_n)=(g \circ T)x_n \to (g \circ T)x_0=g(Tx_0)$，即$Tx_n \xrightarrow{w} Tx_0 \in Y$。其次$\{x_n\}$有界且$T$是紧算子，因此$\{Tx_n\}$列紧有收敛子列，记为$Tx_{n_k} \xrightarrow{s} y_0 \in Y$，可以推出$Tx_{n_k} \xrightarrow{w} y_0 \in Y$。由弱极限唯一[引理\ref{lemma:rsl}]可知$y_0=Tx_0$，因此$\{Tx_n\}$有收敛子列$Tx_{n_k} \xrightarrow{s} Tx_0$，故$Tx_n \xrightarrow{s} Tx_0 \in Y$。
+
+对第二个论断，由定理\ref{theorem:zfyjrlj}，若$X$自反可知有界集$\{x_n\}$有弱收敛子列$\{x_{n_k}\}$，由全连续即证。
+\end{proof}
+
+\begin{theorem}\label{theorem:szfh}
+设$T \in \mathscr{C}(X)$，$S \in \mathscr{B}(X)$，则$T \circ S, \ S \circ T \in \mathscr{C}(X)$。
+\end{theorem}
+\begin{proof}
+设$X$中点有界集$M$，因此$SM$在$X$中有界，进而$T(SM)=(T \circ S)M$在$X$中列紧；另一方面$TM$在$X$中列紧，因为$S$是有界线性算子，因此$S$连续，连续保持紧性，进而$S(TM)=(S \circ T)M$在$X$中列紧。
+\end{proof}
+\begin{theorem}\label{theorem:sclx}
+$\mathscr{C}(X) \subset \mathscr{B}(X)$是双侧理想，即$\forall T \in \mathscr{C}(X) \ , \ S,U \in \mathscr{B}(X)$都有$S \circ T \circ U \in \mathscr{C}(X)$。
+\end{theorem}
+\begin{remark}
+\quad 定理\ref{theorem:sclx}的证明与定理\ref{theorem:szfh}一致。此外定理\ref{theorem:sclx}还有推论，若$X$是无穷维赋范线性空间，则$T \in \mathscr{C}(X,Y)$不存在有界逆。若$T^{-1}$存在且有界，则恒同算子$I=T \circ T^{-1} \in \mathscr{C}(X)$。
+\end{remark}
+
 \begin{definition}[连续函数空间]
 设$M$是距离空间$X$的一个紧集，定义连续函数空间$C(M)=\{\text{从}M \to \mathbb{R}\text{连续函数全体}\}$和其上的距离：
 \[\forall u,v \in C(M) \quad , \quad d(u,v)=\max_{x \in M}|u(x)-v(x)|\]
 \end{definition}
-\begin{remark}
-\quad $(C(M),d)$是完备的。
-\end{remark}
-\begin{theorem}[一般的 Arzela-Ascoli 定理]
+\begin{proof}
+设$\{u_n\} \subset C(M)$是柯西列。对于$\forall \varepsilon > 0 \ , \ \exists \, N$，使得当$m,n \ge N$时对$\forall x \in M$都有$|u_m(x)-u_n(x)|<d(u_m,u_n)<\varepsilon$。所以$\{u_n(x)\} \subset \mathbb{R}$是柯西列。由$\mathbb{R}$的完备性，$u_n(x) \to u(x) \in \mathbb{R}$，定义函数$u: \ M\to\mathbb{R}$。由$\{u_n\}$是柯西列，对$\forall \varepsilon>0 \ , \ \exists \, N$使得对$\forall m,n\ge N \ ,  \ x\in M$，都有$|u_m(x)-u_n(x)|<\varepsilon/2$。
+固定$n\ge N$和$x\in M$，令$m\to\infty$，利用极限的保序性得：
+\[|u_n(x)-u(x)|=\lim_{m\to\infty}|u_n(x)-u_m(x)|\le\frac{\varepsilon}{2}<\varepsilon\]
+这对每个$n\ge N$和每个$x\in M$成立，因此：
+\[\sup_{x\in M}|u_n(x)-u(x)|\le\frac{\varepsilon}{2}<\varepsilon\]
+由于$M$是紧集，而$|u_n(x)-u(x)|$是连续函数（由三角不等式易证），该上确界就是最大值，故：
+\[d(u_n,u)=\max_{x\in M}|u_n(x)-u(x)|<\varepsilon,\quad \forall n\ge N\]
+这就证明了$u_n$一致收敛到$u$，即对$\forall x_0\in M \ , \ \varepsilon>0 \ , \ \exists \, N$使得$|u_N(x_0)-u(x_0)|<\varepsilon/3$；由$u_N$在$x_0$连续，$\exists \, \delta>0$，使得当$|x-x_0|<\delta$时，$|u_N(x)-u_N(x_0)|<\varepsilon/3$。因此：
+\[\begin{aligned}
+|u(x)-u(x_0)|
+&\le |u(x)-u_N(x)|+|u_N(x)-u_N(x_0)|+|u_N(x_0)-u(x_0)| \\
+&< \frac{\varepsilon}{3}+\frac{\varepsilon}{3}+\frac{\varepsilon}{3}=\varepsilon,
+\end{aligned}\]
+故$u$在$x_0$连续。由$x_0$的任意性，$u\in C(M)$。综上所述，任意 $C(M)$ 中的柯西列都在度量 $d$ 下收敛到 $C(M)$ 中的某个函数，因此 $(C(M),d)$ 是完备的距离空间。
+\end{proof}
+\begin{theorem}[一般的 Arzela-Ascoli 定理]\label{theorem:gaa}
 设$M$是距离空间$X$的一个紧集，则函数族$\mathscr{F} \subset C(M)$列紧当且仅当$\mathscr{F}$一致有界且等度连续。
 \end{theorem}
 \begin{proof}
@@ -883,11 +901,24 @@ $\mathscr{C}(X) \subset \mathscr{B}(X)$是双侧理想，即$\forall T \in \math
 \[|f(x)-f(x')|\leq|f(x)-f_k(x)|+|f_k(x)-f_k(x')|+|f_k(x')-f(x')|\leq 2d(f,f_k)+\varepsilon<3\varepsilon\]
 即$\mathscr{F}$等度连续，因此必要性得证。
 
-下证充分性：因为$M$是紧集，所以存在有限$\varepsilon$-网$N_{\varepsilon}=\{x_1,x_2,\cdots,x_n\} \subset M$，构造映射$T: \ \mathscr{F} \to \mathbb{R}^n \ , \ f \mapsto (f(x_1),f(x_2),\cdots,f(x_n))$，由一致有界可知$T\mathscr{F}$是有界集：
-\[\forall f \in \mathscr{F} \quad , \quad \sqrt{\sum_{i=1}^nf^2(x_i)} \leq \sqrt{n}\max_{x \in M}|f(x)| \leq \sqrt{n}M\]
-因此列紧，也即$T\mathscr{F}$完全有界，因此对$\forall \varepsilon>0$都存在有限$\varepsilon$-网$N_{\varepsilon}^T=\{Tf_1,Tf_2,\cdots,Tf_m\} \subset T\mathscr{F}$。更近一步：
-\[\forall f \in \mathscr{F} \quad , \quad d(Tf,Tf_i)=\sqrt{\sum_{i=1}^n[f(x_i)-f_k(x_i)]^2}<\varepsilon \quad \Rightarrow \quad |f(x_i)-f_k(x_i)|<\varepsilon \quad i=1,2,\cdots,n\]
+下证充分性：因为$M$是紧集，所以存在有限$\varepsilon$-网$N_{\varepsilon}=\{x_1,x_2,\cdots,x_n\} \subset M$，构造映射$T: \ \mathscr{F} \to \mathbb{R}^n \ , \ f \mapsto (f(x_1),f(x_2),\cdots,f(x_n))$，由一致有界可知$T\mathscr{F}$是有界集，即对$\forall f \in \mathscr{F}$：
+\[\sqrt{\sum_{i=1}^nf^2(x_i)} \leq \sqrt{n}\max_{x \in M}|f(x)| \leq \sqrt{n}M\]
+$\mathbb{R}^n$中有界集完全有界，因此对$\forall \varepsilon>0$都存在有限$\varepsilon$-网$N_{\varepsilon}^T=\{Tf_1,\cdots,Tf_m\} \subset T\mathscr{F}$。对$\forall f \in \mathscr{F} \ , \ i=1,\cdots,n$：
+\[|f(x_i)-f_k(x_i)|<d(Tf,Tf_k)=\sqrt{\sum_{i=1}^n[f(x_i)-f_k(x_i)]^2}<\varepsilon\]
 由上式和等度连续可知$\{f_1,f_2,\cdots,f_m\}$是$\mathscr{F}$的有限$3\varepsilon$-网，对$\forall f \in \mathscr{F}$都$\exists \, \delta>0 $取$x'\in N_{\varepsilon}$满足$||x-x'||<\delta$：
 \[|f(x)-f_k(x)|\leq|f(x)-f(x')|+|f(x')-f_k(x')|+|f_k(x')-f_k(x)|<3\varepsilon\]
 即$\mathscr{F}$完全有界。
+\end{proof}
+
+\begin{theorem}[Schauder 定理]
+$T \in \mathscr{C}(X,Y) \ \Rightarrow \ T^* \in \mathscr{C}(Y^*,X^*)$；$T^* \in \mathscr{C}(Y^*,X^*)$且$Y$完备，则$T \in \mathscr{C}(X,Y)$。
+\end{theorem}
+\begin{proof}
+对第一部分，令$B_{Y^*}$是$Y^*$中的单位球，取$\forall \{f_n\} \subset B_{Y^*}$，对$\forall x \in  B_{X}$，记$y=Tx$，都有：
+\[|f_n(y)| \leq ||f_n||_{Y^*}\cdot||y||_Y \leq ||f_n||_{Y^*}\cdot||T||\cdot||x||_X=||T||\]
+即一致有界，对$\forall \varepsilon>0 \ , \ x_1,x_2 \in  B_{X}$，记$y_1=Tx_1 \ , \ y_2=Tx_2$，若$||x_1-x_2||<\varepsilon/||T||$则有：
+\[|f_n(y_1)-f_n(y_2)| \leq ||f_n||_{Y^*}\cdot||y_1-y_2||_Y\leq ||f_n||_{Y^*}\cdot||T||\cdot||x_1-x_2||_X<\varepsilon\]
+即等度连续，因为$\overline{TB_X}$是紧集，由定理\ref{theorem:gaa}可知$\{f_n\}$列紧，即证必要性。
+
+对第二部分，由此前的证明可知$T^* \in \mathscr{C}(Y^*,X^*) \ \Rightarrow \ T^{**} \in \mathscr{C}(X^{**},Y^{**})$。构造等距映射$I_X: \ X \to X^{**} \ , \ x \mapsto \overline{x}$和$I_Y: \ Y \to Y^{**} \ , \ y \mapsto \overline{y}$，则$T^{**}(I_XB_X)$在$Y^{**}$中列紧，同时$T^{**}(I_XB_X)=I_Y(TB_X)$，由等距映射可知$TB_X$在$Y$中列紧，由$Y \subset Y^{**}$的完备保证了列紧的极限还在$Y$中。
 \end{proof}

@@ -384,8 +384,11 @@ u = 0, & x \in \partial\Omega \\
 \end{proof}
 
 \begin{definition}[有穷秩算子]
-设$X,Y$是赋范线性空间，$T\in\mathscr{B}(X,Y)$，若$T$的像$R(T)$是有限维的，则称$T$为有穷秩算子，有穷秩算子全体记为$\mathscr{F}(X,Y)$。
+设$X,Y$是赋范线性空间，$T\in\mathscr{B}(X,Y)$，若$T$的像$R(T)$是有限维的，则称$T$为有穷秩算子，有穷秩算子全体记为$\mathscr{F}(X,Y)$。特别的，$T \in X*$是秩为1的算子。
 \end{definition}
+\begin{theorem}
+对$\forall T \in \mathscr{F}(X,Y)$存在线性无关的$\{y_1,y_2,\cdots,y_n\} \subset Y$和$\{f_1,f_2,\cdots,f_n\} \subset X^*$满足$Tx=\sum_{i=1}^n f_i(x)y_i$。
+\end{theorem}
 在紧算子部分[章节\ref{jsz}]提到如果算子$T$的像$R(T)$是有限维的，则其是紧算子，即$\mathscr{F}(X,Y) \subset \mathscr{C}(X,Y)$，且$\overline{\mathscr{F}(X,Y)} \subset \overline{\mathscr{C}(X,Y)}$。那么$\overline{\mathscr{F}(X,Y)}=\mathscr{C}(X,Y)$是否成立呢？一般不成立，但如果$Y$是 Hilbert 空间则成立。
 \begin{theorem}
 设$X$是赋范线性空间，$Y$是 Hilbert 空间，则$\overline{\mathscr{F}(X,Y)}=\mathscr{C}(X,Y)$。
