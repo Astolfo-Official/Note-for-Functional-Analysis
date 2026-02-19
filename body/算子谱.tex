@@ -1,3 +1,24 @@
 \section{线性算子谱}
+回顾有限维的情况，设$X$为$n$维的线性空间，$A: \ X \to X$是线性算子，对$\forall \lambda \in \mathbb{C}$考虑方程$(\lambda \mathbbm{I}-A)x=0$，也即$Ax=\lambda x$，有两种情况：
+\begin{itemize}
+\item 1. 只有零解，算子$\lambda \mathbbm{I}-A$为单射（$\ker(\lambda \mathbbm{I}-A)=\{0\}$且线性），因此$\lambda \mathbbm{I}-A$可逆[定理\ref{theorem:djm}]，也可称为正则，其行列式$\det(\lambda \mathbbm{I}-A)\neq0$，此时称$\lambda$为$A$的正则值；
+\item 2. 有非零解，算子$\lambda \mathbbm{I}-A$不单进而不可逆，行列式$\det(\lambda \mathbbm{I}-A)=0$，此时称$\lambda$为$A$的特征值，数量为$n$。
+\end{itemize}
+\begin{definition}[正则算子]
+设$X,Y$是赋范线性空间，定义算子$A \in \mathscr{B}(X,Y)$，若$R(A)=Y$且$A^{-1}\in \mathscr{B}(X,Y)$，则称$A$是正则算子。
+\end{definition}
+现在考虑无穷维时，设$X$是 Banach 空间，定义算子$A \in \mathscr{B}(X)$，对$\forall \lambda \in \mathbb{C}$考虑方程$(\lambda \mathbbm{I}-A)x=0$：
+\begin{itemize}
+\item 1. 如果该方程只有零解，那么$\lambda \mathbbm{I}-A$是单射，因此$\lambda \mathbbm{I}-A$“可逆”\footnote{很多地方都将可逆的扩大化了，严格意义上满射要求算子A的值域$R(A)=Y$，但如果仅在$R(A)$上那么可以宽松地说单射的算子可逆。}，分三种情况：
+\begin{itemize}
+\item 1. $R(\lambda \mathbbm{I}-A)=X$，因此$(\lambda \mathbbm{I}-A)^{-1} \in \mathscr{B}(X)$，记$\lambda\in\rho(A)$为正则值；
+\item 2. $R(\lambda \mathbbm{I}-A) \neq X$但$\overline{R(\lambda \mathbbm{I}-A)}=X$，$(\lambda \mathbbm{I}-A)^{-1}$存在但不有界，记$\lambda\in\sigma_c(A)$为连续谱；
+\item 3. $\overline{R(\lambda \mathbbm{I}-A)} \neq X$，$(\lambda \mathbbm{I}-A)^{-1}$存在但无法判断是否有界，记$\lambda\in\sigma_r(A)$为连续谱。
+\end{itemize}
+\item 2. 如果方程有非零解，那么$\lambda \mathbbm{I}-A$不是单射，因此$\lambda \mathbbm{I}-A$不可逆，记$\lambda\in\sigma_p(A)$为点谱（特征值）。
+\end{itemize}
+\begin{definition}[算子的谱]
+定义算子$A$的谱为$\sigma(A)=\mathbb{C}-\rho(A)=\sigma_p(A)\cup\sigma_c(A)\cup\sigma_r(A)$。
+\end{definition}
 \section{紧算子谱}
 \section{希尔伯特空间的自共轭紧算子谱}
