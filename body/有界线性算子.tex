@@ -264,7 +264,7 @@ $T^{-1}$有界：
 \[\forall y \in X \ , \ ||T^{-1}y||=||x|| \leq m||Tx||=m||y||\]
 \end{proof}
 
-\begin{theorem}
+\begin{theorem}\label{theorem:nszyjxx}
 设$X$是 Banach 空间，$T \in \mathscr{B}(X) \ , \ ||T||<1$，则算子$I-T$可逆，且：
 \[||(I-T)^{-1}|| \leq \frac{1}{1-||T||}\]
 \end{theorem} 
@@ -281,7 +281,7 @@ $T^{-1}$有界：
 \[||(I-T)^{-1}||=||S||=\left\|\lim_{n \to +\infty}S_n\right\|=\left\|\lim_{n \to +\infty}\sum_{k=0}^{n-1}T^k\right\| \leq \lim_{n \to +\infty}\sum_{k=0}^{n-1}||T||^k=\lim_{n \to +\infty}\frac{1-||T||^n}{1-||T||}=\frac{1}{1-||T||}\]
 \end{proof}
 上述定理展示了恒同算子加上一个小的扰动($||T||<1$)时依然可逆，那这件事是否对任意可逆算子成立呢？
-\begin{theorem}
+\begin{theorem}\label{theorem:deltazz}
 设$X$是 Banach 空间，$T, \ T^{-1} \in \mathscr{B}(X)$可逆，若：
 \[\exists \, \Delta T \in \mathscr{B}(X) \ , \ ||\Delta T||<\frac{1}{||T^{-1}||} \ , \ S:=T+\Delta T \in \mathscr{B}(X) \ \text{可逆且} \ S^{-1}=\sum_{k=0}^{+\infty}(-1)^k(T^{-1}\Delta T)^kT^{-1}\]
 \end{theorem} 
@@ -350,7 +350,7 @@ $T\overline{B_1^X(0)} \supset B_{\delta/2}^Y(0)$
 由逆算子定理，$I^{-1}:(X,||\cdot||_2) \to (X,||\cdot||_1) \ , \ x \mapsto x$，有$||Ix||_1=||x||_1 \leq \beta ||x||_2$，原命题得证。
 \end{proof}
 
-\begin{definition}[图像，闭图像]
+\begin{definition}[图像，闭图像]\label{definition:bsz}
 设$T:X \to Y$是映射，称$G(T)=\{(x,Tx)|x \in X \times Y\}:=\{(x,Tx)|x \in X ,y \in Y\}$为$T$的图像。若$G(T)$是$X \times Y$中的闭集，则称$T$为闭算子，即:
 \[\forall \{(x_n,y_n)\} \subset G(T) \ , \ x_n \to x \in X \ , \ y_n \to y \in Y \ , \ (x,y) \in G(T)\]
 \end{definition}

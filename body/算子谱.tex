@@ -9,7 +9,7 @@
 \end{definition}
 现在考虑无穷维时，设$X$是 Banach 空间，定义算子$A \in \mathscr{B}(X)$，对$\forall \lambda \in \mathbb{C}$考虑方程$(\lambda \mathbbm{I}-A)x=0$：
 \begin{itemize}
-\item 1. 如果该方程只有零解，那么$\lambda \mathbbm{I}-A$是单射，因此$\lambda \mathbbm{I}-A$“可逆”\footnote{很多地方都将可逆的扩大化了，严格意义上满射要求算子A的值域$R(A)=Y$，但如果仅在$R(A)$上那么可以宽松地说单射的算子可逆。}，分三种情况：
+\item 1. 如果该方程只有零解，那么$\lambda \mathbbm{I}-A$是单射，因此$\lambda \mathbbm{I}-A$“\href{https://math.fandom.com/zh/wiki/%E8%B0%B1}{可逆}”\footnote{很多地方都将可逆的扩大化了，严格意义上满射要求算子A的值域$R(A)=Y$，但如果仅在$R(A)$上那么可以宽松地说单射的算子可逆。}，分三种情况：
 \begin{itemize}
 \item 1. $R(\lambda \mathbbm{I}-A)=X$，因此$(\lambda \mathbbm{I}-A)^{-1} \in \mathscr{B}(X)$，记$\lambda\in\rho(A)$为正则值；
 \item 2. $R(\lambda \mathbbm{I}-A) \neq X$但$\overline{R(\lambda \mathbbm{I}-A)}=X$，$(\lambda \mathbbm{I}-A)^{-1}$存在但不有界，记$\lambda\in\sigma_c(A)$为连续谱；
@@ -20,5 +20,38 @@
 \begin{definition}[算子的谱]
 定义算子$A$的谱为$\sigma(A)=\mathbb{C}-\rho(A)=\sigma_p(A)\cup\sigma_c(A)\cup\sigma_r(A)$。
 \end{definition}
+
+\begin{example}
+\quad 在$X=L^2[0,1]$，上利用 \href{https://math.fandom.com/zh/wiki/Fourier_%E7%BA%A7%E6%95%B0}{Fourier 分解}定义闭算子[定义\ref{definition:bsz}] $A: \ X \to X$：
+\[u(t) \quad \mapsto \quad -\dv[2]{u}{t}=-\dv[2]{t}\sum_{n=-\infty}^{\infty}e^{2i\pi nt}\int_0^1u(t)e^{2i\pi nt}\dd{t}=\sum_{n=-\infty}^{\infty}(2n\pi)^2e^{2i\pi nt}\int_0^1u(t)e^{2i\pi nt}\dd{t}\]
+显然$\sigma(A)=\sigma_p(A)=\{(2n\pi)^2 \ | \ n \in \mathbb{Z}\}$，对应特征空间为$\{e^{2i\pi nt} \ | \ n\in\mathbb{Z}\}$。
+\end{example}
+
+\begin{example}\label{example:6.2}
+\quad 在$X=C[0,1]$上定义算子 $A: \ X \to X \ , \ u(t) \mapsto tu(t)$，证明$\sigma(A)=\sigma_r(A)=[0,1]$。
+\end{example}
+\begin{proof}
+对$\forall \lambda \in \mathbb{C}$都有$(\lambda\mathbbm{I}-A)u(t)=(\lambda-t)u(t)=0$可知方程只有零解$u(t)=0$，因此$(\lambda\mathbbm{I}-A)^{-1}$存在，若$\lambda \notin [0,1]$，显然有$(\lambda\mathbbm{I}-A)^{-1}u=u(t)/(\lambda-t)$，因此：
+\[||(\lambda\mathbbm{I}-A)^{-1}u|| \leq \sup_{t \in [0,1]}\frac{||u||}{\lambda-t}\]
+进而可知$(\lambda\mathbbm{I}-A)^{-1} \in \mathscr{B}(X)$，即$\lambda$正则，可知$\sigma(A) \subset [0,1]$。若$\lambda \in [0,1]$，则$\overline{R(\lambda\mathbbm{I}-A)}=\overline{\{(\lambda-t)u(t) \ | \ u \in X\}}$，因为$\lambda-t \in X$，可知$\overline{R(\lambda\mathbbm{I}-A)}=\overline{\{u(t) \ | \ u \in X \ , \ u(\lambda)=0\}} \subset C[0,1]$，因此$\sigma(A)=\sigma_r(A)=[0,1]$。
+\end{proof}
+
+\begin{example}
+\quad 在$X=L^2[0,1]$上类似上一个例子\ref{example:6.2}定义算子 $A: \ X \to X \ , \ u(t) \mapsto tu(t)$，则$\sigma(A)=\sigma_c(A)=[0,1]$。
+\end{example}
+
+\begin{theorem}
+设$X$是 Banach 空间，$A \in \mathscr{B}(X)$，则：
+\begin{itemize}
+\item 1. $\rho(A)$是开集，也即$\sigma(A)$是闭集；
+\item 2. $\sigma(A) \subset \{\lambda \in \mathbb{C} \ | \ |\lambda| \leq ||A||\}$或记为$r_{\sigma}(A) \leq ||A||$。
+\end{itemize}
+\end{theorem}
+\begin{proof}
+由定理\ref{theorem:deltazz}对$\forall \lambda \in \rho(A)$，都$\exists \, \delta=||\lambda\mathbbm{I}-A||^{-1}$，使得对$\forall a<\delta$都有$(\lambda+a)\mathbbm{I}-A=(\lambda\mathbbm{I}-A)+a\mathbbm{I}$正则，即对$\forall \lambda \in \rho(A)$其开球$\{\lambda+a \ | \ |a|<\delta\} \subset \rho(A)$，因此$\rho(A)$是开集，第一部分得证。
+
+对$\forall \lambda \in \mathbb{C}$满足$|\lambda|>||A||$，由定理\ref{theorem:nszyjxx}知$\lambda\mathbbm{I}-A=\lambda(\mathbbm{I}-A/\lambda)$正则，因此$\sigma(A) \subset \{\lambda \in \mathbb{C} \ | \ |\lambda| \leq ||A||\}$。
+\end{proof}
+
 \section{紧算子谱}
 \section{希尔伯特空间的自共轭紧算子谱}
