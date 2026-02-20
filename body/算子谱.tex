@@ -1,4 +1,13 @@
-\section{线性算子谱}
+\begin{introduction}
+    \item 线性算子谱~\ref{xxszp}
+    \item Gelfand 公式~\ref{theorem:Gelfand}
+    \item 紧算子谱~\ref{jsjp}
+    \item 希尔伯特空间的自共轭紧算子谱~\ref{zgejszp}
+    \item 自反性，弱收敛与弱*收敛~\ref{selfback}
+    \item 紧算子~\ref{jsz}
+\end{introduction}
+
+\section{线性算子谱}\label{xxszp}
 回顾有限维的情况，设$X$为$n$维的线性空间，$A: \ X \to X$是线性算子，对$\forall \lambda \in \mathbb{C}$考虑方程$(\lambda \mathbbm{I}-A)x=0$，也即$Ax=\lambda x$，有两种情况：
 \begin{itemize}
 \item 1. 只有零解，算子$\lambda \mathbbm{I}-A$为单射（$\ker(\lambda \mathbbm{I}-A)=\{0\}$且线性），因此$\lambda \mathbbm{I}-A$可逆[定理\ref{theorem:djm}]，也可称为正则，其行列式$\det(\lambda \mathbbm{I}-A)\neq0$，此时称$\lambda$为$A$的正则值；
@@ -11,7 +20,7 @@
 \begin{itemize}
 \item 1. 如果该方程只有零解，那么$\lambda \mathbbm{I}-A$是单射，因此$\lambda \mathbbm{I}-A$“\href{https://math.fandom.com/zh/wiki/%E8%B0%B1}{可逆}”\footnote{很多地方都将可逆的扩大化了，严格意义上满射要求算子A的值域$R(A)=Y$，但如果仅在$R(A)$上那么可以宽松地说单射的算子可逆。}，分三种情况：
 \begin{itemize}
-\item 1. $R(\lambda \mathbbm{I}-A)=X$，因此$(\lambda \mathbbm{I}-A)^{-1} \in \mathscr{B}(X)$，记$\lambda\in\rho(A)$为正则值；
+\item 1. $R(\lambda \mathbbm{I}-A)=X$，因此$(\lambda \mathbbm{I}-A)^{-1} \in \mathscr{B}(X)$，记$\lambda\in\rho(A)$为正则值，$\rho(A)$称为预解集；
 \item 2. $R(\lambda \mathbbm{I}-A) \neq X$但$\overline{R(\lambda \mathbbm{I}-A)}=X$，$(\lambda \mathbbm{I}-A)^{-1}$存在但不有界，记$\lambda\in\sigma_c(A)$为连续谱；
 \item 3. $\overline{R(\lambda \mathbbm{I}-A)} \neq X$，$(\lambda \mathbbm{I}-A)^{-1}$存在但无法判断是否有界，记$\lambda\in\sigma_r(A)$为连续谱。
 \end{itemize}
@@ -40,7 +49,7 @@
 \quad 在$X=L^2[0,1]$上类似上一个例子\ref{example:6.2}定义算子 $A: \ X \to X \ , \ u(t) \mapsto tu(t)$，则$\sigma(A)=\sigma_c(A)=[0,1]$。
 \end{example}
 
-\begin{theorem}
+\begin{theorem}\label{theorem:fskz}
 设$X$是 Banach 空间，$A \in \mathscr{B}(X)$，则：
 \begin{itemize}
 \item 1. $\rho(A)$是开集，也即$\sigma(A)$是闭集；
@@ -57,8 +66,80 @@
     \includegraphics[scale=0.6]{./fig/6.1-1.png}
 \end{figure}
 上述定理描述了算子的谱$\sigma(A)$实际上是个闭集且其谱半径$r_{\sigma}(A)$被算子范数$||A||$所控制，如上图所示。
+
 \begin{definition}[谱半径]
 谱半径$r_{\sigma}(A)$被定义为$r_{\sigma}(A)=\sup\{|\lambda| \ | \ \lambda \in \sigma(A)\}$。
 \end{definition}
-\section{紧算子谱}
-\section{希尔伯特空间的自共轭紧算子谱}
+
+\begin{lemma}[谱映射定理]\label{lemma:pysdl}
+设 $X$是 Banach 空间，$T\in B(X)$，$p$为多项式，则$\sigma(p(T))=p(\sigma(T))$。
+\end{lemma}
+
+\begin{theorem}[Gelfand 公式]\label{theorem:Gelfand}
+设 $X$ 是 Banach 空间，$T\in\mathscr{B}(X)$ 是有界线性算子。谱半径$r_{\sigma}(T)$可以如下给出：
+\[r_{\sigma}(T) = \lim_{n \to \infty} \|T^n\|^{1/n}\]
+且等式右端的极限总是存在。
+\end{theorem}
+\begin{proof}
+首先证明极限存在，令 $a_n = \ln \|T^n\|$。由算子范数的次可乘性 $\|T^{m+n}\| \le \|T^m\|\|T^n\|$ 取对数得$a_{m+n} \le a_m + a_n$，即$\{a_n\}$是次可加数列。对于次可加数列，有\href{https://math.fandom.com/zh/wiki/Fekete_%E5%BC%95%E7%90%86}{经典结论}：
+\[\lim_{n \to \infty} \frac{a_n}{n} = \inf_{n \ge 1} \frac{a_n}{n}\]
+由于$a_n/n=\ln\bigl(\|T^n\|^{1/n}\bigr)$ 且指数函数连续，故 $\lim\limits_{n \to \infty} \|T^n\|^{1/n}$ 存在，记该极限为 $r(T)$。对$\forall \lambda \in \sigma(T)$，由谱映射定理[引理\ref{lemma:pysdl}]知$\lambda^n \in \sigma(T^n)$。由定理\ref{theorem:fskz}知$|\lambda|^n \le \|T^n\|$。取 $n$ 次根得$|\lambda| \le \|T^n\|^{1/n}$。这对所有 $n$ 成立，故：
+\[|\lambda| \le \inf_{n \ge 1} \|T^n\|^{1/n} = \lim_{n \to \infty} \|T^n\|^{1/n} = r(T)\]
+对$\lambda \in \sigma(T)$ 取上确界得 $r_{\sigma}(T) \le r(T)$。
+
+设$r > \rho(T)$，则$\{\lambda: |\lambda| = r\} \subset \rho(T)$，因此$(\lambda I - T)^{-1}$在$|\lambda| = r$上解析且有界。记：
+\[M(r) = \max_{|\lambda| = r} \|(\lambda I - T)^{-1}\| < \infty\]
+对 $|\lambda| > \|T\|$，定理\ref{theorem:nszyjxx}知$(\lambda I - T)^{-1}$有 \href{https://math.fandom.com/zh/wiki/%E8%B0%B1}{Neumann 级数展开}：
+\[(\lambda I - T)^{-1} = \sum_{n=0}^{\infty} \frac{T^n}{\lambda^{n+1}}\]
+该级数在算子范数下绝对收敛。由复分析的 Cauchy 积分公式，对$n \ge 0$，上述展开式的系数可由积分表示：
+\[T^n = \frac{1}{2\pi i} \int_{|\lambda| = r} \lambda^n (\lambda I - T)^{-1} \, \dd\lambda \quad \Rightarrow \quad \|T^n\|\le \frac{1}{2\pi} \cdot \max_{|\lambda| = r} \|(\lambda I - T)^{-1}\| \cdot 2\pi r \cdot r^n = r^{n+1} M(r)\]
+因此 $\|T^n\|^{1/n} \le r \cdot \bigl(r M(r)\bigr)^{1/n}$。令 $n \to \infty$，注意到 $\bigl(r M(r)\bigr)^{1/n} \to 1$，得$r(T) \le r$。由于$r > \rho(T)$是任意的，令$r \to \rho(T)^+$即得 $r(T) \le r_{\sigma}(T)$。综合下界与上界，得到 $r(T) = r_{\sigma}(T)$，即
+\[r_{\sigma}(T) = \lim_{n \to \infty} \|T^n\|^{1/n}\]
+\end{proof}
+
+\begin{theorem}
+设 $X$ 是 Banach 空间，$T\in\mathscr{B}(X)$是有界线性算子，则$\sigma(T) \neq \varnothing$。
+\end{theorem}
+\begin{proof}
+假设$\sigma(T) = \varnothing$，对$\forall \lambda \in \mathbb{C}$，由于$\lambda \notin \sigma(T)$，算子 $\lambda I - T$ 可逆，因此$(\lambda I - T)^{-1} \in \mathscr{B}(X)$。对$\forall \lambda_0 \in \mathbb{C}$，当 $|\lambda - \lambda_0| < \|(\lambda_0 I - T)^{-1}\|^{-1}$ 时，利用 Neumann 级数展开有：
+\[(\lambda I - T)^{-1}=\sum_{n=0}^{\infty} (\lambda_0 - \lambda)^n (\lambda_0 I - T)^{-n-1}\]
+该级数在算子范数下收敛，故$(\lambda I - T)^{-1}$在$\lambda_0$处解析。由$\lambda_0$的任意性，$(\lambda I - T)^{-1}$在整个复平面解析，即为\href{https://math.fandom.com/zh/wiki/%E6%95%B4%E5%87%BD%E6%95%B0}{整函数}。当$|\lambda| > \|T\|$且$|\lambda| \to +\infty$时，
+\[(\lambda I - T)^{-1} = \frac{1}{\lambda}\left(I - \frac{T}{\lambda}\right)^{-1}= \frac{1}{\lambda}\sum_{n=0}^{\infty}\left(\frac{T}{\lambda}\right)^n \quad \Rightarrow \quad \|(\lambda I - T)^{-1}\| \le \frac{1}{|\lambda|} \cdot \frac{1}{1 - \|T\|/|\lambda|}= \frac{1}{|\lambda| - \|T\|}\to0\]
+因此$(\lambda I - T)^{-1}$在无穷远处趋于零，进而$(\lambda I - T)^{-1}$在$\mathbb{C}$上有界。由 \href{https://math.fandom.com/zh/wiki/Liouville_%E5%AE%9A%E7%90%86}{Liouville 定理}，有界整函数必为常值函数。故存在常数 $C \in \mathscr{B}(X)$ 使得 $(\lambda I - T)^{-1} \equiv C$。但前面已证$\|(\lambda I - T)^{-1}\|\to0$，从而$C=0$，即$(\lambda I - T)^{-1}\equiv 0$。然而零算子不可逆，因此假设不成立，$\sigma(T)$非空。
+\end{proof}
+
+\begin{example}
+\quad 设$X=l^2$，定义算子$A \in \mathscr{B}(X): \ x=(\xi_1,\xi_2,\cdots) \mapsto Ax=(0,\xi_1,\xi_2,\cdots)$，显然$||A||=1$，有$\sigma_p(A)=\varnothing \ , \ \sigma_c(A)=\{\lambda\in\mathbb{C} \ | \ ||\lambda||=1\} \ , \ \sigma_r(A)=\{\lambda\in\mathbb{C} \ | \ ||\lambda||<1\}$。
+\end{example}
+\begin{proof}
+首先由$||A||=1$可知$\sigma(A) \subset \{\lambda \ | \ |\lambda|\leq1\}$，其次考虑方程$(\lambda\mathbbm{I}-A)x=(\lambda\xi_1,\lambda\xi_2-\xi_1,\cdots)=0$，当$\lambda\neq0$时，显然$x=0$；当$\lambda=0$时，显然$x=0$。因此$\sigma_p(A)=\varnothing$。
+
+注意到$A$的共轭算子$A^*: \ X \to X \ , \ x=(\xi_1,\xi_2,\cdots) \mapsto A^*x=(\xi_2,\xi_3,\cdots)$，考虑算子$(\lambda\mathbbm{I}-A)=\lambda^*\mathbbm{I}-A^*$，由共轭算子的定义可知对$\forall x \in X$都$\exists \, y \in X$由关系式$((\lambda\mathbbm{I}-A)x,y)=(x,(\lambda^*\mathbbm{I}-A^*)y)$一一对应。对$\forall y \in \overline{R(\lambda\mathbbm{I}-A)}^{\perp}=R(\lambda\mathbbm{I}-A)^{\perp}=\ker(\lambda^*\mathbbm{I}-A^*)$（定理\ref{theorem:zgeker}和性质\ref{itemize:zjbb}第三点），都有$0=(\lambda^*\mathbbm{I}-A^*)y=(\lambda^*\xi_1-\xi_2,\lambda^*\xi_2-\xi_3,\cdots)$，因此$y=\xi_1(1,\lambda^*,(\lambda^*)^2,\cdots)$。只有当$|\lambda|<1$时$y \in l^2$。
+
+当$|\lambda|<1$时，$R(\lambda\mathbbm{I}-A)^{\perp}=\ker(\lambda^*\mathbbm{I}-A^*)\neq\{0\}$，通过一一映射后按照谱的定义可知$\{|\lambda|<1\} \subset \sigma_r(A)\subset\sigma(A)$。由于$\sigma(A)$是闭集[定理\ref{theorem:fskz}]，因此$\sigma(A) \supset \overline{\{|\lambda|<1\}}=\{|\lambda|\leq1\}$，结合最开头的结论可知$\sigma(A)=\{|\lambda|\leq1\}$。
+
+当$|\lambda|=1$时，$\ker(\lambda^*\mathbbm{I}-A^*)=R(\lambda\mathbbm{I}-A)^{\perp}=\overline{R(\lambda\mathbbm{I}-A)}^{\perp}=\{0\}$，因此$\overline{R(\lambda\mathbbm{I}-A)}=X$，由$\sigma(A)=\{|\lambda|\leq1\}$可知$R(\lambda\mathbbm{I}-A)\neq X$，因此$\sigma_c(A)=\{|\lambda|=1\}$，进而可知$\sigma_r(A)=\{|\lambda|<1\}$。
+
+或者可以直接证明当$|\lambda|=1$时$R(\lambda\mathbbm{I}-A)$不是闭的，取点列$\{x_n\}$：
+\[x_n=\frac{1}{\sqrt{n}}\left(\lambda^*,(\lambda^*)^2,\cdots,(\lambda^*)^n,0,\cdots\right)\]
+计算：
+\[(\lambda\mathbbm{I}-A)x_n=\left(\frac{1}{\sqrt{n}},\frac{\lambda^*}{\sqrt{n}}-\frac{\lambda^*}{\sqrt{n}},\cdots,\frac{(\lambda^*)^{n-1}}{\sqrt{n}}-\frac{(\lambda^*)^{n-1}}{\sqrt{n}},-\frac{(\lambda^*)^n}{\sqrt{n}},0,\cdots\right)==\left(\frac{1}{\sqrt{n}},0,\cdots,0,-\frac{(\lambda^*)^n}{\sqrt{n}},0,\cdots\right)\]
+因此其范数$||(\lambda\mathbbm{I}-A)x_n||=\sqrt{2/n} \to 0$，说明$\lambda\mathbbm{I}-A$没有正的下界，因此其值域不闭。
+\end{proof}
+
+\newpage
+\section{紧算子谱}\label{jsjp}
+设$X$是 Banach 空间，$A \in \mathscr{C}(X)$，如果想了解$A$的谱，我们可以考虑算子$T=\mathbbm(I)-A$，先考察有限维的情况，如取$X=\mathbb{R}^n$，考虑方程$Tx=y$。如果$T$是单射[定理\ref{theorem:djm}]那对任意给定的$y$显然方程只有唯一解。考虑$T$不是单射，我们令$\{y_1,y_2,\cdots,y_p\}$是$R(T)$的一组基，可以扩充为$\{y_1,y_2,\cdots,y_p,z_1,z_2,\cdots,z_q\}$为$X$的一组基。
+
+
+
+
+
+
+
+
+
+
+
+
+\section{希尔伯特空间的自共轭紧算子谱}\label{zgejszp}
