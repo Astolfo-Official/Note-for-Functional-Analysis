@@ -682,43 +682,11 @@ f(x,0)=\phi(x)
 \begin{theorem}
     若$X,Y$是拓扑空间，$f:X \to Y$是连续映射当且仅当开集的原像是开集。
 \end{theorem}
-这里我们规定符号$f^{-1}$仅表示原像$f:X \to Y \ (A \subseteq Y), \ f^{-1}(A)=\{x \in X \ , \ f(x) \in A\}$。最后给个奇怪的例子作为这一小节的总结，在下一小节虽然我们也将介绍一些拓扑空间中可以定义的概念，但我们更愿意将他放到距离空间的背景下来考量，因为这门课是泛函分析(乐)。
+这里我们规定符号$f^{-1}$仅表示原像$f:X \to Y \ (A \subseteq Y), \ f^{-1}(A)=\{x \in X \ , \ f(x) \in A\}$。
 \begin{example}
 \quad 在$X=\{0,1\}$上定义拓扑$\tau_D=\{\varnothing,\{0\},\{1\},X\}$，单点集在$\mathbb{R}^n$和距离空间中是闭集，但这里是开集。
 \end{example}
 
-\subsection{紧集}
-在介绍距离空间上的紧性之前，我们需要介绍一下四种分离公理并指认距离空间所属的公理。
-\begin{proposition}[分离公理]
-\begin{itemize}
-    \item $T_1$公理：$\forall x \neq y \ , \ \exists \, U_x,U_y$满足：$x \in U_x \ , \ y \notin U_x \ ; \ y \in U_y \ , \ x \notin U_y$；
-    \item $T_2$公理：$\forall x \neq y \ , \ \exists \, U_x \cap U_y=\varnothing$满足：$x \in U_x \ , \ y \notin U_x \ ; \ y \in U_y \ , \ x \notin U_y$；
-    \item $T_3$公理：$\forall$ 闭集$A \cap x=\varnothing \ , \ \exists \, U_x \cap U_A=\varnothing$满足：$x \in U_x \ , \ A \notin U_x \ ; \ A \in U_A \ , \ x \notin U_A$；
-    \item $T_4$公理：$\forall$ 闭集$A \cap B=\varnothing \ , \ \exists \, U_A \cap U_B=\varnothing$满足：$A \in U_A \ , \ B \notin U_A \ ; \ B \in U_B \ , \ B \notin U_A$。
-\end{itemize}
-\end{proposition}
-很显然，这四个公理的限制逐级加强，下面我们可以来看看这几个公理的形象化描述：
-\begin{figure}[htbp]
-    \center
-    \includegraphics[scale=0.4]{./fig/2.2.2.png}
-\end{figure}
-
-$T_2$公理又称为 Hausdorff 性质，距离空间是满足$T_4$公理的，对于这件事我们可以来证明一下。
-\begin{theorem}
-    距离空间满足$T_4$公理。
-\end{theorem}
-\begin{proof}
-在两不相交的闭集$A,B$上利用距离定义以下两函数：
-\[f_A(x):=\mathop {\text{inf}}\limits_{y \in A}d(x,y) \ , \ f_B(x):=\mathop {\text{inf}}\limits_{y \in B}d(x,y)\]
-显然有$f_A(x)>0 \ \Rightarrow \ x \notin A$，如若不然，即存在$A$之外的点$x$满足$f_A(x)=0$，则$\exists \, \{y_n\} \subset A $满足$d(x,y_n) \to 0$，即$x$是$A$的接触点，由于$A$是闭集，故$x \in A$，矛盾。同理可得$f_B(x)>0 \ \Rightarrow \ x \notin B$。
-
-定义邻域：
-\[U_B=\bigcup_{x \in B}B_{\frac{1}{2}f_A(x)}(x) \ , \ U_A=\bigcup_{x \in A}B_{\frac{1}{2}f_B(x)}(x)\]
-显然$U_B,U_A$都是开集，且$B \subset U_B,A \subset U_A$。假设$\exists \, z \in U_A \cap U_B$，则$\exists \, x \in A, \ y \in B$满足
-\[z \in B_{\frac{1}{2}f_B(x)}(x) \ , \ z \in B_{\frac{1}{2}f_A(y)}(y) \quad \Rightarrow \quad d(x,z)<\frac{1}{2}f_B(x) \ , \ d(z,y)<\frac{1}{2}f_A(y)\]
-\[d(x,y) \leq d(x,z)+d(z,y)<\frac{1}{2}f_B(x)+\frac{1}{2}f_A(y)<\frac{1}{2}d(x,y)+\frac{1}{2}d(x,y)=d(x,y)\]
-得出矛盾，因此$U_A \cap U_B=\varnothing$，距离空间满足$T_4$公理。
-\end{proof}
 \begin{definition}[子集拓扑]
     $(X,\tau)$为拓扑空间，$A \subset X$，令$\tau_A=\{U \cap A \ , \ U \in \tau\}$，则称$\tau_A$为$X$上的子集拓扑(诱导拓扑)。
 \end{definition}
@@ -745,7 +713,7 @@ $T_2$公理又称为 Hausdorff 性质，距离空间是满足$T_4$公理的，�
 故$A$也是紧的。
 \end{proof}
 \begin{theorem}
-    $T_2$空间的紧子集是闭集。
+    $T_2$空间[命题\ref{proposition:flgl}]的紧子集是闭集。
 \end{theorem}
 \begin{proof}
 设$X$是$T_2$空间，$A \subset X$，需证明$A^c$为开集，即需证$\forall x \in A^c \ , \ \exists \, U_x \subset A^c$。假设$y \in A \ , \ x \in A^c$，由$T_2$公理，存在$x$的开邻域$U_{x,y}$，$y$的开邻域$V_{x,y}$（$U_{x,y},V_{x,y}$选取与$x,y$都有关）满足$U_{x,y} \cap V_{x,y}=\varnothing$，由紧性：
@@ -754,7 +722,6 @@ $T_2$公理又称为 Hausdorff 性质，距离空间是满足$T_4$公理的，�
 \[U_x=\bigcup_{i=1}^kU_{x,y_i} \quad \Rightarrow \quad U_x \cap \bigcup_{i=1}^kV_{x,y_i}=\varnothing \quad \Rightarrow \quad U_x \cap A=\varnothing \quad \Leftrightarrow \quad U_x \cap A^c\]
 \end{proof}
 
-可以看到，在一般拓扑空间下紧和闭是两个等同的概念，紧比闭更强一点。
 \begin{theorem}
     紧空间(子集)在连续映射下的像也是紧的。
 \end{theorem}
@@ -766,8 +733,39 @@ $T_2$公理又称为 Hausdorff 性质，距离空间是满足$T_4$公理的，�
     \includegraphics[scale=0.2]{./fig/2.2.2-1.png}
 \end{figure}
 
-\newpage
 \subsection{刻画距离空间上的紧集} \label{compact}
+在介绍距离空间上的紧性之前，我们需要介绍一下四种分离公理并指认距离空间所属的公理。
+\begin{proposition}[分离公理]\label{proposition:flgl}
+\begin{itemize}
+    \item $T_1$公理：$\forall x \neq y \ , \ \exists \, U_x,U_y$满足：$x \in U_x \ , \ y \notin U_x \ ; \ y \in U_y \ , \ x \notin U_y$；
+    \item $T_2$公理：$\forall x \neq y \ , \ \exists \, U_x \cap U_y=\varnothing$满足：$x \in U_x \ , \ y \notin U_x \ ; \ y \in U_y \ , \ x \notin U_y$；
+    \item $T_3$公理：$\forall$ 闭集$A \cap x=\varnothing \ , \ \exists \, U_x \cap U_A=\varnothing$满足：$x \in U_x \ , \ A \notin U_x \ ; \ A \in U_A \ , \ x \notin U_A$；
+    \item $T_4$公理：$\forall$ 闭集$A \cap B=\varnothing \ , \ \exists \, U_A \cap U_B=\varnothing$满足：$A \in U_A \ , \ B \notin U_A \ ; \ B \in U_B \ , \ B \notin U_A$。
+\end{itemize}
+\end{proposition}
+很显然，这四个公理的限制逐级加强，下面我们可以来看看这几个公理的形象化描述：
+\begin{figure}[htbp]
+    \center
+    \includegraphics[scale=0.3]{./fig/2.2.2.png}
+\end{figure}
+
+$T_2$公理又称为 Hausdorff 性质，距离空间是满足$T_4$公理的，对于这件事我们可以来证明一下。
+\begin{theorem}
+    距离空间满足$T_4$公理。
+\end{theorem}
+\begin{proof}
+在两不相交的闭集$A,B$上利用距离定义以下两函数：
+\[f_A(x):=\mathop {\text{inf}}\limits_{y \in A}d(x,y) \ , \ f_B(x):=\mathop {\text{inf}}\limits_{y \in B}d(x,y)\]
+显然有$f_A(x)>0 \ \Rightarrow \ x \notin A$，如若不然，即存在$A$之外的点$x$满足$f_A(x)=0$，则$\exists \, \{y_n\} \subset A $满足$d(x,y_n) \to 0$，即$x$是$A$的接触点，由于$A$是闭集，故$x \in A$，矛盾。同理可得$f_B(x)>0 \ \Rightarrow \ x \notin B$。
+
+定义邻域：
+\[U_B=\bigcup_{x \in B}B_{\frac{1}{2}f_A(x)}(x) \ , \ U_A=\bigcup_{x \in A}B_{\frac{1}{2}f_B(x)}(x)\]
+显然$U_B,U_A$都是开集，且$B \subset U_B,A \subset U_A$。假设$\exists \, z \in U_A \cap U_B$，则$\exists \, x \in A, \ y \in B$满足
+\[z \in B_{\frac{1}{2}f_B(x)}(x) \ , \ z \in B_{\frac{1}{2}f_A(y)}(y) \quad \Rightarrow \quad d(x,z)<\frac{1}{2}f_B(x) \ , \ d(z,y)<\frac{1}{2}f_A(y)\]
+\[d(x,y) \leq d(x,z)+d(z,y)<\frac{1}{2}f_B(x)+\frac{1}{2}f_A(y)<\frac{1}{2}d(x,y)+\frac{1}{2}d(x,y)=d(x,y)\]
+得出矛盾，因此$U_A \cap U_B=\varnothing$，距离空间满足$T_4$公理。
+\end{proof}
+
 \begin{definition}[距离空间中的紧集]
     $(X,d)$为距离空间，$A \subset X$，任一$A$的开球覆盖$\{B_{r_{\lambda}}(x_{\lambda})\}$，必有一有限子覆盖$\{B_{r_{\lambda_i}}(x_{\lambda_i})\}$，则称$A$是$X$中的紧集。
 \end{definition}
@@ -796,13 +794,6 @@ $T_2$公理又称为 Hausdorff 性质，距离空间是满足$T_4$公理的，�
 令$x_n=\{0,0,\cdots,1,0,\cdots\}$（第$n$位为$1$），显然有$x_n \in \overline{B}_1(0)$因为$d(x_n,0)=\sqrt{1^2}=1$。同时$\forall n \neq m \ , \ d(x_n,x_m)=\sqrt{1^2+1^2}=\sqrt{2}$，当$m,n$足够大的时候并不趋于0，因此$\overline{B}_1(0)$不是列紧的。度量空间中列紧的闭集就是紧集（下面会证明），所以$\overline{B}_1(0)$不是紧集。
 \end{proof}
 可以看出列紧是比紧更弱一点的条件，但在距离空间中两者等价。
-\begin{theorem}\label{theorem:jlj}
-距离空间中的子集是紧集当且仅当它是列紧的闭集。
-\end{theorem}
-\begin{proof}
-先证充分条件：紧$ \ \Rightarrow \ $列紧闭，上面已经证明了紧集是闭集，采用反证法，假设存在$\{y_n\} \subset A$，它的任意子列不收敛于$A$中，即$\forall x \in A \ , \ \exists \, r_x>0 \ , \ B_{r_x}(x) \cap \{y_n\}=\{y_{n_1},y_{n_2},\cdots,y_{n_k}\} \ (k<\infty)$。显然$\{B_{r_x}(x)\}$是$A$的一个开覆盖，由$A$的紧性，存在一个有限子覆盖$\{B_{r_{x_i}}(x_i)\}\cap \{y_n\}=\{y_{n_1},y_{n_2},\cdots,y_{n_j}\} \ (j<\infty)$，因为$\{y_n\} \subset A$是柯西列，其个数不是有限个，故矛盾。
-
-必要性比较难证，我们需要先引入全有界的概念，然后通过几个引理逐步证明。
 \begin{definition}[全有界性]
 $(X,d)$是距离空间，$A \subset X$，对$\forall \varepsilon>0 \ , \ \exists \, k(\varepsilon)<\infty \ , \ x_i \in A \ (i=1,2,\cdots,k)$，$\{B_{\varepsilon}(x_i)\}$是$A$的一个开覆盖，则称$A$是全有界的，开球的球心构成的集合$\{x_i\}_{i=1}^k$称为$A$的有限$\varepsilon$-网。全有界集一定是有界集。
 \end{definition}
@@ -813,6 +804,12 @@ $(X,d)$是距离空间，$A \subset X$，对$\forall \varepsilon>0 \ , \ \exists
 \begin{example}
 \quad $\mathbb{R}^n$中的有界集$\ \Leftrightarrow \ $全有界集。
 \end{example}
+
+\begin{theorem}\label{theorem:jlj}
+距离空间中的子集是紧集当且仅当它是列紧的闭集。
+\end{theorem}
+\begin{proof}
+先证必要条件：紧$ \ \Rightarrow \ $列紧闭，上面已经证明了紧集是闭集，采用反证法，假设存在$\{y_n\} \subset A$，它的任意子列不收敛于$A$中，即$\forall x \in A \ , \ \exists \, r_x>0 \ , \ B_{r_x}(x) \cap \{y_n\}=\{y_{n_1},y_{n_2},\cdots,y_{n_k}\} \ (k<\infty)$。显然$\{B_{r_x}(x)\}$是$A$的一个开覆盖，由$A$的紧性，存在一个有限子覆盖$\{B_{r_{x_i}}(x_i)\}\cap \{y_n\}=\{y_{n_1},y_{n_2},\cdots,y_{n_j}\} \ (j<\infty)$，因为$\{y_n\} \subset A$是柯西列，其个数不是有限个，故矛盾。下面给出证明充分性的几个引理。
 
 \begin{proposition}[全有界集是可分的]\label{lemma:qyjkf}
 设$A$为全有界集，对任意$n \in \mathbb{Z}_+$，存在$A$的有限$\varepsilon$-网$B_n$，不妨取$B_n \subset A$，考虑所有$B_n$并成的集合$B$：
@@ -832,7 +829,7 @@ $(X,d)$是距离空间，$A \subset X$，对$\forall \varepsilon>0 \ , \ \exists
 由于$B_{r'}(y)\subset G_{\alpha}$，因此$A$被可数个$G_{\alpha}$覆盖。
 \end{proposition}
 
-现在证必要条件：列紧闭$ \ \Rightarrow \ $紧。设$A$是是列紧闭集，可知$A$是全有界的[引理\ref{lemma:ljqyj}]，且其任意开覆盖$\{G_{\alpha}\}$必有可数子覆盖$\{G_{\alpha_i}|i=1,2,\cdots\}$[引理\ref{lemma:kskfg}]。采用反证法，设$A$不是紧的，则存在一个$\{G_{\alpha}\}$的无有限子覆盖：
+现在证充分条件：列紧闭$ \ \Rightarrow \ $紧。设$A$是是列紧闭集，可知$A$是全有界的[引理\ref{lemma:ljqyj}]，且其任意开覆盖$\{G_{\alpha}\}$必有可数子覆盖$\{G_{\alpha_i}|i=1,2,\cdots\}$[引理\ref{lemma:kskfg}]。采用反证法，设$A$不是紧的，则存在一个$\{G_{\alpha}\}$的无有限子覆盖：
 \[\exists \, \{G_{\alpha_i}\}_{i=1}^{\infty} \ , \ \forall n \in \mathbb{Z}_+ \ , \ A \nsubset \bigcup_{i=1}^nG_{\alpha_i} \quad \Rightarrow \quad x_n \in A-\bigcup_{i=1}^nG_{\alpha_i}\neq\varnothing\]
 易知，$\forall n \in \mathbb{Z}_+$，$G_{\alpha_n}$中只包含$\{x_n\}$中的有限个点。
 
@@ -843,7 +840,7 @@ $(X,d)$是距离空间，$A \subset X$，对$\forall \varepsilon>0 \ , \ \exists
 完备距离空间中的子集是紧集当且仅当它是全有界闭集。
 \end{theorem}
 \begin{proof}
-由定理\ref{theorem:jlj}和引理\ref{lemma:qyjkf}可知必要性显然，下证充分性，只需证明完备距离空间中全有界集是列紧的。设$A$全有界，$\{x_n\} \subset A$，存在$A$的有限$1$-网$N_1$，满足$\exists \, x \in N_1$，$B_1(x) \cap \{x_n\}$包含无数多个点，取其中一个记为$x_{n_1}$，显然$B_1(x) \cap A$也是全有界的，存在$B_1(x) \cap A$的有限$1/2$-网$N_2$，同上可得新的点$x_{n_2}$，由归纳得，存在点列$\{x_{n_k}\}$，满足$d(x_{n_k},x_{n_{k+m}})<2^{-k}$，进而可知$\{x_{n_k}\}$是柯西列。由完备性，$\exists \, x \in A$使得$x_{n_k} \to x$。
+由定理\ref{theorem:jlj}和引理\ref{lemma:ljqyj}可知必要性显然，下证充分性，只需证明完备距离空间中全有界集是列紧的。设$A$全有界，$\{x_n\} \subset A$，存在$A$的有限$1$-网$N_1$，满足$\exists \, x \in N_1$，$B_1(x) \cap \{x_n\}$包含无数多个点，取其中一个记为$x_{n_1}$，显然$B_1(x) \cap A$也是全有界的，存在$B_1(x) \cap A$的有限$1/2$-网$N_2$，同上可得新的点$x_{n_2}$，由归纳得，存在点列$\{x_{n_k}\}$，满足$d(x_{n_k},x_{n_{k+m}})<2^{-k}$，进而可知$\{x_{n_k}\}$是柯西列。由完备性，$\exists \, x \in A$使得$x_{n_k} \to x$。
 \end{proof}
 
 \begin{figure}[htbp]
@@ -852,13 +849,11 @@ $(X,d)$是距离空间，$A \subset X$，对$\forall \varepsilon>0 \ , \ \exists
 \end{figure}
 
 \begin{definition}[一致有界]
-    $A \subset C[a,b]$且$\exists \, k>0 \ , \ \forall x(t) \in A \ , \ t \in [a,b]$满足$|x(t)| \leq k$，则称$A$是一致有界的。
+$A \subset C[a,b]$且$\exists \, k>0 \ , \ \forall x(t) \in A \ , \ t \in [a,b]$满足$|x(t)| \leq k$，则称$A$是一致有界的。
 \end{definition}
-上述一致有界与距离空间中的有界是同一回事。
 \begin{definition}[等度(一致)连续]
-    $A \subset C[a,b] \ , \ \forall \varepsilon>0, \ x(t) \in A \ , \ \exists \, \delta>0 \ , \ t_1,t_2 \in [a,b] \ , \ |t_1-t_2|<\delta$有$|x(t_1)-x(t_2)|<\varepsilon$，则称$A$是等度(一致)连续的。
+$A \subset C[a,b] \ , \ \forall \varepsilon>0, \ x(t) \in A \ , \ \exists \, \delta>0 \ , \ t_1,t_2 \in [a,b] \ , \ |t_1-t_2|<\delta$有$|x(t_1)-x(t_2)|<\varepsilon$，则称$A$是等度(一致)连续的。
 \end{definition}
-可以看出，等度连续是对一族函数的”一致连续“，其$\varepsilon,\delta$的取值与函数无关，容易看出比一致连续强。
 
 \begin{example}
 \quad $\exists \, M>0 \ , \ \forall x(t) \in A \ , \ \forall t \in [a,b] \quad \text{s.t.} \quad |x'(t)| \leq M \ $，则$A$是等度连续。
@@ -871,21 +866,20 @@ $|x(t_1)-x(t_2)|=|x'(\xi)||t_1-t_2| \leq M|t_1-t_2| \quad \xi \in (t_1,t_2) \ : 
     $C[a,b]$的子集是列紧的当且仅当它是一致有界且等度连续的。
 \end{theorem}
 \begin{proof}
-首先证明必要性：由引理\ref{lemma:qyjkf}知，列紧必定（全）有界，对$\forall \varepsilon>0$，存在$A$的有限$\varepsilon/3$-网$N$满足$\forall x_i \in N \ , \ \exists \,\delta_i \ , \ t_1,t_2 \in [a,b] \ , \ |t_1-t_2|<\delta_i $有$|x(t_1)-x(t_2)|<\varepsilon$，取$\delta=\min\{\delta_i\}$，则$\exists \, i$满足$x(t) \subset B_{\varepsilon/3}(x_i(t))$，当$|t_1-t_2|<\delta \ , \ \forall x(t) \in A$时，有
+首先证明必要性：由引理\ref{lemma:qyjkf}知，列紧必定（全）有界，对$\forall \varepsilon>0$，存在$A$的有限$\varepsilon/3$-网$N$满足$\forall x_i \in N \ , \ \exists \,\delta_i \ , \ t_1,t_2 \in [a,b] \ , \ |t_1-t_2|<\delta_i $有$|x(t_1)-x(t_2)|<\varepsilon$，取$\delta=\min\{\delta_i\}$，则$\exists \, i$满足$x(t) \subset B_{\varepsilon/3}(x_i(t))$，当$|t_1-t_2|<\delta \ , \ \forall x(t) \in A$时，有：
 \[|x(t_1)-x(t_2)| \leq |x(t_1)-x_i(t_1)|+|x_i(t_1)-x_i(t_2)|+|x_i(t_2)-x(t_2)|<\frac{\varepsilon}{3}+\frac{\varepsilon}{3}+\frac{\varepsilon}{3}=\varepsilon\]
 等度连续得证。
 
 \begin{figure}[htbp]
     \center
-    \includegraphics[scale=0.35]{./fig/2.2.3-2.png}
+    \includegraphics[scale=0.25]{./fig/2.2.3-2.png}
 \end{figure}
 
 下证充分性。由于$C[a,b]$完备，故只需证明$C[a,b]$全有界。由一致有界条件$\exists \, k>0 \ , \ \forall x(t) \in A \ , \ t \in [a,b]$满足$|x(t)|<k$以及等度连续条件$\forall \varepsilon>0 \ , \ \exists \, \delta>0 \ , \ |t_1-t_2|<\delta \ , \ \forall x(t) \in A$有$|x(t_1)-x(t_2)|<\varepsilon$，对函数族的定义域和值域做划分。取$[-k,k]$划分$\{y_0,y_1,\cdots,y_n\}:y_0=-k \ , \ y_n=k \ , \ 0<y_{i+1}-y_i<\varepsilon/5$，取$[a,b]$划分$\{t_0,t_1,\cdots,t_m\}:t_0=a \ , \ t_m=b \ , \ 0<y_{i+1}-y_i<\delta$。按如下规则绘制函数：若$x(t_i) \in [y_k,y_{k+1}]$，则令$f(t_i)=y_k$，其余部分用直线连接，则$\forall t \in [a,b] \ , \ \exists \, t_i$满足当$t \in [t_i,t_{i+1}]$时有：
 \begin{equation*}
 \begin{aligned}
 |x(t)-f(t)| &\leq |x(t)-x(t_i)|+|x(t_i)-f(t_i)|+|f(t_i)-f(t)|\\
-&<\frac{\varepsilon}{5}+\frac{\varepsilon}{5}+|f(t_i)-f(t)|\\
-&<\frac{2}{5}\varepsilon+|f(t_i)-f(t_{i+1})|\\
+&<\frac{\varepsilon}{5}+\frac{\varepsilon}{5}+|f(t_i)-f(t)|<\frac{2}{5}\varepsilon+|f(t_i)-f(t_{i+1})|\\
 &<\frac{2}{5}\varepsilon+|f(t_i)-x(t_i)|+|x(t_i)-x(t_{i+1})|+|x(t_{i+1})-f(t_{i+1})|\\
 &<\frac{2}{5}\varepsilon+\frac{1}{5}\varepsilon+\frac{1}{5}\varepsilon+\frac{1}{5}\varepsilon=\varepsilon\\
 \end{aligned}

@@ -1,10 +1,10 @@
 \begin{introduction}
     \item 线性算子谱~\ref{xxszp}
     \item Gelfand 公式~\ref{theorem:Gelfand}
-    \item 紧算子谱~\ref{jsjp}
+    \item 紧算子谱~\ref{jszp}
+    \item Riesz-Fredholm 定理~\ref{theorem:Riesz-Fredholm}
     \item 希尔伯特空间的自共轭紧算子谱~\ref{zgejszp}
     \item 自反性，弱收敛与弱*收敛~\ref{selfback}
-    \item 紧算子~\ref{jsz}
 \end{introduction}
 
 \section{线性算子谱}\label{xxszp}
@@ -128,8 +128,8 @@
 \end{proof}
 
 \newpage
-\section{紧算子谱}\label{jsjp}
-设$X$是 Banach 空间，$A \in \mathscr{C}(X)$，如果想了解$A$的谱，我们可以考虑算子$T=\mathbbm{I}-A$，先考察有限维的情况，如取$X=\mathbb{R}^n$，考虑方程$Tx=y$。那么有以下两种状况，由 Fredholm 二择一定理所描述。
+\section{Riesz-Fredholm 定理}
+设$X$是 Banach 空间，$A \in \mathscr{C}(X)$，考虑算子$T=\mathbbm{I}-A$，先考察有限维的情况，如取$X=\mathbb{R}^n$，考虑方程$Tx=y$。那么有以下两种状况，由 Fredholm 二择一定理所描述。
 \begin{theorem}[Fredholm 二择一]
 设$X=\mathbb{R}^n$，$x,y \in X$，$T$是$X$上的算子，考虑线性方程组$Tx=y$，以下两种情况恰居其一：
 \begin{enumerate}
@@ -147,7 +147,7 @@
     \item 2. $\forall N \subset X^*$，记$N^{\perp}=\{x \in X \ | \ f(x)=0 \ , \ \forall f \in N\}$。
 \end{itemize}
 \end{definition}
-\begin{theorem}[Riesz-Fredholm 定理]
+\begin{theorem}[Riesz-Fredholm 定理]\label{theorem:Riesz-Fredholm}
 设$X$是 Banach 空间，$A \in \mathscr{C}(X)$，考虑算子$T=\mathbbm{I}-A$和$T^*=\mathbbm{I}-A^*$，则：
 \begin{itemize}
 \item 1. $\sigma(T)=\sigma(T^*)$；
@@ -156,8 +156,19 @@
 \end{itemize}
 \end{theorem}
 \begin{remark}
-\quad 由二三点可知，紧算子$A$使得$T$还原到有限维，$T$的单射等价于满射，且$T$不是单的也可以有类似结论。
+\quad 由二三点可知，紧算子$A$使得$T$还原到有限维，$T$的单射等价于满射，且$T$不是单的也可以有类似结论。该定理的证明极其复杂，我们先分几步证明$T$是单射的情况，即$\ker T=\{0\}$，然后推广到$T$非单射的情况。
 \end{remark}
+\begin{proof}
+对定理的第一点，要证明$\sigma(T) = \sigma(T^*)$，等价于证明$\rho(T) = \rho(T^*)$，也即对$\forall \lambda \in \rho(T)$证明$(\lambda\mathbbm{I}-T)^{-1}\in\mathscr{B}(X) \ \Leftrightarrow \ (\lambda\mathbbm{I}-T^*)^{-1}\in\mathscr{B}(X)$，进而等价于证明$T^{-1}\in\mathscr{B}(X) \ \Leftrightarrow \ (T^*)^{-1}\in\mathscr{B}(X)$。当然还要证$R(T)=X$。
+
+对必要性，$(T^*)^{-1}=(T^{-1})^*\in\mathscr{B}(X)$；对充分性，由必要性可知$(T^*)^{-1}\in\mathscr{B}(X) \ \Rightarrow \ (T^{**})^{-1}\in\mathscr{B}(X)$，再由典型映射是单的，即$T=T^{**}|_X$，在$R(T)$上可定义$T^{-1}$，即证。
+
+对$\forall x \in X$，取柯西列$\{x_n\} \subset X$满足$x_n \to x \in X$，记$\{y_n\}=\{Tx_n\}$。由$T\in\mathscr{B}(X)$知对$\forall n,m \in \mathbb{N}_+$：
+\[||y_n-y_m||=||Tx_n-Tx_m||\leq||T||\cdot||x_n-x_m|| \to 0\]
+因此$\{y_n\} \subset R(T)$是柯西列，记$y_n \to y$，显然有$Tx_n \to Tx \in R(T)$，考虑：
+\[||Tx_n-y|| \leq ||Tx_n-y_n||+||y_n-y||=||y_n-y|| \to 0 \quad \Rightarrow \quad y=Tx \in R(T)\]
+因此$R(T)$中的任意柯西列$\{y_n\}$都收敛到其自身，故$R(T)$是闭的。使用反证法证明$R(T)=X$，则$\exists \, x_0 \in X-R(T)$，由 Hahn-Banach 定理推论[命题\ref{proposition:hb3}]，$\exists \, f \in X^*$满足$f(x_0)=||x_0||\neq 0$且对$\forall y \in R(T)$都有$f(y)=0$，即对$\forall x \in X \ , \ y=Tx \in R(T)$都有$f(y)=f(Tx)=(T^*f)x=0$，因此$T^*f=0$即$f \in \ker T^*$，但是上面证明了$T^*$可逆，因此$\ker T^*=\{0\}$，因此$f=0$，得出矛盾，故$R(T)=X$，定理第一点得证。
+\end{proof}
 
 
 
@@ -165,5 +176,5 @@
 
 
 
-
+\section{紧算子谱}\label{jszp}
 \section{希尔伯特空间的自共轭紧算子谱}\label{zgejszp}
