@@ -123,17 +123,41 @@
 或者可以直接证明当$|\lambda|=1$时$R(\lambda\mathbbm{I}-A)$不是闭的，取点列$\{x_n\}$：
 \[x_n=\frac{1}{\sqrt{n}}\left(\lambda^*,(\lambda^*)^2,\cdots,(\lambda^*)^n,0,\cdots\right)\]
 计算：
-\[(\lambda\mathbbm{I}-A)x_n=\left(\frac{1}{\sqrt{n}},\frac{\lambda^*}{\sqrt{n}}-\frac{\lambda^*}{\sqrt{n}},\cdots,\frac{(\lambda^*)^{n-1}}{\sqrt{n}}-\frac{(\lambda^*)^{n-1}}{\sqrt{n}},-\frac{(\lambda^*)^n}{\sqrt{n}},0,\cdots\right)==\left(\frac{1}{\sqrt{n}},0,\cdots,0,-\frac{(\lambda^*)^n}{\sqrt{n}},0,\cdots\right)\]
+\[(\lambda\mathbbm{I}-A)x_n=\left(\frac{1}{\sqrt{n}},\frac{\lambda^*}{\sqrt{n}}-\frac{\lambda^*}{\sqrt{n}},\cdots,\frac{(\lambda^*)^{n-1}}{\sqrt{n}}-\frac{(\lambda^*)^{n-1}}{\sqrt{n}},-\frac{(\lambda^*)^n}{\sqrt{n}},0,\cdots\right)=\left(\frac{1}{\sqrt{n}},0,\cdots,0,-\frac{(\lambda^*)^n}{\sqrt{n}},0,\cdots\right)\]
 因此其范数$||(\lambda\mathbbm{I}-A)x_n||=\sqrt{2/n} \to 0$，说明$\lambda\mathbbm{I}-A$没有正的下界，因此其值域不闭。
 \end{proof}
 
 \newpage
 \section{紧算子谱}\label{jsjp}
-设$X$是 Banach 空间，$A \in \mathscr{C}(X)$，如果想了解$A$的谱，我们可以考虑算子$T=\mathbbm(I)-A$，先考察有限维的情况，如取$X=\mathbb{R}^n$，考虑方程$Tx=y$。如果$T$是单射[定理\ref{theorem:djm}]那对任意给定的$y$显然方程只有唯一解。考虑$T$不是单射，我们令$\{y_1,y_2,\cdots,y_p\}$是$R(T)$的一组基，可以扩充为$\{y_1,y_2,\cdots,y_p,z_1,z_2,\cdots,z_q\}$为$X$的一组基。
+设$X$是 Banach 空间，$A \in \mathscr{C}(X)$，如果想了解$A$的谱，我们可以考虑算子$T=\mathbbm{I}-A$，先考察有限维的情况，如取$X=\mathbb{R}^n$，考虑方程$Tx=y$。那么有以下两种状况，由 Fredholm 二择一定理所描述。
+\begin{theorem}[Fredholm 二择一]
+设$X=\mathbb{R}^n$，$x,y \in X$，$T$是$X$上的算子，考虑线性方程组$Tx=y$，以下两种情况恰居其一：
+\begin{enumerate}
+\item 如果$\ker T = \{\mathbf{0}\}$，则对任意$y$方程存在唯一解；
+\item 如果$\ker T \neq \{\mathbf{0}\}$，则方程可解的充要条件是$y \perp \ker T^*$。
+\end{enumerate}
+此时必有指标$\operatorname{ind}(A) = \dim\ker T-\dim\ker T^*=0$。
+\end{theorem}
+第一点显然[定理\ref{theorem:djm}]，考虑第二点，也即考虑$T$不是单射，我们令$\{y_1,y_2,\cdots,y_p\}$是$R(T)$的一组基，可以扩充为$\{y_1,y_2,\cdots,y_p,z_1,z_2,\cdots,z_q\}$为$X$的一组基，也即$X=R(T)\oplus X_1$，其中$X_1=\text{span}\{z_1,z_2,\cdots,z_q\}$。
 
-
-
-
+定义对偶空间$X^*=R(T)^*\oplus X_1^*$，设$\{y_1^*,y_2^*,\cdots,y_p^*,z_1^*,z_2^*,\cdots,z_q^*\}$为$X^*$的一组基对偶基，即满足$y_i^*(y_j)=z_i^*(z_j)=\delta_{ij} \ , \ y_i^*(z_j)=z_i^*(y_j)=0$，其中$X_1^*=\text{span}\{z_1^*,z_2^*,\cdots,z_q^*\}$。因此$y \in R(T)$等价于对$\forall f \in X_1^*$都有$f(y)=y(f)=0$，即$X_1^*=\ker T^*$。因此原方程有解等价于$y \in (\ker T^*)^{\perp}$。
+\begin{definition}
+\begin{itemize}
+    \item 1. $\forall M \subset X$，记$^{\perp}M=\{f \in X^* \ | \ f(x)=0 \ , \ \forall x \in M\}$；
+    \item 2. $\forall N \subset X^*$，记$N^{\perp}=\{x \in X \ | \ f(x)=0 \ , \ \forall f \in N\}$。
+\end{itemize}
+\end{definition}
+\begin{theorem}[Riesz-Fredholm 定理]
+设$X$是 Banach 空间，$A \in \mathscr{C}(X)$，考虑算子$T=\mathbbm{I}-A$和$T^*=\mathbbm{I}-A^*$，则：
+\begin{itemize}
+\item 1. $\sigma(T)=\sigma(T^*)$；
+\item 2. $\dim\ker T=\dim\ker T^*<+\infty$；
+\item 3. $R(T)=(\ker T^*)^{\perp}$，$R(T^*)=^{\perp}(\ker T)$。
+\end{itemize}
+\end{theorem}
+\begin{remark}
+\quad 由二三点可知，紧算子$A$使得$T$还原到有限维，$T$的单射等价于满射，且$T$不是单的也可以有类似结论。
+\end{remark}
 
 
 
