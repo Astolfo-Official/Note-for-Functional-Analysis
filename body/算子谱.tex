@@ -1,8 +1,8 @@
 \begin{introduction}
     \item 线性算子谱~\ref{xxszp}
     \item Gelfand 公式~\ref{theorem:Gelfand}
-    \item 紧算子谱~\ref{jszp}
     \item Riesz-Fredholm 定理~\ref{theorem:Riesz-Fredholm}
+    \item 紧算子谱~\ref{jszp}
     \item 希尔伯特空间的自共轭紧算子谱~\ref{zgejszp}
     \item 自反性，弱收敛与弱*收敛~\ref{selfback}
 \end{introduction}
@@ -143,32 +143,97 @@
 定义对偶空间$X^*=R(T)^*\oplus X_1^*$，设$\{y_1^*,y_2^*,\cdots,y_p^*,z_1^*,z_2^*,\cdots,z_q^*\}$为$X^*$的一组基对偶基，即满足$y_i^*(y_j)=z_i^*(z_j)=\delta_{ij} \ , \ y_i^*(z_j)=z_i^*(y_j)=0$，其中$X_1^*=\text{span}\{z_1^*,z_2^*,\cdots,z_q^*\}$。因此$y \in R(T)$等价于对$\forall f \in X_1^*$都有$f(y)=y(f)=0$，即$X_1^*=\ker T^*$。因此原方程有解等价于$y \in (\ker T^*)^{\perp}$。
 \begin{definition}
 \begin{itemize}
-    \item 1. $\forall M \subset X$，记$^{\perp}M=\{f \in X^* \ | \ f(x)=0 \ , \ \forall x \in M\}$；
-    \item 2. $\forall N \subset X^*$，记$N^{\perp}=\{x \in X \ | \ f(x)=0 \ , \ \forall f \in N\}$。
+\item 1. $\forall M \subset X$，记$^{\perp}M=\{f \in X^* \ | \ f(x)=0 \ , \ \forall x \in M\}$；
+\item 2. $\forall N \subset X^*$，记$N^{\perp}=\{x \in X \ | \ f(x)=0 \ , \ \forall f \in N\}$。
 \end{itemize}
 \end{definition}
+\begin{lemma}\label{lemma:crazy}
+对$\forall T \in \mathscr{B}(X)$，都有$\overline{R(T)}=(\ker T^*)^{\perp}$和$\overline{R(T^*)}=^{\perp}\ker T$。
+\end{lemma}
+\begin{proof}
+对$\forall T \in \mathscr{B}(X,Y=X)$，按照定义分别写出$\ker T$，$\ker T^*$，$^{\perp}R(T)$，$R(T^*)^{\perp}$：
+\[\begin{aligned}
+\ker T         &= \{x \in X \ | \ Tx=0\}=\{x \in X \ | \ g(Tx)=(T^*g)x=0 \ , \ \forall g \in Y^*\}=\{x \in X \ | \ f(x)=0 \ , \ \forall f \in X^*\}\\
+\ker T^*       &= \{f \in Y^* \ | \ T^*f=0\}=\{g \in X^* \ | \ f(x)=0 \ , \ \forall x \in X\}\\
+^{\perp}R(T)   &= \{f \in X^* \ | \ f(x)=0 \ , \ \forall x \in R(T)\}\\
+R(T^*)^{\perp} &= \{x \in X \ | \ f(x)=0 \ , \ \forall f \in R(T^*)\}\\
+\end{aligned}\]
+显然有$^{\perp}R(T) \subseteq \ker T^*$，$R(T^*)^{\perp} \subseteq \ker T$成立。
+
+对$\overline{R(T)} \subseteq (\ker T^*)^{\perp}$由正交补的闭性[性质\ref{itemize:zjbb}第三点]只需证$R(T) \subseteq (\ker T^*)^{\perp}$。对$\forall Tx \in R(T) \subset Y=X \ , \ f \in \ker T^*$都有$f(Tx)=(T^*f)x=0$，即$Tx \in (\ker T^*)^{\perp}$，因此$R(T) \subseteq (\ker T^*)^{\perp}$，进而$\overline{R(T)} \subseteq (\ker T^*)^{\perp}$。
+
+类似的对$\overline{R(T^*)} \subseteq ^{\perp}\ker T$只需证$R(T^*) \subseteq ^{\perp}\ker T$。对$\forall f \in R(T^*) \ , \ x \in \ker T$都有$f(x)=0$，即$f \in ^{\perp}\ker T$，因此$R(T^*) \subseteq ^{\perp}\ker T$，进而$\overline{R(T^*)} \subseteq ^{\perp}\ker T$。
+
+利用正交补的传递性[性质\ref{itemize:zjbb}第四点]可得：
+\[\overline{R(T)} \subseteq (\ker T^*)^{\perp} \subseteq (^{\perp}R(T))^{\perp} \quad , \quad \overline{R(T^*)} \subseteq ^{\perp}\ker T \subseteq ^{\perp}(R(T^*)^{\perp})\]
+
+由 Hahn-Banach 定理推论[命题\ref{proposition:hb3}]可知若取$M=R(T)$，若$x_0 \in X-R(T)$到$R(T)$的距离$d$都为正，则存在$f \in X^*$使得$f(x_0)=d$且$f(R(T))=0$。由$f \in X^*$的连续性这里可以扩展到闭包，上述命题等价于若$x_0 \in \overline{R(T)}$，则对$\forall f \in X^*$使得$f(R(T))=0$都有$f(x_0)=0$。对$\forall y_0 \in (^{\perp}R(T))^{\perp}$，其满足对$\forall f \in ^{\perp}R(T)$都有$f(y_0)=0$，而$^{\perp}R(T)=\{f \in X^* \ | \ f(x)=0 \ , \ \forall x \in R(T)\}$，即$y_0 \in \overline{R(T)}$。因此有$(^{\perp}R(T))^{\perp} \subseteq \overline{R(T)}$。综上所述，$(^{\perp}R(T))^{\perp}=\overline{R(T)}$，夹逼可知$\overline{R(T)}=(\ker T^*)^{\perp}$。
+
+类似的，对$\forall f_0 \in ^{\perp}(R(T^*)^{\perp})$，其满足对$\forall x \in R(T^*)^{\perp}$都有$f_0(x)=0$，而$R(T^*)^{\perp}=\{x \in X \ | \ f(x)=0 \ , \ \forall f \in R(T^*)\}$。即$f_0 \in R(T^*) \subset \overline{R(T^*)}$。因此有$^{\perp}(R(T^*)^{\perp}) \subseteq \overline{R(T^*)}$，夹逼可知$\overline{R(T^*)}=^{\perp}(R(T^*)^{\perp})$。
+\end{proof}
+\begin{remark}
+\quad 对任意子空间$M \subset X$都有$(^{\perp}M)^{\perp}=\overline{M}$；若闭子空间$M \subset X \ , \ N \subset X^*$，则$^{\perp}M=N \ \Leftrightarrow \ M=N^{\perp}$。
+\end{remark}
+
+
 \begin{theorem}[Riesz-Fredholm 定理]\label{theorem:Riesz-Fredholm}
 设$X$是 Banach 空间，$A \in \mathscr{C}(X)$，考虑算子$T=\mathbbm{I}-A$和$T^*=\mathbbm{I}-A^*$，则：
 \begin{itemize}
 \item 1. $\sigma(T)=\sigma(T^*)$；
-\item 2. $\dim\ker T=\dim\ker T^*<+\infty$；
-\item 3. $R(T)=(\ker T^*)^{\perp}$，$R(T^*)=^{\perp}(\ker T)$。
+\item 2. $R(T)=(\ker T^*)^{\perp}$，$R(T^*)=^{\perp}(\ker T)$。
+\item 3. 若$\ker T=\{0\}$，则$R(T)=X$；
+\item 4. $\dim\ker T=\dim\ker T^*<+\infty$；
 \end{itemize}
 \end{theorem}
 \begin{remark}
-\quad 由二三点可知，紧算子$A$使得$T$还原到有限维，$T$的单射等价于满射，且$T$不是单的也可以有类似结论。该定理的证明极其复杂，我们先分几步证明$T$是单射的情况，即$\ker T=\{0\}$，然后推广到$T$非单射的情况。
+\quad Riesz-Fredholm 定理告诉我们紧算子$A$使得$T$的行为与有限维算子很相似。下面我们分步证明：
 \end{remark}
+\begin{proposition}
+1. $\sigma(T)=\sigma(T^*)$
+\end{proposition}
 \begin{proof}
-对定理的第一点，要证明$\sigma(T) = \sigma(T^*)$，等价于证明$\rho(T) = \rho(T^*)$，也即对$\forall \lambda \in \rho(T)$证明$(\lambda\mathbbm{I}-T)^{-1}\in\mathscr{B}(X) \ \Leftrightarrow \ (\lambda\mathbbm{I}-T^*)^{-1}\in\mathscr{B}(X)$，进而等价于证明$T^{-1}\in\mathscr{B}(X) \ \Leftrightarrow \ (T^*)^{-1}\in\mathscr{B}(X)$。当然还要证$R(T)=X$。
+要证明$\sigma(T) = \sigma(T^*)$，等价于证明$\rho(T) = \rho(T^*)$，也即对$\forall \lambda \in \rho(T)$证明$(\lambda\mathbbm{I}-T)^{-1}\in\mathscr{B}(X) \ \Leftrightarrow \ (\lambda\mathbbm{I}-T^*)^{-1}\in\mathscr{B}(X)$，进而等价于证明$T^{-1}\in\mathscr{B}(X) \ \Leftrightarrow \ (T^*)^{-1}\in\mathscr{B}(X)$。当然还要证$R(T)=X$。
 
 对必要性，$(T^*)^{-1}=(T^{-1})^*\in\mathscr{B}(X)$；对充分性，由必要性可知$(T^*)^{-1}\in\mathscr{B}(X) \ \Rightarrow \ (T^{**})^{-1}\in\mathscr{B}(X)$，再由典型映射是单的，即$T=T^{**}|_X$，在$R(T)$上可定义$T^{-1}$，即证。
 
 对$\forall x \in X$，取柯西列$\{x_n\} \subset X$满足$x_n \to x \in X$，记$\{y_n\}=\{Tx_n\}$。由$T\in\mathscr{B}(X)$知对$\forall n,m \in \mathbb{N}_+$：
 \[||y_n-y_m||=||Tx_n-Tx_m||\leq||T||\cdot||x_n-x_m|| \to 0\]
-因此$\{y_n\} \subset R(T)$是柯西列，记$y_n \to y$，显然有$Tx_n \to Tx \in R(T)$，考虑：
+因此$\{y_n\} \subset R(T)$是柯西列，记$y_n \to y$，因为$T\in\mathscr{B}(X)$显然有$Tx_n \to Tx \in R(T)$，考虑：
 \[||Tx_n-y|| \leq ||Tx_n-y_n||+||y_n-y||=||y_n-y|| \to 0 \quad \Rightarrow \quad y=Tx \in R(T)\]
-因此$R(T)$中的任意柯西列$\{y_n\}$都收敛到其自身，故$R(T)$是闭的。使用反证法证明$R(T)=X$，则$\exists \, x_0 \in X-R(T)$，由 Hahn-Banach 定理推论[命题\ref{proposition:hb3}]，$\exists \, f \in X^*$满足$f(x_0)=||x_0||\neq 0$且对$\forall y \in R(T)$都有$f(y)=0$，即对$\forall x \in X \ , \ y=Tx \in R(T)$都有$f(y)=f(Tx)=(T^*f)x=0$，因此$T^*f=0$即$f \in \ker T^*$，但是上面证明了$T^*$可逆，因此$\ker T^*=\{0\}$，因此$f=0$，得出矛盾，故$R(T)=X$，定理第一点得证。
+因此$R(T)$中的任意柯西列$\{y_n\}$都收敛到其自身，故$R(T)$是闭的。使用反证法证明$R(T)=X$，则$\exists \, x_0 \in X-R(T)$，由 Hahn-Banach 定理推论[命题\ref{proposition:hb3}]，$\exists \, f \in X^*$满足$f(x_0)=||x_0||\neq 0$且对$\forall y \in R(T)$都有$f(y)=0$，即对$\forall x \in X \ , \ y=Tx \in R(T)$都有$f(y)=f(Tx)=(T^*f)x=0$，因此$T^*f=0$即$f \in \ker T^*$，但是上面证明了$T^*$可逆，因此$\ker T^*=\{0\}$，因此$f=0$，得出矛盾，故$R(T)=X$。
 \end{proof}
+
+\begin{definition}[闭值域算子]
+设$X$为赋范线性空间，$T \in \mathscr{B}(X)$，若$R(T)$是闭子空间，则称$T$是闭值域算子。
+\end{definition}
+\begin{theorem}\label{theorem:jszb}
+设$X$是 Banach 空间，$A \in \mathscr{C}(X)$，则算子$T=\mathbbm{I}-A$是闭值域算子。
+\end{theorem}
+\begin{proof}
+由于 $T = \mathbb{I} - A$ 连续，核 $\ker T$ 是 $X$ 的闭子空间。考虑$\widetilde{T}: \ \widetilde{X}=X/\ker T \to X \ , \ [x] \mapsto Tx$，商空间$\widetilde{X}$ [定义\ref{definition:skj}]的元素为代表元$[x]=x+\ker T=\{x+z \ | \ z \in \ker T\}$，其范数定义为：
+\[||[x]||=\inf_{y \in [x]}||y||=\inf_{z \in \ker T}||x+z||=d(x,\ker T)\]
+显然$\ker\widetilde{T}=\{[0]\}$，$\widetilde{T}$有界线性且为单射。同时$R(\widetilde{T})=R(T)$，在值域$R(\widetilde{T})$可以定义逆$\widetilde{T}^{-1}$。要证 $R(T)$ 闭，只需证$\widetilde{T}^{-1}$有界，即$\exists \, c > 0$对$\forall x \in X$都有$||[x]|| \le c ||Tx||$。因为若$\widetilde{T}^{-1}$有界，则$R(T)$同构于$\widetilde{X}$，是 Banach 空间[定理\ref{theorem:skjwb}]，因此$R(T)$也是 Banach 空间，进而是闭的。采用反证法，假设$\widetilde{T}^{-1}$无界，则对$\forall n \in \mathbb{N}$都$\exists \, [x_n] \in \widetilde{X}$使得$||[x_n]|| \ge n ||Tx_n||$，可以取标准化$||[x]||=1$，则$||\widetilde{T}[x_n]||=||Tx_n|| \to 0$。
+
+取$[x_n]$中的代表元为$x_n$满足$||x_n|| \leq 2$，由$A$紧可知$\{Ax_n\}$有收敛子列$Ax_{n_k} \to z$。另一方面$\widetilde{T}x_{n_k}=Tx_{n_k}=x_{n_k}-Ax_{n_k} \to 0$，可知$x_{n_k} \to z$，则$Az=z$即$Tz=z-Az=0$，因此$z \in \ker T$，即$||[x]||=||[0]||=0$。
+但$||[x]||=1$，进而得到矛盾，因此$\widetilde{T}^{-1}$有界，原命题得证。
+\end{proof}
+
+\begin{proposition}
+2. $R(T)=(\ker T^*)^{\perp}$，$R(T^*)=^{\perp}(\ker T)$
+\end{proposition}
+\begin{proof}
+由引理\ref{lemma:crazy}可知，证明第二点只需证明$T$和$T^*$是闭值域算子。由定理\ref{theorem:jszb}即证前一半。由 Schauder 定理[定理\ref{theorem:Schauder}]知$A^* \in \mathscr{C}(X^*)$，再由定理\ref{theorem:wb}知$X^*$是 Banach 空间，因此$T^*$也是闭值域算子，后一半也即证。
+\end{proof}
+
+\begin{proposition}
+3. 若$\ker T=\{0\}$，则$R(T)=X$
+\end{proposition}
+\begin{proof}
+由定理\ref{theorem:jszb}可知$R(T)$是闭子空间，且$\exists c>0$使得$||Tx|| \geq \alpha||x||$。
+\end{proof}
+
+
+
 
 
 

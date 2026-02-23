@@ -437,7 +437,7 @@ $V$是定义在数域$\mathbb{K}$上的一个有限维向量空间，$V$的商�
 \end{definition}
 有限维的子空间都是闭子空间。商空间其实是我们所熟知的平行这个概念的推广，现在这个空间中的跟某个$x$之差属于$A$的元素$\tilde{x}$视作一个等价类，可以说是$\tilde{x}$跟$x$只差了一个$A$。
 
-\begin{definition}[无限维商空间]
+\begin{definition}[无限维商空间]\label{definition:skj}
 假设X是赋范线性空间，$M$是$X$的闭子空间，在商空间$X/M$中定义范数：
 \[||\tilde{x}||=\mathop \text{inf}\limits_{y \in \tilde{x}}||y||=\mathop \text{inf}\limits_{y-x \in M}||y||=\mathop \text{inf}\limits_{z \in M}||x+z||\]
 则课称$X/M$是关于$M$的赋范商空间。
@@ -461,8 +461,8 @@ $V$是定义在数域$\mathbb{K}$上的一个有限维向量空间，$V$的商�
 \end{itemize}
 \end{proof}
 
-\begin{theorem}
-    若$X$是 Banach 空间，$M$是$X$的闭子空间，那么$X/M$是 Banach 空间。
+\begin{theorem}\label{theorem:skjwb}
+若$X$是 Banach 空间，$M$是$X$的闭子空间，那么$X/M$是 Banach 空间。
 \end{theorem}
 \begin{proof}
 设$\{\tilde{x}_n\}$是$X/M$中的柯西列，取其子列$\{\tilde{x}_{n_k}\}$使得$||\tilde{x}_{n_{k+1}}-\tilde{x}_{n_k}||<2^{-k}$，由范数的定义：

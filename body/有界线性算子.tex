@@ -494,14 +494,14 @@ Hahn-Banach 定理有许多有用的推论。
 \end{remark}
 
 \begin{proposition}\label{proposition:hb3}
-$X$是赋范线性空间$M \subset X$是线性子空间，$x_0 \in X$满足：
+$X$是赋范线性空间$M \subset X$是线性子空间，若$x_0 \in X-M$满足：
 \[d(x_0,M)=\inf_{x \in M}||x-x_0||>0\]
-则$\exists \, f \in X^* \quad \text{s.t.} \quad x \in M \ , \ ||f||=1 \ , \ f(x_0)=d \ , \ f|_M=0$。
+则$\exists \, f \in X^* \quad \text{s.t.} \quad ||f||=1 \ , \ f(x_0)=d \ , \ f|_M=0$。
 \end{proposition}
 \begin{proof}
 令$M=\{x+tx_0|t \in \mathbb{K} \ , \ x \in M\}$，定义$f:M \to \mathbb{K} \ , \ x+tx_0 \mapsto td$，则一方面：
 \[|f(x+tx_0)|=|t|d \leq |t| \cdot \left\|\frac{x}{t}+x_0\right\|=||x+tx_0|| \quad \Rightarrow \quad ||f|| \leq 1\]
-另一方面$\exists \{x_n\} \subset M \ , \ ||x_n -x_0|| \to d \ (n \to \infty)$：
+另一方面$\exists \{x_n\} \subset M \ , \ ||x_n -x_0|| \to d$：
 \[|f(x_n-x_0)|=|f(x_n)-f(x_0)|=|f(x_0)|=d \leq ||f|| \cdot ||x_n-x_0|| \to ||f||d \quad \Rightarrow \quad ||f|| \geq 1\]
 综上所述，$||f||=1$，再由 Hahn-Banach 定理[定理\ref{HB}]即证。
 \end{proof}
@@ -910,7 +910,7 @@ $\mathbb{R}^n$中有界集完全有界，因此对$\forall \varepsilon>0$都存�
 即$\mathscr{F}$完全有界。
 \end{proof}
 
-\begin{theorem}[Schauder 定理]
+\begin{theorem}[Schauder 定理]\label{theorem:Schauder}
 $T \in \mathscr{C}(X,Y) \ \Rightarrow \ T^* \in \mathscr{C}(Y^*,X^*)$；$T^* \in \mathscr{C}(Y^*,X^*)$且$Y$完备，则$T \in \mathscr{C}(X,Y)$。
 \end{theorem}
 \begin{proof}
