@@ -590,10 +590,10 @@ $||\cdot||_2$比$||\cdot||_1$强$ \quad \Leftrightarrow \quad \forall \{x_n\} \s
 最重要的，有限维赋范线性空间中的有界集列紧，有界闭集是紧集。这个性质还可以用于判定一个赋范线性空间是否为有限维，我们将在后面证明这个定理。
 \begin{theorem}[Riesz 引理]\label{Riesz}
 设$X_0$是赋范线性空间$X$的真闭子空间（不要求有限维），则：
-\[\forall \varepsilon>0 \ , \ \exists \, x_0 \in X / X_0 \quad \text{s.t.} \quad ||x_0||=1 \ , \ d(x_0,X_0):=\mathop \text{inf}\limits_{x \in X_0}d(x_0,x) \geq 1-\varepsilon\]
+\[\forall \varepsilon>0 \ , \ \exists \, x_0 \in X-X_0 \quad \text{s.t.} \quad ||x_0||=1 \ , \ d(x_0,X_0):=\mathop \text{inf}\limits_{x \in X_0}d(x_0,x) \geq 1-\varepsilon\]
 \end{theorem}
 \begin{proof}依照定理描述：
-\[\forall x_1 \in X/X_0 \ , \ d:=d(x_1,X_0)=\mathop \text{inf}\limits_{x \in X_0}d(x_1,x)=\mathop \text{inf}\limits_{x \in X_0}||x_1-x||\]
+\[\forall x_1 \in X-X_0 \ , \ d:=d(x_1,X_0)=\mathop \text{inf}\limits_{x \in X_0}d(x_1,x)=\mathop \text{inf}\limits_{x \in X_0}||x_1-x||\]
 由于$X_0$闭，可知$d>0$，且由下确界性质可知：
 \[\forall \varepsilon \in (0,1) \ , \ \exists \, x_2 \in X_0 \quad \text{s.t.} \quad d(x_1,x_2)=||x_1-x_2||<\frac{d}{1-\varepsilon}\]
 则此时我们如下定义$x_0$：

@@ -180,16 +180,16 @@ R(T^*)^{\perp} &= \{x \in X \ | \ f(x)=0 \ , \ \forall f \in R(T^*)\}\\
 设$X$是 Banach 空间，$A \in \mathscr{C}(X)$，考虑算子$T=\mathbbm{I}-A$和$T^*=\mathbbm{I}-A^*$，则：
 \begin{itemize}
 \item 1. $\sigma(T)=\sigma(T^*)$；
-\item 2. $R(T)=(\ker T^*)^{\perp}$，$R(T^*)=^{\perp}(\ker T)$。
+\item 2. $R(T)=(\ker T^*)^{\perp}$，$R(T^*)=^{\perp}(\ker T)$；
 \item 3. 若$\ker T=\{0\}$，则$R(T)=X$；
-\item 4. $\dim\ker T=\dim\ker T^*<+\infty$；
+\item 4. $\dim\ker T=\dim\ker T^*<+\infty$。
 \end{itemize}
 \end{theorem}
 \begin{remark}
 \quad Riesz-Fredholm 定理告诉我们紧算子$A$使得$T$的行为与有限维算子很相似。下面我们分步证明：
 \end{remark}
-\begin{proposition}
-1. $\sigma(T)=\sigma(T^*)$
+\begin{proposition}\label{proposition:pdj1}
+1. $\sigma(T)=\sigma(T^*)$。
 \end{proposition}
 \begin{proof}
 要证明$\sigma(T) = \sigma(T^*)$，等价于证明$\rho(T) = \rho(T^*)$，也即对$\forall \lambda \in \rho(T)$证明$(\lambda\mathbbm{I}-T)^{-1}\in\mathscr{B}(X) \ \Leftrightarrow \ (\lambda\mathbbm{I}-T^*)^{-1}\in\mathscr{B}(X)$，进而等价于证明$T^{-1}\in\mathscr{B}(X) \ \Leftrightarrow \ (T^*)^{-1}\in\mathscr{B}(X)$。当然还要证$R(T)=X$。
@@ -204,7 +204,7 @@ R(T^*)^{\perp} &= \{x \in X \ | \ f(x)=0 \ , \ \forall f \in R(T^*)\}\\
 \end{proof}
 
 \begin{definition}[闭值域算子]
-设$X$为赋范线性空间，$T \in \mathscr{B}(X)$，若$R(T)$是闭子空间，则称$T$是闭值域算子。
+设$X$为赋范线性空间，$T \in \mathscr{B}(X)$，若$R(T)$是$X$的闭子空间，则称$T$是闭值域算子。
 \end{definition}
 \begin{theorem}\label{theorem:jszb}
 设$X$是 Banach 空间，$A \in \mathscr{C}(X)$，则算子$T=\mathbbm{I}-A$是闭值域算子。
@@ -218,28 +218,54 @@ R(T^*)^{\perp} &= \{x \in X \ | \ f(x)=0 \ , \ \forall f \in R(T^*)\}\\
 但$||[x]||=1$，进而得到矛盾，因此$\widetilde{T}^{-1}$有界，原命题得证。
 \end{proof}
 
-\begin{proposition}
-2. $R(T)=(\ker T^*)^{\perp}$，$R(T^*)=^{\perp}(\ker T)$
+\begin{proposition}\label{proposition:2}
+2. $R(T)=(\ker T^*)^{\perp}$，$R(T^*)=^{\perp}(\ker T)$。
 \end{proposition}
 \begin{proof}
 由引理\ref{lemma:crazy}可知，证明第二点只需证明$T$和$T^*$是闭值域算子。由定理\ref{theorem:jszb}即证前一半。由 Schauder 定理[定理\ref{theorem:Schauder}]知$A^* \in \mathscr{C}(X^*)$，再由定理\ref{theorem:wb}知$X^*$是 Banach 空间，因此$T^*$也是闭值域算子，后一半也即证。
 \end{proof}
 
-\begin{proposition}
-3. 若$\ker T=\{0\}$，则$R(T)=X$
+\begin{proposition}\label{proposition:djm3}
+3. 若$\ker T=\{0\}$，则$R(T)=X$。
 \end{proposition}
 \begin{proof}
-由定理\ref{theorem:jszb}可知$R(T)$是闭子空间，且$\exists c>0$使得$||Tx|| \geq \alpha||x||$。
+由定理\ref{theorem:jszb}可知$R(T)$是$X$的闭子空间，且$\exists \, c>0$使得$||Tx|| \geq \alpha||x||$。反证法，设$R(T) \subset X$，令$X_0=X \ , \ X_k=TX_{k-1} \ , \ k \in \mathbb{N}_+$，则$\cdots \subset X_k \subset X_{k-1} \subset \cdots \subset X_1 \subset X_0$，这里都是真包含关系因此$X_k$是$X_{k-1}$的真闭子空间，则由 Riesz 引理[定理\ref{Riesz}]，$\exists \, x_k \in X_{k-1}-X_k$满足$||x_k||=1$，都有$d(x_k,X_k)>1/2$。由$A \in \mathscr{C}(X)$可知$\{Ax_k\}$有收敛子列仍记为$\{Ax_k\}$，但是$||Ax_k-Ax_{k+p}||=||x_k-(Tx_k+x_{k+p}-Tx_{k+p})|| \geq d(x_k,X_k)>1/2$，其中$Tx_k \in X_k \ , \ x_{k+p} \in X_{k+p-1} \subset X_k \ , \ Tx_{k+p} \in X_{k+p} \subset X_k \ \Rightarrow \ Tx_k+x_{k+p}-Tx_{k+p} \in X_k$，矛盾，命题得证。
 \end{proof}
 
+\begin{proposition}
+4. $\dim\ker T=\dim\ker T^*<+\infty$。
+\end{proposition}
+\begin{proof}
+先考虑单射即命题\ref{proposition:djm3}成立，由逆算子定理[定理\ref{theorem:nszdl}]可知$T^{-1} \in \mathscr{B}(X)$，因此$0 \in \rho(T)$，由命题\ref{proposition:pdj1}知$0 \in \rho(T^*)$，因此$(T^*)^{-1} \in \mathscr{B}(X)$，从而$\ker T^*=\{0\}$，因此$\dim\ker T=\dim\ker T^*=0$。
 
+对非单射情况分步证明：
+\begin{lemma}[$\dim\ker T,\dim\ker T^*<+\infty$]\label{lemma:4.1}
+令$X_0=\ker T$，$B_0=\{x \in X_0 \ | \ ||x||<1\}$是$X_0$的单位球，对$\forall x \in B_0$都有$0=Tx=x-Ax$，即$x=Ax \in A(B_0)$，因此$B_0 \subset A(B_0)$列紧（列紧集的子集也列紧），从而$X_0$有限维。$T^*$证明同理。
+\end{lemma}
 
+\begin{lemma}[若有限维子空间$X_0 \subset X$则存在闭子空间$X_1 \subset X$使得$X=X_0 \oplus X_1$]\label{lemma:4.2}
+设$\{x_i\}_{i=1}^n$是$X_0$的一组基，则由 Hahn-Banach 定理[定理\ref{HB}]，存在$\{f_i\}_{i=1}^n \subset X^*$使得$f_i(x_j)=\delta_{ij}$。令：
+\[X_1=\bigcap_{i=1}^n\ker f_i\]
+则$X_1$闭，且$X_0 \cap X_1=\{0\}$（包证分解唯一）。对$\forall x \in X$都$\exists \, ! \, x_0 \in X_1$使得：
+\[x=x_0+\sum_{i=1}^nf_i(x)x_i\]
+\end{lemma}
 
+\begin{lemma}[设$\{f_i\}_{i=1}^m \subset X^*$是线性无关集，则$\exists \, \{y_i\}_{i=1}^m \subset X$使得$f_i(y_j)=\delta_{ij}$]\label{lemma:4.3}
+考虑映射$F: \ X \to \mathbb{K}^m \ , \ x \mapsto F(x)=(f_1(x),\cdots,f_m(x))$，只需证明$F$为满射即证所求。采用反证法，若$F(X) \subset \mathbb{K}^n$，则由 Hahn-Banach 定理[定理\ref{HB}]存在$0 \neq \alpha=(\alpha_1,\cdots,\alpha_m)\in\mathbb{K}^*=\mathbb{K}$使得对$\forall x \in X$都有：
+\[\alpha|_{F(X)}=(\alpha,F(x))=\sum_{i=1}^m\alpha_if_i(x)=0\]
+即$\{f_i\}_{i=1}^m$线性相关，得到矛盾，故原命题得证。
+\end{lemma}
 
+根据引理\ref{lemma:4.1}设$\dim\ker T=n \ , \ \dim\ker T^*=m$。取$\ker T$的一组基$\{x_i\}_{i=1}^n$和$\ker T^*$的一组基$\{f_i\}_{i=1}^m$。
 
+设$n<m$，存在闭子空间$X_1$使得$X=\ker T \oplus X_1$[引理\ref{lemma:4.2}]，取$\{y_i\}_{i=1}^m \subset X$使得$f_i(y_j)=\delta_{ij}$[引理\ref{lemma:4.3}]。令：
+$$\widetilde{T}: \ X=\ker T \oplus X_1 \to \text{span}\{y_i\}_{i=1}^n \oplus R(T), \quad x=x_0+\sum_{i=1}^n\phi_i(x)x_i \quad \mapsto \quad \widetilde{T}x=Tx_0+\sum_{i=1}^n\phi_i(x)y_i$$
+显然$\ker\widetilde{T}=\{0\}$，且$\widetilde{A}x=x-\widetilde{T}x=Ax_0+\sum_{i=1}^n\phi_i(x)(x_i-y_i)$为紧算子（前一半显然，后一半有穷秩）[定理\ref{theorem:yqzj}]。此时$R(\widetilde{T})=X$[命题\ref{proposition:djm3}]但$\{y_{n+1},\cdots,y_m\} \notin R(\widetilde{T})$，矛盾，故$\dim\ker T^* \leq \dim\ker T$。同理$\dim\ker T^{**} \leq \dim\ker T^*$。由$X \subset X^{**}$得$\ker T \subset \ker T^{**}$，进而$\dim\ker T \leq \dim\ker T^{**} \leq \dim\ker T^*$，综上所述原命题得证。
+\end{proof}
+\begin{remark}
+\quad 由命题\ref{proposition:2}可知$R(T^*)=(\ker T^{**})^{\perp}=^{\perp}(\ker T)$，因此$\dim\ker T=\dim\ker T^{**}$。
+\end{remark}
 
-
-
-
+\newpage
 \section{紧算子谱}\label{jszp}
 \section{希尔伯特空间的自共轭紧算子谱}\label{zgejszp}
