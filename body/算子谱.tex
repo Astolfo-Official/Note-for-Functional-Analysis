@@ -368,7 +368,17 @@ $$\widetilde{T}: \ X=\ker T \oplus X_1 \to \text{span}\{y_i\}_{i=1}^n \oplus R(T
 \begin{lemma}
 设$X$是 Banach 空间，$A \in \mathscr{C}(X)$，则$T=\mathbbm{I}-A$的零链长等于像链长，均有限。
 \end{lemma}
+\begin{proof}
+由$R(T) \subseteq X$可知$\{0\} \subseteq \ker T \subseteq \ker T^2 \subseteq \cdots$和$X \supseteq R(T) \supseteq R(T^2) \supseteq \cdots$。
 
+采用反证法证明$q<+\infty$，如若不然则对$\forall k \in \mathbb{N}$都有$R(T^k) \supset R(T^{k+1})$，由$T^k=(\mathbbm{I}-A)^k=\mathbbm{I}-p(A)$，$p(A)$表示算子$A$的多项式，由定理\ref{theorem:szfh}可知$p(A)$也是紧算子。因此$R(T^k)$闭[定理\ref{theorem:Riesz-Fredholm}第二点]，由 Riesz 引理[定理\ref{Riesz}]，$\exists \, \{y_k\}$满足$y_k \in R(T^k)-R(T^{k+1})$且$||y_k||=1$，使得$d(y_k,R(T^{k+1}))>1/2$，但：
+\[||Ay_k-Ay_{k+l}||=||y_k-Ty_k-y_{k+l}+Ty_{k+l}||\geq d(y_k,R(T^{k+1}))>\frac{1}{2}\]
+其中$Ty_k \in R(T^{k+1})$，$y_{k+l} \in R(T^{k+l}) \subset R(T^{k+1})$，$Ty_{k+l} \in R(T^{k+l+1}) \subset R(T^{k+1})$，与$\{Ay_k\}$列紧矛盾。
+
+上面证明了$q<+\infty$，因此$R(T^q)=R(T^{q+1})$。再证$p=q$，由 Riesz-Fredholm 定理[定理\ref{theorem:Riesz-Fredholm}第四点]可知：
+\[\dim\ker T^q=\dim R[(T^q)^*]^{\perp}=\operatorname{codim}R(T^q)=\operatorname{codim}R(T^{q+1})=\dim\ker T^{q+1}\]
+由$\dim\ker T^q<+\infty$ [定理\ref{theorem:Riesz-Fredholm}第四点]可知$\ker T^q=\ker T^{q+1}$，因此$q \geq p$，同理可证$q \leq p$，因此$p=q$。
+\end{proof}
 
 
 \section{希尔伯特空间的自共轭紧算子谱}\label{zgejszp}
