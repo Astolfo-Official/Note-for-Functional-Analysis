@@ -345,7 +345,7 @@ $$\widetilde{T}: \ X=\ker T \oplus X_1 \to \text{span}\{y_i\}_{i=1}^n \oplus R(T
 设$M$是$n \times n$矩阵，其特征多项式定义为$p(\lambda)=\det(\lambda\mathbbm{I}_n-M)$，则$p(M)=\mathbf{0}$。
 \end{theorem}
 
-\begin{theorem}[有限维 Jordan分解定理]
+\begin{theorem}[有限维 Jordan 分解定理]
 设$X=\mathbb{R}^n$，$A \in \mathscr{B}(X)$，存在基使得$A$对应矩阵$A \cong \operatorname{diag}\{A_1,A_2,\cdots,A_k\}$，其中$A_i$为 Jordan 块：
 \[A_i=\begin{pmatrix}
 \lambda_i & 1 & \cdots & 0 \\
@@ -361,10 +361,13 @@ $$\widetilde{T}: \ X=\ker T \oplus X_1 \to \text{span}\{y_i\}_{i=1}^n \oplus R(T
 \end{proof}
 \newpage
 
-如果要将上述有限维的结论推广到紧算子谱，对引理\ref{lemma:mlfj}只需用数学归纳法推广至可数维，这容易得到；对引理\ref{lemma:mlsz}则需证明零空间的分解在可数维中也成立。
+如果要将上述有限维的结论推广到紧算子谱，对引理\ref{lemma:mlfj}只需用数学归纳法推广至可数维，这容易得到；对引理\ref{lemma:mlsz}则需证明零空间的分解在可数维中也成立，对此我们从定义零链长和像链长开始引理\ref{lemma:mlsz}的推广。
 \begin{definition}[零链长，像链长]
 设$X$是 Banach 空间，$T \in \mathscr{B}(X)$，若存在最小的$p \in \mathbb{N}_+$使得$\ker T^p=\ker T^{p+1}$，则称$p$为$T$的零链长；若存在最小的$q \in \mathbb{N}_+$使得$R(T^q)=R(T^{q+1})$，则称$q$为$T$的像链长。
 \end{definition}
+\begin{remark}
+\quad 若$p,q<\infty$，则有$\ker T^p=\ker T^{p+1}=\cdots$，$R(T^q)=R(T^{q+1})=\cdots$，证明见引理\ref{lemma:mlsz}。
+\end{remark}
 \begin{lemma}
 设$X$是 Banach 空间，$A \in \mathscr{C}(X)$，则$T=\mathbbm{I}-A$的零链长等于像链长，均有限。
 \end{lemma}
@@ -380,5 +383,19 @@ $$\widetilde{T}: \ X=\ker T \oplus X_1 \to \text{span}\{y_i\}_{i=1}^n \oplus R(T
 由$\dim\ker T^q<+\infty$ [定理\ref{theorem:Riesz-Fredholm}第四点]可知$\ker T^q=\ker T^{q+1}$，因此$q \geq p$，同理可证$q \leq p$，因此$p=q$。
 \end{proof}
 
+\begin{lemma}
+设$X$是 Banach 空间，$A \in \mathscr{C}(X)$，则$T=\mathbbm{I}-A$满足$X=\ker T^p \oplus R(T^p)$，且$T_1=T|_{R(T^p)}$存在有界逆。
+\end{lemma}
+\begin{proof}
+显然有$\ker T^p \cap R(T^p)=\{0\}$，则$\forall x \in X$，由于$p$是零链长和像链长，因此都有$T^px \in R(T^p)=R(T^{2p})$，也即$\exists \, u \in R(T^{2p})$满足$T^px=T^{2p}u$，令$y=T^pu$，则$z=x-y$满足$T^pz=T^px-T^py=T^px-T^{2p}u=0$，即$z \in \ker T^p$。综上所述，即对$\forall x \in X$都$\exists \, y \in R(T^p) \ , \ z \in \ker T^p$满足$x=y+z$，因此$X=\ker T^p \oplus R(T^p)$。
+
+由于$R(T^p)=R(T^{p+1})$可知$T_1$是满射，同时若$y \in R(T^p)$使得$T_1y=0$，那$\exists \, x \in X$满足$y=T^px$使得$T_1y=T_1T^px=T^{p+1}x=0$，因此$x \in \ker T^{p+1}=\ker T^p$且$y=0$，由逆算子定理[定理\ref{theorem:nszdl}]可知$T_1$存在有界逆。
+\end{proof}
+
+\begin{theorem}[无穷维紧算子的 Jordan 分解定理]
+设$X$是 Banach 空间，$A \in \mathscr{C}(X)$，对应$A$的非零谱即点谱$\lambda_i \in \sigma_p(A)$都存在对应$\lambda_i\mathbbm{I}-A$的零链长$p_i$，可以将空间$X$展开成：
+\[X=\bigoplus_{i=1}^{\infty}\ker(\lambda_i\mathbbm{I}-A)^{p_i}\]
+在上述展开空间中紧算子$A$有对应的 Jordan 标准型。
+\end{theorem}
 
 \section{希尔伯特空间的自共轭紧算子谱}\label{zgejszp}
