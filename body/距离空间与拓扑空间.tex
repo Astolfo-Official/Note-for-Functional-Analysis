@@ -73,7 +73,7 @@ $X$是一个非空集合,$d$是一个定义在$X \times X$上的函数，满足�
 \begin{equation*}
     \begin{aligned}
         d^2(x,y) & =\int_E|x(t)-y(t)|^2\dd t=\int_E[x^2(t)+y^2(t)-2x(t)y(t)]\dd t \\
-        & \leq \int_Ex^2(t)\dd t+\int_Ey^2(t)\dd t+2\int_E|x(t)||y(t)|\dd t \leq \int_Ex^2(t)\dd t+\int_Ey^2(t)\dd t+2\sqrt{\int_Ex^2(t)\dd t}\sqrt{\int_Ey^2(t)\dd t} \\
+        & \leq \int_Ex^2(t)\dd t+\int_Ey^2(t)\dd t+2\int_E|x(t)|\cdot|y(t)|\dd t \leq \int_Ex^2(t)\dd t+\int_Ey^2(t)\dd t+2\sqrt{\int_Ex^2(t)\dd t}\sqrt{\int_Ey^2(t)\dd t} \\
         & \leq \left(\sqrt{\int_Ex^2(t)\dd t}+\sqrt{\int_Ey^2(t)\dd t}\right)^2
     \end{aligned}
 \end{equation*}
@@ -577,7 +577,7 @@ d(\vec{\xi},\vec{\eta}) & =|T(\vec{\xi})-T(\vec{\eta})|=|A(\vec{\xi}-\vec{\eta})
 则：
 \[d(T(x(t)),T(y(t)))=\mathop {\text{sup}}\limits_{t \in [a,b]}|T(x(t))-T(y(t))|=\lambda\mathop {\text{sup}}\limits_{t \in [a,b]}\left|\int_a^bK(t,s)(x(s)-y(s))\dd s\right|\]
 由$K(t,s)$在闭区域上连续可得$K(t,s)$有界：
-\[d(T(x(t)),T(y(t))) \leq \lambda\mathop {\text{sup}}\limits_{t \in [a,b]}\int_a^b|K(t,s)||x(s)-y(s)|\dd s \leq \lambda\mathop {\text{sup}}\limits_{t \in [a,b]}|K(t,s)|d(x,y)(b-a)\equiv\Gamma(b-a)\]
+\[d(T(x(t)),T(y(t))) \leq \lambda\mathop {\text{sup}}\limits_{t \in [a,b]}\int_a^b|K(t,s)|\cdot|x(s)-y(s)|\dd s \leq \lambda\mathop {\text{sup}}\limits_{t \in [a,b]}|K(t,s)|d(x,y)(b-a)\equiv\Gamma(b-a)\]
 当$\Gamma<1$时，$T$为压缩映射：
 \[d(T(x(t)),T(y(t))) \leq \theta d(x,y)\]
 后续证明略。
@@ -859,7 +859,7 @@ $A \subset C[a,b] \ , \ \forall \varepsilon>0, \ x(t) \in A \ , \ \exists \, \de
 \quad $\exists \, M>0 \ , \ \forall x(t) \in A \ , \ \forall t \in [a,b] \quad \text{s.t.} \quad |x'(t)| \leq M \ $，则$A$是等度连续。
 \end{example}
 \begin{proof}
-$|x(t_1)-x(t_2)|=|x'(\xi)||t_1-t_2| \leq M|t_1-t_2| \quad \xi \in (t_1,t_2) \ : \ |t_1-t_2| \to 0 \ , \ |x(t_1)-x(t_2)| \to 0$
+$|x(t_1)-x(t_2)|=|x'(\xi)|\cdot|t_1-t_2| \leq M|t_1-t_2| \quad \xi \in (t_1,t_2) \ : \ |t_1-t_2| \to 0 \ , \ |x(t_1)-x(t_2)| \to 0$
 \end{proof}
 
 \begin{theorem}[Arzela-Ascoli 定理] \label{the:AA}
