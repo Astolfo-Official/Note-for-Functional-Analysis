@@ -218,7 +218,7 @@ R(T^*)^{\perp} &= \{x \in X \ | \ f(x)=0 \ , \ \forall f \in R(T^*)\}\\
 但$||[x]||=1$，进而得到矛盾，因此$\widetilde{T}^{-1}$有界，原命题得证。
 \end{proof}
 
-\begin{proposition}\label{proposition:2}
+\begin{proposition}\label{proposition:6-2}
 2. $R(T)=(\ker T^*)^{\perp}$，$R(T^*)=^{\perp}(\ker T)$。
 \end{proposition}
 \begin{proof}
@@ -263,21 +263,111 @@ $$\widetilde{T}: \ X=\ker T \oplus X_1 \to \text{span}\{y_i\}_{i=1}^n \oplus R(T
 显然$\ker\widetilde{T}=\{0\}$，且$\widetilde{A}x=x-\widetilde{T}x=Ax_0+\sum_{i=1}^n\phi_i(x)(x_i-y_i)$为紧算子（前一半显然，后一半有穷秩）[定理\ref{theorem:yqzj}]。此时$R(\widetilde{T})=X$[命题\ref{proposition:djm3}]但$\{y_{n+1},\cdots,y_m\} \notin R(\widetilde{T})$，矛盾，故$\dim\ker T^* \leq \dim\ker T$。同理$\dim\ker T^{**} \leq \dim\ker T^*$。由$X \subset X^{**}$得$\ker T \subset \ker T^{**}$，进而$\dim\ker T \leq \dim\ker T^{**} \leq \dim\ker T^*$，综上所述原命题得证。
 \end{proof}
 \begin{remark}
-\quad 由命题\ref{proposition:2}可知$R(T^*)=(\ker T^{**})^{\perp}=^{\perp}(\ker T)$，因此$\dim\ker T=\dim\ker T^{**}$。
+\quad 由命题\ref{proposition:6-2}可知$R(T^*)=(\ker T^{**})^{\perp}=^{\perp}(\ker T)$，因此$\dim\ker T=\dim\ker T^{**}$。
 \end{remark}
 
 \newpage
 \section{紧算子谱}\label{jszp}
+\begin{theorem}
+设$X$是无限维 Banach 空间，$A \in \mathscr{C}(X)$，则：
+\begin{itemize}
+\item 1. $0 \in \sigma(A)$；
+\item 2. $\sigma(A)=\{0\}\cup\sigma_p(A)$；
+\item 3. $\sigma(A)$以0作为聚点，即对$\forall \delta>0$，$\{\lambda\in\sigma(A) \ | \ |\lambda|\geq\delta\}$为有限集。
+\end{itemize}
+\end{theorem}
+\begin{remark}
+\quad 第三点可以等价于对$\forall \delta>0$，取指标集$\Lambda=\{\lambda\in\sigma_p(A) \ | \ |\lambda|>\delta\}$，则$\bigcup\limits_{\lambda\in\Lambda}\ker(\lambda\mathbbm{I}-A)$是有限集。
+\end{remark}
+\begin{proof}
+第一点等价于$0 \notin \rho(A)$，如若不然，则$\mathbbm{I}=(0\cdot\mathbbm{I}-A)(0\cdot\mathbbm{I}-A)^{-1}=AA^{-1}\in\mathscr{C}(X)$[定理\ref{theorem:szfh}]，矛盾。
 
+第二点，取$\forall \lambda \in \sigma(A)-\{0\}$，要么$\ker(\lambda\mathbbm{I}-A)\neq\{0\}$，则$\lambda\in\sigma_p(A)$，要么$\ker(\lambda\mathbbm{I}-A)=\{0\}$，由 Riesz-Fredholm 定理[定理\ref{theorem:Riesz-Fredholm}]，$R(\lambda\mathbbm{I}-A)=X$，再由逆算子定理[定理\ref{theorem:nszdl}]可知$\lambda\in\rho(A)$。
 
+第三点，采用反证法，设存在可数无限集$\{\lambda_n\}$使得$\lambda_n>\delta$，取$\{x_n \in \ker(\lambda_n\mathbbm{I}-A)-\{0\}\}$满足$Ax_n=\lambda_nx_n$。采用归纳法证明$\{x_n\}$线性无关，假设已知$\{x_1,\cdots,x_n\}$线性无关，取：
+\[y=\sum_{i=1}^{n+1}a_ix_i=0 \quad \Rightarrow \quad Ay=\sum_{i=1}^{n+1}a_i\lambda_ix_i \quad \Rightarrow \quad \lambda_{n+1}y-Ay=\sum_{i=1}^{n+1}(\lambda_{n+1}-\lambda_i)a_ix_i=0\]
+因此对$i=1,\cdots,n+1$都有$a_i=0$，即$\{x_1,\cdots,x_{n+1}\}$线性无关，由数学归纳法可证。令$V_n=\text{span}\{x_1,\cdots,x_n\}$，$V_n$是$V_{n+1}$的真子空间，由 Riesz 引理[定理\ref{Riesz}]，$\exists \, \{y_n\}$满足$y_n \in V_{n+1}-V_n$且$||y_n||=1$使得$d(y_n,V_n)>1/2$。由$A \in \mathscr{C}(X)$，则$\{Ay_n\}$列紧，但对$\forall n,p \in \mathbb{N}_+$，记$y_{n+p}=\alpha x_{n+p+1}+u$，其中$u \in V_{n+p}$：
+\[||Ay_{n+p}-Ay_n||=||\alpha\lambda_{n+p+1}x_{n+p+1}+A(u-y_n)||>\alpha\lambda_{n+p+1}d(x_{n+p+1},V_{n+p})>\frac{\alpha\lambda_{n+p+1}}{2}>0\]
+这里$y_n \in V_{n+1} \subset V_{n+p}$，因此$u-y_n \in V_{n+p}$，由于$V_{n+p}$是$A$的特征向量张成的空间，因此$AV_{n+p}=V_{n+p}$，即$V_{n+p}$是$A$不变的，故$A(u-y_n) \in V_{n+p}$，这与$\{Ay_n\}$列紧矛盾，因此假设不成立，原命题得证。
+\end{proof}
+\begin{remark}
+\quad 对第三点，记$S_n=\{\lambda\in\sigma_p(A) \ | \ |\lambda|>1/n\}$，则$\sigma_p(A)=\bigcup\limits_{n=1}^{+\infty}S_n$，因为$S_n$有限，可知$\sigma_p(A)$至多可数。
+\end{remark}
+由本定理和 Riesz-Fredholm 定理[定理\ref{theorem:Riesz-Fredholm}]可知，紧算子只有非零的点谱，这与有限维算子可以说几乎一样了，我们可以通过类似 Jordan 分解的办法研究紧算子的结构，首先从有限维开始叙述。先引入不变子空间：
+\begin{definition}
+设$X$是 Banach 空间，$T \in \mathscr{B}(X)$，若子空间$M \subset X$满足$TM \subseteq M$则称$M$是$T$的不变子空间。
+\end{definition}
+\begin{itemize}
+\item 1. $\{0\}$和$X$是$T$的平凡子空间；
+\item 2. 若$M$是不变子空间，则$\overline{M}$是闭的不变子空间（利用$T$的连续性）；
+\item 3. 若$\lambda \in \sigma_p(T)$则$\ker(\lambda\mathbbm{I}-T)$是$T$的不变子空间（下一点的特殊情况）；
+\item 4. 若$S \in \mathscr{B}(X)$与$T$可交换，即$AB=BA$，则$\ker B$和$R(B)$是$A$的不变子空间。
+\end{itemize}
+\begin{proof}
+第四点：对$x \in \ker B$，$ABx=BAx=0$，即$Ax \in \ker B$；对$y=Bx \in B$，$Ay=A(Bx)=B(Ax)\in R(B)$。
+\end{proof}
 
+\begin{theorem}
+设$X$是 Banach 空间，$A \in \mathscr{C}(X)$，若$\dim X \geq 2$则$A$必有非平凡不变子空间。
+\end{theorem}
 
+\begin{example}
+\quad $A: \ \mathbb{R}^2 \to \mathbb{R}^2$，矩阵$\begin{pmatrix}1 & -1 \\ 0 & 1 \end{pmatrix}$不可对角化，计算方程$(\lambda\mathbbm{I}-A)x=0$可以求解特征值为$\lambda=1$，特征向量为$\{0,\mathbf{e}_x=\begin{pmatrix}1\\0\end{pmatrix}\}$，因此$\ker(\mathbbm{I}-A)=R(\mathbbm{I}-A)=\text{span}\{\mathbf{e}_x\}$，即$\dim\ker(\mathbbm{I}-A)=\operatorname{codim} R(\mathbbm{I}-A)=n-\dim R(\mathbbm{I}-A)$，但是$X \neq \ker(\mathbbm{I}-A) \oplus R(\mathbbm{I}-A)$而$X=\ker(\mathbbm{I}-A)^2 \oplus R(\mathbbm{I}-A)^2$。
+\end{example}
 
+\begin{lemma}\label{lemma:mlfj}
+设$T$是有限维空间$M^m$上的$p$次幂零变换，即$T^p=0$但对$i<p$都有$T^i \neq 0$，则$\exists \, 1 \leq p_1 \leq p_2 \leq \cdots \leq p_k=p$以及基底$\{x_1,Tx_1,\cdots,T^{p_1-1}x_1,\cdots,x_k,Tx_k,\cdots,T^{p_k-1}x_k\}$使得$T \cong \operatorname{diag}\{B_1,B_2,\cdots,B_k\}$，其中：
+\[B_i=\begin{pmatrix}
+0 & 1 & \cdots & 0 \\
+0 & 0 & \ddots & \vdots \\
+\vdots & \ddots & \ddots & 1 \\
+0 & \cdots & 0 & 0
+\end{pmatrix}_{p_i \times p_i}, \quad \sum_{i=1}^kp_k=m\]
+\end{lemma}
+\begin{proof}
+由$\forall i<p_k$都有$T^i \neq 0$可知，$\exists \, x_k \in M$使得$\{x_k,Tx_k,\cdots,T^{p_k-1}x_k\}$线性无关，因为若：
+\[0=\sum_{j=1}^{p_k}a_jT^{j-1}x_k \quad \Rightarrow \quad T^{p_k-1}0=T^{p_k-1}\sum_{j=1}^{p_k}a_jT^{j-1}x_k=a_1T^{p_k-1}x_k=0 \quad \Rightarrow \quad a_1=0\]
+递推可知$a_1=a_2=\cdots=a_{p_k}=0$。记$E_k=\text{span}\{x_k,Tx_k,\cdots,T^{p_k-1}x_k\}$，$E_k$是$T$的闭不变子空间，若$E_k=M$则命题得证。若$E_k \subset M$则令$M_1=M/E_k$，定义其维数为$m-p_k$。诱导变换$\overline{T}: \ \overline{M}\to\overline{M} \ , \ [x] \mapsto \overline{T}[x]=Tv+E_k$。易见$\overline{T}$是幂零的，且其幂零指数不超过$p_k$，记为$p_{k-1}$。同上可得，可以构造出一个新的$T$不变子空间记为$E_{k-1}=\text{span}\{[x_{k-1}],\overline{T}[x_{k-1}],\cdots,\overline{T}^{p_{k-1}-1}[x_{k-1}]\}$，取代表元为$x_{k-1}$，则$E_{k-1}=\text{span}\{x_{k-1},Tx_{k-1},\cdots,T^{p_{k-1}-1}x_{k-1}\}$，经过有限次重复后可得$\exists \, 1 \leq p_1 \leq p_2 \leq \cdots \leq p_k=p$以及基底$\{x_1,Tx_1,\cdots,T^{p_1-1}x_1,\cdots,x_k,Tx_k,\cdots,T^{p_k-1}x_k\}$使得：
+\[M=\bigoplus_{i=1}^kE_i=\bigoplus_{i=1}^k \operatorname{span}\{x_i,Tx_i,\cdots,T^{p_i-1}x_i\}\]
+在该基底下$T \cong \operatorname{diag}\{B_1,B_2,\cdots,B_k\}$，$M$的完全分解由商空间的完备性[定理\ref{theorem:skjwb}]保证。
+\end{proof}
 
+\begin{lemma}\label{lemma:mlsz}
+设$X=\mathbb{R}^n$，$T \in \mathscr{B}(X)$，则$\exists \, 1 \leq p \leq n$使得$\ker T^p=\ker T^{p+1}=\cdots$
+\end{lemma}
+\begin{proof}
+由$R(T) \subseteq X$可知$\{0\} \subseteq \ker T \subseteq \ker T^2 \subseteq \cdots$，由$\dim\ker T^n \leq \dim X<+\infty$，存在一个最小的$p \leq n$使得$\ker T^p=\ker T^{p+1} \subseteq \ker T^{p+2}$，对$\forall x \in \ker T^{p+2}$都有$T^{p+2}x=T^{p+1}(Tx)=0$，即$Tx \in \ker T^{p+1}=\ker T^p$，因此$x \in \ker T^{p+1}$，即$\ker T^{p+2} \subseteq \ker T^{p+1}$，原命题得证。
+\end{proof}
+\begin{remark}
+\quad 上述求得的$p$显然满足$X=\ker T^p \oplus R(T^p)$，且$T|_{R(T^p)}$存在有界逆。本引理可以用来构造幂零矩阵。
+\end{remark}
+\begin{theorem}[Cayley–Hamilton 定理]\label{theorem:Cayley–Hamilton}
+设$M$是$n \times n$矩阵，其特征多项式定义为$p(\lambda)=\det(\lambda\mathbbm{I}_n-M)$，则$p(M)=\mathbf{0}$。
+\end{theorem}
 
+\begin{theorem}[有限维 Jordan分解定理]
+设$X=\mathbb{R}^n$，$A \in \mathscr{B}(X)$，存在基使得$A$对应矩阵$A \cong \operatorname{diag}\{A_1,A_2,\cdots,A_k\}$，其中$A_i$为 Jordan 块：
+\[A_i=\begin{pmatrix}
+\lambda_i & 1 & \cdots & 0 \\
+0 & \lambda_i & \ddots & \vdots \\
+\vdots & \ddots & \ddots & 1 \\
+0 & \cdots & 0 & \lambda_i
+\end{pmatrix}_{r_i \times r_i}\]
+特征值$\lambda_1,\cdots,\lambda_k$可以重复，$r_i$为特征值$\lambda_i$的重数，在不考虑顺序时分解$A_1,A_2,\cdots,A_k$唯一。
+\end{theorem}
+\begin{proof}
+取引理\ref{lemma:mlfj}中的$T=\lambda\mathbbm{I}-A$即证分解的存在性，下面寻找该分解。考虑$A$的特征多项式$p(\lambda)=\prod\limits_{i=1}^k(\lambda-\lambda_i)^{r_i}$，我们记$T_{\lambda_i}=\lambda_i\mathbbm{I}-A$，由引理\ref{lemma:mlsz}知有分解$X=\ker T_{\lambda_1}^{r_1} \oplus R(T_{\lambda_1}^{r_1})$，记$X_1=R(T_{\lambda_1}^{r_1})$，在$X_1$上$(A-\lambda_i\mathbbm{I})^{r_1}=T_{\lambda_1}^{r_1} \neq 0$，由 Cayley–Hamilton 定理[定理\ref{theorem:Cayley–Hamilton}]可知$p_2(A) \equiv p(A)/(A-\lambda_i\mathbbm{I})^{r_1}=0$为限制在$X_1$上的零矩阵，归纳得：
+\[X=\bigoplus_{i=1}^k\ker T_{\lambda_i}^{r_i}=\bigoplus_{i=1}^k\ker(\lambda_i\mathbbm{I}-A)^{r_i}\]
+\end{proof}
+\newpage
 
-
-
+如果要将上述有限维的结论推广到紧算子谱，对引理\ref{lemma:mlfj}只需用数学归纳法推广至可数维，这容易得到；对引理\ref{lemma:mlsz}则需证明零空间的分解在可数维中也成立。
+\begin{definition}[零链长，像链长]
+设$X$是 Banach 空间，$T \in \mathscr{B}(X)$，若存在最小的$p \in \mathbb{N}_+$使得$\ker T^p=\ker T^{p+1}$，则称$p$为$T$的零链长；若存在最小的$q \in \mathbb{N}_+$使得$R(T^q)=R(T^{q+1})$，则称$q$为$T$的像链长。
+\end{definition}
+\begin{lemma}
+设$X$是 Banach 空间，$A \in \mathscr{C}(X)$，则$T=\mathbbm{I}-A$的零链长等于像链长，均有限。
+\end{lemma}
 
 
 
