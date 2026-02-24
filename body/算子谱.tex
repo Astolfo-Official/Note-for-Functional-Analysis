@@ -41,7 +41,7 @@
 \end{example}
 \begin{proof}
 对$\forall \lambda \in \mathbb{C}$都有$(\lambda\mathbbm{I}-A)u(t)=(\lambda-t)u(t)=0$可知方程只有零解$u(t)=0$，因此$(\lambda\mathbbm{I}-A)^{-1}$存在，若$\lambda \notin [0,1]$，显然有$(\lambda\mathbbm{I}-A)^{-1}u=u(t)/(\lambda-t)$，因此：
-\[||(\lambda\mathbbm{I}-A)^{-1}u|| \leq \sup_{t \in [0,1]}\frac{||u||}{\lambda-t}\]
+\[\|(\lambda\mathbbm{I}-A)^{-1}u\| \leq \sup_{t \in [0,1]}\frac{\|u\|}{\lambda-t}\]
 进而可知$(\lambda\mathbbm{I}-A)^{-1} \in \mathscr{B}(X)$，即$\lambda$正则，可知$\sigma(A) \subset [0,1]$。若$\lambda \in [0,1]$，则$\overline{R(\lambda\mathbbm{I}-A)}=\overline{\{(\lambda-t)u(t) \ | \ u \in X\}}$，因为$\lambda-t \in X$，可知$\overline{R(\lambda\mathbbm{I}-A)}=\overline{\{u(t) \ | \ u \in X \ , \ u(\lambda)=0\}} \subset C[0,1]$，因此$\sigma(A)=\sigma_r(A)=[0,1]$。
 \end{proof}
 
@@ -53,19 +53,19 @@
 设$X$是 Banach 空间，$A \in \mathscr{B}(X)$，则：
 \begin{itemize}
 \item 1. $\rho(A)$是开集，也即$\sigma(A)$是闭集；
-\item 2. $\sigma(A) \subset \{\lambda \in \mathbb{C} \ | \ |\lambda| \leq ||A||\}$或记为$r_{\sigma}(A) \leq ||A||$。
+\item 2. $\sigma(A) \subset \{\lambda \in \mathbb{C} \ | \ |\lambda| \leq \|A\|\}$或记为$r_{\sigma}(A) \leq \|A\|$。
 \end{itemize}
 \end{theorem}
 \begin{proof}
-由定理\ref{theorem:deltazz}对$\forall \lambda \in \rho(A)$，都$\exists \, \delta=||\lambda\mathbbm{I}-A||^{-1}$，使得对$\forall a<\delta$都有$(\lambda+a)\mathbbm{I}-A=(\lambda\mathbbm{I}-A)+a\mathbbm{I}$正则，即对$\forall \lambda \in \rho(A)$其开球$\{\lambda+a \ | \ |a|<\delta\} \subset \rho(A)$，因此$\rho(A)$是开集，第一部分得证。
+由定理\ref{theorem:deltazz}对$\forall \lambda \in \rho(A)$，都$\exists \, \delta=\|\lambda\mathbbm{I}-A\|^{-1}$，使得对$\forall a<\delta$都有$(\lambda+a)\mathbbm{I}-A=(\lambda\mathbbm{I}-A)+a\mathbbm{I}$正则，即对$\forall \lambda \in \rho(A)$其开球$\{\lambda+a \ | \ |a|<\delta\} \subset \rho(A)$，因此$\rho(A)$是开集，第一部分得证。
 
-对$\forall \lambda \in \mathbb{C}$满足$|\lambda|>||A||$，由定理\ref{theorem:nszyjxx}知$\lambda\mathbbm{I}-A=\lambda(\mathbbm{I}-A/\lambda)$正则，因此$\sigma(A) \subset \{\lambda \in \mathbb{C} \ | \ |\lambda| \leq ||A||\}$。
+对$\forall \lambda \in \mathbb{C}$满足$|\lambda|>\|A\|$，由定理\ref{theorem:nszyjxx}知$\lambda\mathbbm{I}-A=\lambda(\mathbbm{I}-A/\lambda)$正则，因此$\sigma(A) \subset \{\lambda \in \mathbb{C} \ | \ |\lambda| \leq \|A\|\}$。
 \end{proof}
 \begin{figure}[htbp]
     \center
     \includegraphics[scale=0.6]{./fig/6.1-1.png}
 \end{figure}
-上述定理描述了算子的谱$\sigma(A)$实际上是个闭集且其谱半径$r_{\sigma}(A)$被算子范数$||A||$所控制，如上图所示。
+上述定理描述了算子的谱$\sigma(A)$实际上是个闭集且其谱半径$r_{\sigma}(A)$被算子范数$\|A\|$所控制，如上图所示。
 
 \begin{definition}[谱半径]
 谱半径$r_{\sigma}(A)$被定义为$r_{\sigma}(A)=\sup\{|\lambda| \ | \ \lambda \in \sigma(A)\}$。
@@ -109,10 +109,10 @@
 \end{proof}
 
 \begin{example}
-\quad 设$X=l^2$，定义算子$A \in \mathscr{B}(X): \ x=(\xi_1,\xi_2,\cdots) \mapsto Ax=(0,\xi_1,\xi_2,\cdots)$，显然$||A||=1$，有$\sigma_p(A)=\varnothing \ , \ \sigma_c(A)=\{\lambda\in\mathbb{C} \ | \ ||\lambda||=1\} \ , \ \sigma_r(A)=\{\lambda\in\mathbb{C} \ | \ ||\lambda||<1\}$。
+\quad 设$X=l^2$，定义算子$A \in \mathscr{B}(X): \ x=(\xi_1,\xi_2,\cdots) \mapsto Ax=(0,\xi_1,\xi_2,\cdots)$，显然$\|A\|=1$，有$\sigma_p(A)=\varnothing \ , \ \sigma_c(A)=\{\lambda\in\mathbb{C} \ | \ \|\lambda\|=1\} \ , \ \sigma_r(A)=\{\lambda\in\mathbb{C} \ | \ \|\lambda\|<1\}$。
 \end{example}
 \begin{proof}
-首先由$||A||=1$可知$\sigma(A) \subset \{\lambda \ | \ |\lambda|\leq1\}$，其次考虑方程$(\lambda\mathbbm{I}-A)x=(\lambda\xi_1,\lambda\xi_2-\xi_1,\cdots)=0$，当$\lambda\neq0$时，显然$x=0$；当$\lambda=0$时，显然$x=0$。因此$\sigma_p(A)=\varnothing$。
+首先由$\|A\|=1$可知$\sigma(A) \subset \{\lambda \ | \ |\lambda|\leq1\}$，其次考虑方程$(\lambda\mathbbm{I}-A)x=(\lambda\xi_1,\lambda\xi_2-\xi_1,\cdots)=0$，当$\lambda\neq0$时，显然$x=0$；当$\lambda=0$时，显然$x=0$。因此$\sigma_p(A)=\varnothing$。
 
 注意到$A$的共轭算子$A^*: \ X \to X \ , \ x=(\xi_1,\xi_2,\cdots) \mapsto A^*x=(\xi_2,\xi_3,\cdots)$，考虑算子$(\lambda\mathbbm{I}-A)=\lambda^*\mathbbm{I}-A^*$，由共轭算子的定义可知对$\forall x \in X$都$\exists \, y \in X$由关系式$((\lambda\mathbbm{I}-A)x,y)=(x,(\lambda^*\mathbbm{I}-A^*)y)$一一对应。对$\forall y \in \overline{R(\lambda\mathbbm{I}-A)}^{\perp}=R(\lambda\mathbbm{I}-A)^{\perp}=\ker(\lambda^*\mathbbm{I}-A^*)$（定理\ref{theorem:zgeker}和性质\ref{itemize:zjbb}第三点），都有$0=(\lambda^*\mathbbm{I}-A^*)y=(\lambda^*\xi_1-\xi_2,\lambda^*\xi_2-\xi_3,\cdots)$，因此$y=\xi_1(1,\lambda^*,(\lambda^*)^2,\cdots)$。只有当$|\lambda|<1$时$y \in l^2$。
 
@@ -124,7 +124,7 @@
 \[x_n=\frac{1}{\sqrt{n}}\left(\lambda^*,(\lambda^*)^2,\cdots,(\lambda^*)^n,0,\cdots\right)\]
 计算：
 \[(\lambda\mathbbm{I}-A)x_n=\left(\frac{1}{\sqrt{n}},\frac{\lambda^*}{\sqrt{n}}-\frac{\lambda^*}{\sqrt{n}},\cdots,\frac{(\lambda^*)^{n-1}}{\sqrt{n}}-\frac{(\lambda^*)^{n-1}}{\sqrt{n}},-\frac{(\lambda^*)^n}{\sqrt{n}},0,\cdots\right)=\left(\frac{1}{\sqrt{n}},0,\cdots,0,-\frac{(\lambda^*)^n}{\sqrt{n}},0,\cdots\right)\]
-因此其范数$||(\lambda\mathbbm{I}-A)x_n||=\sqrt{2/n} \to 0$，说明$\lambda\mathbbm{I}-A$没有正的下界，因此其值域不闭。
+因此其范数$\|(\lambda\mathbbm{I}-A)x_n\|=\sqrt{2/n} \to 0$，说明$\lambda\mathbbm{I}-A$没有正的下界，因此其值域不闭。
 \end{proof}
 
 \newpage
@@ -197,10 +197,10 @@ R(T^*)^{\perp} &= \{x \in X \ | \ f(x)=0 \ , \ \forall f \in R(T^*)\}\\
 对必要性，$(T^*)^{-1}=(T^{-1})^*\in\mathscr{B}(X)$；对充分性，由必要性可知$(T^*)^{-1}\in\mathscr{B}(X) \ \Rightarrow \ (T^{**})^{-1}\in\mathscr{B}(X)$，再由典型映射是单的，即$T=T^{**}|_X$，在$R(T)$上可定义$T^{-1}$，即证。
 
 对$\forall x \in X$，取柯西列$\{x_n\} \subset X$满足$x_n \to x \in X$，记$\{y_n\}=\{Tx_n\}$。由$T\in\mathscr{B}(X)$知对$\forall n,m \in \mathbb{N}_+$：
-\[||y_n-y_m||=||Tx_n-Tx_m||\leq||T||\cdot||x_n-x_m|| \to 0\]
+\[\|y_n-y_m\|=\|Tx_n-Tx_m\|\leq\|T\|\cdot\|x_n-x_m\| \to 0\]
 因此$\{y_n\} \subset R(T)$是柯西列，记$y_n \to y$，因为$T\in\mathscr{B}(X)$显然有$Tx_n \to Tx \in R(T)$，考虑：
-\[||Tx_n-y|| \leq ||Tx_n-y_n||+||y_n-y||=||y_n-y|| \to 0 \quad \Rightarrow \quad y=Tx \in R(T)\]
-因此$R(T)$中的任意柯西列$\{y_n\}$都收敛到其自身，故$R(T)$是闭的。使用反证法证明$R(T)=X$，则$\exists \, x_0 \in X-R(T)$，由 Hahn-Banach 定理推论[命题\ref{proposition:hb3}]，$\exists \, f \in X^*$满足$f(x_0)=||x_0||\neq 0$且对$\forall y \in R(T)$都有$f(y)=0$，即对$\forall x \in X \ , \ y=Tx \in R(T)$都有$f(y)=f(Tx)=(T^*f)x=0$，因此$T^*f=0$即$f \in \ker T^*$，但是上面证明了$T^*$可逆，因此$\ker T^*=\{0\}$，因此$f=0$，得出矛盾，故$R(T)=X$。
+\[\|Tx_n-y\| \leq \|Tx_n-y_n\|+\|y_n-y\|=\|y_n-y\| \to 0 \quad \Rightarrow \quad y=Tx \in R(T)\]
+因此$R(T)$中的任意柯西列$\{y_n\}$都收敛到其自身，故$R(T)$是闭的。使用反证法证明$R(T)=X$，则$\exists \, x_0 \in X-R(T)$，由 Hahn-Banach 定理推论[命题\ref{proposition:hb3}]，$\exists \, f \in X^*$满足$f(x_0)=\|x_0\|\neq 0$且对$\forall y \in R(T)$都有$f(y)=0$，即对$\forall x \in X \ , \ y=Tx \in R(T)$都有$f(y)=f(Tx)=(T^*f)x=0$，因此$T^*f=0$即$f \in \ker T^*$，但是上面证明了$T^*$可逆，因此$\ker T^*=\{0\}$，因此$f=0$，得出矛盾，故$R(T)=X$。
 \end{proof}
 
 \begin{definition}[闭值域算子]
@@ -211,11 +211,11 @@ R(T^*)^{\perp} &= \{x \in X \ | \ f(x)=0 \ , \ \forall f \in R(T^*)\}\\
 \end{theorem}
 \begin{proof}
 由于 $T = \mathbb{I} - A$ 连续，核 $\ker T$ 是 $X$ 的闭子空间。考虑$\widetilde{T}: \ \widetilde{X}=X/\ker T \to X \ , \ [x] \mapsto Tx$，商空间$\widetilde{X}$ [定义\ref{definition:skj}]的元素为代表元$[x]=x+\ker T=\{x+z \ | \ z \in \ker T\}$，其范数定义为：
-\[||[x]||=\inf_{y \in [x]}||y||=\inf_{z \in \ker T}||x+z||=d(x,\ker T)\]
-显然$\ker\widetilde{T}=\{[0]\}$，$\widetilde{T}$有界线性且为单射。同时$R(\widetilde{T})=R(T)$，在值域$R(\widetilde{T})$可以定义逆$\widetilde{T}^{-1}$。要证 $R(T)$ 闭，只需证$\widetilde{T}^{-1}$有界，即$\exists \, c > 0$对$\forall x \in X$都有$||[x]|| \le c ||Tx||$。因为若$\widetilde{T}^{-1}$有界，则$R(T)$同构于$\widetilde{X}$，是 Banach 空间[定理\ref{theorem:skjwb}]，因此$R(T)$也是 Banach 空间，进而是闭的。采用反证法，假设$\widetilde{T}^{-1}$无界，则对$\forall n \in \mathbb{N}$都$\exists \, [x_n] \in \widetilde{X}$使得$||[x_n]|| \ge n ||Tx_n||$，可以取标准化$||[x]||=1$，则$||\widetilde{T}[x_n]||=||Tx_n|| \to 0$。
+\[\|[x]\|=\inf_{y \in [x]}\|y\|=\inf_{z \in \ker T}\|x+z\|=d(x,\ker T)\]
+显然$\ker\widetilde{T}=\{[0]\}$，$\widetilde{T}$有界线性且为单射。同时$R(\widetilde{T})=R(T)$，在值域$R(\widetilde{T})$可以定义逆$\widetilde{T}^{-1}$。要证 $R(T)$ 闭，只需证$\widetilde{T}^{-1}$有界，即$\exists \, c > 0$对$\forall x \in X$都有$\|[x]\| \le c \|Tx\|$。因为若$\widetilde{T}^{-1}$有界，则$R(T)$同构于$\widetilde{X}$，是 Banach 空间[定理\ref{theorem:skjwb}]，因此$R(T)$也是 Banach 空间，进而是闭的。采用反证法，假设$\widetilde{T}^{-1}$无界，则对$\forall n \in \mathbb{N}$都$\exists \, [x_n] \in \widetilde{X}$使得$\|[x_n]\| \ge n \|Tx_n\|$，可以取标准化$\|[x]\|=1$，则$\|\widetilde{T}[x_n]\|=\|Tx_n\| \to 0$。
 
-取$[x_n]$中的代表元为$x_n$满足$||x_n|| \leq 2$，由$A$紧可知$\{Ax_n\}$有收敛子列$Ax_{n_k} \to z$。另一方面$\widetilde{T}x_{n_k}=Tx_{n_k}=x_{n_k}-Ax_{n_k} \to 0$，可知$x_{n_k} \to z$，则$Az=z$即$Tz=z-Az=0$，因此$z \in \ker T$，即$||[x]||=||[0]||=0$。
-但$||[x]||=1$，进而得到矛盾，因此$\widetilde{T}^{-1}$有界，原命题得证。
+取$[x_n]$中的代表元为$x_n$满足$\|x_n\| \leq 2$，由$A$紧可知$\{Ax_n\}$有收敛子列$Ax_{n_k} \to z$。另一方面$\widetilde{T}x_{n_k}=Tx_{n_k}=x_{n_k}-Ax_{n_k} \to 0$，可知$x_{n_k} \to z$，则$Az=z$即$Tz=z-Az=0$，因此$z \in \ker T$，即$\|[x]\|=\|[0]\|=0$。
+但$\|[x]\|=1$，进而得到矛盾，因此$\widetilde{T}^{-1}$有界，原命题得证。
 \end{proof}
 
 \begin{proposition}\label{proposition:6-2}
@@ -229,7 +229,7 @@ R(T^*)^{\perp} &= \{x \in X \ | \ f(x)=0 \ , \ \forall f \in R(T^*)\}\\
 3. 若$\ker T=\{0\}$，则$R(T)=X$。
 \end{proposition}
 \begin{proof}
-由定理\ref{theorem:jszb}可知$R(T)$是$X$的闭子空间，且$\exists \, c>0$使得$||Tx|| \geq \alpha||x||$。反证法，设$R(T) \subset X$，令$X_0=X \ , \ X_k=TX_{k-1} \ , \ k \in \mathbb{N}_+$，则$\cdots \subset X_k \subset X_{k-1} \subset \cdots \subset X_1 \subset X_0$，这里都是真包含关系因此$X_k$是$X_{k-1}$的真闭子空间，则由 Riesz 引理[定理\ref{Riesz}]，$\exists \, x_k \in X_{k-1}-X_k$满足$||x_k||=1$，都有$d(x_k,X_k)>1/2$。由$A \in \mathscr{C}(X)$可知$\{Ax_k\}$有收敛子列仍记为$\{Ax_k\}$，但是$||Ax_k-Ax_{k+p}||=||x_k-(Tx_k+x_{k+p}-Tx_{k+p})|| \geq d(x_k,X_k)>1/2$，其中$Tx_k \in X_k \ , \ x_{k+p} \in X_{k+p-1} \subset X_k \ , \ Tx_{k+p} \in X_{k+p} \subset X_k \ \Rightarrow \ Tx_k+x_{k+p}-Tx_{k+p} \in X_k$，矛盾，命题得证。
+由定理\ref{theorem:jszb}可知$R(T)$是$X$的闭子空间，且$\exists \, c>0$使得$\|Tx\| \geq \alpha\|x\|$。反证法，设$R(T) \subset X$，令$X_0=X \ , \ X_k=TX_{k-1} \ , \ k \in \mathbb{N}_+$，则$\cdots \subset X_k \subset X_{k-1} \subset \cdots \subset X_1 \subset X_0$，这里都是真包含关系因此$X_k$是$X_{k-1}$的真闭子空间，则由 Riesz 引理[定理\ref{Riesz}]，$\exists \, x_k \in X_{k-1}-X_k$满足$\|x_k\|=1$，都有$d(x_k,X_k)>1/2$。由$A \in \mathscr{C}(X)$可知$\{Ax_k\}$有收敛子列仍记为$\{Ax_k\}$，但是$\|Ax_k-Ax_{k+p}\|=\|x_k-(Tx_k+x_{k+p}-Tx_{k+p})\| \geq d(x_k,X_k)>1/2$，其中$Tx_k \in X_k \ , \ x_{k+p} \in X_{k+p-1} \subset X_k \ , \ Tx_{k+p} \in X_{k+p} \subset X_k \ \Rightarrow \ Tx_k+x_{k+p}-Tx_{k+p} \in X_k$，矛盾，命题得证。
 \end{proof}
 
 \begin{proposition}
@@ -240,7 +240,7 @@ R(T^*)^{\perp} &= \{x \in X \ | \ f(x)=0 \ , \ \forall f \in R(T^*)\}\\
 
 对非单射情况分步证明：
 \begin{lemma}[$\dim\ker T,\dim\ker T^*<+\infty$]\label{lemma:4.1}
-令$X_0=\ker T$，$B_0=\{x \in X_0 \ | \ ||x||<1\}$是$X_0$的单位球，对$\forall x \in B_0$都有$0=Tx=x-Ax$，即$x=Ax \in A(B_0)$，因此$B_0 \subset A(B_0)$列紧（列紧集的子集也列紧），从而$X_0$有限维。$T^*$证明同理。
+令$X_0=\ker T$，$B_0=\{x \in X_0 \ | \ \|x\|<1\}$是$X_0$的单位球，对$\forall x \in B_0$都有$0=Tx=x-Ax$，即$x=Ax \in A(B_0)$，因此$B_0 \subset A(B_0)$列紧（列紧集的子集也列紧），从而$X_0$有限维。$T^*$证明同理。
 \end{lemma}
 
 \begin{lemma}[若有限维子空间$X_0 \subset X$则存在闭子空间$X_1 \subset X$使得$X=X_0 \oplus X_1$]\label{lemma:4.2}
@@ -286,8 +286,8 @@ $$\widetilde{T}: \ X=\ker T \oplus X_1 \to \text{span}\{y_i\}_{i=1}^n \oplus R(T
 
 第三点，采用反证法，设存在可数无限集$\{\lambda_n\}$使得$\lambda_n>\delta$，取$\{x_n \in \ker(\lambda_n\mathbbm{I}-A)-\{0\}\}$满足$Ax_n=\lambda_nx_n$。采用归纳法证明$\{x_n\}$线性无关，假设已知$\{x_1,\cdots,x_n\}$线性无关，取：
 \[y=\sum_{i=1}^{n+1}a_ix_i=0 \quad \Rightarrow \quad Ay=\sum_{i=1}^{n+1}a_i\lambda_ix_i \quad \Rightarrow \quad \lambda_{n+1}y-Ay=\sum_{i=1}^{n+1}(\lambda_{n+1}-\lambda_i)a_ix_i=0\]
-因此对$i=1,\cdots,n+1$都有$a_i=0$，即$\{x_1,\cdots,x_{n+1}\}$线性无关，由数学归纳法可证。令$V_n=\text{span}\{x_1,\cdots,x_n\}$，$V_n$是$V_{n+1}$的真子空间，由 Riesz 引理[定理\ref{Riesz}]，$\exists \, \{y_n\}$满足$y_n \in V_{n+1}-V_n$且$||y_n||=1$使得$d(y_n,V_n)>1/2$。由$A \in \mathscr{C}(X)$，则$\{Ay_n\}$列紧，但对$\forall n,p \in \mathbb{N}_+$，记$y_{n+p}=\alpha x_{n+p+1}+u$，其中$u \in V_{n+p}$：
-\[||Ay_{n+p}-Ay_n||=||\alpha\lambda_{n+p+1}x_{n+p+1}+A(u-y_n)||>\alpha\lambda_{n+p+1}d(x_{n+p+1},V_{n+p})>\frac{\alpha\lambda_{n+p+1}}{2}>0\]
+因此对$i=1,\cdots,n+1$都有$a_i=0$，即$\{x_1,\cdots,x_{n+1}\}$线性无关，由数学归纳法可证。令$V_n=\text{span}\{x_1,\cdots,x_n\}$，$V_n$是$V_{n+1}$的真子空间，由 Riesz 引理[定理\ref{Riesz}]，$\exists \, \{y_n\}$满足$y_n \in V_{n+1}-V_n$且$\|y_n\|=1$使得$d(y_n,V_n)>1/2$。由$A \in \mathscr{C}(X)$，则$\{Ay_n\}$列紧，但对$\forall n,p \in \mathbb{N}_+$，记$y_{n+p}=\alpha x_{n+p+1}+u$，其中$u \in V_{n+p}$：
+\[\|Ay_{n+p}-Ay_n\|=\|\alpha\lambda_{n+p+1}x_{n+p+1}+A(u-y_n)\|>\alpha\lambda_{n+p+1}d(x_{n+p+1},V_{n+p})>\frac{\alpha\lambda_{n+p+1}}{2}>0\]
 这里$y_n \in V_{n+1} \subset V_{n+p}$，因此$u-y_n \in V_{n+p}$，由于$V_{n+p}$是$A$的特征向量张成的空间，因此$AV_{n+p}=V_{n+p}$，即$V_{n+p}$是$A$不变的，故$A(u-y_n) \in V_{n+p}$，这与$\{Ay_n\}$列紧矛盾，因此假设不成立，原命题得证。
 \end{proof}
 \begin{remark}
@@ -374,8 +374,8 @@ $$\widetilde{T}: \ X=\ker T \oplus X_1 \to \text{span}\{y_i\}_{i=1}^n \oplus R(T
 \begin{proof}
 由$R(T) \subseteq X$可知$\{0\} \subseteq \ker T \subseteq \ker T^2 \subseteq \cdots$和$X \supseteq R(T) \supseteq R(T^2) \supseteq \cdots$。
 
-采用反证法证明$q<+\infty$，如若不然则对$\forall k \in \mathbb{N}$都有$R(T^k) \supset R(T^{k+1})$，由$T^k=(\mathbbm{I}-A)^k=\mathbbm{I}-p(A)$，$p(A)$表示算子$A$的多项式，由定理\ref{theorem:szfh}可知$p(A)$也是紧算子。因此$R(T^k)$闭[定理\ref{theorem:Riesz-Fredholm}第二点]，由 Riesz 引理[定理\ref{Riesz}]，$\exists \, \{y_k\}$满足$y_k \in R(T^k)-R(T^{k+1})$且$||y_k||=1$，使得$d(y_k,R(T^{k+1}))>1/2$，但：
-\[||Ay_k-Ay_{k+l}||=||y_k-Ty_k-y_{k+l}+Ty_{k+l}||\geq d(y_k,R(T^{k+1}))>\frac{1}{2}\]
+采用反证法证明$q<+\infty$，如若不然则对$\forall k \in \mathbb{N}$都有$R(T^k) \supset R(T^{k+1})$，由$T^k=(\mathbbm{I}-A)^k=\mathbbm{I}-p(A)$，$p(A)$表示算子$A$的多项式，由定理\ref{theorem:szfh}可知$p(A)$也是紧算子。因此$R(T^k)$闭[定理\ref{theorem:Riesz-Fredholm}第二点]，由 Riesz 引理[定理\ref{Riesz}]，$\exists \, \{y_k\}$满足$y_k \in R(T^k)-R(T^{k+1})$且$\|y_k\|=1$，使得$d(y_k,R(T^{k+1}))>1/2$，但：
+\[\|Ay_k-Ay_{k+l}\|=\|y_k-Ty_k-y_{k+l}+Ty_{k+l}\|\geq d(y_k,R(T^{k+1}))>\frac{1}{2}\]
 其中$Ty_k \in R(T^{k+1})$，$y_{k+l} \in R(T^{k+l}) \subset R(T^{k+1})$，$Ty_{k+l} \in R(T^{k+l+1}) \subset R(T^{k+1})$，与$\{Ay_k\}$列紧矛盾。
 
 上面证明了$q<+\infty$，因此$R(T^q)=R(T^{q+1})$。再证$p=q$，由 Riesz-Fredholm 定理[定理\ref{theorem:Riesz-Fredholm}第四点]可知：
@@ -431,15 +431,15 @@ $$\widetilde{T}: \ X=\ker T \oplus X_1 \to \text{span}\{y_i\}_{i=1}^n \oplus R(T
 设$H$是 Hilbert 空间，$A$为自共轭算子，则：
 \begin{itemize}
 \item 1. $\forall x \in H \ , \ (Ax,x)\in\mathbb{R}$当且仅当$A$为自共轭算子；
-\item 2. $||A||=\sup\limits_{||x||=1}|(Ax,x)|$。
+\item 2. $\|A\|=\sup\limits_{\|x\|=1}|(Ax,x)|$。
 \end{itemize}
 \end{proposition}
 \begin{proof}
 第一点必要性显然$(Ax,x) = (x,Ax) = \overline{(Ax,x)} \ \Rightarrow \ (Ax,x)\in\mathbb{R}$。下证充分性，考虑$(A(x+y),x+y)=(Ax,x)+(Ay,y)+(Ax,y)+(Ay,x) \in \mathbb{R}$，因此$\operatorname{Im}(Ax,y)+\operatorname{Im}(Ay,x)=0$，即$\operatorname{Im}(Ax,y)=\operatorname{Im}(x,Ay)$。考虑$(A(x+iy),x+iy)=(Ax,x)-(Ay,y)+i(Ax,y)+i(Ay,x) \in \mathbb{R}$，因此$\operatorname{Re}(Ax,y)+\operatorname{Re}(Ay,x)=0$，即$\operatorname{Re}(Ax,y)=\operatorname{Re}(Ay,x)=\operatorname{Re}(x,Ay)$，综上所述，$(Ax,y)=(x,Ay)$，充分性得证。
 
-第二点，记$M = \sup\limits_{\|x\|=1}|(Ax,x)|$。由 Cauchy-Schwarz 不等式[定理\ref{theorem:Cauchy–Schwarz}]，$|(Ax,x)|\le ||A||\cdot||x||=||A||$。取：
+第二点，记$M = \sup\limits_{\|x\|=1}|(Ax,x)|$。由 Cauchy-Schwarz 不等式[定理\ref{theorem:Cauchy–Schwarz}]，$|(Ax,x)|\le \|A\|\cdot\|x\|=\|A\|$。取：
 \[|(Ax,y)| = \frac{1}{4}\big| (A(x+y),x+y) - (A(x-y),x-y) \big| \le \frac{M}{4}\left(\|x+y\|^2+\|x-y\|^2\right)\]
-取$||x||=||y||=1$，利用平行四边形法则，$||x+y||^2+||x-y||^2=2(||x||^2+||y||^2)=4$。因此$|(Ax,y)|\le M$对所有单位向量$x,y$成立。由算子范数的定义$\|A\|=\sup\limits_{\|x\|=\|y\|=1}|(Ax,y)|$，得$\|A\|\le M$。综上$\|A\|=M$。
+取$\|x\|=\|y\|=1$，利用平行四边形法则，$\|x+y\|^2+\|x-y\|^2=2(\|x\|^2+\|y\|^2)=4$。因此$|(Ax,y)|\le M$对所有单位向量$x,y$成立。由算子范数的定义$\|A\|=\sup\limits_{\|x\|=\|y\|=1}|(Ax,y)|$，得$\|A\|\le M$。综上$\|A\|=M$。
 \end{proof}
 
 \begin{theorem}
