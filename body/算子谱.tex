@@ -4,7 +4,7 @@
     \item Riesz-Fredholm 定理~\ref{theorem:Riesz-Fredholm}
     \item 紧算子谱~\ref{jszp}
     \item 希尔伯特空间的自共轭紧算子谱~\ref{zgejszp}
-    \item 自反性，弱收敛与弱*收敛~\ref{selfback}
+    \item Hilbert-Schmidt 定理~\ref{theorem:Hilbert-Schmidt}
 \end{introduction}
 
 \section{线性算子谱}\label{xxszp}
@@ -454,5 +454,31 @@ $$\widetilde{T}: \ X=\ker T \oplus X_1 \to \text{span}\{y_i\}_{i=1}^n \oplus R(T
 上述公式第三个等号用到了性质\ref{proposition:zgesz}第一点，因此若$(\lambda\mathbbm{I}-A)x$可知$x=0$，即$\ker(\lambda\mathbbm{I}-A)=\{0\}$，由定理\ref{theorem:zgeker}可知$R(\lambda\mathbbm{I}-A)=(\ker(\lambda\mathbbm{I}-A))^{\perp}=H$，因此$\mathbb{C}-\mathbb{R} \subseteq \rho(A)$，因此$\sigma(A) \subseteq \mathbb{R}$。若$\lambda \in \sigma_r(A)$则$\ker(\lambda\mathbbm{I}-A)=\{0\}$且$\overline{R(\lambda\mathbbm{I}-A)} \neq H$。考虑$R(\lambda\mathbbm{I}-A)^{\perp}=\ker(\lambda\mathbbm{I}-A)=\{0\} \supset \overline{R(\lambda\mathbbm{I}-A)}^{\perp}$，因此$\overline{R(\lambda\mathbbm{I}-A)}=X$，即$\sigma_r(A)=\varnothing$。
 \end{proof}
 \begin{remark}
-\quad 设$\lambda\neq\mu$是$A$的两个特征值，$x,y$分别为对应的特征向量，即$Ax=\lambda x$，$Ay=\mu y$。因此$\lambda(x,y) = (\lambda x,y) = (Ax,y) = (x,Ay) = (x,\mu y) = \mu(x,y)$，于是$(\lambda-\mu)(x,y)=0 \ \Rightarrow \ (x,y)=0$，即$x\perp y$。
+\quad 设$\lambda\neq\mu$是$A$的两个特征值，$x,y$分别为对应的特征向量，即$Ax=\lambda x$，$Ay=\mu y$。因此$\lambda(x,y) = (\lambda x,y) = (Ax,y) = (x,Ay) = (x,\mu y) = \mu(x,y)$，于是$(\lambda-\mu)(x,y)=0 \ \Rightarrow \ (x,y)=0$，即$x\perp y$，或$\ker(\lambda\mathbbm{I}-A) \perp \ker(\mu\mathbbm{I}-A)$。
 \end{remark}
+
+\begin{theorem}
+设$H$是 Hilbert 空间，若$A\in\mathscr{B}(H)$是自共轭算子，$M$是$H$的闭子空间，则$A|_M$也是自共轭算子。
+\end{theorem}
+在 Hilbert 空间上，自共轭紧算子$A$的谱和算子结构将更楚。对比有穷维情形的对称阵$A$，它可以通过正交变換对角化，对角线上的元对应着$A$的本征值，而这些本征值双是$A$所对应的二次型$(Ax,x)$在单位球面$\|x\|=1$上的各个临界值。 所有这些性质将被推广到无穷维空间。我们从下列极值性质出发
+\begin{theorem}
+$H$是 Hilbert 空间，$A$是自共轭紧算子，则$\exists \, x_0 \in H$满足$\|x_0\|=1$且$Ax_0=\lambda x_0$，其中$\lambda\in\mathbb{R}$且$|\lambda|=\|A\|$。
+\end{theorem}
+\begin{proof}
+不妨设$\lambda>0$，否则可以考虑$-A$算子。由性质\ref{proposition:zgesz}第二点可知存在$\lambda=\sup\limits_{\|x\|=1}(Ax,x)=\|A\|$，因此存在$\{x_n\} \subset S$使得$(Ax_n,x_n) \to \lambda$，由定理\ref{theorem:dwqrb}可知单位球$B$若闭，故存在$\{x_n\}$的弱收敛子列仍记为$\{x_n\}$满足$x_n \xrightarrow{w} x_0 \in B$，而$A$是紧算子，因此$A$全有界，进而$\|Ax_n-Ax_0\| \to 0$，故$(Ax_0,x_0)=\lambda$。只需证$x_0 \in S$。假设$\|x_0\|<1$，则$(Ax_0,x_0) \leq \|A\|\cdot\|x_0\|^2<\lambda$，矛盾。因此$x_0 \in S$。最后来验证$Ax_0=\lambda x_0$，由上确界可知$\lambda$是极大值。对$\forall y \in H$考察函数$\phi_y(t)$，假设$t$足够小，忽略其二阶项：
+\[\phi_y(t)=\frac{(A(x_0+ty),x_0+ty)}{(x_0+ty,x_0+ty)}=\frac{(Ax_0,x_0)+2\operatorname{Re}[t(Ay,x_0)]}{(x_0,x_0)+2\operatorname{Re}[t(y,x_0)]}=\operatorname{Re}\left[\frac{(Ax_0,x_0)+2t(Ay,x_0)}{(x_0,x_0)+2t(y,x_0)}\right]\]
+按照上面的结论可知$\phi_y(t)$在$t=0$处取极大值，$\phi'_y(0)=0$。对$\phi_y(t)$求$t$的形式导数：
+\[\begin{aligned}
+\dv{\phi_y}{t}&=\operatorname{Re}\left[\dv{t}\frac{(Ax_0,x_0)+2t(Ay,x_0)}{(x_0,x_0)+2t(y,x_0)}\right]=\operatorname{Re}\left[\frac{2(Ay,x_0)[(x_0,x_0)+2t(y,x_0)]-2(y,x_0)[(Ax_0,x_0)+2t(Ay,x_0)]}{((x_0,x_0)+2t(y,x_0))^2}\right]\\
+&=2\operatorname{Re}\left[\frac{(Ay,x_0)(x_0,x_0)-(y,x_0)(Ax_0,x_0)}{((x_0,x_0)+2t(y,x_0))^2}\right]=\operatorname{Re}\left[\frac{2(Ay,x_0)-2\lambda(y,x_0)}{((x_0,x_0)+2t(y,x_0))^2}\right]=\operatorname{Re}\left[\frac{2(y,Ax_0-\lambda x_0)}{((x_0,x_0)+2t(y,x_0))^2}\right]
+\end{aligned}\]
+当$Ax_0=\lambda x_0$时即得$\phi'_y(0)=0$。
+\end{proof}
+
+\begin{theorem}[Hilbert-Schmidt 定理]\label{theorem:Hilbert-Schmidt}
+$H$是 Hilbert 空间，则自共轭紧算子$A$非0特征值$\{\lambda_i\}$至多可数且以0为聚点，对应标准正交基$\{e_i\}$：
+\[x=\sum_{i}(x,e_i)e_i \quad , \quad Ax=\sum_{i}\lambda_i(x,e_i)e_i\]
+\end{theorem}
+\begin{proof}
+特征值部分由定理\ref{jszp}保证，下面只需要寻找基。
+\end{proof}
