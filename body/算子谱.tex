@@ -399,3 +399,29 @@ $$\widetilde{T}: \ X=\ker T \oplus X_1 \to \text{span}\{y_i\}_{i=1}^n \oplus R(T
 \end{theorem}
 
 \section{希尔伯特空间的自共轭紧算子谱}\label{zgejszp}
+\begin{definition}[共轭算子，自共轭算子，对称算子]
+设$H$是 Hilbert 空间，若$T\in\mathscr{B}(H)$对$\forall x,y \in H$都$\exists \, T\in\mathscr{B}(H)$满足$(Tx,y)=(x,T^*y)$，则称$T^*$为$T$的共轭算子。若$T=T^*$则称$T$为自共轭算子。若$H$是实内积空间则称自共轭算子$T$为对称算子。
+\end{definition}
+\newpage
+\begin{example}
+\quad $H=\mathbb{C}^n \ , \ A=\{a_{ij}\}_{n \times n}\in\mathscr{B}(H)$是自共轭算子，则有$(Ax,y)=x^{\dagger}A^{\dagger}y=x^{\dagger}Ay=(x,Ay)$，取标准正交基则存在酉矩阵$P \in U(n)=\{p \in M_{n \times n}^{\mathbb{C}} \ | \ PP^{\dagger}=P^{\dagger}P=\mathbbm{I}_{n \times n}\}$，使得$P^{\dagger}AP=\text{diag}\{\lambda_1,\lambda_2,\cdots,\lambda_n\}$。
+\end{example}
+
+
+
+\begin{proposition}
+设$H$是 Hilbert 空间，$T$为自共轭算子，则：
+\begin{itemize}
+    \item 1. $\forall x \in H \ , \ (Tx,x)\in\mathbb{R}$；
+    \item 2. $||A||=\sup\limits_{||x||=1}|(Ax,x)|$；
+    \item 3. $A$的特征值是实的；
+    \item 4. $A$的对应不同特征值的特征向量正交。
+\end{itemize}
+\end{proposition}
+
+\begin{theorem}\label{theorem:zgeker}
+设$H$是 Hilbert 空间，若$T\in\mathscr{B}(H)$是自共轭算子，则$(\ker T)^{\perp}=R(T)$。
+\end{theorem}
+\begin{proof}
+因为$\ker T=\{x \in H \ | \ T(x)=0\}$，$R(T)=\{Tx \in TH \equiv H \ | \ \forall x \in H-\{0\}\}$，考虑共轭算子$T^*$，其值域$R(T^*)=\{T^*y \ | \ \forall y \in H-\{0\}\}=\{x \in H \ | \ T(x) \neq 0\}$，因此有$(\ker T)^{\perp} = R(T^*)$或$R(T)^{\perp}=\ker T^*$。由于$T$是自共轭算子，进而有$(\ker T)^{\perp}=R(T^*)=R(T)$。
+\end{proof}
