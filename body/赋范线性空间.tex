@@ -15,17 +15,17 @@
 
 在无限维线性空间我们也同样可以定义类似的概念——范数(norm)可以看作是模长的推广(其实都是距离空间中的距离)。
 \begin{definition}[范数]
-设$X$是定义在$\mathbb{R}$或者$\mathbb{C}$上的线性空间，函数$|| \cdot ||:X \to \mathbb{R}$如果满足
+设$X$是定义在$\mathbb{R}$或者$\mathbb{C}$上的线性空间，函数$\| \cdot \|:X \to \mathbb{R}$如果满足
 \begin{itemize}
-    \item 1. 非负性：$\forall x \in X \ , \ ||x|| \geq 0 \ \text{and} \ ||x||=0 \ \text{if and only if} \ x=0 \ $
-    \item 2. 齐次性：$\forall x \in X \ , \ \forall a \in \mathbb{R} \ or \ \mathbb{C} \ , \ ||ax||=|a|||x|| \ $
-    \item 3. 三角不等式：$\forall x,y \in X \ , \ ||x+y|| \leq ||x||+||y|| \ $
+    \item 1. 非负性：$\forall x \in X \ , \ \|x\| \geq 0 \ \text{and} \ \|x\|=0 \ \text{if and only if} \ x=0 \ $
+    \item 2. 齐次性：$\forall x \in X \ , \ \forall a \in \mathbb{R} \ or \ \mathbb{C} \ , \ \|ax\|=|a|\cdot\|x\| \ $
+    \item 3. 三角不等式：$\forall x,y \in X \ , \ \|x+y\| \leq \|x\|+\|y\| \ $
 \end{itemize}
-则称$||\cdot||$是$X$上的一个范数，$(X,||\cdot||)$称为赋范线性空间。
+则称$\|\cdot\|$是$X$上的一个范数，$(X,\|\cdot\|)$称为赋范线性空间。
 \end{definition}
 容易证明，赋范线性空间是距离空间，只需把范数中的元素换成两个元素之差即可。
 \begin{definition}[强收敛(依范数收敛)]
-若$d(x_n,x) \to 0$即$||x_n-x|| \to 0$,则称$x_n$强收敛于$x$或称依范数收敛。
+若$d(x_n,x) \to 0$即$\|x_n-x\| \to 0$,则称$x_n$强收敛于$x$或称依范数收敛。
 \end{definition}
 我们将完备的赋范线性空间称为 Banach 空间。
 
@@ -45,28 +45,28 @@
     \end{minipage}
 \end{figure}
 \begin{example}
-\quad $C[a,b] \ , \ ||x(t)||=\mathop \text{sup}\limits_{t \in [a,b]}|x(t)|$是 Banach 空间，无穷维且可分。
+\quad $C[a,b] \ , \ \|x(t)\|=\mathop \text{sup}\limits_{t \in [a,b]}|x(t)|$是 Banach 空间，无穷维且可分。
 \end{example}
 \begin{proof}
-\[||x(t)|| \leq 0 \ , \ \text{若}||x(t)||=0 \ \Rightarrow \ \mathop \text{sup}\limits_{t \in [a,b]}|x(t)|=0 \ \Leftrightarrow \ \forall t \in [a,b] \ , \ |x(t)|=0 \ \Rightarrow \ x(t)=0\]
-\[||ax(t)||=\mathop \text{sup}\limits_{t \in [a,b]}|ax(t)|=\mathop \text{sup}\limits_{t \in [a,b]}|a||x(t)|=|a|||x(t)||\]
-\[||x(t)+y(t)||=\mathop \text{sup}\limits_{t \in [a,b]}|x(t)+y(t)| \leq \mathop \text{sup}\limits_{t \in [a,b]}|x(t)|+\mathop \text{sup}\limits_{t \in [a,b]}|y(t)|=||x(t)||+||y(t)||\]
+\[\|x(t)\| \leq 0 \ , \ \text{若}\|x(t)\|=0 \ \Rightarrow \ \mathop \text{sup}\limits_{t \in [a,b]}|x(t)|=0 \ \Leftrightarrow \ \forall t \in [a,b] \ , \ |x(t)|=0 \ \Rightarrow \ x(t)=0\]
+\[\|ax(t)\|=\mathop \text{sup}\limits_{t \in [a,b]}|ax(t)|=\mathop \text{sup}\limits_{t \in [a,b]}|a|\cdot|x(t)|=|a|\cdot\|x(t)\|\]
+\[\|x(t)+y(t)\|=\mathop \text{sup}\limits_{t \in [a,b]}|x(t)+y(t)| \leq \mathop \text{sup}\limits_{t \in [a,b]}|x(t)|+\mathop \text{sup}\limits_{t \in [a,b]}|y(t)|=\|x(t)\|+\|y(t)\|\]
 \end{proof}
 
 \begin{example}
-\quad $l^{\infty}$是所有有界数列构成的集合，设$X=(x_1,x_2,\cdots)$，$||X||=\mathop \text{sup}\limits_{i \in \mathbb{N}_+}|x_i|$。容易验证：$||\cdot||$是范数以及$(l^{\infty},||\cdot||)$是 Banach 空间，无穷维且不可分。
+\quad $l^{\infty}$是所有有界数列构成的集合，设$X=(x_1,x_2,\cdots)$，$\|X\|=\mathop \text{sup}\limits_{i \in \mathbb{N}_+}|x_i|$。容易验证：$\|\cdot\|$是范数以及$(l^{\infty},\|\cdot\|)$是 Banach 空间，无穷维且不可分。
 \end{example}
 
 \begin{example}
 \quad $L^1[a,b]$是$[a,b]$上所有可积函数(等价类)构成的集合，利用 Lebesgue 积分定义范数
-\[||x(t)||_{L^1[a,b]}=\int_a^b|x(t)|\dd t\]
+\[\|x(t)\|_{L^1[a,b]}=\int_a^b|x(t)|\dd t\]
 \end{example}
 \begin{proof}其余两点容易验证，仅验证正定性：
-\[||x(t)||_{L^1[a,b]}=\int_a^b|x(t)|\dd t \geq 0 \ \text{若}||x(t)||_{L^1[a,b]}=0 \ \Rightarrow \ |x(t)|=0 \quad a.e. \ \Rightarrow \ x(t)=0 \quad a.e.\]
+\[\|x(t)\|_{L^1[a,b]}=\int_a^b|x(t)|\dd t \geq 0 \ \text{若}\|x(t)\|_{L^1[a,b]}=0 \ \Rightarrow \ |x(t)|=0 \quad a.e. \ \Rightarrow \ x(t)=0 \quad a.e.\]
 \end{proof}
 
 \begin{example}
-\quad $(C^1[a,b],||\cdot||_{L^1[a,b]})$不完备，故不是 Banach 空间。这件事可以通过范数诱导出的距离加以证明:
+\quad $(C^1[a,b],\|\cdot\|_{L^1[a,b]})$不完备，故不是 Banach 空间。这件事可以通过范数诱导出的距离加以证明:
 \[d(x(t),y(t))=\int_a^b|x(t)-y(t)|\dd t\]
 \end{example}
 
@@ -79,19 +79,19 @@
 \end{definition}
 \begin{proposition}[全变差空间$V[a,b]$]
 定义$V[a,b]$上的范数:
-\[||x(t)||=|x(a)|+\mathop \text{V}\limits_a^b(x(t))\]
+\[\|x(t)\|=|x(a)|+\mathop \text{V}\limits_a^b(x(t))\]
 验证其是定义良好的范数：
 \begin{itemize}
-\item 1. 正定性：$||x(t)|| \geq 0$显然，若$||x(t)||=0$，则有$x(a)=0$且$\mathop \text{V}\limits_a^b(x(t))=0$。取对半划分$\forall t \in [a,b]$：
+\item 1. 正定性：$\|x(t)\| \geq 0$显然，若$\|x(t)\|=0$，则有$x(a)=0$且$\mathop \text{V}\limits_a^b(x(t))=0$。取对半划分$\forall t \in [a,b]$：
 \[|x(a)-x(t)|+|x(t)-x(b)| \leq \mathop \text{V}\limits_a^b(x(t))=0 \ \Rightarrow \ |x(a)-x(t)|=|x(t)-x(b)|=0 \ \Rightarrow \ x(t)=x(a)=0\]
 \item 2. 齐次性：显然
 \item 3. 三角不等式：利用不等式$\text{sup}(A+B) \leq \text{sup}A+\text{sup}B$：
 \begin{equation*}
     \begin{aligned}
-        ||x(t)+y(t)|| & =|x(a)+y(a)|+\mathop \text{V}\limits_a^b(x(t)+y(t))\\
+        \|x(t)+y(t)\| & =|x(a)+y(a)|+\mathop \text{V}\limits_a^b(x(t)+y(t))\\
         & =|x(a)+y(a)|+\mathop \text{sup}\limits_p \sum|x_{i+1}(t)-x_i(t)+y_{i+1}(t)-y_i(t)| \\
         & \leq |x(a)|+|y(a)|+\mathop \text{sup}\limits_p \sum|x_{i+1}(t)-x_i(t)|+\mathop \text{sup}\limits_p \sum|y_{i+1}(t)-y_i(t)|\\
-        &=||x(t)||+||y(t)||
+        &=\|x(t)\|+\|y(t)\|
     \end{aligned}
 \end{equation*}
 \end{itemize}
@@ -101,28 +101,28 @@
 \quad $V[a,b]$是$[a,b]$上的有界变差函数构成的集合，是 Banach 空间。
 \end{example}
 \begin{proof}
-设$\{x_n\}$是$V[a,b]$中的柯西列，即$\forall \varepsilon>0 \ , \ \exists \, N>0 \quad \text{s.t.} \quad n,m \geq N \ , \ ||x_m-x_n||<\varepsilon$，对$[a,b]$上的任意有限划分$a=t_0<t_1<t_2<\cdots<t_n=b$都有：
+设$\{x_n\}$是$V[a,b]$中的柯西列，即$\forall \varepsilon>0 \ , \ \exists \, N>0 \quad \text{s.t.} \quad n,m \geq N \ , \ \|x_m-x_n\|<\varepsilon$，对$[a,b]$上的任意有限划分$a=t_0<t_1<t_2<\cdots<t_n=b$都有：
 $$|x_m(a)-x_n(a)|+\mathop \text{sup}\limits_p \sum |x_m(t_{i+1})-x_n(t_{i+1})-x_m(t_i)+x_n(t_i)|<\varepsilon$$
 由此可知$\{x_n(a)\}$是柯西列，类似的取对半划分：$\forall t \in [a,b]$有:
 \[|x_n(a)-x_n(t)|+|x_n(t)-x_n(b)| \leq \mathop \text{V}\limits_a^b(x_n(t))<\varepsilon \quad \Rightarrow \quad |x_n(a)-x_n(t)|<\varepsilon\]
 即$\{x_n(t)-x_n(a)\}$是柯西列，有限个柯西列的和还是柯西列，故可知$\{x_n(t)\}$是柯西列。记柯西列极限为$x(t)$，要证明$x(t)$在$V[a,b]$中，利用有限加和与极限可交换：
 \[\mathop \text{V}\limits_a^b(x(t))=x(a)+\mathop \text{sup}\limits_p \lim_{n \to \infty}\sum |x_n(t_{i+1})-x_n(t_i)|=\lim_{n \to \infty} \left ( x_n(a)+\mathop \text{sup}\limits_p \sum |x_n(t_{i+1})-x_n(t_i)| \right )\]
 因为$\{x_n(t)\}$是$V[a,b]$中的柯西列，故$\{x_n(t)\}$是$V[a,b]$中的有界集：
-\[\forall n \in \mathbb{N}_+ \ , \ \exists \, M>0 \quad \text{s.t.} \quad ||x_n(t)|| \leq M \quad \Rightarrow \quad \mathop \text{V}\limits_a^b(x(t)) \leq M \quad \Leftrightarrow \quad \mathop \text{V}\limits_a^b(x(t)) \in V[a,b]\]
+\[\forall n \in \mathbb{N}_+ \ , \ \exists \, M>0 \quad \text{s.t.} \quad \|x_n(t)\| \leq M \quad \Rightarrow \quad \mathop \text{V}\limits_a^b(x(t)) \leq M \quad \Leftrightarrow \quad \mathop \text{V}\limits_a^b(x(t)) \in V[a,b]\]
 综上所述，$\forall t \in [a,b]$，$x_n(t)$逐点收敛到$x(t) \in V[a,b]$。在此基础上，可以证明$x_n(t)$强收敛于$x(t)$：
-\[||x_n(t)-x(t)||=|x_n(a)-x(a)|+\mathop \text{sup}\limits_p \sum |x_n(t_{i+1})-x(t_{i+1})-x_n(t_i)+x(t_i)|\]
+\[\|x_n(t)-x(t)\|=|x_n(a)-x(a)|+\mathop \text{sup}\limits_p \sum |x_n(t_{i+1})-x(t_{i+1})-x_n(t_i)+x(t_i)|\]
 \[\exists \, N>0 \quad \text{s.t.} \quad n>N \ , \ |x_n(a)-x(a)|=\lim_{m \to \infty}|x_n(a)-x_m(a)|<\varepsilon\]
 \[\forall p \ , \ \mathop \text{sup}\limits_p \sum |x_n(t_{i+1})-x(t_{i+1})-x_n(t_i)+x(t_i)|=\lim_{m \to \infty}\mathop \text{sup}\limits_p \sum |x_n(t_{i+1})-x_m(t_{i+1})-x_n(t_i)+x_m(t_i)|\]
 \[\leq \lim_{m \to \infty}\mathop \text{sup}\limits_p \sum |x_n(t_{i+1})-x_n(t_i)|+\lim_{m \to \infty}\mathop \text{sup}\limits_p \sum |x_m(t_{i+1})-x_m(t_i)|<\varepsilon+\varepsilon=2\varepsilon\]
-即$\forall \varepsilon>0 \ , \ \exists \, N>0$满足$n>N \ , \ ||x_n(t)-x(t)||<3\varepsilon$即是$x_n \to x$。
+即$\forall \varepsilon>0 \ , \ \exists \, N>0$满足$n>N \ , \ \|x_n(t)-x(t)\|<3\varepsilon$即是$x_n \to x$。
 \end{proof}
 
 \subsection*{赋范线性空间的基本性质}
 下面介绍一些赋范线性空间的基本性质。如在赋范线性空间中我们可以定义连续：
 \begin{theorem}[赋范线性空间的连续性]
-    设$(X,||\cdot||)$是赋范线性空间，则：
+    设$(X,\|\cdot\|)$是赋范线性空间，则：
     \begin{itemize}
-        \item 1. 范数是连续函数，即$x_n \to x \ \Rightarrow \ ||x_n|| \to ||x|| \ (n \to \infty)$
+        \item 1. 范数是连续函数，即$x_n \to x \ \Rightarrow \ \|x_n\| \to \|x\| \ (n \to \infty)$
         \item 2. 线性运算是连续映射：
         \begin{itemize}
             \item 1. $x_n \to x \ , \ y_n \to y \ \Rightarrow \ x_n+y_n \to x+y$
@@ -133,13 +133,13 @@ $$|x_m(a)-x_n(a)|+\mathop \text{sup}\limits_p \sum |x_m(t_{i+1})-x_n(t_{i+1})-x_
 \begin{proof}
 \begin{itemize}
 \item 1. 
-\[||x_n||=||x_n-x+x|| \leq ||x_n-x||+||x|| \ \Rightarrow \ ||x_n||-||x|| \leq ||x_n-x||\]
-\[||x||=||x-x_n+x_n|| \leq ||x-x_n||+||x_n|| \ \Rightarrow \ ||x||-||x_n|| \leq ||x_n-x||\]
-\[\Rightarrow \ \text{\Large|} ||x||-||x_n|| \text{\Large|} \leq ||x_n-x|| \to 0 \ \Rightarrow \ ||x_n|| \to ||x||\]
+\[\|x_n\|=\|x_n-x+x\| \leq \|x_n-x\|+\|x\| \ \Rightarrow \ \|x_n\|-\|x\| \leq \|x_n-x\|\]
+\[\|x\|=\|x-x_n+x_n\| \leq \|x-x_n\|+\|x_n\| \ \Rightarrow \ \|x\|-\|x_n\| \leq \|x_n-x\|\]
+\[\Rightarrow \ \text{\Large|} \|x\|-\|x_n\| \text{\Large|} \leq \|x_n-x\| \to 0 \ \Rightarrow \ \|x_n\| \to \|x\|\]
 \item 2-1
-\[||x_n+y_n-x-y|| \leq ||x_n-x||+||y_n-y|| \to 0\]
+\[\|x_n+y_n-x-y\| \leq \|x_n-x\|+\|y_n-y\| \to 0\]
 \item 2-2
-\[||a_nx_n-ax|| \leq ||a_nx_n-ax_n+ax_n-ax|| \leq ||a_nx_n-ax_n||+||ax_n-ax||=|a_n-a|||x_n||+|a|||x_n-x|| \to 0\]
+\[\|a_nx_n-ax\| \leq \|a_nx_n-ax_n+ax_n-ax\| \leq \|a_nx_n-ax_n\|+\|ax_n-ax\|=|a_n-a|\cdot\|x_n\|+|a|\cdot\|x_n-x\| \to 0\]
 \end{itemize}
 \end{proof}
 
@@ -152,16 +152,16 @@ $$|x_m(a)-x_n(a)|+\mathop \text{sup}\limits_p \sum |x_m(t_{i+1})-x_n(t_{i+1})-x_
 若部分和有极限$S_n \to S$，则称级数存在极限。
 \end{definition}
 \begin{theorem}
-\[(X,||\cdot||) \ \text{是 Banach 空间，若级数} \ \sum_{n=1}^{\infty}||x_n|| \ \text{收敛，则} \ \sum_{n=1}^{\infty}x_n \ \text{收敛且} \ \left\| \sum_{n=1}^{\infty}x_n \right\| \leq \sum_{n=1}^{\infty}||x_n||\]
+\[(X,\|\cdot\|) \ \text{是 Banach 空间，若级数} \ \sum_{n=1}^{\infty}\|x_n\| \ \text{收敛，则} \ \sum_{n=1}^{\infty}x_n \ \text{收敛且} \ \left\| \sum_{n=1}^{\infty}x_n \right\| \leq \sum_{n=1}^{\infty}\|x_n\|\]
 \end{theorem}
 \begin{proof}
 部分和的模长
-\[||S_j||=\left\| \sum_{n=1}^jx_n \right\| \leq \sum_{n=1}^j||x_n||\]
-由于模长的级数$\sum ||x_n||$存在：
-\[\sum_{n=1}^{\infty}||x_n||<+\infty \quad \Leftrightarrow \quad \forall \varepsilon>0 \ , \ \exists \, N>0 \quad \text{s.t.} \quad j>i \geq N \ , \ \sum_{n=i}^j||x_n||<\varepsilon \quad \Rightarrow \quad ||S_{j+1}-S_{i-1}||=\sum_{n=i}^j||x_n||<\varepsilon\]
+\[\|S_j\|=\left\| \sum_{n=1}^jx_n \right\| \leq \sum_{n=1}^j\|x_n\|\]
+由于模长的级数$\sum \|x_n\|$存在：
+\[\sum_{n=1}^{\infty}\|x_n\|<+\infty \quad \Leftrightarrow \quad \forall \varepsilon>0 \ , \ \exists \, N>0 \quad \text{s.t.} \quad j>i \geq N \ , \ \sum_{n=i}^j\|x_n\|<\varepsilon \quad \Rightarrow \quad \|S_{j+1}-S_{i-1}\|=\sum_{n=i}^j\|x_n\|<\varepsilon\]
 可知部分和序列$\{S_n\}$是柯西列，即$\exists \, S \in X$满足$S_n \to S$，即$\sum x_n$收敛。
-进而，由范数$||\cdot||$的连续性，对不等式两边取极限即证毕。
-\[\left\| \sum_{n=1}^jx_n \right\| \leq \sum_{n=1}^j||x_n|| \quad \Rightarrow \quad \left\| \sum_{n=1}^{\infty}x_n \right\| \leq \sum_{n=1}^{\infty}||x_n||\]
+进而，由范数$\|\cdot\|$的连续性，对不等式两边取极限即证毕。
+\[\left\| \sum_{n=1}^jx_n \right\| \leq \sum_{n=1}^j\|x_n\| \quad \Rightarrow \quad \left\| \sum_{n=1}^{\infty}x_n \right\| \leq \sum_{n=1}^{\infty}\|x_n\|\]
 \end{proof}
 
 \begin{definition}[凸集]
@@ -173,15 +173,15 @@ $$|x_m(a)-x_n(a)|+\mathop \text{sup}\limits_p \sum |x_m(t_{i+1})-x_n(t_{i+1})-x_
 \end{figure}
 
 \begin{theorem}
-    设$(X,||\cdot||)$是赋范线性空间，原点的球邻域$B_r(0)$是凸集。
+    设$(X,\|\cdot\|)$是赋范线性空间，原点的球邻域$B_r(0)$是凸集。
 \end{theorem}
 \begin{proof}
-$B_r(0)=\{x|x \in X \ ,||x||<r\}$，设$x,y \in B_r(0) \ , \ t \in (0,1)$，则有
-\[||tx+(1-t)y|| \leq ||tx||+||(1-t)y||=|t|||x||+|1-t|||y||<tr+(1-t)r=r \quad \Rightarrow \quad tx+(1-t)y \in B_r(0)\]
+$B_r(0)=\{x|x \in X \ ,\|x\|<r\}$，设$x,y \in B_r(0) \ , \ t \in (0,1)$，则有
+\[\|tx+(1-t)y\| \leq \|tx\|+\|(1-t)y\|=|t|\cdot\|x\|+|1-t|\cdot\|y\|<tr+(1-t)r=r \quad \Rightarrow \quad tx+(1-t)y \in B_r(0)\]
 \end{proof}
 
 \begin{proposition}
-    $(X,||\cdot||)$中任意球是凸集。
+    $(X,\|\cdot\|)$中任意球是凸集。
 \end{proposition}
 凸集还有其他基本性质，如任意个凸集的交集是凸集（赋范线性空间中任意个球的交集是凸集）。
 
@@ -201,14 +201,14 @@ $B_r(0)=\{x|x \in X \ ,||x||<r\}$，设$x,y \in B_r(0) \ , \ t \in (0,1)$，则�
 设$E$是$\mathbb{R}$上的可测集。$L^p$空间定义为：
 \[L^p(E)=\left\{x(t) \ \text{可测} \ , \ \int_E|x(t)|^p<+\infty\right\}\]
 这里$x(t)$是等价类，为方便书写取一代表元，这里$x(t) \sim y(t)$当且仅当$x(t)=y(t) \quad a.e.$，定义范数：
-\[||x(t)||_{L^p(E)}=\left(\int_E|x(t)|^p\dd t\right)^{\frac{1}{p}}\]
+\[\|x(t)\|_{L^p(E)}=\left(\int_E|x(t)|^p\dd t\right)^{\frac{1}{p}}\]
 \end{definition}
 \begin{proof}
 \begin{itemize}
 \item 1. 正定性
-\[||x(t)|| \geq 0 \ \text{显然，若}||x(t)||=0 \ \Rightarrow \ \int_E|x(t)|^p\dd t=0 \ \text{，不妨设} \ m(E)>0 \ \Rightarrow \ x(t)=0 \quad a.e.\]
+\[\|x(t)\| \geq 0 \ \text{显然，若}\|x(t)\|=0 \ \Rightarrow \ \int_E|x(t)|^p\dd t=0 \ \text{，不妨设} \ m(E)>0 \ \Rightarrow \ x(t)=0 \quad a.e.\]
 \item 2. 齐次性
-\[||kx(t)||=\left(\int_Ek|x(t)|^p\dd t\right)^{\frac{1}{p}}=\left(|k|^p\int_E|x(t)|^p\dd t\right)^{\frac{1}{p}}=|k|\left(\int_E|x(t)|^p\dd t\right)^{\frac{1}{p}}\]
+\[\|kx(t)\|=\left(\int_Ek|x(t)|^p\dd t\right)^{\frac{1}{p}}=\left(|k|^p\int_E|x(t)|^p\dd t\right)^{\frac{1}{p}}=|k|\left(\int_E|x(t)|^p\dd t\right)^{\frac{1}{p}}\]
 \item 3. 三角不等式：Minkowski 不等式（要证明 Minkowski 不等式，我们需要一些其他的基础不等式）
 \end{itemize}
 \end{proof}
@@ -232,11 +232,11 @@ $B_r(0)=\{x|x \in X \ ,||x||<r\}$，设$x,y \in B_r(0) \ , \ t \in (0,1)$，则�
     设$E$是可测集，$x(t),y(t)$是$E$上的可测函数，则有
     \[\int_E|x(t)y(t)|\dd t \leq \left(\int_E|x(t)|^p\dd t\right)^{\frac{1}{p}}\left(\int_E|y(t)|^q\dd t\right)^{\frac{1}{q}} \ , \ (p,q>0 \ , \ \frac{1}{p}+\frac{1}{q}=1)\]
     若$x(t) \in L^p(E) \ , \ y(t) \in L^q(E)$则
-    \[\int_E|x(t)y(t)|\dd t \leq ||x(t)||_{L^p(E)}||y(t)||_{L^q(E)}\]
+    \[\int_E|x(t)y(t)|\dd t \leq \|x(t)\|_{L^p(E)}\|y(t)\|_{L^q(E)}\]
 \end{theorem}
 \begin{proof}
 设
-\[A=||x(t)||_{L^p(E)}=\left(\int_E|x(t)|^p\dd t\right)^{\frac{1}{p}} \ , \ B=||y(t)||_{L^q(E)}=\left(\int_E|y(t)|^q\dd t\right)^{\frac{1}{q}}\]
+\[A=\|x(t)\|_{L^p(E)}=\left(\int_E|x(t)|^p\dd t\right)^{\frac{1}{p}} \ , \ B=\|y(t)\|_{L^q(E)}=\left(\int_E|y(t)|^q\dd t\right)^{\frac{1}{q}}\]
 由 Young 不等式:
 \[\frac{|x(t)| \cdot |y(t)|}{A \cdot B} \leq \frac{1}{p}\frac{|x(t)|^p}{A^p}+\frac{1}{q}\frac{|y(t)|^q}{B^q} \ \Rightarrow \ \frac{\int_E|x(t)y(t)|\dd t}{A \cdot B} \leq \frac{1}{p}\frac{\int_E|x(t)|^p\dd t}{A^p}+\frac{1}{q}\frac{\int_E|y(t)|^q\dd t}{B^q}=1\]
 \end{proof}
@@ -245,7 +245,7 @@ $B_r(0)=\{x|x \in X \ ,||x||<r\}$，设$x,y \in B_r(0) \ , \ t \in (0,1)$，则�
 设$x(t),y(t) \in L^p(E) \ (p \geq 1)$，则有
 \[\left(\int_E|x(t)+y(t)|^p\dd t\right)^{\frac{1}{p}} \leq \left(\int_E|x(t)|^p\dd t\right)^{\frac{1}{p}}+\left(\int_E|y(t)|^p\dd t\right)^{\frac{1}{p}}\]
 即
-\[||x(t)+y(t)||_{L^p(E)} \leq ||x(t)||_{L^p(E)}+||y(t)||_{L^p(E)}\]
+\[\|x(t)+y(t)\|_{L^p(E)} \leq \|x(t)\|_{L^p(E)}+\|y(t)\|_{L^p(E)}\]
 \end{theorem}
 \begin{proof}
 $p=1$时，显然；$p>1$时，有
@@ -264,11 +264,11 @@ $p=1$时，显然；$p>1$时，有
 \begin{theorem}[Riesz-Fischer 定理]\label{theorem:rf}
     $L^p(E) \ (p \geq 1)$是$Banach$空间。\footnote{这里我们指定$E$是$\mathbb{R}$上的可测集，因为说明这种情况比较简单(懒}
 \end{theorem}
-\begin{proof}目标是通过$L^p$中的收敛控制$L^1$的收敛（H\"{o}lder 不等式），进而得到柯西列收敛从而证明完备性。设$\{x_n(t)\}$是$L^p(E)$中的柯西列，取子列$\{x_{n_k}(t)\}$满足$||x_{n_{k+l}}-x_{n_k}||<2^{-k} \ (k=1,2,3,\cdots)$。在下面的讨论中我们需要用到$m(E)<+\infty$这个条件，但这并不是总能满足，因此取可测集$E_1 \subset E \ , \ m(E_1)<+\infty$，由 H\"{o}lder 不等式：
+\begin{proof}目标是通过$L^p$中的收敛控制$L^1$的收敛（H\"{o}lder 不等式），进而得到柯西列收敛从而证明完备性。设$\{x_n(t)\}$是$L^p(E)$中的柯西列，取子列$\{x_{n_k}(t)\}$满足$\|x_{n_{k+l}}-x_{n_k}\|<2^{-k} \ (k=1,2,3,\cdots)$。在下面的讨论中我们需要用到$m(E)<+\infty$这个条件，但这并不是总能满足，因此取可测集$E_1 \subset E \ , \ m(E_1)<+\infty$，由 H\"{o}lder 不等式：
 \begin{equation*}
 \begin{aligned}
 \int_{E_1}|x_{n_{k+1}}(t)-x_{n_k}(t)|\dd t & \leq \left(\int_{E_1}1^q\dd t\right)^{\frac{1}{q}}\left(\int_{E_1}|x_{n_{k+1}}(t)-x_{n_k}(t)|^p\right)^{\frac{1}{p}} \\
-& \leq \left[m(E_1)\right]^{\frac{1}{q}}||x_{n_{k+1}}(t)-x_{n_k}(t)||_{L^p(E_1)} \leq \left[m(E_1)\right]^{\frac{1}{q}}\cdot 2^{-k}
+& \leq \left[m(E_1)\right]^{\frac{1}{q}}\|x_{n_{k+1}}(t)-x_{n_k}(t)\|_{L^p(E_1)} \leq \left[m(E_1)\right]^{\frac{1}{q}}\cdot 2^{-k}
 \end{aligned}
 \end{equation*}
 由 Fatou 引理：
@@ -277,11 +277,11 @@ $p=1$时，显然；$p>1$时，有
 \[x_{n_l}(t)=x_{n_1}(t)+\sum_{k=1}^{l-1}\left(x_{n_{k+1}}(t)-x_{n_k}(t)\right) \leq x_{n_1}(t)+\sum_{k=1}^{l-1}|x_{n_{k+1}}(t)-x_{n_k}(t)| \ \text{在} \ E \ \text{上} \ a.e. \ \text{收敛}\]
 
 记$x_{n_l}(t)$极限为$x(t)$，柯西列得到的是逐点收敛，为了证明完备性，下面要证明的自然是$x(t) \in L^p(E)$且$x_{n_l}(t) \to x(t)$，由 Fatou 引理(也可以用控制收敛定理)及柯西列的有界性:
-\[\int_E|x(t)|^p\dd t=\int_E\lim_{l \to \infty}|x_{n_l}(t)|^p\dd t \leq \lim_{l \to \infty}\int_E|x_{n_l}(t)|^p\dd t=\lim_{l \to \infty}||X_{n_l}(t)||^p_{L^p(E)}<+\infty \quad \Leftrightarrow \quad x(t) \in L^p(E)\]
+\[\int_E|x(t)|^p\dd t=\int_E\lim_{l \to \infty}|x_{n_l}(t)|^p\dd t \leq \lim_{l \to \infty}\int_E|x_{n_l}(t)|^p\dd t=\lim_{l \to \infty}\|X_{n_l}(t)\|^p_{L^p(E)}<+\infty \quad \Leftrightarrow \quad x(t) \in L^p(E)\]
 \begin{equation*}
 \begin{aligned}
-||x_{n_k}(t)-x(t)||^p_{L^p(E)} & =\int_E|x_{n_k}(t)-x(t)|^p\dd t=\int_E\lim_{l \to \infty}|x_{n_k}(t)-x_{n_l}(t)|^p\dd t \\
-& \leq \lim_{l \to \infty}\int_E|x_{n_k}(t)-x_{n_l}(t)|^p\dd t=\lim_{l \to \infty}||x_{n_k}(t)-x_{n_l}(t)||^p_{L^p(E)} \leq \left(\frac{1}{2^k}\right)^p \to 0
+\|x_{n_k}(t)-x(t)\|^p_{L^p(E)} & =\int_E|x_{n_k}(t)-x(t)|^p\dd t=\int_E\lim_{l \to \infty}|x_{n_k}(t)-x_{n_l}(t)|^p\dd t \\
+& \leq \lim_{l \to \infty}\int_E|x_{n_k}(t)-x_{n_l}(t)|^p\dd t=\lim_{l \to \infty}\|x_{n_k}(t)-x_{n_l}(t)\|^p_{L^p(E)} \leq \left(\frac{1}{2^k}\right)^p \to 0
 \end{aligned}
 \end{equation*}
 即$x_{n_k}(t)$强收敛于$x(t)$：$x_{n_k}(t) \to x(t)$。
@@ -298,21 +298,21 @@ $p=1$时，显然；$p>1$时，有
 \right.
 \quad \Rightarrow \quad \int_E|x(t)|^p\dd t=\sum_{n=1}^{\infty} \ \int\limits_{E \cap \{n<|x(t)| \leq n+1\}}|x(t)|^p\dd t<\infty\]
 \[\Rightarrow \quad \forall \varepsilon>0 \ , \ \exists \, N>0 \quad \text{s.t.} \quad n \geq N \ , \ \int\limits_{E \cap \{|x(t)|>n\}}|x(t)|^p\dd t<\left(\frac{\varepsilon}{3}\right)^p\]
-\[\Rightarrow \quad ||x_n(t)-x(t)||_{L^p(E)}=\left(\int_E|x_n(t)-x(t)|^p\dd t\right)^{\frac{1}{p}}=\left( \ \int\limits_{E \cap \{|x(t)|>n\}}|x(t)|^p\dd t\right)^{\frac{1}{p}}<\left(\frac{\varepsilon}{3}\right)^{p \cdot \frac{1}{p}}=\frac{\varepsilon}{3}\]
+\[\Rightarrow \quad \|x_n(t)-x(t)\|_{L^p(E)}=\left(\int_E|x_n(t)-x(t)|^p\dd t\right)^{\frac{1}{p}}=\left( \ \int\limits_{E \cap \{|x(t)|>n\}}|x(t)|^p\dd t\right)^{\frac{1}{p}}<\left(\frac{\varepsilon}{3}\right)^{p \cdot \frac{1}{p}}=\frac{\varepsilon}{3}\]
 取定一个$n \geq N$，由 Lusin 定理[定理\ref{theorem:lusin}]：
 \[\exists \, y(t) \in C[a,b] \ , \ \mathop \text{sup}\limits_{t \in [a,b]}|y(t)| \leq 2n \quad \text{s.t.} \quad m(\{y(t) \neq x(t)\} \cap E)<\left(\frac{\varepsilon}{3}\right)^p \cdot \frac{1}{(3n)^p}\]
 对任意$y(t) \in C[a,b]$，$\min\{|y(t)|,2n\} \in C[a,b]$且因为$|x(t)|<n$，上述取法对计算$m(\{y(t)=x_n(t)\})$没有影响。
 \begin{equation*}
 \begin{aligned}
-||x_n(t)-y(t)||_{L^p(E)}&=\left(\int_E|x_n(t)-y(t)|^p\dd t\right)^{\frac{1}{p}}=\left( \ \int\limits_{E \cap \{x_n(t) \neq y(t)\}}|x_n(t)-y(t)|^p\dd t\right)^{\frac{1}{p}}\\
+\|x_n(t)-y(t)\|_{L^p(E)}&=\left(\int_E|x_n(t)-y(t)|^p\dd t\right)^{\frac{1}{p}}=\left( \ \int\limits_{E \cap \{x_n(t) \neq y(t)\}}|x_n(t)-y(t)|^p\dd t\right)^{\frac{1}{p}}\\
 &\leq \left( \ \int\limits_{E \cap \{x_n(t) \neq y(t)\}}(n+2n)^p\dd t\right)^{\frac{1}{p}} \leq \left(\left(\frac{\varepsilon}{3}\right)^p \cdot \frac{1}{(3n)^p} \cdot (3n)^p\right)^{\frac{1}{p}}=\frac{\varepsilon}{3}
 \end{aligned}
 \end{equation*}
 由 Weierstrass 定理[定理\ref{theorem:Weierstrass}]，存在有理系数多项式$P(t)$使得
-\[\mathop \text{sup}\limits_{t \in [a,b]}|P(t)-y(t)|<\frac{\varepsilon}{3m(E)^{\frac{1}{p}}} \quad \Rightarrow \quad ||P(t)-y(t)||_{L^p(E)}=\left(\int_E|P(t)-y(t)|^p\dd t\right)^{\frac{1}{p}} \leq \left(m(E) \cdot \frac{\varepsilon^p}{3^pm(E)}\right)^{\frac{1}{p}}=\frac{\varepsilon}{3}\]
+\[\mathop \text{sup}\limits_{t \in [a,b]}|P(t)-y(t)|<\frac{\varepsilon}{3m(E)^{\frac{1}{p}}} \quad \Rightarrow \quad \|P(t)-y(t)\|_{L^p(E)}=\left(\int_E|P(t)-y(t)|^p\dd t\right)^{\frac{1}{p}} \leq \left(m(E) \cdot \frac{\varepsilon^p}{3^pm(E)}\right)^{\frac{1}{p}}=\frac{\varepsilon}{3}\]
 由三角不等式
-\[||P(t)-x(t)||_{L^p(E)} \leq ||P(t)-y(t)||_{L^p(E)}+||y(t)-x_n(t)||_{L^p(E)}+||x_n(t)-x(t)||_{L^p(E)}<\varepsilon\]
-由$\varepsilon$的任意性，得$||P(t)-x(t)||_{L^p(E)} \to 0$。即有理多项式集合在$L^p(E)$中稠密，即$L^p(E)$可分。
+\[\|P(t)-x(t)\|_{L^p(E)} \leq \|P(t)-y(t)\|_{L^p(E)}+\|y(t)-x_n(t)\|_{L^p(E)}+\|x_n(t)-x(t)\|_{L^p(E)}<\varepsilon\]
+由$\varepsilon$的任意性，得$\|P(t)-x(t)\|_{L^p(E)} \to 0$。即有理多项式集合在$L^p(E)$中稠密，即$L^p(E)$可分。
 \end{proof}
 
 在这 Riesz-Fischer 定理[定理\ref{theorem:rf}]的证明中，我们有提到过不同范数之间的强弱：
@@ -328,19 +328,19 @@ $p=1$时，显然；$p>1$时，有
 \end{definition}
 \begin{definition}
 我们将$L^{\infty}(E)$空间定义为$L^{\infty}(E)=\left\{E\text{上本质有界的可测函数构成的集合}\right\}$，并且定义$L^{\infty}(E)$范数：
-\[||x(t)||_{L^p(E)}=\mathop \text{inf}\limits_{\substack{E_0 \subset E \\ m(E_0)=0}}\mathop \text{sup}\limits_{E/E_0}|x(t)|\]
+\[\|x(t)\|_{L^p(E)}=\mathop \text{inf}\limits_{\substack{E_0 \subset E \\ m(E_0)=0}}\mathop \text{sup}\limits_{E/E_0}|x(t)|\]
 \end{definition}
 \begin{proof}
-可以验证$||x(t)||_{L^p(E)}$也是范数，同时可以证明$||x(t)||_{L^p(E)}<\infty \ \Leftrightarrow \ $本质有界。
+可以验证$\|x(t)\|_{L^p(E)}$也是范数，同时可以证明$\|x(t)\|_{L^p(E)}<\infty \ \Leftrightarrow \ $本质有界。
 
-若$x(t)$本质有界，则$\exists \, E_0 \quad \text{s.t.} \quad E-E_0$上$|x(t)|$有界$ \ \Rightarrow \ ||x(t)||_{L^{\infty}(E)}<\infty$。反之，由下确界的性质有:
-\[\forall n \in \mathbb{Z}_+ \ , \ \exists \,E_n \subset E \ , \ m(E_n)=0 \quad \text{s.t.} \quad \mathop \text{sup}\limits_{E/E_n}|x(t)|<||x(t)||_{L^{\infty}(E)}+\frac{1}{n}\]
-\[E_0=\bigcup_{n=1}^{\infty}E_n \ , \ m(E_n)=0 \quad \Rightarrow \quad m(E_0)=0 \quad \Rightarrow \quad \mathop \text{sup}\limits_{E/E_0}|x(t)|<||x(t)||_{L^{\infty}(E)}<\infty\]
+若$x(t)$本质有界，则$\exists \, E_0 \quad \text{s.t.} \quad E-E_0$上$|x(t)|$有界$ \ \Rightarrow \ \|x(t)\|_{L^{\infty}(E)}<\infty$。反之，由下确界的性质有:
+\[\forall n \in \mathbb{Z}_+ \ , \ \exists \,E_n \subset E \ , \ m(E_n)=0 \quad \text{s.t.} \quad \mathop \text{sup}\limits_{E/E_n}|x(t)|<\|x(t)\|_{L^{\infty}(E)}+\frac{1}{n}\]
+\[E_0=\bigcup_{n=1}^{\infty}E_n \ , \ m(E_n)=0 \quad \Rightarrow \quad m(E_0)=0 \quad \Rightarrow \quad \mathop \text{sup}\limits_{E/E_0}|x(t)|<\|x(t)\|_{L^{\infty}(E)}<\infty\]
 即$x(t)$本质有界。
 \end{proof}
 
 \begin{definition}[本质上界] \label{infty}
-    我们称$||x(t)||_{L^{\infty}} (E)$为$x(t)$在$E$上的本质上界(确实是对$|x(t)|$而言的)。
+    我们称$\|x(t)\|_{L^{\infty}} (E)$为$x(t)$在$E$上的本质上界(确实是对$|x(t)|$而言的)。
 \end{definition}
 
 \begin{proposition}[$L^{\infty}(E)$空间的性质]
@@ -348,7 +348,7 @@ $p=1$时，显然；$p>1$时，有
 \[L^{\infty}(E) \subset \bigcap_{p \geq p_0}L^{p}(E) \ (\forall p_0 \geq 1)\]
 但需要注意
 \[L^{\infty}(E) \neq \bigcap_{p \geq p_0}L^{p}(E) \ (\forall p_0 \geq 1)\]
-同时我们也容易看出来$||x||_{L^p(E)} \leq ||x||_{L^{\infty}(E)}$，毕竟正常$L^p$范数可以看作是对函数值的p次几何平均，而$L^{\infty}$范数只取了极大值。
+同时我们也容易看出来$\|x\|_{L^p(E)} \leq \|x\|_{L^{\infty}(E)}$，毕竟正常$L^p$范数可以看作是对函数值的p次几何平均，而$L^{\infty}$范数只取了极大值。
 \end{proposition}
 
 \begin{example}
@@ -356,10 +356,10 @@ $p=1$时，显然；$p>1$时，有
 \end{example}
 
 \begin{theorem}
-    $(L^{\infty}(E),||\cdot||_{L^{\infty}(E)})$是 Banach 空间。
+    $(L^{\infty}(E),\|\cdot\|_{L^{\infty}(E)})$是 Banach 空间。
 \end{theorem}
 \begin{proof}
-设$\{x_n(t)\}$是柯西列，则$\exists \, \{x_{n_{k}}(t)\} \subset \{x_n(t)\}$满足$\forall k,l \in \mathbb{N} \ , \ ||x_{n_{k+l}}(t)-x_{n_{k}}(t)||<2^{-k}$，因此$\exists \, E_{k,l}$满足$m(E_{k,l})=0$，使得对$\forall k,l \in \mathbb{N}, \ t \in E/E_{k,l}$都有$|x_{n_{k+l}}(t)-x_{n_{k}}(t)|<2^{-k}$成立。由可列可加性：
+设$\{x_n(t)\}$是柯西列，则$\exists \, \{x_{n_{k}}(t)\} \subset \{x_n(t)\}$满足$\forall k,l \in \mathbb{N} \ , \ \|x_{n_{k+l}}(t)-x_{n_{k}}(t)\|<2^{-k}$，因此$\exists \, E_{k,l}$满足$m(E_{k,l})=0$，使得对$\forall k,l \in \mathbb{N}, \ t \in E/E_{k,l}$都有$|x_{n_{k+l}}(t)-x_{n_{k}}(t)|<2^{-k}$成立。由可列可加性：
 \[E_0=\bigcup_{k,l\in \mathbb{N}}E_{k,l} \quad \Rightarrow \quad m(E_0)=0 \quad \Rightarrow \quad \forall t \in E/E_0 \quad \text{s.t.} \quad \forall k,l \in \mathbb{N} \ , \ |x_{n_{k+l}}(t)-x_{n_{k}}(t)|<2^{-k}\]
 因此，如下级数存在：
 \[\forall t \in E/E_0 \quad \text{s.t.} \quad \sum_{k=1}^{\infty}|x_{n_{k+1}}(t)-x_{n_{k}}(t)|<\sum_{k=1}^{\infty}2^{-k}=1<+\infty\]
@@ -368,7 +368,7 @@ $p=1$时，显然；$p>1$时，有
 因此$x_{n_k}(t) \to x(t)\in L^{\infty}(E)$，证明完逐点收敛后下证依范数收敛。对$\forall t \in E/E_0$，
 \[|x_{n_{k+l}}(t)-x_{n_{k}}(t)|<2^{-k} \quad \Rightarrow \quad \forall l \in \mathbb{N}_+ \ , \  \mathop \text{sup}\limits_{E/E_0}|x_{n_{k+l}}(t)-x_{n_{k}}(t)| \leq 2^{-k} \quad \Rightarrow \quad \mathop \text{sup}\limits_{E/E_0}|x(t)-x_{n_{k}}(t)| \leq 2^{-k}\]
 因此对以下范数：
-\[||x(t)-x_{n_k}(t)||_{L^{\infty}(E)}=\mathop \text{inf}\limits_{\substack{E_0 \subset E \\ m(E_0)=0}} \mathop \text{sup}\limits_{E/E_0}|x(t)-x_{n_{k}}(t)| \leq 2^{-k} \ (\forall k=1,2,\cdots)\]
+\[\|x(t)-x_{n_k}(t)\|_{L^{\infty}(E)}=\mathop \text{inf}\limits_{\substack{E_0 \subset E \\ m(E_0)=0}} \mathop \text{sup}\limits_{E/E_0}|x(t)-x_{n_{k}}(t)| \leq 2^{-k} \ (\forall k=1,2,\cdots)\]
 令$k \to \infty \ , \ x_{n_k}(t) \to x(t)$即$x_{n_k}(t)$依范数收敛到$x(t)$。
 \end{proof}
 
@@ -376,9 +376,9 @@ $p=1$时，显然；$p>1$时，有
 在$\mathbb{Z}_+$上考虑计数测度$\mu_c$，数列$x=\{\xi_n\}_{n=1}^{\infty}$可视为$\mathbb{Z}_+$的可测函数，积分定义为：
 \[\int_{\mathbb{Z}_+}|x|^p\dd\mu_c=\sum_{n=1}^{\infty}|\xi_n|^p\]
 我们定义$l^p$空间：
-\[l^p=\{\{\xi_n\}_{n=1}^{\infty} \ , \ \sum_{n=1}^{\infty}|\xi_n|^p<\infty\}, \quad ||x||_{l^p}=\left(\sum_{n=1}^{\infty}|\xi_n|^p\right)^{\frac{1}{p}}\]
+\[l^p=\{\{\xi_n\}_{n=1}^{\infty} \ , \ \sum_{n=1}^{\infty}|\xi_n|^p<\infty\}, \quad \|x\|_{l^p}=\left(\sum_{n=1}^{\infty}|\xi_n|^p\right)^{\frac{1}{p}}\]
 当$p=\infty$时：
-\[l^{\infty}=\{\{\xi_n\}_{n=1}^{\infty} \ , \ \mathop \text{sup}\limits_{n \in \mathbb{Z}_+}|\xi_n|<\infty\}, \quad ||x||_{l^{\infty}}=\mathop \text{sup}\limits_{n \in \mathbb{Z}_+}|\xi_n|\]
+\[l^{\infty}=\{\{\xi_n\}_{n=1}^{\infty} \ , \ \mathop \text{sup}\limits_{n \in \mathbb{Z}_+}|\xi_n|<\infty\}, \quad \|x\|_{l^{\infty}}=\mathop \text{sup}\limits_{n \in \mathbb{Z}_+}|\xi_n|\]
 可以证明$l^p \ , \ l^{\infty}$是 Banach 空间。
 \end{definition}
 
@@ -386,7 +386,7 @@ $p=1$时，显然；$p>1$时，有
 \section{赋范线性空间的其他性质}
 \subsection{赋范线性空间的子空间与完备化}
 \begin{definition}[赋范线性空间的子空间]
-设$(X,||\cdot||)$是赋范线性空间，$X_1$是$X$的子空间，若$(X_1,||\cdot||)$是赋范线性空间，则称$(X_1,||\cdot||)$是$(X,||\cdot||)$的一个子空间。
+设$(X,\|\cdot\|)$是赋范线性空间，$X_1$是$X$的子空间，若$(X_1,\|\cdot\|)$是赋范线性空间，则称$(X_1,\|\cdot\|)$是$(X,\|\cdot\|)$的一个子空间。
 \end{definition}
 \begin{theorem}\label{theorem:zkj}
 \begin{itemize}
@@ -395,11 +395,11 @@ $p=1$时，显然；$p>1$时，有
 \end{itemize}
 \end{theorem}
 \begin{example}
-\quad $l^{\infty}$是 Banach 空间，$||x||=\mathop \text{sup}\limits_{n \in \mathbb{Z}_+}|\xi_n| \ , \ x=\{\xi_n\}$，记$c=\{l^{\infty}\text{中的收敛数列全体}\}$，$c$是 Banach 空间。
+\quad $l^{\infty}$是 Banach 空间，$\|x\|=\mathop \text{sup}\limits_{n \in \mathbb{Z}_+}|\xi_n| \ , \ x=\{\xi_n\}$，记$c=\{l^{\infty}\text{中的收敛数列全体}\}$，$c$是 Banach 空间。
 \end{example}
 \begin{proof}
 只需证明$c$是$l^{\infty}$的闭子空间。设$x_n=\{\xi_{n,i}\} \in c$，$x_n \to x=\{\xi_i\}$，需证$x \in c$，即证$\{\xi_i\}$是收敛数列：
-\[\forall \varepsilon>0 \ , \ \exists \, N>0 \quad \text{s.t.} \quad n \geq N \ , \ ||x_n-x||_{l^{\infty}}<\varepsilon \ \Rightarrow \ \exists \, N>0 \quad \text{s.t.} \quad n \geq N \ , \ \mathop \text{sup}\limits_{i \in \mathbb{Z}_+}|\xi_{n,i}-\xi_i|<\varepsilon\]
+\[\forall \varepsilon>0 \ , \ \exists \, N>0 \quad \text{s.t.} \quad n \geq N \ , \ \|x_n-x\|_{l^{\infty}}<\varepsilon \ \Rightarrow \ \exists \, N>0 \quad \text{s.t.} \quad n \geq N \ , \ \mathop \text{sup}\limits_{i \in \mathbb{Z}_+}|\xi_{n,i}-\xi_i|<\varepsilon\]
 由于$\{\xi_{n,i}\}$是收敛点列，故它是柯西列，则对$\forall \varepsilon>0 \ , \ \exists \, I_n>0 \ , \ i,j \geq I_n$有$|\xi_{n,i}-\xi_{n,j}|<\varepsilon$。因此：
 \[|\xi_{i}-\xi_{j}| \leq |\xi_{i}-\xi_{n,1}|+|\xi_{n,i}-\xi_{n,j}|+|\xi_{n,j}-\xi_{j}|<3\varepsilon\]
 即$x=\{\xi_i\}$是柯西列且是实数列，故$x$收敛，从而$x \in c$。
@@ -407,7 +407,7 @@ $p=1$时，显然；$p>1$时，有
 
 我们知道，赋范线性空间是一个距离空间，距离空间是可以完备化的，那么我们自然就会去思考，这样完备化得到的距离空间还是不是赋范线性空间呢？为此我们需要验证其线性结构(加法，数乘)以及范数。
 \begin{theorem}
-    设$(X,||\cdot||)$是不完备的赋范线性空间，它作为距离空间有完备化$\tilde{X}$,可以证明$\tilde{X}$是 Banach 空间。
+    设$(X,\|\cdot\|)$是不完备的赋范线性空间，它作为距离空间有完备化$\tilde{X}$,可以证明$\tilde{X}$是 Banach 空间。
 \end{theorem}
 \begin{proof}
 设$\tilde{x}=[\{x_n\}] \in \tilde{X}$是$X$中柯西列的等价类。
@@ -416,16 +416,16 @@ $p=1$时，显然；$p>1$时，有
 \item 2. 数乘 $k\tilde{x}=[\{kx_n\}]$：柯西列数乘后还是柯西列，且数乘的定义与等价类无关；
 \end{itemize}
 定义范数：
-\[||\tilde{x}||_{\tilde{X}}=\lim_{n \to \infty}||x_n||_X\]
+\[\|\tilde{x}\|_{\tilde{X}}=\lim_{n \to \infty}\|x_n\|_X\]
 验证：
 \begin{itemize}
-\item 1. $\{\tilde{x}_n\}$是柯西列：设$\{x_n\} \subset X$是柯西列，即$\forall \varepsilon>0 \ , \ \exists \, N>0$满足对$\forall m>n \geq N$有$||x_n-x_m||<\varepsilon$，利用三角不等式：
-$$\left|||x_n||-||x_m||\right| \leq ||x_n-x_m||<\varepsilon$$
+\item 1. $\{\tilde{x}_n\}$是柯西列：设$\{x_n\} \subset X$是柯西列，即$\forall \varepsilon>0 \ , \ \exists \, N>0$满足对$\forall m>n \geq N$有$\|x_n-x_m\|<\varepsilon$，利用三角不等式：
+$$\left| \|x_n\|-\|x_m\| \right| \leq \|x_n-x_m\|<\varepsilon$$
 当$m \to \infty$时，记极限为$x_m \to x$，则：
-$$\forall \varepsilon>0 \ , \ \exists \, N>0 \ , \ \forall n \geq N \ , \ \left|||x_n||-||x||\right|<\varepsilon$$
+$$\forall \varepsilon>0 \ , \ \exists \, N>0 \ , \ \forall n \geq N \ , \ \left| \|x_n\|-\|x\| \right|<\varepsilon$$
 即证。
-\item 2. $||\tilde{x}||_{\tilde{X}}$的取值与代表元的选取无关：我们定义等价类为$x \mapsto \tilde{x}=[\{x,x,\cdots\}]$，则$x$可嵌入$\tilde{x}$中，则：
-\[||\tilde{x}||_{\tilde{X}}=\lim_{n \to \infty}||x_n||_X=||x||_X\]
+\item 2. $\|\tilde{x}\|_{\tilde{X}}$的取值与代表元的选取无关：我们定义等价类为$x \mapsto \tilde{x}=[\{x,x,\cdots\}]$，则$x$可嵌入$\tilde{x}$中，则：
+\[\|\tilde{x}\|_{\tilde{X}}=\lim_{n \to \infty}\|x_n\|_X=\|x\|_X\]
 两个范数的定义是一致的，证毕。
 \end{itemize}
 \end{proof}
@@ -439,23 +439,23 @@ $V$是定义在数域$\mathbb{K}$上的一个有限维向量空间，$V$的商�
 
 \begin{definition}[无限维商空间]\label{definition:skj}
 假设X是赋范线性空间，$M$是$X$的闭子空间，在商空间$X/M$中定义范数：
-\[||\tilde{x}||=\mathop \text{inf}\limits_{y \in \tilde{x}}||y||=\mathop \text{inf}\limits_{y-x \in M}||y||=\mathop \text{inf}\limits_{z \in M}||x+z||\]
+\[\|\tilde{x}\|=\mathop \text{inf}\limits_{y \in \tilde{x}}\|y\|=\mathop \text{inf}\limits_{y-x \in M}\|y\|=\mathop \text{inf}\limits_{z \in M}\|x+z\|\]
 则课称$X/M$是关于$M$的赋范商空间。
 \end{definition}
 \begin{proof}
-可以验证$||\tilde{x}||$是范数：
+可以验证$\|\tilde{x}\|$是范数：
 \begin{itemize}
-\item 1. 正定性：$||\tilde{x}||>0$是显然的，而当
-\[||\tilde{x}||=0 \ , \ \exists \, \{y_n\} \subset \tilde{x} \quad \text{s.t.} \quad \lim_{n \to \infty}||y_n||=0\]
+\item 1. 正定性：$\|\tilde{x}\|>0$是显然的，而当
+\[\|\tilde{x}\|=0 \ , \ \exists \, \{y_n\} \subset \tilde{x} \quad \text{s.t.} \quad \lim_{n \to \infty}\|y_n\|=0\]
 而由于$M$是闭子空间，$x+M$也是闭子空间，故$\exists \, y \in \tilde{x}$满足$y_n \to y$：
-\[||y||=\lim_{n \to \infty}||y_n||=0 \quad \Rightarrow \quad y=0 \quad \Rightarrow \quad \tilde{x}=\tilde{y}=\tilde{0}\]
+\[\|y\|=\lim_{n \to \infty}\|y_n\|=0 \quad \Rightarrow \quad y=0 \quad \Rightarrow \quad \tilde{x}=\tilde{y}=\tilde{0}\]
 \item 2. 齐次性：
-\[||k\tilde{x}||=\mathop \text{inf}\limits_{y \in k\tilde{x}=\tilde{kx}}||y||=\mathop \text{inf}\limits_{z \in \tilde{x}}||kz||=|k|\mathop \text{inf}\limits_{z \in \tilde{x}}||z||=|k|||\tilde{x}||\] 
+\[\|k\tilde{x}\|=\mathop \text{inf}\limits_{y \in k\tilde{x}=\tilde{kx}}\|y\|=\mathop \text{inf}\limits_{z \in \tilde{x}}\|kz\|=|k|\mathop \text{inf}\limits_{z \in \tilde{x}}\|z\|=|k|\cdot\|\tilde{x}\|\] 
 \item 3. 三角不等式：
 \begin{equation*}
 \begin{aligned}
-||\tilde{x}+\tilde{y}||&=\mathop \text{inf}\limits_{z \in \tilde{x+y}}||z||=\mathop \text{inf}\limits_{z \in M}||x+y+z|| \leq \mathop \text{inf}\limits_{z \in M}\left(||x+\frac{1}{2}z||+||y+\frac{1}{2}z||\right)\\
-&\leq \mathop \text{inf}\limits_{z \in M}||x+\frac{1}{2}z||+||y+\mathop \text{inf}\limits_{z \in M}\frac{1}{2}z||=||\tilde{x}||+||\tilde{y}||
+\|\tilde{x}+\tilde{y}\|&=\mathop \text{inf}\limits_{z \in \tilde{x+y}}\|z\|=\mathop \text{inf}\limits_{z \in M}\|x+y+z\| \leq \mathop \text{inf}\limits_{z \in M}\left(\|x+\frac{1}{2}z\|+\|y+\frac{1}{2}z\|\right)\\
+&\leq \mathop \text{inf}\limits_{z \in M}\|x+\frac{1}{2}z\|+\|y+\mathop \text{inf}\limits_{z \in M}\frac{1}{2}z\|=\|\tilde{x}\|+\|\tilde{y}\|
 \end{aligned}
 \end{equation*}
 \end{itemize}
@@ -465,21 +465,21 @@ $V$是定义在数域$\mathbb{K}$上的一个有限维向量空间，$V$的商�
 若$X$是 Banach 空间，$M$是$X$的闭子空间，那么$X/M$是 Banach 空间。
 \end{theorem}
 \begin{proof}
-设$\{\tilde{x}_n\}$是$X/M$中的柯西列，取其子列$\{\tilde{x}_{n_k}\}$使得$||\tilde{x}_{n_{k+1}}-\tilde{x}_{n_k}||<2^{-k}$，由范数的定义：
-\[\mathop \text{inf}\limits_{y_k \in \tilde{x}_{n_{k+1}}-\tilde{x}_{n_k}}||y_k||<2^{-k} \quad (\forall k \in \mathbb{Z}_+) \quad \Leftrightarrow \quad \exists \, y_k \in \tilde{x}_{n_{k+1}}-\tilde{x}_{n_k} \quad \text{s.t.} \quad ||y_k||<2^{-k}\]
+设$\{\tilde{x}_n\}$是$X/M$中的柯西列，取其子列$\{\tilde{x}_{n_k}\}$使得$\|\tilde{x}_{n_{k+1}}-\tilde{x}_{n_k}\|<2^{-k}$，由范数的定义：
+\[\mathop \text{inf}\limits_{y_k \in \tilde{x}_{n_{k+1}}-\tilde{x}_{n_k}}\|y_k\|<2^{-k} \quad (\forall k \in \mathbb{Z}_+) \quad \Leftrightarrow \quad \exists \, y_k \in \tilde{x}_{n_{k+1}}-\tilde{x}_{n_k} \quad \text{s.t.} \quad \|y_k\|<2^{-k}\]
 可得级数$\sum y_k$在$X$中收敛，进而可知级数$x_{n+1}+\sum y_k$存在，记为$S$，同时记上述级数的部分和为$S_i$，则易知$S_i$在$X$中的收敛：
 \[S_i=x_{n_1}+\sum_{k=1}^{i-1}y_k\]
 则在商空间$X/M$中：
 \[\tilde{S}_i=\tilde{x}_{n_1}+\sum_{k=1}^{i-1}\tilde{y}_k=\tilde{x}_{n_1}+\sum_{k=1}^{i-1}\left(\tilde{x}_{n_{k+1}}-\tilde{x}_{n_k}\right)=\tilde{x}_{n_i}\]
-\[\Rightarrow \quad ||\tilde{x}_{n_i}-\tilde{x}||=||\tilde{S}_i-\tilde{x}||=\mathop \text{inf}\limits_{y \in \tilde{S}_i-\tilde{x}}||y|| \leq ||S_i-x||\rightarrow 0\]
+\[\Rightarrow \quad \|\tilde{x}_{n_i}-\tilde{x}\|=\|\tilde{S}_i-\tilde{x}\|=\mathop \text{inf}\limits_{y \in \tilde{S}_i-\tilde{x}}\|y\| \leq \|S_i-x\|\rightarrow 0\]
 子列收敛，故原柯西列也收敛。
 \end{proof}
 
 \begin{definition}[乘积空间]
-设$(X_1,||\cdot||_{X_1})$与$(X_2,||\cdot||_{X_2})$是赋范线性空间，则称$(X_1 \times X_2,||\cdot||)$为乘积空间，其中范数定义如下：
-\[||(x_1,x_2)||=||x_1||_{X_1}+||x_2||_{X_2} \quad (\forall x_1 \in X_1,x_2 \in X_2)\]
+设$(X_1,\|\cdot\|_{X_1})$与$(X_2,\|\cdot\|_{X_2})$是赋范线性空间，则称$(X_1 \times X_2,\|\cdot\|)$为乘积空间，其中范数定义如下：
+\[\|(x_1,x_2)\|=\|x_1\|_{X_1}+\|x_2\|_{X_2} \quad (\forall x_1 \in X_1,x_2 \in X_2)\]
 \end{definition}
-若$(X_1,||\cdot||_{X_1})$与$(X_2,||\cdot||_{X_2})$是 Banach 空间，则$(X_1 \times X_2,||\cdot||)$也为 Banach 空间。
+若$(X_1,\|\cdot\|_{X_1})$与$(X_2,\|\cdot\|_{X_2})$是 Banach 空间，则$(X_1 \times X_2,\|\cdot\|)$也为 Banach 空间。
 
 \subsection{赋范线性空间的基} \label{baseset}
 对有限维赋范线性空间$X$，如果我们称$\{e_i\}_{i=1}^n \subset X$为是$X$的一组基，则其应满足：
@@ -503,7 +503,7 @@ $V$是定义在数域$\mathbb{K}$上的一个有限维向量空间，$V$的商�
 \end{example}
 
 对于 Schauder 基还有以下小结论：
-\[x=\sum_{i=1}^{\infty}\xi_ie_i=\lim_{n \to \infty}\sum_{i=1}^{n}\xi_ie_i \quad \Leftrightarrow \quad ||x-\sum_{i=1}^n\xi_ie_i||=||\sum_{i=n+1}^{\infty}\xi_ie_i|| \rightarrow 0 \quad (n \rightarrow 0) \quad \Rightarrow \quad \xi_i \rightarrow 0\]
+\[x=\sum_{i=1}^{\infty}\xi_ie_i=\lim_{n \to \infty}\sum_{i=1}^{n}\xi_ie_i \quad \Leftrightarrow \quad \left\|x-\sum_{i=1}^n\xi_ie_i\right\|=\left\|\sum_{i=n+1}^{\infty}\xi_ie_i\right\| \rightarrow 0 \quad (n \rightarrow 0) \quad \Rightarrow \quad \xi_i \rightarrow 0\]
 该结论可以用于快速判断某些点列是不是 Schauder 基，同时，这其实也暗示了可分的赋范线性空间的基底数量也并不是很多。
 \begin{example}
 \quad $l^{\infty} \ , \ e_i=\{0,\cdots,0,1,0,\cdots\}$ (第$i$位为1)，$\{e_n\}_{n=1}^{\infty}$不是 Schauder 基。
@@ -528,33 +528,33 @@ Banach 空间$X$有 Schauder 基，则$X$可分。
 \begin{proof}
 \[\text{令}A=\left\{\left.x=\sum_{i=1}^nr_ie_i\right|r_i \in \mathbb{Q} \ , \ n \in \mathbb{N}\right\}\text{，则$A$是可数集}\]
 下证$A$在$X$中稠密，即:
-\[\forall \varepsilon>0 \ , \ x \in X \ , \ x=\sum_{i=1}^{\infty}\xi_ie_i \quad \Leftrightarrow \quad \lim_{n \to \infty}||x-\sum_{i=1}^n\xi_ie_i||=0 \quad \Leftrightarrow \quad \exists \, N \in \mathbb{N} \quad \text{s.t.} \quad ||x-\sum_{i=1}^N\xi_ie_i||<\frac{\varepsilon}{2}\]
+\[\forall \varepsilon>0 \ , \ x \in X \ , \ x=\sum_{i=1}^{\infty}\xi_ie_i \quad \Leftrightarrow \quad \lim_{n \to \infty}\|x-\sum_{i=1}^n\xi_ie_i\|=0 \quad \Leftrightarrow \quad \exists \, N \in \mathbb{N} \quad \text{s.t.} \quad \|x-\sum_{i=1}^N\xi_ie_i\|<\frac{\varepsilon}{2}\]
 容易看出:
-\[\exists \, r_1,r_2,\cdots,r_N \in \mathbb{Q} \ , \ y=\sum_{i=1}^Nr_ie_i \in A \quad \text{s.t.} \quad ||y-\sum_{i=1}^N\xi_ie_i||=||\sum_{i=1}^N(r_i-\xi_i)e_i|| \leq \sum_{i=1}^N|r_i-\xi_i|\cdot||e_i||\]
+\[\exists \, r_1,r_2,\cdots,r_N \in \mathbb{Q} \ , \ y=\sum_{i=1}^Nr_ie_i \in A \quad \text{s.t.} \quad \|y-\sum_{i=1}^N\xi_ie_i\|=\|\sum_{i=1}^N(r_i-\xi_i)e_i\| \leq \sum_{i=1}^N|r_i-\xi_i|\cdot\|e_i\|\]
 利用 Schwartz 不等式:
-\[\sum_{i=1}^N|r_i-\xi_i|\cdot||e_i|| \leq \sqrt{\sum_{i=1}^N|r_i-\xi_i|^2} \cdot \sqrt{\sum_{i=1}^N||e_i||^2} \leq N \cdot \mathop \text{max}\limits_i||e_i|| \cdot \mathop \text{max}\limits_i|r_i-\xi_i|<\frac{\varepsilon}{2}\]
+\[\sum_{i=1}^N|r_i-\xi_i|\cdot\|e_i\| \leq \sqrt{\sum_{i=1}^N|r_i-\xi_i|^2} \cdot \sqrt{\sum_{i=1}^N\|e_i\|^2} \leq N \cdot \mathop \text{max}\limits_i\|e_i\| \cdot \mathop \text{max}\limits_i|r_i-\xi_i|<\frac{\varepsilon}{2}\]
 故有
-\[||x-y|| \leq ||x-\sum_{i=1}^N\xi_ie_i||+||y-\sum_{i=1}^N\xi_ie_i||<\varepsilon\]
+\[\|x-y\| \leq \|x-\sum_{i=1}^N\xi_ie_i\|+\|y-\sum_{i=1}^N\xi_ie_i\|<\varepsilon\]
 \end{proof}
 
 但是反之并不一定成立，可分的 Banach 空间并不一定有 Schauder 基。同一个空间可以定义不同的范数，也即不同的距离函数，那不同距离函数之间是否有关系，他们的收敛性如何，拓扑关系如何？
 \begin{definition}[等价范数]
-设$||\cdot||_1,||\cdot||_2$是赋范线性空间$X$上的两个范数，若满足对$\forall x \in X \ , \ \exists \, c>0$有$||x||_1 \leq c||x||_2$，则称$||\cdot||_2$比$||\cdot||_1$强。如果$||\cdot||_1$比$||\cdot||_2$强且$||\cdot||_2$比$||\cdot||_1$强，则称$||\cdot||_2,||\cdot||_1$等价，即：
-\[\forall x \in X \ , \ \exists \, c_1,c_2>0 \quad \text{s.t.} \quad c_1||x||_1 \leq ||x||_2 \leq c_2||x||_1\]
+设$\|\cdot\|_1,\|\cdot\|_2$是赋范线性空间$X$上的两个范数，若满足对$\forall x \in X \ , \ \exists \, c>0$有$\|x\|_1 \leq c\|x\|_2$，则称$\|\cdot\|_2$比$\|\cdot\|_1$强。如果$\|\cdot\|_1$比$\|\cdot\|_2$强且$\|\cdot\|_2$比$\|\cdot\|_1$强，则称$\|\cdot\|_2,\|\cdot\|_1$等价，即：
+\[\forall x \in X \ , \ \exists \, c_1,c_2>0 \quad \text{s.t.} \quad c_1\|x\|_1 \leq \|x\|_2 \leq c_2\|x\|_1\]
 \end{definition}
 范数强想描述的事情就是一个范数能被另外一个范数控制：
 \begin{theorem}
-$||\cdot||_2$比$||\cdot||_1$强$ \quad \Leftrightarrow \quad \forall \{x_n\} \subset X \ , \ \text{if} \ ||x_n||_2 \to 0 \ , \ ||x_n||_1 \to 0$
+$\|\cdot\|_2$比$\|\cdot\|_1$强$ \quad \Leftrightarrow \quad \forall \{x_n\} \subset X \ , \ \text{if} \ \|x_n\|_2 \to 0 \ , \ \|x_n\|_1 \to 0$
 \end{theorem}
-\begin{proof}必要性：由范数强弱性可知，$\exists \, c>0$满足$0 \leq ||x_n||_1 \leq c||x_n||_2 \to 0$，可以推出$||x_n||_1 \to 0$。\\
-充分性：采用反证法，如若不然，则对$\forall k \in \mathbb{N} \ , \ \exists \, x_k \in X$满足$||x_k||_1>k||x_n||_2$。\\
+\begin{proof}必要性：由范数强弱性可知，$\exists \, c>0$满足$0 \leq \|x_n\|_1 \leq c\|x_n\|_2 \to 0$，可以推出$\|x_n\|_1 \to 0$。\\
+充分性：采用反证法，如若不然，则对$\forall k \in \mathbb{N} \ , \ \exists \, x_k \in X$满足$\|x_k\|_1>k\|x_n\|_2$。\\
 令：
-\[y=\frac{x_k}{||x_k||_1}\]
+\[y=\frac{x_k}{\|x_k\|_1}\]
 则有：
-\[||y_k||_1=\left\|\frac{x_k}{||x_k||_1}\right\|_1=1>k\frac{||x_k||_2}{||x_k||_1}=k\left\|\frac{x_k}{||x_k||_1}\right\|_2\]
+\[\|y_k\|_1=\left\|\frac{x_k}{\|x_k\|_1}\right\|_1=1>k\frac{\|x_k\|_2}{\|x_k\|_1}=k\left\|\frac{x_k}{\|x_k\|_1}\right\|_2\]
 可以推出：
-\[||y_k||_2<\frac{1}{k} \to 0\]
-但是$||y_k||_1=1$，推出矛盾，故原命题成立。
+\[\|y_k\|_2<\frac{1}{k} \to 0\]
+但是$\|y_k\|_1=1$，推出矛盾，故原命题成立。
 \end{proof}
 
 \newpage
@@ -571,17 +571,17 @@ $||\cdot||_2$比$||\cdot||_1$强$ \quad \Leftrightarrow \quad \forall \{x_n\} \s
 \begin{proof}
 设$X$是$n$维赋范线性空间，$\{e_1,e_2,\cdots,e_n\}$是$X$的基，定义映射$T: \ X \to \mathbb{R}^n$，
 \[x=\sum_{i=1}^n\xi_ie_i \mapsto \xi=(\xi_1,\xi_2,\cdots,\xi_n)\]
-易知$T$是良定义的，且是双射(因为基表示是唯一的)，存在逆算子$T^{-1}$，则$X$与$\mathbb{R}^n$线性同构，下证同胚。考虑范数$||\cdot||_X$和$||x||_T:=||TX||_{\mathbb{R}^n}$，容易验证后者确实是范数。
-\[\forall x \in X \ , \ ||x||_X=\left\|\sum_{i=1}^n\xi_ie_i\right\| \leq \sum_{i=1}^n|\xi_i|||e_i|| \leq \left(\sum_{i=1}^n|\xi_i|^2\right)^{\frac{1}{2}}\left(\sum_{i=1}^n||e_i||^2\right)^{\frac{1}{2}}:=\alpha||\xi||_{\mathbb{R}^n} \quad \Leftrightarrow \quad ||\xi||_{\mathbb{R}^n} \geq \frac{1}{\alpha}||T^{-1}\xi||\]
-利用算子范数的定义[定义\ref{definition:szfs}]和有界线性算子都是连续的[定理\ref{theorem:yjlx}]，可知$\alpha \geq ||T^{-1}||$。同样的，考虑函数$f$:
-\[f: \ \mathbb{R}^n \to \mathbb{R} \ , \ \xi \mapsto ||T^{-1}\xi||=||x||\]
+易知$T$是良定义的，且是双射(因为基表示是唯一的)，存在逆算子$T^{-1}$，则$X$与$\mathbb{R}^n$线性同构，下证同胚。考虑范数$\|\cdot\|_X$和$\|x\|_T:=\|TX\|_{\mathbb{R}^n}$，容易验证后者确实是范数。
+\[\forall x \in X \ , \ \|x\|_X=\left\|\sum_{i=1}^n\xi_ie_i\right\| \leq \sum_{i=1}^n|\xi_i\||e_i\| \leq \left(\sum_{i=1}^n|\xi_i|^2\right)^{\frac{1}{2}}\left(\sum_{i=1}^n\|e_i\|^2\right)^{\frac{1}{2}}:=\alpha\|\xi\|_{\mathbb{R}^n} \quad \Leftrightarrow \quad \|\xi\|_{\mathbb{R}^n} \geq \frac{1}{\alpha}\|T^{-1}\xi\|\]
+利用算子范数的定义[定义\ref{definition:szfs}]和有界线性算子都是连续的[定理\ref{theorem:yjlx}]，可知$\alpha \geq \|T^{-1}\|$。同样的，考虑函数$f$:
+\[f: \ \mathbb{R}^n \to \mathbb{R} \ , \ \xi \mapsto \|T^{-1}\xi\|=\|x\|\]
 容易验证$f$连续，对$\forall \xi \eta \in \mathbb{R}^n$定义$x:=T^{-1}\xi \ , \ y:=T^{-1}\eta$，则有：
-\[|f(\xi)-f(\eta)|=|||x||-||y||| \leq ||x-y|| \leq \alpha ||T(x-y)||_{\mathbb{R}^n}=\alpha ||\xi-\eta||_{\mathbb{R}^n}\]
+\[|f(\xi)-f(\eta)|=| \|x\|-\|y\| | \leq \|x-y\| \leq \alpha \|T(x-y)\|_{\mathbb{R}^n}=\alpha \|\xi-\eta\|_{\mathbb{R}^n}\]
 由于有限维，$f$限制在单位球面$S^{n-1} \subset \mathbb{R}^n$(紧集)上的最值可被达到，这里考虑最小值，即：
 \[\exists \, \xi_0=\sum_{i=1}^n\xi_0^ie_i \in S^{n-1} \quad \text{s.t.} \quad \beta:=f(\xi_0)=\mathop \text{min}\limits_{x \in S^{n-1}}f(x)=\left\|\sum_{i=1}^n\xi_0^ie_i\right\|>0\]
-记$q=||\xi||_{\mathbb{R}^n}$，则：
-\[||x||=q\left\|\frac{x}{q}\right\|=qf\left(\frac{\xi}{q}\right) \geq q\beta=\beta||Tx||_{\mathbb{R}^n}\]
-同上可知然后由$T$连续。综上所述，$T$的拓扑同胚可证，最后由于范数$||x||$的任意性可知原命题成立。
+记$q=\|\xi\|_{\mathbb{R}^n}$，则：
+\[\|x\|=q\left\|\frac{x}{q}\right\|=qf\left(\frac{\xi}{q}\right) \geq q\beta=\beta\|Tx\|_{\mathbb{R}^n}\]
+同上可知然后由$T$连续。综上所述，$T$的拓扑同胚可证，最后由于范数$\|x\|$的任意性可知原命题成立。
 \end{proof}
 
 上述定理告诉我们有限维的赋范线性空间基本上可以直接当成欧氏空间来看，当然是在范数意义下。
@@ -590,16 +590,16 @@ $||\cdot||_2$比$||\cdot||_1$强$ \quad \Leftrightarrow \quad \forall \{x_n\} \s
 最重要的，有限维赋范线性空间中的有界集列紧，有界闭集是紧集。这个性质还可以用于判定一个赋范线性空间是否为有限维，我们将在后面证明这个定理。
 \begin{theorem}[Riesz 引理]\label{Riesz}
 设$X_0$是赋范线性空间$X$的真闭子空间（不要求有限维），则：
-\[\forall \varepsilon>0 \ , \ \exists \, x_0 \in X-X_0 \quad \text{s.t.} \quad ||x_0||=1 \ , \ d(x_0,X_0):=\mathop \text{inf}\limits_{x \in X_0}d(x_0,x) \geq 1-\varepsilon\]
+\[\forall \varepsilon>0 \ , \ \exists \, x_0 \in X-X_0 \quad \text{s.t.} \quad \|x_0\|=1 \ , \ d(x_0,X_0):=\mathop \text{inf}\limits_{x \in X_0}d(x_0,x) \geq 1-\varepsilon\]
 \end{theorem}
 \begin{proof}依照定理描述：
-\[\forall x_1 \in X-X_0 \ , \ d:=d(x_1,X_0)=\mathop \text{inf}\limits_{x \in X_0}d(x_1,x)=\mathop \text{inf}\limits_{x \in X_0}||x_1-x||\]
+\[\forall x_1 \in X-X_0 \ , \ d:=d(x_1,X_0)=\mathop \text{inf}\limits_{x \in X_0}d(x_1,x)=\mathop \text{inf}\limits_{x \in X_0}\|x_1-x\|\]
 由于$X_0$闭，可知$d>0$，且由下确界性质可知：
-\[\forall \varepsilon \in (0,1) \ , \ \exists \, x_2 \in X_0 \quad \text{s.t.} \quad d(x_1,x_2)=||x_1-x_2||<\frac{d}{1-\varepsilon}\]
+\[\forall \varepsilon \in (0,1) \ , \ \exists \, x_2 \in X_0 \quad \text{s.t.} \quad d(x_1,x_2)=\|x_1-x_2\|<\frac{d}{1-\varepsilon}\]
 则此时我们如下定义$x_0$：
-\[x_0=\frac{x_1-x_2}{||x_1-x_2||} \quad \Rightarrow \quad ||x_0||=1 \ , \ \forall x \in X_0 \ , \ ||x-x_0||=\left\|x-\frac{x_1-x_2}{||x_1-x_2||}\right\|=\frac{1}{||x_1-x_2||}\left\|||x_1-x_2||x+x_2-x_1\right\|\]
-式中$||x_1-x_2||x+x_2 \in X_0$，故：
-\[\forall x \in X_0 \ , \ ||x-x_0|| \geq \frac{1}{||x_1-x_2||} \cdot d >\frac{1-\varepsilon}{d} \cdot d=1-\varepsilon\]
+\[x_0=\frac{x_1-x_2}{\|x_1-x_2\|} \quad \Rightarrow \quad \|x_0\|=1 \ , \ \forall x \in X_0 \ , \ \|x-x_0\|=\left\|x-\frac{x_1-x_2}{\|x_1-x_2\|}\right\|=\frac{1}{\|x_1-x_2\|}\left\| \|x_1-x_2\|x+x_2-x_1 \right\|\]
+式中$\|x_1-x_2\|x+x_2 \in X_0$，故：
+\[\forall x \in X_0 \ , \ \|x-x_0\| \geq \frac{1}{\|x_1-x_2\|} \cdot d >\frac{1-\varepsilon}{d} \cdot d=1-\varepsilon\]
 \begin{figure}[H]
     \center
     \includegraphics[scale=0.25]{./fig/3.5-1.png}
@@ -612,16 +612,16 @@ $||\cdot||_2$比$||\cdot||_1$强$ \quad \Leftrightarrow \quad \forall \{x_n\} \s
 \end{proposition}
 \begin{proof}构造点列$\{x_n\}$满足：
 \[\forall y_0 \in X/X_0 \ , \ d:=d(y_0,X_0)>0 \ , \ \exists \, x_0 \in X_0 \quad \text{s.t.} \quad d \leq d(y_0,x_n)<d(y_0,x_0)-\frac{1}{n}\]
-通过上述方式构造出的点列$\{x_n\}$满足$||x_n|| \leq ||x_n-y_0||+||y_0||<+\infty$，是有限维闭子空间上的点列，由有限维赋范线性空间的性质可知$\{x_n\}$列紧，不妨设$x_n \to x_0 \in X_0$，其中$x_0$被称为\textbf{最佳逼近元}。
+通过上述方式构造出的点列$\{x_n\}$满足$\|x_n\| \leq \|x_n-y_0\|+\|y_0\|<+\infty$，是有限维闭子空间上的点列，由有限维赋范线性空间的性质可知$\{x_n\}$列紧，不妨设$x_n \to x_0 \in X_0$，其中$x_0$被称为\textbf{最佳逼近元}。
 \[d \leq d(y_0,x_n)<d(y_0,x_0)-\frac{1}{n} \ (n \to \+\infty) \quad \Rightarrow \quad d(y_0,x_0)=d\]
 取球面上另外一点$x'$满足如下条件可验证$d(x',X_0)=1$：
-\[x'=\frac{y_0-x_0}{||y_0-x_0||} \quad \Rightarrow \quad d(x',X_0)=\mathop \text{inf}\limits_{z \in X_0}\left\|\frac{y_0-x_0}{||y_0-x_0||}-z\right\|=\frac{1}{||y_0-x_0||}\mathop \text{inf}\limits_{z \in X_0}\left\|||y_0-x_0||z+x_0-y_0\right\|=\frac{1}{d} \cdot d=1\]
-注意这里$||y_0-x_0||z+x_0-y_0$构成的新向量依然遍历$X_0$全空间。
+\[x'=\frac{y_0-x_0}{\|y_0-x_0\|} \quad \Rightarrow \quad d(x',X_0)=\mathop \text{inf}\limits_{z \in X_0}\left\|\frac{y_0-x_0}{\|y_0-x_0\|}-z\right\|=\frac{1}{\|y_0-x_0\|}\mathop \text{inf}\limits_{z \in X_0}\left\| \|y_0-x_0\|z+x_0-y_0 \right\|=\frac{1}{d} \cdot d=1\]
+注意这里$\|y_0-x_0\|z+x_0-y_0$构成的新向量依然遍历$X_0$全空间。
 \end{proof}
 
 \begin{definition}[最佳逼近元]
-设$(X,||\cdot||)$是赋范线性空间，$Y$是$X$的子空间，对$x \in X$，如果
-\[\exists \, y_0 \in Y \quad \text{s.t.} \quad ||x-y_0||=d(x,Y)=\mathop \text{inf}\limits_{y \, \in Y}||x-y||\]
+设$(X,\|\cdot\|)$是赋范线性空间，$Y$是$X$的子空间，对$x \in X$，如果
+\[\exists \, y_0 \in Y \quad \text{s.t.} \quad \|x-y_0\|=d(x,Y)=\mathop \text{inf}\limits_{y \, \in Y}\|x-y\|\]
 则称$y_0$为$Y$上关于$X$的最佳逼近元（不唯一）。在一般的情形下(无限维)，最佳逼近元可能不存在。
 \end{definition}
 \begin{example}
@@ -631,20 +631,20 @@ $||\cdot||_2$比$||\cdot||_1$强$ \quad \Leftrightarrow \quad \forall \{x_n\} \s
 \end{example}
 \begin{proof}
 采用反证法，假设$\exists \, f_0 \in S$使得$d(f_0,X_0)=1$。取$f_0 \in S \subset X$，其范数满足：
-\[||f_0||=\mathop \text{sup}\limits_{x \in [0,1]}|f(x)|=1 \quad \Rightarrow \quad \left|\int_0^1f_0(x)\dd x\right|<1\]
+\[\|f_0\|=\mathop \text{sup}\limits_{x \in [0,1]}|f(x)|=1 \quad \Rightarrow \quad \left|\int_0^1f_0(x)\dd x\right|<1\]
 另一方面对$\forall f \in X/X_0$，存在：
 \[a=\int_0^1f_0(x)\dd x \Bigg{/} \int_0^1f(x)\dd x \quad \Rightarrow \quad \int_0^1(f_0-af)\dd x=0\]
 即$f_0-af \in X_0$，则:
-\[||f_0-(f_0-af)||=|a|||f|| \geq d(f_0,X_0)=1 \quad \Rightarrow \quad \left|\int_0^1f_0(x)\dd x\right|||f|| \geq \left|\int_0^1f(x)\dd x\right|\]
+\[\|f_0-(f_0-af)\|=|a|\cdot\|f\| \geq d(f_0,X_0)=1 \quad \Rightarrow \quad \left|\int_0^1f_0(x)\dd x\right\||f\| \geq \left|\int_0^1f(x)\dd x\right|\]
 特别的，我们可以取$f$为一族函数$f_n(x)=x^{1/n}$，则：
-\[||f_n||=1 \ , \ \left|\int_0^1f_n(x)\dd x\right|=\frac{n}{n+1}\]
+\[\|f_n\|=1 \ , \ \left|\int_0^1f_n(x)\dd x\right|=\frac{n}{n+1}\]
 进而：
-\[\left|\int_0^1f_0(x)\dd x\right|||f_n|| \geq \left|\int_0^1f_n(x)\dd x\right|=\frac{n}{n+1} \to 1\]
+\[\left|\int_0^1f_0(x)\dd x\right| \|f_n\| \geq \left|\int_0^1f_n(x)\dd x\right|=\frac{n}{n+1} \to 1\]
 得出矛盾。
 \end{proof}
 
 \begin{example}
- \quad $X=\mathbb{R^2} \ , \ ||\mathbf{x}||=||(x_1,x_2)||=\text{max}\left\{|x_1|,|x_2|\right\}$，取$\mathbf{x}_0=(0,1) \ , \ \mathbf{e}_1=(1,0) \ , \ X_0=\text{span}\{\mathbf{e}_1\}$，对$\forall \mathbf{y} \in X_0 \ , \ \mathbf{y}=\lambda \mathbf{e}_1=(\lambda,0) \ , \ ||\mathbf{x}_0-\mathbf{y}||\text{max}\left\{|\lambda|,1\right\} \geq 1$，则可知$\forall ||\mathbf{y}|| \leq 1$都是最佳逼近元。
+ \quad $X=\mathbb{R^2} \ , \ \|\mathbf{x}\|=\|(x_1,x_2)\|=\text{max}\left\{|x_1|,|x_2|\right\}$，取$\mathbf{x}_0=(0,1) \ , \ \mathbf{e}_1=(1,0) \ , \ X_0=\text{span}\{\mathbf{e}_1\}$，对$\forall \mathbf{y} \in X_0 \ , \ \mathbf{y}=\lambda \mathbf{e}_1=(\lambda,0) \ , \ \|\mathbf{x}_0-\mathbf{y}\|\text{max}\left\{|\lambda|,1\right\} \geq 1$，则可知$\forall \|\mathbf{y}\| \leq 1$都是最佳逼近元。
 \end{example}
 
 \begin{theorem}
@@ -653,11 +653,11 @@ $||\cdot||_2$比$||\cdot||_1$强$ \quad \Leftrightarrow \quad \forall \{x_n\} \s
 \begin{proof}
 一方面，由于$X$与$\mathbb{R}^n$同胚，在$X$上的有界集$E$的像集$T(E)$在$\mathbb{R}^n$有界，而$\mathbb{R}^n$上的有界集$T(E)$列紧，再由同胚可知$X$上的有界集$E$列紧。
 
-另一方面，采用反证法，假设$X$是无穷维，任取$e_1 \in S=\{x \in X | \, ||x||=1\}$，由 Riesz 引理：
+另一方面，采用反证法，假设$X$是无穷维，任取$e_1 \in S=\{x \in X | \, \|x\|=1\}$，由 Riesz 引理：
 \[X_1=\text{span}\{e_1\} \ , \ \exists \, e_2 \in S \ , \ d(e_2,X_1)>1-\frac{1}{2}=\frac{1}{2}\]
 进而：
 \[X_2=\text{span}\{e_1,e_2\} \ , \ e_3 \in S \ , \ d(e_3,X_2)>\frac{1}{2} \quad \Rightarrow \quad d(e_3,e_1)>\frac{1}{2} \ , \ d(e_3,e_2)>\frac{1}{2}\]
 由反证条件，上述操作可以一直做下去，可以得到序列$\{e_n\} \subset X$满足：
-\[\forall i,j \in \mathbb{N} \ , \ d(e_i,e_j)>\frac{1}{2} \ , \ ||e_i||=1\]
+\[\forall i,j \in \mathbb{N} \ , \ d(e_i,e_j)>\frac{1}{2} \ , \ \|e_i\|=1\]
 由于$X$中任意有界集都是列紧的可知$\exists \, \{e_{n_k}\} \subset \{e_i\}$收敛，故矛盾。
 \end{proof}
