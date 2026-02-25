@@ -392,7 +392,7 @@ $$\widetilde{T}: \ X=\ker T \oplus X_1 \to \text{span}\{y_i\}_{i=1}^n \oplus R(T
 由于$R(T^p)=R(T^{p+1})$可知$T_1$是满射，同时若$y \in R(T^p)$使得$T_1y=0$，那$\exists \, x \in X$满足$y=T^px$使得$T_1y=T_1T^px=T^{p+1}x=0$，因此$x \in \ker T^{p+1}=\ker T^p$且$y=0$，由逆算子定理[定理\ref{theorem:nszdl}]可知$T_1$存在有界逆。
 \end{proof}
 
-\begin{theorem}[无穷维紧算子的 Jordan 分解定理]
+\begin{theorem}[无穷维紧算子的 Jordan 分解定理]\label{theorem:jszfj}
 设$X$是 Banach 空间，$A \in \mathscr{C}(X)$，对应$A$的非零谱即点谱$\lambda_i \in \sigma_p(A)$都存在对应$\lambda_i\mathbbm{I}-A$的零链长$p_i$，可以将空间$X$展开成：
 \[X=\bigoplus_{i=1}^{\infty}\ker(\lambda_i\mathbbm{I}-A)^{p_i}\]
 在上述展开空间中紧算子$A$有对应的 Jordan 标准型。
@@ -457,11 +457,11 @@ $$\widetilde{T}: \ X=\ker T \oplus X_1 \to \text{span}\{y_i\}_{i=1}^n \oplus R(T
 \quad 设$\lambda\neq\mu$是$A$的两个特征值，$x,y$分别为对应的特征向量，即$Ax=\lambda x$，$Ay=\mu y$。因此$\lambda(x,y) = (\lambda x,y) = (Ax,y) = (x,Ay) = (x,\mu y) = \mu(x,y)$，于是$(\lambda-\mu)(x,y)=0 \ \Rightarrow \ (x,y)=0$，即$x\perp y$，或$\ker(\lambda\mathbbm{I}-A) \perp \ker(\mu\mathbbm{I}-A)$。
 \end{remark}
 
-\begin{theorem}
+\begin{theorem}\label{label:zkjzge}
 设$H$是 Hilbert 空间，若$A\in\mathscr{B}(H)$是自共轭算子，$M$是$H$的闭子空间，则$A|_M$也是自共轭算子。
 \end{theorem}
 在 Hilbert 空间上，自共轭紧算子$A$的谱和算子结构将更楚。对比有穷维情形的对称阵$A$，它可以通过正交变換对角化，对角线上的元对应着$A$的本征值，而这些本征值双是$A$所对应的二次型$(Ax,x)$在单位球面$\|x\|=1$上的各个临界值。 所有这些性质将被推广到无穷维空间。我们从下列极值性质出发
-\begin{theorem}
+\begin{theorem}\label{label:zgejz}
 $H$是 Hilbert 空间，$A$是自共轭紧算子，则$\exists \, x_0 \in H$满足$\|x_0\|=1$且$Ax_0=\lambda x_0$，其中$\lambda\in\mathbb{R}$且$|\lambda|=\|A\|$。
 \end{theorem}
 \begin{proof}
@@ -480,5 +480,33 @@ $H$是 Hilbert 空间，则自共轭紧算子$A$非0特征值$\{\lambda_i\}$至�
 \[x=\sum_{i}(x,e_i)e_i \quad , \quad Ax=\sum_{i}\lambda_i(x,e_i)e_i\]
 \end{theorem}
 \begin{proof}
-特征值部分由定理\ref{jszp}保证，下面只需要寻找基。
+特征值部分由定理\ref{jszp}保证，下面只需要寻找基。由定理\ref{theorem:jszfj}保证了对$\forall \lambda_i \sin \sigma_p(A)$，$\dim\ker(\lambda_i\mathbbm{I}-A)<+\infty$，取$\ker(\lambda_i\mathbbm{I}-A)$的标准正交基$\{e_{i,m}\}_{m=1}^{p_i}$，此外若$0 \in \sigma_p(A)$，则取$\ker A$的标准正交基$\{e_{\alpha}^0\}$，取标准正交基$\{e_{\alpha}\}$：
+\[\{e_{\alpha}\}=\left(\bigcup_{i=1}^{\infty}\{e_{i,m}\}_{m=1}^{p_i}\right)\cup\{e_{\alpha}^0\}\]
+令$M=\text{span}\{e_{\alpha}\}$，下证$\overline{M}=H \ \Leftrightarrow \ M^{\perp}=\{0\}$。若$M^{\perp} \neq \{0\}$，则$A_1=A|_{M^{\perp}}$是自共轭算子[定理\ref{label:zkjzge}]。由于上述构造取尽了所有非零特征向量，因此$A_1$无非零特征值。由定理\ref{label:zgejz}知$\|A_1\|=\max\{\lambda(A_1)\}=0$。但是由反证假设$M^{\perp} \neq \{0\}$，再根据定理\ref{label:zgejz}知在$M^{\perp}$的单位球上$\exists \, x_0$使得$A_1x_0=\|A_1\|x_0$，从而$\|A_1\|\neq0$，故矛盾。
 \end{proof}
+\begin{remark}
+\quad 对特征值$\{\lambda_i\}$按照正负大小排列$|\lambda_1|\geq|\lambda_2|\geq\cdots$，并约定按照重数是几就把该特征值写几遍。所有非零特征值对应的特征向量$e_i$定义映射$e_i \otimes e_i: \ H \to H \ , \ x \mapsto (x,e_i)e_i$，则自共轭算子$A$可以展开成：
+\[A=\sum_{i=1}^{\infty}\lambda_ie_i \otimes e_i\]
+同时对每一个特征值$\lambda_n$都存在$E_{n-1}=\text{span}\{e_1,e_2,\cdots,e_{n-1}\}$，满足：
+\begin{equation}\label{eq:tzz}
+|\lambda_n|=\sup_{x \in E_{n-1}^{\perp}-\{0\}}\left|\frac{(Ax,x)}{(x,x)}\right|
+\end{equation}
+\end{remark}
+同样也可以按照正负可以把特征值分类排序为$\lambda_1^+\geq\lambda_2^+\geq\cdots\geq0\geq\cdots\geq\lambda_2^-\geq\lambda_1^-$，有以下定理：
+\begin{theorem}
+设$H$是 Hilbert 空间，$A\in\mathscr{B}(H)$是自共轭算子，则其本征值$\lambda_n$在$H$的任意闭子空间$E_{n-1}$上满足：
+\[\lambda_n^+=\inf_{E_{n-1}}\sup_{x \in E_{n-1}^{\perp}-\{0\}}\frac{(Ax,x)}{(x,x)} \quad , \quad \lambda_n^-=\sup_{E_{n-1}}\inf_{x \in E_{n-1}^{\perp}-\{0\}}\frac{(Ax,x)}{(x,x)}\]
+\end{theorem}
+\begin{proof}
+考虑正的特征值，记公式\ref{eq:tzz}给出的特征值为$\mu_n^+$，按照定义可知$\lambda_n^+\geq\mu_n^+$，考虑$F_n=\text{span}\{e_1^+,e_2^+,\cdots,e_n^+\}$，总$\exists \, x_n \in F_n$满足$\|x_n\|=1$且$x_n \perp E_{n-1}$，由 Hilbert-Schmidt 定理[定理\ref{theorem:Hilbert-Schmidt}]展开$x_n$：
+\[\sup_{x \in E_{n-1}^{\perp}-\{0\}}\frac{(Ax,x)}{(x,x)}\geq\frac{(Ax_n,x_n)}{(x_n,x_n)}=(Ax_n,x_n)=\sum_{i=1}^n\lambda_i^+|(x_n,e_i^+)|^2\geq\lambda_n^+\sum_{i=1}^n|(x_n,e_i^+)|^2=\lambda_n^+\]
+不等式两边取下确界可知$\lambda_n^+\leq\mu_n^+$，因此$\mu_n^+=\lambda_n^+$，另一半同理。
+\end{proof}
+下面我们来看看上述谱定理在椭圆方程中的应用。
+\begin{example}
+\quad 设$\Omega \subset \mathbb{R}^n$为有界开区域，$\partial\Omega$光滑，$v \in C(\overline{\Omega}) \ , \ f \in L^2(\Omega) \ , \ u \in H^1_0(\Omega)$，考虑方程：
+\[\left\{\begin{array}{rl}
+-\Delta u+v \cdot u = f, & x \in \Omega \\
+u=0, & x \in \partial\Omega
+\end{array}\right.\]
+\end{example}
