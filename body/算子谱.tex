@@ -493,7 +493,7 @@ $H$是 Hilbert 空间，则自共轭紧算子$A$非0特征值$\{\lambda_i\}$至�
 \end{equation}
 \end{remark}
 同样也可以按照正负可以把特征值分类排序为$\lambda_1^+\geq\lambda_2^+\geq\cdots\geq0\geq\cdots\geq\lambda_2^-\geq\lambda_1^-$，有以下定理：
-\begin{theorem}
+\begin{theorem}\label{theorem:tzzgj}
 设$H$是 Hilbert 空间，$A\in\mathscr{B}(H)$是自共轭算子，则其本征值$\lambda_n$在$H$的任意闭子空间$E_{n-1}$上满足：
 \[\lambda_n^+=\inf_{E_{n-1}}\sup_{x \in E_{n-1}^{\perp}-\{0\}}\frac{(Ax,x)}{(x,x)} \quad , \quad \lambda_n^-=\sup_{E_{n-1}}\inf_{x \in E_{n-1}^{\perp}-\{0\}}\frac{(Ax,x)}{(x,x)}\]
 \end{theorem}
@@ -502,11 +502,84 @@ $H$是 Hilbert 空间，则自共轭紧算子$A$非0特征值$\{\lambda_i\}$至�
 \[\sup_{x \in E_{n-1}^{\perp}-\{0\}}\frac{(Ax,x)}{(x,x)}\geq\frac{(Ax_n,x_n)}{(x_n,x_n)}=(Ax_n,x_n)=\sum_{i=1}^n\lambda_i^+|(x_n,e_i^+)|^2\geq\lambda_n^+\sum_{i=1}^n|(x_n,e_i^+)|^2=\lambda_n^+\]
 不等式两边取下确界可知$\lambda_n^+\leq\mu_n^+$，因此$\mu_n^+=\lambda_n^+$，另一半同理。
 \end{proof}
-下面我们来看看上述谱定理在椭圆方程中的应用。
-\begin{example}
-\quad 设$\Omega \subset \mathbb{R}^n$为有界开区域，$\partial\Omega$光滑，$v \in C(\overline{\Omega}) \ , \ f \in L^2(\Omega) \ , \ u \in H^1_0(\Omega)$，考虑方程：
-\[\left\{\begin{array}{rl}
--\Delta u+v \cdot u = f, & x \in \Omega \\
+
+\begin{example}\label{example:Schrodinger_equation}
+续例题\ref{exmaple:laplace_equation}，设$\Omega \subset \mathbb{R}^n$为有界开区域，$\partial\Omega$光滑，$u \in H^1_0(\Omega) \ , \ \kappa \in L^{\infty}(\Omega)$，考虑特征值问题：
+\begin{equation}\label{eq:Schrodinger}
+\left\{\begin{array}{rl}
+-\Delta u+\kappa u = \lambda u, & x \in \Omega \\
 u=0, & x \in \partial\Omega
-\end{array}\right.\]
+\end{array}\right.
+\end{equation}
+其中$|\kappa(x)| \leq M$在$\Omega$上几乎处处成立，称$\lambda$为特征值若上述方程存在非零弱解，上述方程其实是薛定谔方程。
 \end{example}
+\begin{proof}
+对上述要求的$\kappa(x)$，取新函数$\kappa(x)+M$，则方程$-\Delta u+(\kappa+M) u = (\lambda+M) u$是关于特征值$\lambda+M$的特征值方程，因此可以取$0 \leq \kappa(x) \leq M$在$\Omega$上几乎处处成立对解原方程不影响。考虑双线性函数$a$：
+\[a: \ H^1_0(\Omega) \times H^1_0(\Omega) \to \mathbb{R}, \quad (u,v) \ \mapsto \ a(u,v)=\int_{\Omega}(\nabla u\cdot\nabla v+\kappa uv)\dd{x}=\lambda\int_{\Omega}uv\dd{x}\]
+取$u=v$显然可得$\lambda \geq 0$，若$\lambda=0$则有$|\nabla u|=0$和$\kappa u^2=0$在$\Omega$上几乎处处成立，由庞加莱不等式可知$u=0$，与题设不符，因此$\lambda>0$。实际上$a(u,v)$等价于$H_0^1(\Omega)$上的内积，我们令$(\cdot,\cdot)_{H_0^1(\Omega)}=a(\cdot,\cdot)$：
+\[(u,v)_{H_0^1(\Omega)}=\int_{\Omega}(\nabla u\cdot\nabla v+\kappa uv)\dd{x} \quad \Rightarrow \quad \|u\|=\sqrt{(u,u)}=\int_{\Omega}(|\nabla u|^2+\kappa |u|^2)\dd{x}\]
+其诱导出的范数$\|\cdot\|$与原$H_0^1(\Omega)$的范数$\|\cdot\|_{H_0^1(\Omega)}$等价，取$\|\cdot\|_{H_0^1(\Omega)}=\|\cdot\|$，上述空间还是$H_0^1(\Omega)$。考虑：
+\[(u,v)_{L^2(\Omega)}=\int_{\Omega}uv\dd{x}\leq\|u\|_{L^2(\Omega)}\cdot\|v\|_{L^2(\Omega)}\leq C\|u\|_{L^2(\Omega)}\|v\|_{H_0^1(\Omega)}\leq C\|u\|_{H_0^1(\Omega)}\|v\|_{H_0^1(\Omega)}\]
+因此对$\forall v \in H_0^1(\Omega)$，$(u,\cdot)_{L^2(\Omega)}$是$H_0^1(\Omega)$上的有界线性算子，由 Riesz 表示定理[定理\ref{theorem:rieszbs}]，对$\forall v \in H_0^1(\Omega)$，都$\exists \, ! \, \psi \in H_0^1(\Omega)$满足$(u,v)_{L^2(\Omega)}=(\psi,v)_{H_0^1(\Omega)}$。记$\psi=Ku$，则$(u,v)_{H_0^1(\Omega)}=\lambda(u,v)_{L^2(\Omega)}=\lambda(Ku,v)_{H_0^1(\Omega)}$。
+
+这里算子$K: \ H_0^1(\Omega) \hookrightarrow L^2(\Omega) \to H_0^1(\Omega)$需要考虑$H_0^1(\Omega)$到$L^2(\Omega)$的嵌入，由\href{https://math.fandom.com/zh/wiki/Rellich-Kondrachov_%E5%AE%9A%E7%90%86}{Rellich–Kondrachov 定理}保证了嵌入是紧嵌入[定理\ref{theorem:Rellich–Kondrachov}]，显然$K$是自共轭紧算子[定理\ref{theorem:szfh}]。由$v$的任意性原特征值问题变为寻找$\lambda$使得方程$\lambda K u=u$有非零解，因为$\lambda>0$，可以重写上述方程为$Ku=\mu u$，其中$\mu=1/\lambda$。
+
+由 Hilbert-Schmidt 定理[定理\ref{theorem:Hilbert-Schmidt}]，存在一列可数非零特征值$\{\mu_n\}$满足$\mu_n>0$且$\mu_n \to 0$，对应特征向量$\{\phi_n\} \subset H_0^1(\Omega)$是$H_0^1(\Omega)$的标准正交基。因此对方程\eqref{eq:Schrodinger}，存在一系列特征值$\lambda_n=1/\mu_n \to \infty$以及对应的特征向量$\{\phi_n\} \subset H_0^1(\Omega)$是$H_0^1(\Omega)$的标准正交基，由嵌入$H_0^1(\Omega) \hookrightarrow L^2(\Omega)$可知：
+\[(\phi_m,\phi_n)_{H_0^1(\Omega)}=\int_{\Omega}(\nabla \phi_m\cdot\nabla \phi_n+\kappa \phi_m\phi_n)\dd{x}=\delta_{mn}=\lambda_m \ (\text{or } \lambda_n) \ \int_{\Omega}\phi_m\phi_n\dd{x}\]
+即$\{\phi_n\} \subset L^2(\Omega)$是正交基。由定理\ref{theorem:tzzgj}可以获得特征值：
+\[\mu_n^+=\inf_{E_{n-1}}\sup_{u \in E_{n-1}^{\perp}-\{0\}}\frac{(Ku,u)}{(u,u)} \quad \Rightarrow \quad \lambda_n=\frac{1}{\mu_n^+}=\sup_{E_{n-1}}\inf_{u \in E_{n-1}^{\perp}-\{0\}}\frac{(u,u)}{(Ku,u)}=\sup_{E_{n-1}}\inf_{u \in E_{n-1}^{\perp}-\{0\}}\frac{\int_{\Omega}|\nabla u|^2+\kappa u^2\dd{x}}{\int_{\Omega}u^2\dd{x}}\]
+\end{proof}
+
+\begin{remark}
+\quad $H_0^1(\Omega)$上通常赋予范数是完整的$H^1(\Omega)$范数：
+\[\|u\|_{H_0^1(\Omega)} = \bigl( \|u\|_{L^2(\Omega)}^2 + \|\nabla u\|_{L^2(\Omega)}^2 \bigr)^{1/2}\]
+但是其与$\|\nabla u\|_{L^2(\Omega)}$等价，证明如下：$\|u\|_{H_0^1(\Omega)} \geq \|\nabla u\|_{L^2(\Omega)}$显然，反向由 Poincar\'{e} 不等式[定理\ref{theorem:Poincare}]可知：
+\[\|u\|_{H_0^1(\Omega)}^2 = \|u\|_{L^2(\Omega)}^2 + \|\nabla u\|_{L^2(\Omega)}^2 \le C_P^2 \|\nabla u\|_{L^2(\Omega)}^2 + \|\nabla u\|_{L^2(\Omega)}^2 = (1 + C_P^2) \|\nabla u\|_{L^2(\Omega)}^2\]
+即得$\|u\|_{H_0^1(\Omega)} \leq \|\nabla u\|_{L^2(\Omega)}$，因此$\|u\|_{H_0^1(\Omega)}=\|\nabla u\|_{L^2(\Omega)}$。上面定义的新范数等价于$\|\nabla u\|_{L^2(\Omega)}$也可以类似证明。
+\end{remark}
+\newpage
+
+\begin{theorem}[Rellich–Kondrachov 定理]\label{theorem:Rellich–Kondrachov}
+嵌入$l: \ H_0^1(\Omega) \hookrightarrow L^2(\Omega)$是紧算子，即对$\forall \{u_n\} \subset H_0^1(\Omega)$满足$\|u_n\| \leq C_i$，$\{lu_n\}$在$L^2(\Omega)$中都列紧。
+\end{theorem}
+
+\begin{example}
+接着例题\ref{example:Schrodinger_equation}，设$\Omega \subset \mathbb{R}^n$为有界开区域，$\partial\Omega$光滑，$\kappa \in L^{\infty}(\Omega) \ , \ f \in L^2(\Omega) \ , \ u \in H^1_0(\Omega)$，考虑方程：
+\begin{equation}\label{eq:fqc}
+\left\{\begin{array}{rl}
+-\Delta u+\kappa u = f, & x \in \Omega \\
+u=0, & x \in \partial\Omega
+\end{array}\right.
+\end{equation}
+\end{example}
+\begin{proof}
+类似例题\ref{example:Schrodinger_equation}，上述方程可以转化为$u=\lambda Ku+Kf$，这里$\lambda>0$，记$v=Kf/\lambda$，重写方程为：
+\[\mu u=\frac{u}{\lambda}=Ku+\frac{Kf}{\lambda}=Ku+\mu Kf \quad \Leftrightarrow \quad (\mu\mathbbm{I}-K)u=v\]
+由 Riesz-Fredholm 定理[定理\ref{theorem:Riesz-Fredholm}]，对$\lambda \neq \lambda_n$，则对$\forall f \in L^2(\Omega)$方程\eqref{eq:fqc}都有唯一解$u \in H_0^1(\Omega)$。
+
+当$\lambda=\lambda_n$，方程\eqref{eq:fqc}有界的充要条件是$v \perp \ker(\mu_n\mathbbm{I}-K)$，也即对$\forall \psi \in \ker(\mu_n\mathbbm{I}-K)$：
+\[\int_{\Omega}f\cdot\psi\dd{x}=0\]
+这里的$\psi \in \ker(\mu_n\mathbbm{I}-K)$即为齐次方程\eqref{eq:Schrodinger}的通解：
+\[\left\{\begin{array}{rl}
+-\Delta \psi+\kappa \psi = \lambda \psi, & x \in \Omega \\
+\psi=0, & x \in \partial\Omega
+\end{array}\right.\]
+\end{proof}
+
+上述例题中我们并未实际使用到拉普拉斯算子$\Delta$的具体性质，因此实际上，上述问题可以推广到一般的二次算子上：
+\begin{theorem}
+设$\Omega \subset \mathbb{R}^n$为有界开区域，$\partial\Omega$光滑，$f \in L^2(\Omega) \ , \ u \in H^1_0(\Omega)$，考虑二阶算子$L$，满足：
+\[Lu=-\sum_{i,j=1}^nD_i(a^{ij}D_ju)+b^iD_iu+cu\]
+其中$a^{ij} \in L^{\infty}(\Omega) \ , \ b^j \in L^n(\Omega) \ , \ c \in L^{n/2}(\Omega)$，且对$\forall \xi=(\xi_1,\xi_2,\cdots,\xi_n) \in \mathbb{R}^n$都$\exists \, 0<\lambda<\Lambda$使得$\lambda|\xi|^2 \leq a^{ij}\xi_i\xi_j \leq \Lambda|\xi|^2$，且$\sum_{i=1}^n\|b^i\|_{L^n(\Omega)}+\|c\|_{L^{n/2}(\Omega)} \leq \Lambda$。考虑以下偏微分方程：
+\begin{equation}\label{eq:lastone}
+\left\{\begin{array}{rl}
+Lu = f, & x \in \Omega \\
+u=0, & x \in \partial\Omega
+\end{array}\right.
+\end{equation}
+则有：
+\begin{itemize}
+\item 1. 若齐次方程$Lu=0$没有非零解，则对$\forall f \in L^2(\Omega)$方程\eqref{eq:lastone}有唯一解；
+\item 2. 若齐次方程$Lu=0$有非零解，记其中的最大线性无关组为$\{\psi_1,\psi_2,\cdots,\psi_n\}$，则方程\eqref{eq:lastone}有解当且仅当对$\forall \psi_i \in \{\psi_1,\psi_2,\cdots,\psi_n\}$都有$(f,\psi_i)_{L^2(\Omega)}=0$。
+\end{itemize}
+\end{theorem}

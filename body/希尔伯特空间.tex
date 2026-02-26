@@ -257,7 +257,8 @@ Hilbert 空间$H$可分当且仅当存在至多可数的标准正交基。
 \quad 上述证明表明，存在一一映射$\Phi: \ H^* \to H  \ , \ f \mapsto x_f$，因此有$H \cong H^* \cong H^{**}$。
 \end{remark}
 
-\begin{example}
+\newpage
+\begin{example}\label{exmaple:laplace_equation}
 \quad Laplace 方程的弱解。设$\Omega \subset \mathbb{R}^n$是有界开区域（连通开集），对$\forall f \in L^2(\Omega)$，考虑方程：
 \begin{equation}\label{eq:Laplace}
 \left\{\begin{array}{rl}
@@ -306,8 +307,8 @@ $(H^k(\Omega),(\cdot,\cdot)_{H^k(\Omega)})$是 Hilbert 空间，显然$C_{\rm{c}
 \end{remark}
 
 \begin{theorem}[Poincar\'{e} 不等式]\label{theorem:Poincare}
-设$1\leq p<\infty$且$\Omega\subset\mathbb{R}^n$为有界区域，则对$\forall u\in W_0^{1,p}(U)$存在正常数$C=C(p,\Omega)$使得：
-\[\|u\|_{p,U}\leq C\|Du\|_{p,U}\]
+设$1\leq p<\infty$且$\Omega\subset\mathbb{R}^n$为有界区域，则对$\forall u\in W_0^{1,p}(\Omega)$存在正常数$C=C(p,\Omega)$使得：
+\[\|u\|_{L^p(\Omega)}\leq C\|Du\|_{L^p(\Omega)}\]
 \end{theorem}
 
 \begin{definition}[弱解]
@@ -317,7 +318,7 @@ $(H^k(\Omega),(\cdot,\cdot)_{H^k(\Omega)})$是 Hilbert 空间，显然$C_{\rm{c}
 
 \begin{proof}
 考虑泛函$F: \ H_0^1(\Omega) \to \mathbb{R} \ , \ v \mapsto \int_{\Omega}f \cdot v \dd{x}$，显然线性，利用Poincar\'{e} 不等式[定理\ref{theorem:Poincare}]验证有界性：
-\[|F(v)|=\left|\int_{\Omega}f \cdot v \dd{x}\right| \leq \|f\|_{L^2(\Omega)} \cdot \|v\|_{L^2(\Omega)} \leq C\|f\|_{L^2(\Omega)} \cdot \|Dv\|_{H_0^1(\Omega)}<\infty\]
+\[|F(v)|=\left|\int_{\Omega}f \cdot v \dd{x}\right| \leq \|f\|_{L^2(\Omega)} \cdot \|v\|_{L^2(\Omega)} \leq C\|f\|_{L^2(\Omega)} \cdot \|Dv\|_{L^2(\Omega)}\leq C\|f\|_{L^2(\Omega)} \cdot \|Dv\|_{H_0^1(\Omega)}<\infty\]
 由 Riesz 表示定理[定理\ref{theorem:rieszbs}]，对$\forall v \in H_0^1(\Omega)$，都$\exists \, ! \, u \in H_0^1(\Omega)$满足$F(v)=(v,u)_{H_0^1(\Omega)}$，即：
 \[\int_{\Omega} f \cdot v \dd{x}=\int_{\Omega}\nabla u \cdot \nabla v \dd{x}=\int_{\Omega}(-\Delta u) \cdot v \dd{x}\]
 \end{proof}
