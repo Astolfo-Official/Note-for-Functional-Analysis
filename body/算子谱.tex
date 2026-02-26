@@ -480,7 +480,7 @@ $H$是 Hilbert 空间，则自共轭紧算子$A$非0特征值$\{\lambda_i\}$至�
 \[x=\sum_{i}(x,e_i)e_i \quad , \quad Ax=\sum_{i}\lambda_i(x,e_i)e_i\]
 \end{theorem}
 \begin{proof}
-特征值部分由定理\ref{jszp}保证，下面只需要寻找基。由定理\ref{theorem:jszfj}保证了对$\forall \lambda_i \sin \sigma_p(A)$，$\dim\ker(\lambda_i\mathbbm{I}-A)<+\infty$，取$\ker(\lambda_i\mathbbm{I}-A)$的标准正交基$\{e_{i,m}\}_{m=1}^{p_i}$，此外若$0 \in \sigma_p(A)$，则取$\ker A$的标准正交基$\{e_{\alpha}^0\}$，取标准正交基$\{e_{\alpha}\}$：
+特征值部分由定理\ref{jszp}保证，下面只需要寻找基。由定理\ref{theorem:jszfj}保证了对$\forall \lambda_i \in \sigma_p(A)$，$\dim\ker(\lambda_i\mathbbm{I}-A)<+\infty$，取$\ker(\lambda_i\mathbbm{I}-A)$的标准正交基$\{e_{i,m}\}_{m=1}^{p_i}$，此外若$0 \in \sigma_p(A)$，则取$\ker A$的标准正交基$\{e_{\alpha}^0\}$，取标准正交基$\{e_{\alpha}\}$：
 \[\{e_{\alpha}\}=\left(\bigcup_{i=1}^{\infty}\{e_{i,m}\}_{m=1}^{p_i}\right)\cup\{e_{\alpha}^0\}\]
 令$M=\text{span}\{e_{\alpha}\}$，下证$\overline{M}=H \ \Leftrightarrow \ M^{\perp}=\{0\}$。若$M^{\perp} \neq \{0\}$，则$A_1=A|_{M^{\perp}}$是自共轭算子[定理\ref{label:zkjzge}]。由于上述构造取尽了所有非零特征向量，因此$A_1$无非零特征值。由定理\ref{label:zgejz}知$\|A_1\|=\max\{\lambda(A_1)\}=0$。但是由反证假设$M^{\perp} \neq \{0\}$，再根据定理\ref{label:zgejz}知在$M^{\perp}$的单位球上$\exists \, x_0$使得$A_1x_0=\|A_1\|x_0$，从而$\|A_1\|\neq0$，故矛盾。
 \end{proof}
@@ -566,7 +566,7 @@ u=0, & x \in \partial\Omega
 \end{array}\right.\]
 \end{proof}
 
-上述例题中我们并未实际使用到拉普拉斯算子$\Delta$的具体性质，因此实际上，上述问题可以推广到一般的二次算子上：
+上述例题中我们并未实际使用到拉普拉斯算子$\Delta$的具体性质，因此上述问题可以推广到一般的二次算子上：
 \begin{theorem}
 设$\Omega \subset \mathbb{R}^n$为有界开区域，$\partial\Omega$光滑，$f \in L^2(\Omega) \ , \ u \in H^1_0(\Omega)$，考虑二阶算子$L$，满足：
 \[Lu=-\sum_{i,j=1}^nD_i(a^{ij}D_ju)+b^iD_iu+cu\]
